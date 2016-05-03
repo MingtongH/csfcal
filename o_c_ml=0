@@ -1,0 +1,3065 @@
+
+# This is CSFGEN v. 2.0
+# INPUT FILE: i_c_ml=0
+
+
+*** INPUT PARAMETERS: ***
+
+-------------------------------------------------------------
+
+
+# NCSF = 4
+# CSF 1:
+  nshell = 2
+  configuration: 
+  2;2;0;
+  2;2;1;
+# CSF 2:
+  nshell = 1
+  configuration: 
+  4;2;1;
+# CSF 3:
+  nshell = 2
+  configuration: 
+  2;2;0;
+  2;3;2;
+# CSF 4:
+  nshell = 3
+  configuration: 
+  1;2;0;
+  2;2;1;
+  1;3;2;
+# required S quant. numb. for the ground state = 1.0
+# required L quant. numb. for the ground state = 1
+# required Ml  for the ground state = 0
+# required Ms quant. numb. for the ground state = 1.0
+# apply lproj = True
+# apply l2 = True
+# zero Ml = False
+# apply sproj = True
+# zero Ml = False
+# apply s2 = True
+# title = Carbon atom, 4 configurations
+# input file for base_c = ./bc.or.2
+# CSF to verify = 4
+# file for wavefunctions table = ./c_ml=0.wf
+
+-------------------------------------------------------------
+
+
+# INITIALISING TEX FILE WITH: \documentclass[a4paper,10pt]{article}
+\pagestyle{empty}
+\usepackage{cmbright}
+\usepackage{braket}
+\usepackage{multicol}
+\usepackage{lscape}
+\textwidth=140truemm
+\hoffset=-15truemm
+\voffset=15truemm
+\parindent=0truecm
+\begin{document}
+
+\begin{landscape}
+
+\begin{center}
+\textbf{Carbon atom, 4 configurations}
+\end{center}
+\vspace{5mm}
+\begin{multicols}{2}
+\begin{flushleft}
+
+# LISTLOF: topn = 4
+# ntop = 4
+
+
+
+
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+# PROJECTING OUT CONFIGURATION NO 1
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+
+
+
+
+# THE DETERMINANT ON ROW 1 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 2 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 3 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 4 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 5 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 6 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 7 HAS mltot = -1 required mltot = 0 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 8 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 10 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 11 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 12 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 13 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 14 HAS mltot = 1 required mltot = 0 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 15 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+
+
+# NUMBER OF MICROSTATES = 1
+
+# FINISHED BUILDING STARTING KET LIST
+# ALL CONFIGURATIONS OBTAINED AFTER JOINING LISTS
+
+
+ 1  alpha = -1.0000 |2 0 0  +  ; 2 1 -1  +  ; 2 1 1  +  ; 2 0 0  - >
+
+
+
+
+___________________________________________________________________
+
+
+# OPERATING ON STARTING CONFIGURATION # 1
+
+
+alpha = -1.0000 | 0  +  ;  -1  +  ;  1  +  ;  0  - >
+
+
+
+# INITIALISING Lall #
+
+# CSFGEN: finding min and max L value. 
+# min L = 0 MAX L = 2
+
+# APPLYING -- L -- PROJECTOR FOR L = 1
+
+# finding min and max S value. 
+# min S = 0.0 MAX S = 2.0
+
+# APPLYING -- S -- PROJECTOR FOR S = 1.0
+
+
+# PROJECTED KET FOR S = 1.00
+
+
+ 1  alpha = -1.0000 |2 0 0  +  ; 2 1 -1  +  ; 2 1 1  +  ; 2 0 0  - >
+
+
+
+
+# NOW APPLYING L2 TO PROJECTED KET.
+# [ first normalising and dividing ket by first vector's coefficient = -1.0000 ] 
+
+
+# ks: #
+
+
+ 1  alpha = 1.0000 |2 0 0  +  ; 2 1 -1  +  ; 2 1 1  +  ; 2 0 0  - >
+
+
+# L2 OPERATOR RESULT IS: #
+
+
+ 1  alpha = 2.0000 |2 0 0  +  ; 2 1 -1  +  ; 2 1 1  +  ; 2 0 0  - >
+
+
+# eigenvalue is 2.00 corresponding to L = 1.0
+# L2(KETS) AND lambda * KETS ARE EQUAL # 
+
+
+
+# NOW APPLYING S2 TO PROJECTED KET.
+# [ first normalising and then dividing ket by first vector's coefficient = -1.0000 ] 
+
+neact = 4
+# ks: #
+
+
+ 1  alpha = 1.0000 |2 0 0  +  ; 2 1 -1  +  ; 2 1 1  +  ; 2 0 0  - >
+
+
+# S2 OPERATOR RESULT IS: #
+
+
+ 1  alpha = 2.0000 |2 0 0  +  ; 2 1 -1  +  ; 2 1 1  +  ; 2 0 0  - >
+
+
+# eigenvalue is 2.00 corresponding to S = 1.00
+# S2(KETS) AND lambda * KETS ARE EQUAL # 
+
+
+___________________________________________________________________
+
+
+
+
+
+
+
+
+
+---------------------------------------------
+# APPLYING GRAM-SCHMIDT TO RESULTING KETS 
+
+# END GRAM-SCHMIDT  
+---------------------------------------------
+
+
+
+
+
+___________________________________________________________
+___________________________________________________________
+ # FINAL RESULT: 
+
+# TOTAL NUMBER OF CSF's = 1
+
+# AFTER G-S: EIGENKET OBTAINED FROM CONFIG NO. 1,  PAGE 1 FROM CONFIGURATION 1
+
+
+ 1  alpha = -1.0000 |2 0 0  +  ; 2 1 -1  +  ; 2 1 1  +  ; 2 0 0  - >
+
+
+# MODULUS: 1.0
+
+
+______________________________________________________________
+
+
+# CONVERTING WAVEFUNCTION TO REAL 
+
+
+
+# TOTAL NUMBER OF CSF's = 1
+
+# REAL CFS's for CONFIGURATION: 1 PAGE 1 FROM CONFIGURATION 1
+
+
+ 1  alpha = -1.0000  i  |2 0 0  +  ; 2 1 -1  +  ; 2 1 1  +  ; 2 0 0  - >
+
+
+# MODULUS: 1.0
+
+
+
+# TOTAL NUMBER OF CSF's = 1
+
+
+
+# MODULUS: 1.0
+# NON-NULL KET ON PAGE 1
+# FIRST NON-NULL COMPONENT IS NUMBER 1
+
+
+
+# BUILDLISTLEV: NTOP = 2 l1act = 0
+# NUMBER OF TOTAL SPINUP ELECTRONS: 0
+
+# CALLS TO ADDONEKET: 0 TIMES
+
+
+
+
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+# PROJECTING OUT CONFIGURATION NO 2
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+
+
+
+
+# THE DETERMINANT ON ROW 1 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 2 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 3 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 4 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 5 HAS mltot = -1 required mltot = 0 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 6 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 7 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 8 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 9 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 10 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 11 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 13 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 14 HAS mltot = 1 required mltot = 0 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 15 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+
+
+# NUMBER OF MICROSTATES = 1
+
+# FINISHED BUILDING STARTING KET LIST
+# ALL CONFIGURATIONS OBTAINED AFTER JOINING LISTS
+
+
+ 1  alpha = 1.0000 |2 1 -1  +  ; 2 1 0  +  ; 2 1 1  +  ; 2 1 0  - >
+
+
+
+
+___________________________________________________________________
+
+
+# OPERATING ON STARTING CONFIGURATION # 1
+
+
+alpha = 1.0000 | -1  +  ;  0  +  ;  1  +  ;  0  - >
+
+
+
+# INITIALISING Lall #
+
+# CSFGEN: finding min and max L value. 
+# min L = 0 MAX L = 4
+
+# APPLYING -- L -- PROJECTOR FOR L = 1
+
+# finding min and max S value. 
+# min S = 0.0 MAX S = 2.0
+
+# APPLYING -- S -- PROJECTOR FOR S = 1.0
+
+
+# PROJECTED KET FOR S = 1.00
+
+
+ 1  alpha = 1.0000 |2 1 -1  +  ; 2 1 0  +  ; 2 1 1  +  ; 2 1 0  - >
+
+
+
+
+# NOW APPLYING L2 TO PROJECTED KET.
+# [ first normalising and dividing ket by first vector's coefficient = 1.0000 ] 
+
+
+# ks: #
+
+
+ 1  alpha = 1.0000 |2 1 -1  +  ; 2 1 0  +  ; 2 1 1  +  ; 2 1 0  - >
+
+
+# L2 OPERATOR RESULT IS: #
+
+
+ 1  alpha = 2.0000 |2 1 -1  +  ; 2 1 0  +  ; 2 1 1  +  ; 2 1 0  - >
+
+
+# eigenvalue is 2.00 corresponding to L = 1.0
+# L2(KETS) AND lambda * KETS ARE EQUAL # 
+
+
+
+# NOW APPLYING S2 TO PROJECTED KET.
+# [ first normalising and then dividing ket by first vector's coefficient = 1.0000 ] 
+
+neact = 4
+# ks: #
+
+
+ 1  alpha = 1.0000 |2 1 -1  +  ; 2 1 0  +  ; 2 1 1  +  ; 2 1 0  - >
+
+
+# S2 OPERATOR RESULT IS: #
+
+
+ 1  alpha = 2.0000 |2 1 -1  +  ; 2 1 0  +  ; 2 1 1  +  ; 2 1 0  - >
+
+
+# eigenvalue is 2.00 corresponding to S = 1.00
+# S2(KETS) AND lambda * KETS ARE EQUAL # 
+
+
+___________________________________________________________________
+
+
+
+
+
+
+
+
+
+---------------------------------------------
+# APPLYING GRAM-SCHMIDT TO RESULTING KETS 
+
+# END GRAM-SCHMIDT  
+---------------------------------------------
+
+
+
+
+
+___________________________________________________________
+___________________________________________________________
+ # FINAL RESULT: 
+
+# TOTAL NUMBER OF CSF's = 1
+
+# AFTER G-S: EIGENKET OBTAINED FROM CONFIG NO. 2,  PAGE 1 FROM CONFIGURATION 2
+
+
+ 1  alpha = 1.0000 |2 1 -1  +  ; 2 1 0  +  ; 2 1 1  +  ; 2 1 0  - >
+
+
+# MODULUS: 1.0
+
+
+______________________________________________________________
+
+
+# CONVERTING WAVEFUNCTION TO REAL 
+
+
+
+# TOTAL NUMBER OF CSF's = 1
+
+# REAL CFS's for CONFIGURATION: 2 PAGE 1 FROM CONFIGURATION 2
+
+
+ 1  alpha = 1.0000  i  |2 1 -1  +  ; 2 1 0  +  ; 2 1 1  +  ; 2 1 0  - >
+
+
+# MODULUS: 1.0
+
+
+
+# TOTAL NUMBER OF CSF's = 1
+
+
+
+# MODULUS: 1.0
+# NON-NULL KET ON PAGE 1
+# FIRST NON-NULL COMPONENT IS NUMBER 1
+
+
+
+# BUILDLISTLEV: NTOP = 1 l1act = 1
+# NUMBER OF TOTAL SPINUP ELECTRONS: 0
+
+# CALLS TO ADDONEKET: 0 TIMES
+
+
+
+
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+# PROJECTING OUT CONFIGURATION NO 3
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+
+
+
+
+# THE DETERMINANT ON ROW 1 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 2 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 3 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 4 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 5 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 6 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 7 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 8 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 9 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 10 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 11 HAS mltot = -3 required mltot = 0 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 12 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 13 HAS mltot = -2 required mltot = 0 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 14 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 15 HAS mltot = -1 required mltot = 0 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 16 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 18 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 19 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 20 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 21 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 22 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 23 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 24 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 25 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 26 HAS mltot = -1 required mltot = 0 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 27 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 29 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 30 HAS mltot = 1 required mltot = 0 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 31 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 32 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 33 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 34 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 35 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 36 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 37 HAS mltot = 1 required mltot = 0 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 38 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 39 HAS mltot = 2 required mltot = 0 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 40 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 41 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 42 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 43 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 44 HAS mltot = 3 required mltot = 0 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 45 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+
+
+# NUMBER OF MICROSTATES = 2
+
+# FINISHED BUILDING STARTING KET LIST
+# ALL CONFIGURATIONS OBTAINED AFTER JOINING LISTS
+
+
+ 1  alpha = -1.0000 |2 0 0  +  ; 3 2 -2  +  ; 3 2 2  +  ; 2 0 0  - >
+ 2  alpha = -1.0000 |2 0 0  +  ; 3 2 -1  +  ; 3 2 1  +  ; 2 0 0  - >
+
+
+
+
+___________________________________________________________________
+
+
+# OPERATING ON STARTING CONFIGURATION # 1
+
+
+alpha = -1.0000 | 0  +  ;  -2  +  ;  2  +  ;  0  - >
+
+
+
+# INITIALISING Lall #
+
+# CSFGEN: finding min and max L value. 
+# min L = 0 MAX L = 4
+
+# APPLYING -- L -- PROJECTOR FOR L = 1
+
+# finding min and max S value. 
+# min S = 0.0 MAX S = 2.0
+
+# APPLYING -- S -- PROJECTOR FOR S = 1.0
+
+
+# PROJECTED KET FOR S = 1.00
+
+
+ 1  alpha = 0.4000 |2 0 0  +  ; 3 2 -1  +  ; 3 2 1  +  ; 2 0 0  - >
+ 2  alpha = -0.8000 |2 0 0  +  ; 3 2 -2  +  ; 3 2 2  +  ; 2 0 0  - >
+
+
+
+
+# NOW APPLYING L2 TO PROJECTED KET.
+# [ first normalising and dividing ket by first vector's coefficient = 0.4472 ] 
+
+
+# ks: #
+
+
+ 1  alpha = 1.0000 |2 0 0  +  ; 3 2 -1  +  ; 3 2 1  +  ; 2 0 0  - >
+ 2  alpha = -2.0000 |2 0 0  +  ; 3 2 -2  +  ; 3 2 2  +  ; 2 0 0  - >
+
+
+# L2 OPERATOR RESULT IS: #
+
+
+ 1  alpha = 2.0000 |2 0 0  +  ; 3 2 -1  +  ; 3 2 1  +  ; 2 0 0  - >
+ 2  alpha = -4.0000 |2 0 0  +  ; 3 2 -2  +  ; 3 2 2  +  ; 2 0 0  - >
+
+
+# eigenvalue is 2.00 corresponding to L = 1.0
+# L2(KETS) AND lambda * KETS ARE EQUAL # 
+
+
+
+# NOW APPLYING S2 TO PROJECTED KET.
+# [ first normalising and then dividing ket by first vector's coefficient = 0.4472 ] 
+
+neact = 4
+# ks: #
+
+
+ 1  alpha = 1.0000 |2 0 0  +  ; 3 2 -1  +  ; 3 2 1  +  ; 2 0 0  - >
+ 2  alpha = -2.0000 |2 0 0  +  ; 3 2 -2  +  ; 3 2 2  +  ; 2 0 0  - >
+
+
+# S2 OPERATOR RESULT IS: #
+
+
+ 1  alpha = 2.0000 |2 0 0  +  ; 3 2 -1  +  ; 3 2 1  +  ; 2 0 0  - >
+ 2  alpha = -4.0000 |2 0 0  +  ; 3 2 -2  +  ; 3 2 2  +  ; 2 0 0  - >
+
+
+# eigenvalue is 2.00 corresponding to S = 1.00
+# S2(KETS) AND lambda * KETS ARE EQUAL # 
+
+
+___________________________________________________________________
+
+
+___________________________________________________________________
+
+
+# OPERATING ON STARTING CONFIGURATION # 2
+
+
+alpha = -1.0000 | 0  +  ;  -1  +  ;  1  +  ;  0  - >
+
+
+
+# INITIALISING Lall #
+
+# CSFGEN: finding min and max L value. 
+# min L = 0 MAX L = 4
+
+# APPLYING -- L -- PROJECTOR FOR L = 1
+
+# finding min and max S value. 
+# min S = 0.0 MAX S = 2.0
+
+# APPLYING -- S -- PROJECTOR FOR S = 1.0
+
+
+# PROJECTED KET FOR S = 1.00
+
+
+ 1  alpha = -0.2000 |2 0 0  +  ; 3 2 -1  +  ; 3 2 1  +  ; 2 0 0  - >
+ 2  alpha = 0.4000 |2 0 0  +  ; 3 2 -2  +  ; 3 2 2  +  ; 2 0 0  - >
+
+
+
+
+# NOW APPLYING L2 TO PROJECTED KET.
+# [ first normalising and dividing ket by first vector's coefficient = -0.4472 ] 
+
+
+# ks: #
+
+
+ 1  alpha = 1.0000 |2 0 0  +  ; 3 2 -1  +  ; 3 2 1  +  ; 2 0 0  - >
+ 2  alpha = -2.0000 |2 0 0  +  ; 3 2 -2  +  ; 3 2 2  +  ; 2 0 0  - >
+
+
+# L2 OPERATOR RESULT IS: #
+
+
+ 1  alpha = 2.0000 |2 0 0  +  ; 3 2 -1  +  ; 3 2 1  +  ; 2 0 0  - >
+ 2  alpha = -4.0000 |2 0 0  +  ; 3 2 -2  +  ; 3 2 2  +  ; 2 0 0  - >
+
+
+# eigenvalue is 2.00 corresponding to L = 1.0
+# L2(KETS) AND lambda * KETS ARE EQUAL # 
+
+
+
+# NOW APPLYING S2 TO PROJECTED KET.
+# [ first normalising and then dividing ket by first vector's coefficient = -0.4472 ] 
+
+neact = 4
+# ks: #
+
+
+ 1  alpha = 1.0000 |2 0 0  +  ; 3 2 -1  +  ; 3 2 1  +  ; 2 0 0  - >
+ 2  alpha = -2.0000 |2 0 0  +  ; 3 2 -2  +  ; 3 2 2  +  ; 2 0 0  - >
+
+
+# S2 OPERATOR RESULT IS: #
+
+
+ 1  alpha = 2.0000 |2 0 0  +  ; 3 2 -1  +  ; 3 2 1  +  ; 2 0 0  - >
+ 2  alpha = -4.0000 |2 0 0  +  ; 3 2 -2  +  ; 3 2 2  +  ; 2 0 0  - >
+
+
+# eigenvalue is 2.00 corresponding to S = 1.00
+# S2(KETS) AND lambda * KETS ARE EQUAL # 
+
+
+___________________________________________________________________
+
+
+
+
+
+
+
+
+
+---------------------------------------------
+# APPLYING GRAM-SCHMIDT TO RESULTING KETS 
+
+# END GRAM-SCHMIDT  
+---------------------------------------------
+
+
+
+
+
+___________________________________________________________
+___________________________________________________________
+ # FINAL RESULT: 
+
+# TOTAL NUMBER OF CSF's = 1
+
+# AFTER G-S: EIGENKET OBTAINED FROM CONFIG NO. 3,  PAGE 1 FROM CONFIGURATION 3
+
+
+ 1  alpha = 0.4472 |2 0 0  +  ; 3 2 -1  +  ; 3 2 1  +  ; 2 0 0  - >
+ 2  alpha = -0.8944 |2 0 0  +  ; 3 2 -2  +  ; 3 2 2  +  ; 2 0 0  - >
+
+
+# MODULUS: 1.0
+
+
+______________________________________________________________
+
+
+# CONVERTING WAVEFUNCTION TO REAL 
+
+
+# CSFORD: iconf = 3
+
+# TOTAL NUMBER OF CSF's = 1
+
+# REAL CFS's for CONFIGURATION: 3 PAGE 1 FROM CONFIGURATION 3
+
+
+ 1  alpha = 0.4472  i  |2 0 0  +  ; 3 2 -1  +  ; 3 2 1  +  ; 2 0 0  - >
+ 2  alpha = 0.8944  i  |2 0 0  +  ; 3 2 -2  +  ; 3 2 2  +  ; 2 0 0  - >
+
+
+# MODULUS: 1.0
+
+
+
+# TOTAL NUMBER OF CSF's = 1
+
+
+
+# MODULUS: 1.0
+# NON-NULL KET ON PAGE 1
+# FIRST NON-NULL COMPONENT IS NUMBER 1
+
+
+
+# BUILDLISTLEV: NTOP = 2 l1act = 0
+# NUMBER OF TOTAL SPINUP ELECTRONS: 0
+
+# CALLS TO ADDONEKET: 0 TIMES
+
+
+
+
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+# PROJECTING OUT CONFIGURATION NO 4
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+
+
+
+
+# THE DETERMINANT ON ROW 1 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 2 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 3 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 4 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 5 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 6 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 7 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 8 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 9 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 10 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 11 HAS mstot = -2.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 12 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 13 HAS mstot = -2.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 14 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 15 HAS mstot = -2.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 16 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 17 HAS mstot = -2.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 18 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 19 HAS mstot = -2.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 20 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 21 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 22 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 23 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 24 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 25 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 26 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 27 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 28 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 29 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 30 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 31 HAS mstot = -2.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 32 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 33 HAS mstot = -2.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 34 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 35 HAS mstot = -2.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 36 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 37 HAS mstot = -2.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 38 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 39 HAS mstot = -2.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 40 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 41 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 42 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 43 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 44 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 45 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 46 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 47 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 48 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 49 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 50 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 51 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 52 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 53 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 54 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 55 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 56 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 57 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 58 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 59 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 60 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 61 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 62 HAS mltot = -3 required mltot = 0 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 63 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 64 HAS mltot = -2 required mltot = 0 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 65 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 66 HAS mltot = -1 required mltot = 0 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 67 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 69 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 70 HAS mltot = 1 required mltot = 0 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 71 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 72 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 73 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 74 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 75 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 76 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 77 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 78 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 79 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 80 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 81 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 82 HAS mltot = -2 required mltot = 0 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 83 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 84 HAS mltot = -1 required mltot = 0 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 85 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 87 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 88 HAS mltot = 1 required mltot = 0 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 89 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 90 HAS mltot = 2 required mltot = 0 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 91 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 92 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 93 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 94 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 95 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 96 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 97 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 98 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 99 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 100 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 101 HAS mstot = -2.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 102 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 103 HAS mstot = -2.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 104 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 105 HAS mstot = -2.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 106 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 107 HAS mstot = -2.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 108 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 109 HAS mstot = -2.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 110 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 111 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 112 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 113 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 114 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 115 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 116 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 117 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 118 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 119 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 120 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 121 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 122 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 123 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 124 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 125 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 126 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 127 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 128 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 129 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 130 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 131 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 132 HAS mltot = -1 required mltot = 0 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 133 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 135 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 136 HAS mltot = 1 required mltot = 0 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 137 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 138 HAS mltot = 2 required mltot = 0 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 139 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 140 HAS mltot = 3 required mltot = 0 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 141 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 142 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 143 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 144 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 145 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 146 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 147 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 148 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 149 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 150 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 151 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 152 HAS mltot = -4 required mltot = 0 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 153 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 154 HAS mltot = -3 required mltot = 0 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 155 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 156 HAS mltot = -2 required mltot = 0 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 157 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 158 HAS mltot = -1 required mltot = 0 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 159 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 161 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 162 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 163 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 164 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 165 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 166 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 167 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 168 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 169 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 170 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 171 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 172 HAS mltot = -3 required mltot = 0 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 173 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 174 HAS mltot = -2 required mltot = 0 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 175 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 176 HAS mltot = -1 required mltot = 0 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 177 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 179 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 180 HAS mltot = 1 required mltot = 0 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 181 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 182 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 183 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 184 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 185 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 186 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 187 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 188 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 189 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 190 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 191 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 192 HAS mltot = -2 required mltot = 0 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 193 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 194 HAS mltot = -1 required mltot = 0 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 195 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 197 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 198 HAS mltot = 1 required mltot = 0 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 199 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 200 HAS mltot = 2 required mltot = 0 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 201 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 202 HAS mltot = -3 required mltot = 0 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 203 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 204 HAS mltot = -2 required mltot = 0 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 205 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 206 HAS mltot = -1 required mltot = 0 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 207 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 209 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 210 HAS mltot = 1 required mltot = 0 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 211 HAS mltot = -3 required mltot = 0 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 212 HAS mstot = 2.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 213 HAS mltot = -2 required mltot = 0 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 214 HAS mstot = 2.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 215 HAS mltot = -1 required mltot = 0 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 216 HAS mstot = 2.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 218 HAS mstot = 2.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 219 HAS mltot = 1 required mltot = 0 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 220 HAS mstot = 2.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 221 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 222 HAS mltot = -2 required mltot = 0 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 223 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 224 HAS mltot = -1 required mltot = 0 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 225 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 227 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 228 HAS mltot = 1 required mltot = 0 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 229 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 230 HAS mltot = 2 required mltot = 0 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 231 HAS mltot = -2 required mltot = 0 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 232 HAS mstot = 2.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 233 HAS mltot = -1 required mltot = 0 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 234 HAS mstot = 2.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 236 HAS mstot = 2.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 237 HAS mltot = 1 required mltot = 0 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 238 HAS mstot = 2.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 239 HAS mltot = 2 required mltot = 0 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 240 HAS mstot = 2.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 241 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 242 HAS mltot = -2 required mltot = 0 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 243 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 244 HAS mltot = -1 required mltot = 0 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 245 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 247 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 248 HAS mltot = 1 required mltot = 0 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 249 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 250 HAS mltot = 2 required mltot = 0 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 251 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 252 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 253 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 254 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 255 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 256 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 257 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 258 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 259 HAS mstot = -1.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 260 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 261 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 262 HAS mltot = -1 required mltot = 0 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 263 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 265 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 266 HAS mltot = 1 required mltot = 0 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 267 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 268 HAS mltot = 2 required mltot = 0 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 269 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 270 HAS mltot = 3 required mltot = 0 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 271 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 272 HAS mltot = -1 required mltot = 0 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 273 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 275 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 276 HAS mltot = 1 required mltot = 0 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 277 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 278 HAS mltot = 2 required mltot = 0 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 279 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 280 HAS mltot = 3 required mltot = 0 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 281 HAS mltot = -1 required mltot = 0 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 282 HAS mstot = 2.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 284 HAS mstot = 2.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 285 HAS mltot = 1 required mltot = 0 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 286 HAS mstot = 2.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 287 HAS mltot = 2 required mltot = 0 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 288 HAS mstot = 2.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 289 HAS mltot = 3 required mltot = 0 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 290 HAS mstot = 2.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 291 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 293 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 294 HAS mltot = 1 required mltot = 0 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 295 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 296 HAS mltot = 2 required mltot = 0 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 297 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 298 HAS mltot = 3 required mltot = 0 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 299 HAS mstot = 0.00 required mstot = 1.00 WIPING DETERMINANT 
+# THE DETERMINANT ON ROW 300 HAS mltot = 4 required mltot = 0 WIPING DETERMINANT 
+
+
+# NUMBER OF MICROSTATES = 15
+
+# FINISHED BUILDING STARTING KET LIST
+# ALL CONFIGURATIONS OBTAINED AFTER JOINING LISTS
+
+
+ 1  alpha = -1.0000 |2 1 -1  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 0 0  - >
+ 2  alpha = -1.0000 |2 1 -1  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 0 0  - >
+ 3  alpha = -1.0000 |2 1 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 0 0  - >
+ 4  alpha = 1.0000 |2 0 0  +  ; 2 1 -1  +  ; 3 2 2  +  ; 2 1 -1  - >
+ 5  alpha = 1.0000 |2 0 0  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 1 -1  - >
+ 6  alpha = 1.0000 |2 0 0  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 1 -1  - >
+ 7  alpha = -1.0000 |2 0 0  +  ; 2 1 -1  +  ; 3 2 1  +  ; 2 1 0  - >
+ 8  alpha = 1.0000 |2 0 0  +  ; 2 1 -1  +  ; 2 1 0  +  ; 3 2 1  - >
+ 9  alpha = -1.0000 |2 0 0  +  ; 2 1 -1  +  ; 3 2 0  +  ; 2 1 1  - >
+ 10  alpha = 1.0000 |2 0 0  +  ; 2 1 -1  +  ; 2 1 1  +  ; 3 2 0  - >
+ 11  alpha = 1.0000 |2 0 0  +  ; 2 1 0  +  ; 3 2 0  +  ; 2 1 0  - >
+ 12  alpha = 1.0000 |2 0 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 1 0  - >
+ 13  alpha = -1.0000 |2 0 0  +  ; 2 1 0  +  ; 3 2 -1  +  ; 2 1 1  - >
+ 14  alpha = 1.0000 |2 0 0  +  ; 2 1 0  +  ; 2 1 1  +  ; 3 2 -1  - >
+ 15  alpha = 1.0000 |2 0 0  +  ; 2 1 1  +  ; 3 2 -2  +  ; 2 1 1  - >
+
+
+
+
+___________________________________________________________________
+
+
+# OPERATING ON STARTING CONFIGURATION # 1
+
+
+alpha = -1.0000 | -1  +  ;  0  +  ;  1  +  ;  0  - >
+
+
+
+# INITIALISING Lall #
+
+# CSFGEN: finding min and max L value. 
+# min L = 0 MAX L = 4
+
+# APPLYING -- L -- PROJECTOR FOR L = 1
+
+# finding min and max S value. 
+# min S = 0.0 MAX S = 2.0
+
+# APPLYING -- S -- PROJECTOR FOR S = 1.0
+
+
+# PROJECTED KET FOR S = 1.00
+
+
+ 1  alpha = 0.0866 |2 0 0  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 1 -1  - >
+ 2  alpha = 0.2598 |2 1 -1  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 0 0  - >
+ 3  alpha = -0.0866 |2 0 0  +  ; 2 1 -1  +  ; 3 2 0  +  ; 2 1 1  - >
+ 4  alpha = 0.0866 |2 0 0  +  ; 2 1 -1  +  ; 2 1 1  +  ; 3 2 0  - >
+ 5  alpha = -0.0750 |2 0 0  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 1 -1  - >
+ 6  alpha = -0.2250 |2 1 -1  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 0 0  - >
+ 7  alpha = 0.0750 |2 0 0  +  ; 2 1 -1  +  ; 3 2 1  +  ; 2 1 0  - >
+ 8  alpha = -0.0750 |2 0 0  +  ; 2 1 -1  +  ; 2 1 0  +  ; 3 2 1  - >
+ 9  alpha = -0.0750 |2 0 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 1 0  - >
+ 10  alpha = -0.2250 |2 1 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 0 0  - >
+ 11  alpha = 0.0750 |2 0 0  +  ; 2 1 0  +  ; 3 2 -1  +  ; 2 1 1  - >
+ 12  alpha = -0.0750 |2 0 0  +  ; 2 1 0  +  ; 2 1 1  +  ; 3 2 -1  - >
+
+
+
+
+# NOW APPLYING L2 TO PROJECTED KET.
+# [ first normalising and dividing ket by first vector's coefficient = 0.1826 ] 
+
+
+# ks: #
+
+
+ 1  alpha = 1.0000 |2 0 0  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 1 -1  - >
+ 2  alpha = 3.0000 |2 1 -1  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 0 0  - >
+ 3  alpha = -1.0000 |2 0 0  +  ; 2 1 -1  +  ; 3 2 0  +  ; 2 1 1  - >
+ 4  alpha = 1.0000 |2 0 0  +  ; 2 1 -1  +  ; 2 1 1  +  ; 3 2 0  - >
+ 5  alpha = -0.8660 |2 0 0  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 1 -1  - >
+ 6  alpha = -2.5981 |2 1 -1  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 0 0  - >
+ 7  alpha = 0.8660 |2 0 0  +  ; 2 1 -1  +  ; 3 2 1  +  ; 2 1 0  - >
+ 8  alpha = -0.8660 |2 0 0  +  ; 2 1 -1  +  ; 2 1 0  +  ; 3 2 1  - >
+ 9  alpha = -0.8660 |2 0 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 1 0  - >
+ 10  alpha = -2.5981 |2 1 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 0 0  - >
+ 11  alpha = 0.8660 |2 0 0  +  ; 2 1 0  +  ; 3 2 -1  +  ; 2 1 1  - >
+ 12  alpha = -0.8660 |2 0 0  +  ; 2 1 0  +  ; 2 1 1  +  ; 3 2 -1  - >
+
+
+# L2 OPERATOR RESULT IS: #
+
+
+ 1  alpha = 2.0000 |2 0 0  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 1 -1  - >
+ 2  alpha = -1.7321 |2 0 0  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 1 -1  - >
+ 3  alpha = -1.7321 |2 0 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 1 0  - >
+ 4  alpha = 6.0000 |2 1 -1  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 0 0  - >
+ 5  alpha = -5.1962 |2 1 -1  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 0 0  - >
+ 6  alpha = -5.1962 |2 1 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 0 0  - >
+ 7  alpha = 1.7321 |2 0 0  +  ; 2 1 0  +  ; 3 2 -1  +  ; 2 1 1  - >
+ 8  alpha = -2.0000 |2 0 0  +  ; 2 1 -1  +  ; 3 2 0  +  ; 2 1 1  - >
+ 9  alpha = 1.7321 |2 0 0  +  ; 2 1 -1  +  ; 3 2 1  +  ; 2 1 0  - >
+ 10  alpha = 2.0000 |2 0 0  +  ; 2 1 -1  +  ; 2 1 1  +  ; 3 2 0  - >
+ 11  alpha = -1.7321 |2 0 0  +  ; 2 1 -1  +  ; 2 1 0  +  ; 3 2 1  - >
+ 12  alpha = -1.7321 |2 0 0  +  ; 2 1 0  +  ; 2 1 1  +  ; 3 2 -1  - >
+
+
+# eigenvalue is 2.00 corresponding to L = 1.0
+# L2(KETS) AND lambda * KETS ARE EQUAL # 
+
+
+
+# NOW APPLYING S2 TO PROJECTED KET.
+# [ first normalising and then dividing ket by first vector's coefficient = 0.1826 ] 
+
+neact = 4
+# ks: #
+
+
+ 1  alpha = 1.0000 |2 0 0  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 1 -1  - >
+ 2  alpha = 3.0000 |2 1 -1  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 0 0  - >
+ 3  alpha = -1.0000 |2 0 0  +  ; 2 1 -1  +  ; 3 2 0  +  ; 2 1 1  - >
+ 4  alpha = 1.0000 |2 0 0  +  ; 2 1 -1  +  ; 2 1 1  +  ; 3 2 0  - >
+ 5  alpha = -0.8660 |2 0 0  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 1 -1  - >
+ 6  alpha = -2.5981 |2 1 -1  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 0 0  - >
+ 7  alpha = 0.8660 |2 0 0  +  ; 2 1 -1  +  ; 3 2 1  +  ; 2 1 0  - >
+ 8  alpha = -0.8660 |2 0 0  +  ; 2 1 -1  +  ; 2 1 0  +  ; 3 2 1  - >
+ 9  alpha = -0.8660 |2 0 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 1 0  - >
+ 10  alpha = -2.5981 |2 1 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 0 0  - >
+ 11  alpha = 0.8660 |2 0 0  +  ; 2 1 0  +  ; 3 2 -1  +  ; 2 1 1  - >
+ 12  alpha = -0.8660 |2 0 0  +  ; 2 1 0  +  ; 2 1 1  +  ; 3 2 -1  - >
+
+
+# S2 OPERATOR RESULT IS: #
+
+
+ 1  alpha = 2.0000 |2 0 0  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 1 -1  - >
+ 2  alpha = 6.0000 |2 1 -1  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 0 0  - >
+ 3  alpha = -2.0000 |2 0 0  +  ; 2 1 -1  +  ; 3 2 0  +  ; 2 1 1  - >
+ 4  alpha = 2.0000 |2 0 0  +  ; 2 1 -1  +  ; 2 1 1  +  ; 3 2 0  - >
+ 5  alpha = -1.7321 |2 0 0  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 1 -1  - >
+ 6  alpha = -5.1962 |2 1 -1  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 0 0  - >
+ 7  alpha = 1.7321 |2 0 0  +  ; 2 1 -1  +  ; 3 2 1  +  ; 2 1 0  - >
+ 8  alpha = -1.7321 |2 0 0  +  ; 2 1 -1  +  ; 2 1 0  +  ; 3 2 1  - >
+ 9  alpha = -1.7321 |2 0 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 1 0  - >
+ 10  alpha = -5.1962 |2 1 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 0 0  - >
+ 11  alpha = 1.7321 |2 0 0  +  ; 2 1 0  +  ; 3 2 -1  +  ; 2 1 1  - >
+ 12  alpha = -1.7321 |2 0 0  +  ; 2 1 0  +  ; 2 1 1  +  ; 3 2 -1  - >
+
+
+# eigenvalue is 2.00 corresponding to S = 1.00
+# S2(KETS) AND lambda * KETS ARE EQUAL # 
+
+
+___________________________________________________________________
+
+
+___________________________________________________________________
+
+
+# OPERATING ON STARTING CONFIGURATION # 2
+
+
+alpha = -1.0000 | -1  +  ;  1  +  ;  0  +  ;  0  - >
+
+
+
+# INITIALISING Lall #
+
+# CSFGEN: finding min and max L value. 
+# min L = 0 MAX L = 4
+
+# APPLYING -- L -- PROJECTOR FOR L = 1
+
+# finding min and max S value. 
+# min S = 0.0 MAX S = 2.0
+
+# APPLYING -- S -- PROJECTOR FOR S = 1.0
+
+
+# PROJECTED KET FOR S = 1.00
+
+
+ 1  alpha = -0.1000 |2 0 0  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 1 -1  - >
+ 2  alpha = -0.3000 |2 1 -1  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 0 0  - >
+ 3  alpha = 0.1000 |2 0 0  +  ; 2 1 -1  +  ; 3 2 0  +  ; 2 1 1  - >
+ 4  alpha = -0.1000 |2 0 0  +  ; 2 1 -1  +  ; 2 1 1  +  ; 3 2 0  - >
+ 5  alpha = 0.0866 |2 0 0  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 1 -1  - >
+ 6  alpha = 0.2598 |2 1 -1  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 0 0  - >
+ 7  alpha = -0.0866 |2 0 0  +  ; 2 1 -1  +  ; 3 2 1  +  ; 2 1 0  - >
+ 8  alpha = 0.0866 |2 0 0  +  ; 2 1 -1  +  ; 2 1 0  +  ; 3 2 1  - >
+ 9  alpha = 0.0866 |2 0 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 1 0  - >
+ 10  alpha = 0.2598 |2 1 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 0 0  - >
+ 11  alpha = -0.0866 |2 0 0  +  ; 2 1 0  +  ; 3 2 -1  +  ; 2 1 1  - >
+ 12  alpha = 0.0866 |2 0 0  +  ; 2 1 0  +  ; 2 1 1  +  ; 3 2 -1  - >
+
+
+
+
+# NOW APPLYING L2 TO PROJECTED KET.
+# [ first normalising and dividing ket by first vector's coefficient = -0.1826 ] 
+
+
+# ks: #
+
+
+ 1  alpha = 1.0000 |2 0 0  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 1 -1  - >
+ 2  alpha = 3.0000 |2 1 -1  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 0 0  - >
+ 3  alpha = -1.0000 |2 0 0  +  ; 2 1 -1  +  ; 3 2 0  +  ; 2 1 1  - >
+ 4  alpha = 1.0000 |2 0 0  +  ; 2 1 -1  +  ; 2 1 1  +  ; 3 2 0  - >
+ 5  alpha = -0.8660 |2 0 0  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 1 -1  - >
+ 6  alpha = -2.5981 |2 1 -1  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 0 0  - >
+ 7  alpha = 0.8660 |2 0 0  +  ; 2 1 -1  +  ; 3 2 1  +  ; 2 1 0  - >
+ 8  alpha = -0.8660 |2 0 0  +  ; 2 1 -1  +  ; 2 1 0  +  ; 3 2 1  - >
+ 9  alpha = -0.8660 |2 0 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 1 0  - >
+ 10  alpha = -2.5981 |2 1 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 0 0  - >
+ 11  alpha = 0.8660 |2 0 0  +  ; 2 1 0  +  ; 3 2 -1  +  ; 2 1 1  - >
+ 12  alpha = -0.8660 |2 0 0  +  ; 2 1 0  +  ; 2 1 1  +  ; 3 2 -1  - >
+
+
+# L2 OPERATOR RESULT IS: #
+
+
+ 1  alpha = 2.0000 |2 0 0  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 1 -1  - >
+ 2  alpha = -1.7321 |2 0 0  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 1 -1  - >
+ 3  alpha = -1.7321 |2 0 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 1 0  - >
+ 4  alpha = 6.0000 |2 1 -1  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 0 0  - >
+ 5  alpha = -5.1962 |2 1 -1  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 0 0  - >
+ 6  alpha = -5.1962 |2 1 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 0 0  - >
+ 7  alpha = 1.7321 |2 0 0  +  ; 2 1 0  +  ; 3 2 -1  +  ; 2 1 1  - >
+ 8  alpha = -2.0000 |2 0 0  +  ; 2 1 -1  +  ; 3 2 0  +  ; 2 1 1  - >
+ 9  alpha = 1.7321 |2 0 0  +  ; 2 1 -1  +  ; 3 2 1  +  ; 2 1 0  - >
+ 10  alpha = 2.0000 |2 0 0  +  ; 2 1 -1  +  ; 2 1 1  +  ; 3 2 0  - >
+ 11  alpha = -1.7321 |2 0 0  +  ; 2 1 -1  +  ; 2 1 0  +  ; 3 2 1  - >
+ 12  alpha = -1.7321 |2 0 0  +  ; 2 1 0  +  ; 2 1 1  +  ; 3 2 -1  - >
+
+
+# eigenvalue is 2.00 corresponding to L = 1.0
+# L2(KETS) AND lambda * KETS ARE EQUAL # 
+
+
+
+# NOW APPLYING S2 TO PROJECTED KET.
+# [ first normalising and then dividing ket by first vector's coefficient = -0.1826 ] 
+
+neact = 4
+# ks: #
+
+
+ 1  alpha = 1.0000 |2 0 0  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 1 -1  - >
+ 2  alpha = 3.0000 |2 1 -1  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 0 0  - >
+ 3  alpha = -1.0000 |2 0 0  +  ; 2 1 -1  +  ; 3 2 0  +  ; 2 1 1  - >
+ 4  alpha = 1.0000 |2 0 0  +  ; 2 1 -1  +  ; 2 1 1  +  ; 3 2 0  - >
+ 5  alpha = -0.8660 |2 0 0  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 1 -1  - >
+ 6  alpha = -2.5981 |2 1 -1  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 0 0  - >
+ 7  alpha = 0.8660 |2 0 0  +  ; 2 1 -1  +  ; 3 2 1  +  ; 2 1 0  - >
+ 8  alpha = -0.8660 |2 0 0  +  ; 2 1 -1  +  ; 2 1 0  +  ; 3 2 1  - >
+ 9  alpha = -0.8660 |2 0 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 1 0  - >
+ 10  alpha = -2.5981 |2 1 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 0 0  - >
+ 11  alpha = 0.8660 |2 0 0  +  ; 2 1 0  +  ; 3 2 -1  +  ; 2 1 1  - >
+ 12  alpha = -0.8660 |2 0 0  +  ; 2 1 0  +  ; 2 1 1  +  ; 3 2 -1  - >
+
+
+# S2 OPERATOR RESULT IS: #
+
+
+ 1  alpha = 2.0000 |2 0 0  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 1 -1  - >
+ 2  alpha = 6.0000 |2 1 -1  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 0 0  - >
+ 3  alpha = -2.0000 |2 0 0  +  ; 2 1 -1  +  ; 3 2 0  +  ; 2 1 1  - >
+ 4  alpha = 2.0000 |2 0 0  +  ; 2 1 -1  +  ; 2 1 1  +  ; 3 2 0  - >
+ 5  alpha = -1.7321 |2 0 0  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 1 -1  - >
+ 6  alpha = -5.1962 |2 1 -1  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 0 0  - >
+ 7  alpha = 1.7321 |2 0 0  +  ; 2 1 -1  +  ; 3 2 1  +  ; 2 1 0  - >
+ 8  alpha = -1.7321 |2 0 0  +  ; 2 1 -1  +  ; 2 1 0  +  ; 3 2 1  - >
+ 9  alpha = -1.7321 |2 0 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 1 0  - >
+ 10  alpha = -5.1962 |2 1 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 0 0  - >
+ 11  alpha = 1.7321 |2 0 0  +  ; 2 1 0  +  ; 3 2 -1  +  ; 2 1 1  - >
+ 12  alpha = -1.7321 |2 0 0  +  ; 2 1 0  +  ; 2 1 1  +  ; 3 2 -1  - >
+
+
+# eigenvalue is 2.00 corresponding to S = 1.00
+# S2(KETS) AND lambda * KETS ARE EQUAL # 
+
+
+___________________________________________________________________
+
+
+___________________________________________________________________
+
+
+# OPERATING ON STARTING CONFIGURATION # 3
+
+
+alpha = -1.0000 | 0  +  ;  1  +  ;  -1  +  ;  0  - >
+
+
+
+# INITIALISING Lall #
+
+# CSFGEN: finding min and max L value. 
+# min L = 0 MAX L = 4
+
+# APPLYING -- L -- PROJECTOR FOR L = 1
+
+# finding min and max S value. 
+# min S = 0.0 MAX S = 2.0
+
+# APPLYING -- S -- PROJECTOR FOR S = 1.0
+
+
+# PROJECTED KET FOR S = 1.00
+
+
+ 1  alpha = -0.0750 |2 0 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 1 0  - >
+ 2  alpha = -0.2250 |2 1 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 0 0  - >
+ 3  alpha = 0.0750 |2 0 0  +  ; 2 1 0  +  ; 3 2 -1  +  ; 2 1 1  - >
+ 4  alpha = -0.0750 |2 0 0  +  ; 2 1 0  +  ; 2 1 1  +  ; 3 2 -1  - >
+ 5  alpha = 0.0866 |2 0 0  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 1 -1  - >
+ 6  alpha = 0.2598 |2 1 -1  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 0 0  - >
+ 7  alpha = -0.0866 |2 0 0  +  ; 2 1 -1  +  ; 3 2 0  +  ; 2 1 1  - >
+ 8  alpha = 0.0866 |2 0 0  +  ; 2 1 -1  +  ; 2 1 1  +  ; 3 2 0  - >
+ 9  alpha = -0.0750 |2 0 0  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 1 -1  - >
+ 10  alpha = -0.2250 |2 1 -1  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 0 0  - >
+ 11  alpha = 0.0750 |2 0 0  +  ; 2 1 -1  +  ; 3 2 1  +  ; 2 1 0  - >
+ 12  alpha = -0.0750 |2 0 0  +  ; 2 1 -1  +  ; 2 1 0  +  ; 3 2 1  - >
+
+
+
+
+# NOW APPLYING L2 TO PROJECTED KET.
+# [ first normalising and dividing ket by first vector's coefficient = -0.1581 ] 
+
+
+# ks: #
+
+
+ 1  alpha = 1.0000 |2 0 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 1 0  - >
+ 2  alpha = 3.0000 |2 1 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 0 0  - >
+ 3  alpha = -1.0000 |2 0 0  +  ; 2 1 0  +  ; 3 2 -1  +  ; 2 1 1  - >
+ 4  alpha = 1.0000 |2 0 0  +  ; 2 1 0  +  ; 2 1 1  +  ; 3 2 -1  - >
+ 5  alpha = -1.1547 |2 0 0  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 1 -1  - >
+ 6  alpha = -3.4641 |2 1 -1  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 0 0  - >
+ 7  alpha = 1.1547 |2 0 0  +  ; 2 1 -1  +  ; 3 2 0  +  ; 2 1 1  - >
+ 8  alpha = -1.1547 |2 0 0  +  ; 2 1 -1  +  ; 2 1 1  +  ; 3 2 0  - >
+ 9  alpha = 1.0000 |2 0 0  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 1 -1  - >
+ 10  alpha = 3.0000 |2 1 -1  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 0 0  - >
+ 11  alpha = -1.0000 |2 0 0  +  ; 2 1 -1  +  ; 3 2 1  +  ; 2 1 0  - >
+ 12  alpha = 1.0000 |2 0 0  +  ; 2 1 -1  +  ; 2 1 0  +  ; 3 2 1  - >
+
+
+# L2 OPERATOR RESULT IS: #
+
+
+ 1  alpha = 2.0000 |2 0 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 1 0  - >
+ 2  alpha = -2.3094 |2 0 0  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 1 -1  - >
+ 3  alpha = 6.0000 |2 1 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 0 0  - >
+ 4  alpha = -6.9282 |2 1 -1  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 0 0  - >
+ 5  alpha = -2.0000 |2 0 0  +  ; 2 1 0  +  ; 3 2 -1  +  ; 2 1 1  - >
+ 6  alpha = 2.3094 |2 0 0  +  ; 2 1 -1  +  ; 3 2 0  +  ; 2 1 1  - >
+ 7  alpha = 2.0000 |2 0 0  +  ; 2 1 0  +  ; 2 1 1  +  ; 3 2 -1  - >
+ 8  alpha = -2.3094 |2 0 0  +  ; 2 1 -1  +  ; 2 1 1  +  ; 3 2 0  - >
+ 9  alpha = 2.0000 |2 0 0  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 1 -1  - >
+ 10  alpha = 6.0000 |2 1 -1  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 0 0  - >
+ 11  alpha = -2.0000 |2 0 0  +  ; 2 1 -1  +  ; 3 2 1  +  ; 2 1 0  - >
+ 12  alpha = 2.0000 |2 0 0  +  ; 2 1 -1  +  ; 2 1 0  +  ; 3 2 1  - >
+
+
+# eigenvalue is 2.00 corresponding to L = 1.0
+# L2(KETS) AND lambda * KETS ARE EQUAL # 
+
+
+
+# NOW APPLYING S2 TO PROJECTED KET.
+# [ first normalising and then dividing ket by first vector's coefficient = -0.1581 ] 
+
+neact = 4
+# ks: #
+
+
+ 1  alpha = 1.0000 |2 0 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 1 0  - >
+ 2  alpha = 3.0000 |2 1 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 0 0  - >
+ 3  alpha = -1.0000 |2 0 0  +  ; 2 1 0  +  ; 3 2 -1  +  ; 2 1 1  - >
+ 4  alpha = 1.0000 |2 0 0  +  ; 2 1 0  +  ; 2 1 1  +  ; 3 2 -1  - >
+ 5  alpha = -1.1547 |2 0 0  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 1 -1  - >
+ 6  alpha = -3.4641 |2 1 -1  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 0 0  - >
+ 7  alpha = 1.1547 |2 0 0  +  ; 2 1 -1  +  ; 3 2 0  +  ; 2 1 1  - >
+ 8  alpha = -1.1547 |2 0 0  +  ; 2 1 -1  +  ; 2 1 1  +  ; 3 2 0  - >
+ 9  alpha = 1.0000 |2 0 0  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 1 -1  - >
+ 10  alpha = 3.0000 |2 1 -1  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 0 0  - >
+ 11  alpha = -1.0000 |2 0 0  +  ; 2 1 -1  +  ; 3 2 1  +  ; 2 1 0  - >
+ 12  alpha = 1.0000 |2 0 0  +  ; 2 1 -1  +  ; 2 1 0  +  ; 3 2 1  - >
+
+
+# S2 OPERATOR RESULT IS: #
+
+
+ 1  alpha = 2.0000 |2 0 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 1 0  - >
+ 2  alpha = 6.0000 |2 1 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 0 0  - >
+ 3  alpha = -2.0000 |2 0 0  +  ; 2 1 0  +  ; 3 2 -1  +  ; 2 1 1  - >
+ 4  alpha = 2.0000 |2 0 0  +  ; 2 1 0  +  ; 2 1 1  +  ; 3 2 -1  - >
+ 5  alpha = -2.3094 |2 0 0  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 1 -1  - >
+ 6  alpha = -6.9282 |2 1 -1  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 0 0  - >
+ 7  alpha = 2.3094 |2 0 0  +  ; 2 1 -1  +  ; 3 2 0  +  ; 2 1 1  - >
+ 8  alpha = -2.3094 |2 0 0  +  ; 2 1 -1  +  ; 2 1 1  +  ; 3 2 0  - >
+ 9  alpha = 2.0000 |2 0 0  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 1 -1  - >
+ 10  alpha = 6.0000 |2 1 -1  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 0 0  - >
+ 11  alpha = -2.0000 |2 0 0  +  ; 2 1 -1  +  ; 3 2 1  +  ; 2 1 0  - >
+ 12  alpha = 2.0000 |2 0 0  +  ; 2 1 -1  +  ; 2 1 0  +  ; 3 2 1  - >
+
+
+# eigenvalue is 2.00 corresponding to S = 1.00
+# S2(KETS) AND lambda * KETS ARE EQUAL # 
+
+
+___________________________________________________________________
+
+
+___________________________________________________________________
+
+
+# OPERATING ON STARTING CONFIGURATION # 4
+
+
+alpha = 1.0000 | 0  +  ;  -1  +  ;  2  +  ;  -1  - >
+
+
+
+# INITIALISING Lall #
+
+# CSFGEN: finding min and max L value. 
+# min L = 0 MAX L = 4
+
+# APPLYING -- L -- PROJECTOR FOR L = 1
+
+# finding min and max S value. 
+# min S = 0.0 MAX S = 2.0
+
+# APPLYING -- S -- PROJECTOR FOR S = 1.0
+
+
+# PROJECTED KET FOR S = 1.00
+
+
+ 1  alpha = -0.1414 |2 0 0  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 1 -1  - >
+ 2  alpha = 0.4000 |2 0 0  +  ; 2 1 -1  +  ; 3 2 2  +  ; 2 1 -1  - >
+ 3  alpha = -0.1414 |2 0 0  +  ; 2 1 -1  +  ; 3 2 1  +  ; 2 1 0  - >
+ 4  alpha = 0.1414 |2 0 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 1 0  - >
+ 5  alpha = 0.1414 |2 0 0  +  ; 2 1 0  +  ; 3 2 -1  +  ; 2 1 1  - >
+ 6  alpha = -0.4000 |2 0 0  +  ; 2 1 1  +  ; 3 2 -2  +  ; 2 1 1  - >
+
+
+
+
+# NOW APPLYING L2 TO PROJECTED KET.
+# [ first normalising and dividing ket by first vector's coefficient = -0.2236 ] 
+
+
+# ks: #
+
+
+ 1  alpha = 1.0000 |2 0 0  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 1 -1  - >
+ 2  alpha = -2.8284 |2 0 0  +  ; 2 1 -1  +  ; 3 2 2  +  ; 2 1 -1  - >
+ 3  alpha = 1.0000 |2 0 0  +  ; 2 1 -1  +  ; 3 2 1  +  ; 2 1 0  - >
+ 4  alpha = -1.0000 |2 0 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 1 0  - >
+ 5  alpha = -1.0000 |2 0 0  +  ; 2 1 0  +  ; 3 2 -1  +  ; 2 1 1  - >
+ 6  alpha = 2.8284 |2 0 0  +  ; 2 1 1  +  ; 3 2 -2  +  ; 2 1 1  - >
+
+
+# L2 OPERATOR RESULT IS: #
+
+
+ 1  alpha = 2.0000 |2 0 0  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 1 -1  - >
+ 2  alpha = -5.6569 |2 0 0  +  ; 2 1 -1  +  ; 3 2 2  +  ; 2 1 -1  - >
+ 3  alpha = 2.0000 |2 0 0  +  ; 2 1 -1  +  ; 3 2 1  +  ; 2 1 0  - >
+ 4  alpha = -2.0000 |2 0 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 1 0  - >
+ 5  alpha = -2.0000 |2 0 0  +  ; 2 1 0  +  ; 3 2 -1  +  ; 2 1 1  - >
+ 6  alpha = 5.6569 |2 0 0  +  ; 2 1 1  +  ; 3 2 -2  +  ; 2 1 1  - >
+
+
+# eigenvalue is 2.00 corresponding to L = 1.0
+# L2(KETS) AND lambda * KETS ARE EQUAL # 
+
+
+
+# NOW APPLYING S2 TO PROJECTED KET.
+# [ first normalising and then dividing ket by first vector's coefficient = -0.2236 ] 
+
+neact = 4
+# ks: #
+
+
+ 1  alpha = 1.0000 |2 0 0  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 1 -1  - >
+ 2  alpha = -2.8284 |2 0 0  +  ; 2 1 -1  +  ; 3 2 2  +  ; 2 1 -1  - >
+ 3  alpha = 1.0000 |2 0 0  +  ; 2 1 -1  +  ; 3 2 1  +  ; 2 1 0  - >
+ 4  alpha = -1.0000 |2 0 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 1 0  - >
+ 5  alpha = -1.0000 |2 0 0  +  ; 2 1 0  +  ; 3 2 -1  +  ; 2 1 1  - >
+ 6  alpha = 2.8284 |2 0 0  +  ; 2 1 1  +  ; 3 2 -2  +  ; 2 1 1  - >
+
+
+# S2 OPERATOR RESULT IS: #
+
+
+ 1  alpha = 2.0000 |2 0 0  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 1 -1  - >
+ 2  alpha = -5.6569 |2 0 0  +  ; 2 1 -1  +  ; 3 2 2  +  ; 2 1 -1  - >
+ 3  alpha = 2.0000 |2 0 0  +  ; 2 1 -1  +  ; 3 2 1  +  ; 2 1 0  - >
+ 4  alpha = -2.0000 |2 0 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 1 0  - >
+ 5  alpha = -2.0000 |2 0 0  +  ; 2 1 0  +  ; 3 2 -1  +  ; 2 1 1  - >
+ 6  alpha = 5.6569 |2 0 0  +  ; 2 1 1  +  ; 3 2 -2  +  ; 2 1 1  - >
+
+
+# eigenvalue is 2.00 corresponding to S = 1.00
+# S2(KETS) AND lambda * KETS ARE EQUAL # 
+
+
+___________________________________________________________________
+
+
+___________________________________________________________________
+
+
+# OPERATING ON STARTING CONFIGURATION # 5
+
+
+alpha = 1.0000 | 0  +  ;  0  +  ;  1  +  ;  -1  - >
+
+
+
+# INITIALISING Lall #
+
+# CSFGEN: finding min and max L value. 
+# min L = 0 MAX L = 4
+
+# APPLYING -- L -- PROJECTOR FOR L = 1
+
+# finding min and max S value. 
+# min S = 0.0 MAX S = 2.0
+
+# APPLYING -- S -- PROJECTOR FOR S = 1.0
+
+
+# PROJECTED KET FOR S = 1.00
+
+
+ 1  alpha = 0.1250 |2 0 0  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 1 -1  - >
+ 2  alpha = 0.0750 |2 1 -1  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 0 0  - >
+ 3  alpha = -0.0250 |2 0 0  +  ; 2 1 -1  +  ; 3 2 1  +  ; 2 1 0  - >
+ 4  alpha = -0.0750 |2 0 0  +  ; 2 1 -1  +  ; 2 1 0  +  ; 3 2 1  - >
+ 5  alpha = -0.1414 |2 0 0  +  ; 2 1 -1  +  ; 3 2 2  +  ; 2 1 -1  - >
+ 6  alpha = -0.0866 |2 0 0  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 1 -1  - >
+ 7  alpha = -0.0866 |2 1 -1  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 0 0  - >
+ 8  alpha = 0.0866 |2 0 0  +  ; 2 1 -1  +  ; 3 2 0  +  ; 2 1 1  - >
+ 9  alpha = 0.0866 |2 0 0  +  ; 2 1 -1  +  ; 2 1 1  +  ; 3 2 0  - >
+ 10  alpha = 0.0250 |2 0 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 1 0  - >
+ 11  alpha = 0.0750 |2 1 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 0 0  - >
+ 12  alpha = -0.1250 |2 0 0  +  ; 2 1 0  +  ; 3 2 -1  +  ; 2 1 1  - >
+ 13  alpha = -0.0750 |2 0 0  +  ; 2 1 0  +  ; 2 1 1  +  ; 3 2 -1  - >
+ 14  alpha = 0.1414 |2 0 0  +  ; 2 1 1  +  ; 3 2 -2  +  ; 2 1 1  - >
+
+
+
+
+# NOW APPLYING L2 TO PROJECTED KET.
+# [ first normalising and dividing ket by first vector's coefficient = 0.3536 ] 
+
+
+# ks: #
+
+
+ 1  alpha = 1.0000 |2 0 0  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 1 -1  - >
+ 2  alpha = 0.6000 |2 1 -1  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 0 0  - >
+ 3  alpha = -0.2000 |2 0 0  +  ; 2 1 -1  +  ; 3 2 1  +  ; 2 1 0  - >
+ 4  alpha = -0.6000 |2 0 0  +  ; 2 1 -1  +  ; 2 1 0  +  ; 3 2 1  - >
+ 5  alpha = -1.1314 |2 0 0  +  ; 2 1 -1  +  ; 3 2 2  +  ; 2 1 -1  - >
+ 6  alpha = -0.6928 |2 0 0  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 1 -1  - >
+ 7  alpha = -0.6928 |2 1 -1  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 0 0  - >
+ 8  alpha = 0.6928 |2 0 0  +  ; 2 1 -1  +  ; 3 2 0  +  ; 2 1 1  - >
+ 9  alpha = 0.6928 |2 0 0  +  ; 2 1 -1  +  ; 2 1 1  +  ; 3 2 0  - >
+ 10  alpha = 0.2000 |2 0 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 1 0  - >
+ 11  alpha = 0.6000 |2 1 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 0 0  - >
+ 12  alpha = -1.0000 |2 0 0  +  ; 2 1 0  +  ; 3 2 -1  +  ; 2 1 1  - >
+ 13  alpha = -0.6000 |2 0 0  +  ; 2 1 0  +  ; 2 1 1  +  ; 3 2 -1  - >
+ 14  alpha = 1.1314 |2 0 0  +  ; 2 1 1  +  ; 3 2 -2  +  ; 2 1 1  - >
+
+
+# L2 OPERATOR RESULT IS: #
+
+
+ 1  alpha = 2.0000 |2 0 0  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 1 -1  - >
+ 2  alpha = -2.2627 |2 0 0  +  ; 2 1 -1  +  ; 3 2 2  +  ; 2 1 -1  - >
+ 3  alpha = -0.4000 |2 0 0  +  ; 2 1 -1  +  ; 3 2 1  +  ; 2 1 0  - >
+ 4  alpha = -1.3856 |2 0 0  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 1 -1  - >
+ 5  alpha = -1.3856 |2 1 -1  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 0 0  - >
+ 6  alpha = 1.2000 |2 1 -1  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 0 0  - >
+ 7  alpha = 1.3856 |2 0 0  +  ; 2 1 -1  +  ; 3 2 0  +  ; 2 1 1  - >
+ 8  alpha = 1.3856 |2 0 0  +  ; 2 1 -1  +  ; 2 1 1  +  ; 3 2 0  - >
+ 9  alpha = -1.2000 |2 0 0  +  ; 2 1 -1  +  ; 2 1 0  +  ; 3 2 1  - >
+ 10  alpha = 0.4000 |2 0 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 1 0  - >
+ 11  alpha = 1.2000 |2 1 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 0 0  - >
+ 12  alpha = -2.0000 |2 0 0  +  ; 2 1 0  +  ; 3 2 -1  +  ; 2 1 1  - >
+ 13  alpha = -1.2000 |2 0 0  +  ; 2 1 0  +  ; 2 1 1  +  ; 3 2 -1  - >
+ 14  alpha = 2.2627 |2 0 0  +  ; 2 1 1  +  ; 3 2 -2  +  ; 2 1 1  - >
+
+
+# eigenvalue is 2.00 corresponding to L = 1.0
+# L2(KETS) AND lambda * KETS ARE EQUAL # 
+
+
+
+# NOW APPLYING S2 TO PROJECTED KET.
+# [ first normalising and then dividing ket by first vector's coefficient = 0.3536 ] 
+
+neact = 4
+# ks: #
+
+
+ 1  alpha = 1.0000 |2 0 0  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 1 -1  - >
+ 2  alpha = 0.6000 |2 1 -1  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 0 0  - >
+ 3  alpha = -0.2000 |2 0 0  +  ; 2 1 -1  +  ; 3 2 1  +  ; 2 1 0  - >
+ 4  alpha = -0.6000 |2 0 0  +  ; 2 1 -1  +  ; 2 1 0  +  ; 3 2 1  - >
+ 5  alpha = -1.1314 |2 0 0  +  ; 2 1 -1  +  ; 3 2 2  +  ; 2 1 -1  - >
+ 6  alpha = -0.6928 |2 0 0  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 1 -1  - >
+ 7  alpha = -0.6928 |2 1 -1  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 0 0  - >
+ 8  alpha = 0.6928 |2 0 0  +  ; 2 1 -1  +  ; 3 2 0  +  ; 2 1 1  - >
+ 9  alpha = 0.6928 |2 0 0  +  ; 2 1 -1  +  ; 2 1 1  +  ; 3 2 0  - >
+ 10  alpha = 0.2000 |2 0 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 1 0  - >
+ 11  alpha = 0.6000 |2 1 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 0 0  - >
+ 12  alpha = -1.0000 |2 0 0  +  ; 2 1 0  +  ; 3 2 -1  +  ; 2 1 1  - >
+ 13  alpha = -0.6000 |2 0 0  +  ; 2 1 0  +  ; 2 1 1  +  ; 3 2 -1  - >
+ 14  alpha = 1.1314 |2 0 0  +  ; 2 1 1  +  ; 3 2 -2  +  ; 2 1 1  - >
+
+
+# S2 OPERATOR RESULT IS: #
+
+
+ 1  alpha = 2.0000 |2 0 0  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 1 -1  - >
+ 2  alpha = 1.2000 |2 1 -1  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 0 0  - >
+ 3  alpha = -0.4000 |2 0 0  +  ; 2 1 -1  +  ; 3 2 1  +  ; 2 1 0  - >
+ 4  alpha = -1.2000 |2 0 0  +  ; 2 1 -1  +  ; 2 1 0  +  ; 3 2 1  - >
+ 5  alpha = -2.2627 |2 0 0  +  ; 2 1 -1  +  ; 3 2 2  +  ; 2 1 -1  - >
+ 6  alpha = 1.3856 |2 0 0  +  ; 2 1 -1  +  ; 3 2 0  +  ; 2 1 1  - >
+ 7  alpha = -1.3856 |2 0 0  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 1 -1  - >
+ 8  alpha = 1.3856 |2 0 0  +  ; 2 1 -1  +  ; 2 1 1  +  ; 3 2 0  - >
+ 9  alpha = -1.3856 |2 1 -1  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 0 0  - >
+ 10  alpha = 0.4000 |2 0 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 1 0  - >
+ 11  alpha = 1.2000 |2 1 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 0 0  - >
+ 12  alpha = -2.0000 |2 0 0  +  ; 2 1 0  +  ; 3 2 -1  +  ; 2 1 1  - >
+ 13  alpha = -1.2000 |2 0 0  +  ; 2 1 0  +  ; 2 1 1  +  ; 3 2 -1  - >
+ 14  alpha = 2.2627 |2 0 0  +  ; 2 1 1  +  ; 3 2 -2  +  ; 2 1 1  - >
+
+
+# eigenvalue is 2.00 corresponding to S = 1.00
+# S2(KETS) AND lambda * KETS ARE EQUAL # 
+
+
+___________________________________________________________________
+
+
+___________________________________________________________________
+
+
+# OPERATING ON STARTING CONFIGURATION # 6
+
+
+alpha = 1.0000 | 0  +  ;  1  +  ;  0  +  ;  -1  - >
+
+
+
+# INITIALISING Lall #
+
+# CSFGEN: finding min and max L value. 
+# min L = 0 MAX L = 4
+
+# APPLYING -- L -- PROJECTOR FOR L = 1
+
+# finding min and max S value. 
+# min S = 0.0 MAX S = 2.0
+
+# APPLYING -- S -- PROJECTOR FOR S = 1.0
+
+
+# PROJECTED KET FOR S = 1.00
+
+
+ 1  alpha = 0.1000 |2 0 0  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 1 -1  - >
+ 2  alpha = 0.1000 |2 1 -1  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 0 0  - >
+ 3  alpha = -0.1000 |2 0 0  +  ; 2 1 -1  +  ; 3 2 0  +  ; 2 1 1  - >
+ 4  alpha = -0.1000 |2 0 0  +  ; 2 1 -1  +  ; 2 1 1  +  ; 3 2 0  - >
+ 5  alpha = -0.0866 |2 0 0  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 1 -1  - >
+ 6  alpha = -0.0866 |2 1 -1  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 0 0  - >
+ 7  alpha = 0.0866 |2 0 0  +  ; 2 1 -1  +  ; 3 2 1  +  ; 2 1 0  - >
+ 8  alpha = 0.0866 |2 0 0  +  ; 2 1 -1  +  ; 2 1 0  +  ; 3 2 1  - >
+ 9  alpha = -0.0866 |2 0 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 1 0  - >
+ 10  alpha = -0.0866 |2 1 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 0 0  - >
+ 11  alpha = 0.0866 |2 0 0  +  ; 2 1 0  +  ; 3 2 -1  +  ; 2 1 1  - >
+ 12  alpha = 0.0866 |2 0 0  +  ; 2 1 0  +  ; 2 1 1  +  ; 3 2 -1  - >
+
+
+
+
+# NOW APPLYING L2 TO PROJECTED KET.
+# [ first normalising and dividing ket by first vector's coefficient = 0.3162 ] 
+
+
+# ks: #
+
+
+ 1  alpha = 1.0000 |2 0 0  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 1 -1  - >
+ 2  alpha = 1.0000 |2 1 -1  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 0 0  - >
+ 3  alpha = -1.0000 |2 0 0  +  ; 2 1 -1  +  ; 3 2 0  +  ; 2 1 1  - >
+ 4  alpha = -1.0000 |2 0 0  +  ; 2 1 -1  +  ; 2 1 1  +  ; 3 2 0  - >
+ 5  alpha = -0.8660 |2 0 0  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 1 -1  - >
+ 6  alpha = -0.8660 |2 1 -1  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 0 0  - >
+ 7  alpha = 0.8660 |2 0 0  +  ; 2 1 -1  +  ; 3 2 1  +  ; 2 1 0  - >
+ 8  alpha = 0.8660 |2 0 0  +  ; 2 1 -1  +  ; 2 1 0  +  ; 3 2 1  - >
+ 9  alpha = -0.8660 |2 0 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 1 0  - >
+ 10  alpha = -0.8660 |2 1 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 0 0  - >
+ 11  alpha = 0.8660 |2 0 0  +  ; 2 1 0  +  ; 3 2 -1  +  ; 2 1 1  - >
+ 12  alpha = 0.8660 |2 0 0  +  ; 2 1 0  +  ; 2 1 1  +  ; 3 2 -1  - >
+
+
+# L2 OPERATOR RESULT IS: #
+
+
+ 1  alpha = 2.0000 |2 0 0  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 1 -1  - >
+ 2  alpha = -1.7321 |2 0 0  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 1 -1  - >
+ 3  alpha = -1.7321 |2 0 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 1 0  - >
+ 4  alpha = 2.0000 |2 1 -1  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 0 0  - >
+ 5  alpha = -1.7321 |2 1 -1  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 0 0  - >
+ 6  alpha = -1.7321 |2 1 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 0 0  - >
+ 7  alpha = 1.7321 |2 0 0  +  ; 2 1 0  +  ; 3 2 -1  +  ; 2 1 1  - >
+ 8  alpha = -2.0000 |2 0 0  +  ; 2 1 -1  +  ; 3 2 0  +  ; 2 1 1  - >
+ 9  alpha = 1.7321 |2 0 0  +  ; 2 1 -1  +  ; 3 2 1  +  ; 2 1 0  - >
+ 10  alpha = -2.0000 |2 0 0  +  ; 2 1 -1  +  ; 2 1 1  +  ; 3 2 0  - >
+ 11  alpha = 1.7321 |2 0 0  +  ; 2 1 -1  +  ; 2 1 0  +  ; 3 2 1  - >
+ 12  alpha = 1.7321 |2 0 0  +  ; 2 1 0  +  ; 2 1 1  +  ; 3 2 -1  - >
+
+
+# eigenvalue is 2.00 corresponding to L = 1.0
+# L2(KETS) AND lambda * KETS ARE EQUAL # 
+
+
+
+# NOW APPLYING S2 TO PROJECTED KET.
+# [ first normalising and then dividing ket by first vector's coefficient = 0.3162 ] 
+
+neact = 4
+# ks: #
+
+
+ 1  alpha = 1.0000 |2 0 0  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 1 -1  - >
+ 2  alpha = 1.0000 |2 1 -1  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 0 0  - >
+ 3  alpha = -1.0000 |2 0 0  +  ; 2 1 -1  +  ; 3 2 0  +  ; 2 1 1  - >
+ 4  alpha = -1.0000 |2 0 0  +  ; 2 1 -1  +  ; 2 1 1  +  ; 3 2 0  - >
+ 5  alpha = -0.8660 |2 0 0  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 1 -1  - >
+ 6  alpha = -0.8660 |2 1 -1  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 0 0  - >
+ 7  alpha = 0.8660 |2 0 0  +  ; 2 1 -1  +  ; 3 2 1  +  ; 2 1 0  - >
+ 8  alpha = 0.8660 |2 0 0  +  ; 2 1 -1  +  ; 2 1 0  +  ; 3 2 1  - >
+ 9  alpha = -0.8660 |2 0 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 1 0  - >
+ 10  alpha = -0.8660 |2 1 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 0 0  - >
+ 11  alpha = 0.8660 |2 0 0  +  ; 2 1 0  +  ; 3 2 -1  +  ; 2 1 1  - >
+ 12  alpha = 0.8660 |2 0 0  +  ; 2 1 0  +  ; 2 1 1  +  ; 3 2 -1  - >
+
+
+# S2 OPERATOR RESULT IS: #
+
+
+ 1  alpha = -2.0000 |2 0 0  +  ; 2 1 -1  +  ; 3 2 0  +  ; 2 1 1  - >
+ 2  alpha = 2.0000 |2 0 0  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 1 -1  - >
+ 3  alpha = -2.0000 |2 0 0  +  ; 2 1 -1  +  ; 2 1 1  +  ; 3 2 0  - >
+ 4  alpha = 2.0000 |2 1 -1  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 0 0  - >
+ 5  alpha = 1.7321 |2 0 0  +  ; 2 1 -1  +  ; 3 2 1  +  ; 2 1 0  - >
+ 6  alpha = -1.7321 |2 0 0  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 1 -1  - >
+ 7  alpha = 1.7321 |2 0 0  +  ; 2 1 -1  +  ; 2 1 0  +  ; 3 2 1  - >
+ 8  alpha = -1.7321 |2 1 -1  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 0 0  - >
+ 9  alpha = 1.7321 |2 0 0  +  ; 2 1 0  +  ; 3 2 -1  +  ; 2 1 1  - >
+ 10  alpha = -1.7321 |2 0 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 1 0  - >
+ 11  alpha = 1.7321 |2 0 0  +  ; 2 1 0  +  ; 2 1 1  +  ; 3 2 -1  - >
+ 12  alpha = -1.7321 |2 1 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 0 0  - >
+
+
+# eigenvalue is 2.00 corresponding to S = 1.00
+# S2(KETS) AND lambda * KETS ARE EQUAL # 
+
+
+___________________________________________________________________
+
+
+___________________________________________________________________
+
+
+# OPERATING ON STARTING CONFIGURATION # 7
+
+
+alpha = -1.0000 | 0  +  ;  -1  +  ;  1  +  ;  0  - >
+
+
+
+# INITIALISING Lall #
+
+# CSFGEN: finding min and max L value. 
+# min L = 0 MAX L = 4
+
+# APPLYING -- L -- PROJECTOR FOR L = 1
+
+# finding min and max S value. 
+# min S = 0.0 MAX S = 2.0
+
+# APPLYING -- S -- PROJECTOR FOR S = 1.0
+
+
+# PROJECTED KET FOR S = 1.00
+
+
+ 1  alpha = -0.1250 |2 0 0  +  ; 2 1 -1  +  ; 3 2 1  +  ; 2 1 0  - >
+ 2  alpha = 0.0750 |2 1 -1  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 0 0  - >
+ 3  alpha = 0.0250 |2 0 0  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 1 -1  - >
+ 4  alpha = -0.0750 |2 0 0  +  ; 2 1 -1  +  ; 2 1 0  +  ; 3 2 1  - >
+ 5  alpha = 0.0866 |2 0 0  +  ; 2 1 -1  +  ; 3 2 0  +  ; 2 1 1  - >
+ 6  alpha = -0.0866 |2 1 -1  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 0 0  - >
+ 7  alpha = -0.0866 |2 0 0  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 1 -1  - >
+ 8  alpha = 0.0866 |2 0 0  +  ; 2 1 -1  +  ; 2 1 1  +  ; 3 2 0  - >
+ 9  alpha = 0.1250 |2 0 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 1 0  - >
+ 10  alpha = 0.0750 |2 1 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 0 0  - >
+ 11  alpha = -0.0250 |2 0 0  +  ; 2 1 0  +  ; 3 2 -1  +  ; 2 1 1  - >
+ 12  alpha = -0.0750 |2 0 0  +  ; 2 1 0  +  ; 2 1 1  +  ; 3 2 -1  - >
+ 13  alpha = 0.1414 |2 0 0  +  ; 2 1 -1  +  ; 3 2 2  +  ; 2 1 -1  - >
+ 14  alpha = -0.1414 |2 0 0  +  ; 2 1 1  +  ; 3 2 -2  +  ; 2 1 1  - >
+
+
+
+
+# NOW APPLYING L2 TO PROJECTED KET.
+# [ first normalising and dividing ket by first vector's coefficient = -0.3536 ] 
+
+
+# ks: #
+
+
+ 1  alpha = 1.0000 |2 0 0  +  ; 2 1 -1  +  ; 3 2 1  +  ; 2 1 0  - >
+ 2  alpha = -0.6000 |2 1 -1  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 0 0  - >
+ 3  alpha = -0.2000 |2 0 0  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 1 -1  - >
+ 4  alpha = 0.6000 |2 0 0  +  ; 2 1 -1  +  ; 2 1 0  +  ; 3 2 1  - >
+ 5  alpha = -0.6928 |2 0 0  +  ; 2 1 -1  +  ; 3 2 0  +  ; 2 1 1  - >
+ 6  alpha = 0.6928 |2 1 -1  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 0 0  - >
+ 7  alpha = 0.6928 |2 0 0  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 1 -1  - >
+ 8  alpha = -0.6928 |2 0 0  +  ; 2 1 -1  +  ; 2 1 1  +  ; 3 2 0  - >
+ 9  alpha = -1.0000 |2 0 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 1 0  - >
+ 10  alpha = -0.6000 |2 1 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 0 0  - >
+ 11  alpha = 0.2000 |2 0 0  +  ; 2 1 0  +  ; 3 2 -1  +  ; 2 1 1  - >
+ 12  alpha = 0.6000 |2 0 0  +  ; 2 1 0  +  ; 2 1 1  +  ; 3 2 -1  - >
+ 13  alpha = -1.1314 |2 0 0  +  ; 2 1 -1  +  ; 3 2 2  +  ; 2 1 -1  - >
+ 14  alpha = 1.1314 |2 0 0  +  ; 2 1 1  +  ; 3 2 -2  +  ; 2 1 1  - >
+
+
+# L2 OPERATOR RESULT IS: #
+
+
+ 1  alpha = 2.0000 |2 0 0  +  ; 2 1 -1  +  ; 3 2 1  +  ; 2 1 0  - >
+ 2  alpha = -1.3856 |2 0 0  +  ; 2 1 -1  +  ; 3 2 0  +  ; 2 1 1  - >
+ 3  alpha = -0.4000 |2 0 0  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 1 -1  - >
+ 4  alpha = -2.2627 |2 0 0  +  ; 2 1 -1  +  ; 3 2 2  +  ; 2 1 -1  - >
+ 5  alpha = 1.3856 |2 1 -1  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 0 0  - >
+ 6  alpha = -1.2000 |2 1 -1  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 0 0  - >
+ 7  alpha = 1.3856 |2 0 0  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 1 -1  - >
+ 8  alpha = -1.3856 |2 0 0  +  ; 2 1 -1  +  ; 2 1 1  +  ; 3 2 0  - >
+ 9  alpha = 1.2000 |2 0 0  +  ; 2 1 -1  +  ; 2 1 0  +  ; 3 2 1  - >
+ 10  alpha = 0.4000 |2 0 0  +  ; 2 1 0  +  ; 3 2 -1  +  ; 2 1 1  - >
+ 11  alpha = -1.2000 |2 1 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 0 0  - >
+ 12  alpha = -2.0000 |2 0 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 1 0  - >
+ 13  alpha = 1.2000 |2 0 0  +  ; 2 1 0  +  ; 2 1 1  +  ; 3 2 -1  - >
+ 14  alpha = 2.2627 |2 0 0  +  ; 2 1 1  +  ; 3 2 -2  +  ; 2 1 1  - >
+
+
+# eigenvalue is 2.00 corresponding to L = 1.0
+# L2(KETS) AND lambda * KETS ARE EQUAL # 
+
+
+
+# NOW APPLYING S2 TO PROJECTED KET.
+# [ first normalising and then dividing ket by first vector's coefficient = -0.3536 ] 
+
+neact = 4
+# ks: #
+
+
+ 1  alpha = 1.0000 |2 0 0  +  ; 2 1 -1  +  ; 3 2 1  +  ; 2 1 0  - >
+ 2  alpha = -0.6000 |2 1 -1  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 0 0  - >
+ 3  alpha = -0.2000 |2 0 0  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 1 -1  - >
+ 4  alpha = 0.6000 |2 0 0  +  ; 2 1 -1  +  ; 2 1 0  +  ; 3 2 1  - >
+ 5  alpha = -0.6928 |2 0 0  +  ; 2 1 -1  +  ; 3 2 0  +  ; 2 1 1  - >
+ 6  alpha = 0.6928 |2 1 -1  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 0 0  - >
+ 7  alpha = 0.6928 |2 0 0  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 1 -1  - >
+ 8  alpha = -0.6928 |2 0 0  +  ; 2 1 -1  +  ; 2 1 1  +  ; 3 2 0  - >
+ 9  alpha = -1.0000 |2 0 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 1 0  - >
+ 10  alpha = -0.6000 |2 1 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 0 0  - >
+ 11  alpha = 0.2000 |2 0 0  +  ; 2 1 0  +  ; 3 2 -1  +  ; 2 1 1  - >
+ 12  alpha = 0.6000 |2 0 0  +  ; 2 1 0  +  ; 2 1 1  +  ; 3 2 -1  - >
+ 13  alpha = -1.1314 |2 0 0  +  ; 2 1 -1  +  ; 3 2 2  +  ; 2 1 -1  - >
+ 14  alpha = 1.1314 |2 0 0  +  ; 2 1 1  +  ; 3 2 -2  +  ; 2 1 1  - >
+
+
+# S2 OPERATOR RESULT IS: #
+
+
+ 1  alpha = 2.0000 |2 0 0  +  ; 2 1 -1  +  ; 3 2 1  +  ; 2 1 0  - >
+ 2  alpha = -1.2000 |2 1 -1  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 0 0  - >
+ 3  alpha = -0.4000 |2 0 0  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 1 -1  - >
+ 4  alpha = 1.2000 |2 0 0  +  ; 2 1 -1  +  ; 2 1 0  +  ; 3 2 1  - >
+ 5  alpha = -1.3856 |2 0 0  +  ; 2 1 -1  +  ; 3 2 0  +  ; 2 1 1  - >
+ 6  alpha = 1.3856 |2 0 0  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 1 -1  - >
+ 7  alpha = -1.3856 |2 0 0  +  ; 2 1 -1  +  ; 2 1 1  +  ; 3 2 0  - >
+ 8  alpha = 1.3856 |2 1 -1  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 0 0  - >
+ 9  alpha = -2.0000 |2 0 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 1 0  - >
+ 10  alpha = -1.2000 |2 1 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 0 0  - >
+ 11  alpha = 0.4000 |2 0 0  +  ; 2 1 0  +  ; 3 2 -1  +  ; 2 1 1  - >
+ 12  alpha = 1.2000 |2 0 0  +  ; 2 1 0  +  ; 2 1 1  +  ; 3 2 -1  - >
+ 13  alpha = -2.2627 |2 0 0  +  ; 2 1 -1  +  ; 3 2 2  +  ; 2 1 -1  - >
+ 14  alpha = 2.2627 |2 0 0  +  ; 2 1 1  +  ; 3 2 -2  +  ; 2 1 1  - >
+
+
+# eigenvalue is 2.00 corresponding to S = 1.00
+# S2(KETS) AND lambda * KETS ARE EQUAL # 
+
+
+___________________________________________________________________
+
+
+___________________________________________________________________
+
+
+# OPERATING ON STARTING CONFIGURATION # 8
+
+
+alpha = 1.0000 | 0  +  ;  -1  +  ;  0  +  ;  1  - >
+
+
+
+# INITIALISING Lall #
+
+# CSFGEN: finding min and max L value. 
+# min L = 0 MAX L = 4
+
+# APPLYING -- L -- PROJECTOR FOR L = 1
+
+# finding min and max S value. 
+# min S = 0.0 MAX S = 2.0
+
+# APPLYING -- S -- PROJECTOR FOR S = 1.0
+
+
+# PROJECTED KET FOR S = 1.00
+
+
+ 1  alpha = -0.2598 |2 0 0  +  ; 2 1 -1  +  ; 2 1 1  +  ; 3 2 0  - >
+ 2  alpha = -0.0866 |2 1 -1  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 0 0  - >
+ 3  alpha = 0.0866 |2 0 0  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 1 -1  - >
+ 4  alpha = -0.0866 |2 0 0  +  ; 2 1 -1  +  ; 3 2 0  +  ; 2 1 1  - >
+ 5  alpha = 0.2250 |2 0 0  +  ; 2 1 -1  +  ; 2 1 0  +  ; 3 2 1  - >
+ 6  alpha = 0.0750 |2 1 -1  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 0 0  - >
+ 7  alpha = -0.0750 |2 0 0  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 1 -1  - >
+ 8  alpha = 0.0750 |2 0 0  +  ; 2 1 -1  +  ; 3 2 1  +  ; 2 1 0  - >
+ 9  alpha = 0.2250 |2 0 0  +  ; 2 1 0  +  ; 2 1 1  +  ; 3 2 -1  - >
+ 10  alpha = 0.0750 |2 1 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 0 0  - >
+ 11  alpha = -0.0750 |2 0 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 1 0  - >
+ 12  alpha = 0.0750 |2 0 0  +  ; 2 1 0  +  ; 3 2 -1  +  ; 2 1 1  - >
+
+
+
+
+# NOW APPLYING L2 TO PROJECTED KET.
+# [ first normalising and dividing ket by first vector's coefficient = -0.5477 ] 
+
+
+# ks: #
+
+
+ 1  alpha = 1.0000 |2 0 0  +  ; 2 1 -1  +  ; 2 1 1  +  ; 3 2 0  - >
+ 2  alpha = 0.3333 |2 1 -1  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 0 0  - >
+ 3  alpha = -0.3333 |2 0 0  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 1 -1  - >
+ 4  alpha = 0.3333 |2 0 0  +  ; 2 1 -1  +  ; 3 2 0  +  ; 2 1 1  - >
+ 5  alpha = -0.8660 |2 0 0  +  ; 2 1 -1  +  ; 2 1 0  +  ; 3 2 1  - >
+ 6  alpha = -0.2887 |2 1 -1  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 0 0  - >
+ 7  alpha = 0.2887 |2 0 0  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 1 -1  - >
+ 8  alpha = -0.2887 |2 0 0  +  ; 2 1 -1  +  ; 3 2 1  +  ; 2 1 0  - >
+ 9  alpha = -0.8660 |2 0 0  +  ; 2 1 0  +  ; 2 1 1  +  ; 3 2 -1  - >
+ 10  alpha = -0.2887 |2 1 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 0 0  - >
+ 11  alpha = 0.2887 |2 0 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 1 0  - >
+ 12  alpha = -0.2887 |2 0 0  +  ; 2 1 0  +  ; 3 2 -1  +  ; 2 1 1  - >
+
+
+# L2 OPERATOR RESULT IS: #
+
+
+ 1  alpha = 2.0000 |2 0 0  +  ; 2 1 -1  +  ; 2 1 1  +  ; 3 2 0  - >
+ 2  alpha = -1.7321 |2 0 0  +  ; 2 1 -1  +  ; 2 1 0  +  ; 3 2 1  - >
+ 3  alpha = -1.7321 |2 0 0  +  ; 2 1 0  +  ; 2 1 1  +  ; 3 2 -1  - >
+ 4  alpha = 0.6667 |2 1 -1  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 0 0  - >
+ 5  alpha = -0.5774 |2 1 -1  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 0 0  - >
+ 6  alpha = -0.5774 |2 1 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 0 0  - >
+ 7  alpha = -0.6667 |2 0 0  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 1 -1  - >
+ 8  alpha = 0.5774 |2 0 0  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 1 -1  - >
+ 9  alpha = 0.5774 |2 0 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 1 0  - >
+ 10  alpha = -0.5774 |2 0 0  +  ; 2 1 0  +  ; 3 2 -1  +  ; 2 1 1  - >
+ 11  alpha = 0.6667 |2 0 0  +  ; 2 1 -1  +  ; 3 2 0  +  ; 2 1 1  - >
+ 12  alpha = -0.5774 |2 0 0  +  ; 2 1 -1  +  ; 3 2 1  +  ; 2 1 0  - >
+
+
+# eigenvalue is 2.00 corresponding to L = 1.0
+# L2(KETS) AND lambda * KETS ARE EQUAL # 
+
+
+
+# NOW APPLYING S2 TO PROJECTED KET.
+# [ first normalising and then dividing ket by first vector's coefficient = -0.5477 ] 
+
+neact = 4
+# ks: #
+
+
+ 1  alpha = 1.0000 |2 0 0  +  ; 2 1 -1  +  ; 2 1 1  +  ; 3 2 0  - >
+ 2  alpha = 0.3333 |2 1 -1  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 0 0  - >
+ 3  alpha = -0.3333 |2 0 0  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 1 -1  - >
+ 4  alpha = 0.3333 |2 0 0  +  ; 2 1 -1  +  ; 3 2 0  +  ; 2 1 1  - >
+ 5  alpha = -0.8660 |2 0 0  +  ; 2 1 -1  +  ; 2 1 0  +  ; 3 2 1  - >
+ 6  alpha = -0.2887 |2 1 -1  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 0 0  - >
+ 7  alpha = 0.2887 |2 0 0  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 1 -1  - >
+ 8  alpha = -0.2887 |2 0 0  +  ; 2 1 -1  +  ; 3 2 1  +  ; 2 1 0  - >
+ 9  alpha = -0.8660 |2 0 0  +  ; 2 1 0  +  ; 2 1 1  +  ; 3 2 -1  - >
+ 10  alpha = -0.2887 |2 1 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 0 0  - >
+ 11  alpha = 0.2887 |2 0 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 1 0  - >
+ 12  alpha = -0.2887 |2 0 0  +  ; 2 1 0  +  ; 3 2 -1  +  ; 2 1 1  - >
+
+
+# S2 OPERATOR RESULT IS: #
+
+
+ 1  alpha = 2.0000 |2 0 0  +  ; 2 1 -1  +  ; 2 1 1  +  ; 3 2 0  - >
+ 2  alpha = 0.6667 |2 1 -1  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 0 0  - >
+ 3  alpha = -0.6667 |2 0 0  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 1 -1  - >
+ 4  alpha = 0.6667 |2 0 0  +  ; 2 1 -1  +  ; 3 2 0  +  ; 2 1 1  - >
+ 5  alpha = -1.7321 |2 0 0  +  ; 2 1 -1  +  ; 2 1 0  +  ; 3 2 1  - >
+ 6  alpha = -0.5774 |2 1 -1  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 0 0  - >
+ 7  alpha = 0.5774 |2 0 0  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 1 -1  - >
+ 8  alpha = -0.5774 |2 0 0  +  ; 2 1 -1  +  ; 3 2 1  +  ; 2 1 0  - >
+ 9  alpha = -1.7321 |2 0 0  +  ; 2 1 0  +  ; 2 1 1  +  ; 3 2 -1  - >
+ 10  alpha = -0.5774 |2 1 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 0 0  - >
+ 11  alpha = 0.5774 |2 0 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 1 0  - >
+ 12  alpha = -0.5774 |2 0 0  +  ; 2 1 0  +  ; 3 2 -1  +  ; 2 1 1  - >
+
+
+# eigenvalue is 2.00 corresponding to S = 1.00
+# S2(KETS) AND lambda * KETS ARE EQUAL # 
+
+
+___________________________________________________________________
+
+
+___________________________________________________________________
+
+
+# OPERATING ON STARTING CONFIGURATION # 9
+
+
+alpha = -1.0000 | 0  +  ;  -1  +  ;  0  +  ;  1  - >
+
+
+
+# INITIALISING Lall #
+
+# CSFGEN: finding min and max L value. 
+# min L = 0 MAX L = 4
+
+# APPLYING -- L -- PROJECTOR FOR L = 1
+
+# finding min and max S value. 
+# min S = 0.0 MAX S = 2.0
+
+# APPLYING -- S -- PROJECTOR FOR S = 1.0
+
+
+# PROJECTED KET FOR S = 1.00
+
+
+ 1  alpha = 0.0866 |2 0 0  +  ; 2 1 0  +  ; 3 2 -1  +  ; 2 1 1  - >
+ 2  alpha = -0.0866 |2 1 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 0 0  - >
+ 3  alpha = -0.0866 |2 0 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 1 0  - >
+ 4  alpha = 0.0866 |2 0 0  +  ; 2 1 0  +  ; 2 1 1  +  ; 3 2 -1  - >
+ 5  alpha = -0.1000 |2 0 0  +  ; 2 1 -1  +  ; 3 2 0  +  ; 2 1 1  - >
+ 6  alpha = 0.1000 |2 1 -1  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 0 0  - >
+ 7  alpha = 0.1000 |2 0 0  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 1 -1  - >
+ 8  alpha = -0.1000 |2 0 0  +  ; 2 1 -1  +  ; 2 1 1  +  ; 3 2 0  - >
+ 9  alpha = 0.0866 |2 0 0  +  ; 2 1 -1  +  ; 3 2 1  +  ; 2 1 0  - >
+ 10  alpha = -0.0866 |2 1 -1  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 0 0  - >
+ 11  alpha = -0.0866 |2 0 0  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 1 -1  - >
+ 12  alpha = 0.0866 |2 0 0  +  ; 2 1 -1  +  ; 2 1 0  +  ; 3 2 1  - >
+
+
+
+
+# NOW APPLYING L2 TO PROJECTED KET.
+# [ first normalising and dividing ket by first vector's coefficient = 0.2739 ] 
+
+
+# ks: #
+
+
+ 1  alpha = 1.0000 |2 0 0  +  ; 2 1 0  +  ; 3 2 -1  +  ; 2 1 1  - >
+ 2  alpha = -1.0000 |2 1 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 0 0  - >
+ 3  alpha = -1.0000 |2 0 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 1 0  - >
+ 4  alpha = 1.0000 |2 0 0  +  ; 2 1 0  +  ; 2 1 1  +  ; 3 2 -1  - >
+ 5  alpha = -1.1547 |2 0 0  +  ; 2 1 -1  +  ; 3 2 0  +  ; 2 1 1  - >
+ 6  alpha = 1.1547 |2 1 -1  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 0 0  - >
+ 7  alpha = 1.1547 |2 0 0  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 1 -1  - >
+ 8  alpha = -1.1547 |2 0 0  +  ; 2 1 -1  +  ; 2 1 1  +  ; 3 2 0  - >
+ 9  alpha = 1.0000 |2 0 0  +  ; 2 1 -1  +  ; 3 2 1  +  ; 2 1 0  - >
+ 10  alpha = -1.0000 |2 1 -1  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 0 0  - >
+ 11  alpha = -1.0000 |2 0 0  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 1 -1  - >
+ 12  alpha = 1.0000 |2 0 0  +  ; 2 1 -1  +  ; 2 1 0  +  ; 3 2 1  - >
+
+
+# L2 OPERATOR RESULT IS: #
+
+
+ 1  alpha = 2.0000 |2 0 0  +  ; 2 1 0  +  ; 3 2 -1  +  ; 2 1 1  - >
+ 2  alpha = -2.3094 |2 0 0  +  ; 2 1 -1  +  ; 3 2 0  +  ; 2 1 1  - >
+ 3  alpha = -2.0000 |2 1 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 0 0  - >
+ 4  alpha = 2.3094 |2 1 -1  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 0 0  - >
+ 5  alpha = -2.0000 |2 0 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 1 0  - >
+ 6  alpha = 2.3094 |2 0 0  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 1 -1  - >
+ 7  alpha = 2.0000 |2 0 0  +  ; 2 1 0  +  ; 2 1 1  +  ; 3 2 -1  - >
+ 8  alpha = -2.3094 |2 0 0  +  ; 2 1 -1  +  ; 2 1 1  +  ; 3 2 0  - >
+ 9  alpha = 2.0000 |2 0 0  +  ; 2 1 -1  +  ; 3 2 1  +  ; 2 1 0  - >
+ 10  alpha = -2.0000 |2 1 -1  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 0 0  - >
+ 11  alpha = -2.0000 |2 0 0  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 1 -1  - >
+ 12  alpha = 2.0000 |2 0 0  +  ; 2 1 -1  +  ; 2 1 0  +  ; 3 2 1  - >
+
+
+# eigenvalue is 2.00 corresponding to L = 1.0
+# L2(KETS) AND lambda * KETS ARE EQUAL # 
+
+
+
+# NOW APPLYING S2 TO PROJECTED KET.
+# [ first normalising and then dividing ket by first vector's coefficient = 0.2739 ] 
+
+neact = 4
+# ks: #
+
+
+ 1  alpha = 1.0000 |2 0 0  +  ; 2 1 0  +  ; 3 2 -1  +  ; 2 1 1  - >
+ 2  alpha = -1.0000 |2 1 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 0 0  - >
+ 3  alpha = -1.0000 |2 0 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 1 0  - >
+ 4  alpha = 1.0000 |2 0 0  +  ; 2 1 0  +  ; 2 1 1  +  ; 3 2 -1  - >
+ 5  alpha = -1.1547 |2 0 0  +  ; 2 1 -1  +  ; 3 2 0  +  ; 2 1 1  - >
+ 6  alpha = 1.1547 |2 1 -1  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 0 0  - >
+ 7  alpha = 1.1547 |2 0 0  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 1 -1  - >
+ 8  alpha = -1.1547 |2 0 0  +  ; 2 1 -1  +  ; 2 1 1  +  ; 3 2 0  - >
+ 9  alpha = 1.0000 |2 0 0  +  ; 2 1 -1  +  ; 3 2 1  +  ; 2 1 0  - >
+ 10  alpha = -1.0000 |2 1 -1  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 0 0  - >
+ 11  alpha = -1.0000 |2 0 0  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 1 -1  - >
+ 12  alpha = 1.0000 |2 0 0  +  ; 2 1 -1  +  ; 2 1 0  +  ; 3 2 1  - >
+
+
+# S2 OPERATOR RESULT IS: #
+
+
+ 1  alpha = 2.0000 |2 0 0  +  ; 2 1 0  +  ; 3 2 -1  +  ; 2 1 1  - >
+ 2  alpha = -2.0000 |2 0 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 1 0  - >
+ 3  alpha = 2.0000 |2 0 0  +  ; 2 1 0  +  ; 2 1 1  +  ; 3 2 -1  - >
+ 4  alpha = -2.0000 |2 1 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 0 0  - >
+ 5  alpha = -2.3094 |2 0 0  +  ; 2 1 -1  +  ; 3 2 0  +  ; 2 1 1  - >
+ 6  alpha = 2.3094 |2 0 0  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 1 -1  - >
+ 7  alpha = -2.3094 |2 0 0  +  ; 2 1 -1  +  ; 2 1 1  +  ; 3 2 0  - >
+ 8  alpha = 2.3094 |2 1 -1  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 0 0  - >
+ 9  alpha = 2.0000 |2 0 0  +  ; 2 1 -1  +  ; 3 2 1  +  ; 2 1 0  - >
+ 10  alpha = -2.0000 |2 0 0  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 1 -1  - >
+ 11  alpha = 2.0000 |2 0 0  +  ; 2 1 -1  +  ; 2 1 0  +  ; 3 2 1  - >
+ 12  alpha = -2.0000 |2 1 -1  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 0 0  - >
+
+
+# eigenvalue is 2.00 corresponding to S = 1.00
+# S2(KETS) AND lambda * KETS ARE EQUAL # 
+
+
+___________________________________________________________________
+
+
+___________________________________________________________________
+
+
+# OPERATING ON STARTING CONFIGURATION # 10
+
+
+alpha = 1.0000 | 0  +  ;  -1  +  ;  1  +  ;  0  - >
+
+
+
+# INITIALISING Lall #
+
+# CSFGEN: finding min and max L value. 
+# min L = 0 MAX L = 4
+
+# APPLYING -- L -- PROJECTOR FOR L = 1
+
+# finding min and max S value. 
+# min S = 0.0 MAX S = 2.0
+
+# APPLYING -- S -- PROJECTOR FOR S = 1.0
+
+
+# PROJECTED KET FOR S = 1.00
+
+
+ 1  alpha = 0.3000 |2 0 0  +  ; 2 1 -1  +  ; 2 1 1  +  ; 3 2 0  - >
+ 2  alpha = 0.1000 |2 1 -1  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 0 0  - >
+ 3  alpha = -0.1000 |2 0 0  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 1 -1  - >
+ 4  alpha = 0.1000 |2 0 0  +  ; 2 1 -1  +  ; 3 2 0  +  ; 2 1 1  - >
+ 5  alpha = -0.2598 |2 0 0  +  ; 2 1 -1  +  ; 2 1 0  +  ; 3 2 1  - >
+ 6  alpha = -0.0866 |2 1 -1  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 0 0  - >
+ 7  alpha = 0.0866 |2 0 0  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 1 -1  - >
+ 8  alpha = -0.0866 |2 0 0  +  ; 2 1 -1  +  ; 3 2 1  +  ; 2 1 0  - >
+ 9  alpha = -0.2598 |2 0 0  +  ; 2 1 0  +  ; 2 1 1  +  ; 3 2 -1  - >
+ 10  alpha = -0.0866 |2 1 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 0 0  - >
+ 11  alpha = 0.0866 |2 0 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 1 0  - >
+ 12  alpha = -0.0866 |2 0 0  +  ; 2 1 0  +  ; 3 2 -1  +  ; 2 1 1  - >
+
+
+
+
+# NOW APPLYING L2 TO PROJECTED KET.
+# [ first normalising and dividing ket by first vector's coefficient = 0.5477 ] 
+
+
+# ks: #
+
+
+ 1  alpha = 1.0000 |2 0 0  +  ; 2 1 -1  +  ; 2 1 1  +  ; 3 2 0  - >
+ 2  alpha = 0.3333 |2 1 -1  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 0 0  - >
+ 3  alpha = -0.3333 |2 0 0  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 1 -1  - >
+ 4  alpha = 0.3333 |2 0 0  +  ; 2 1 -1  +  ; 3 2 0  +  ; 2 1 1  - >
+ 5  alpha = -0.8660 |2 0 0  +  ; 2 1 -1  +  ; 2 1 0  +  ; 3 2 1  - >
+ 6  alpha = -0.2887 |2 1 -1  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 0 0  - >
+ 7  alpha = 0.2887 |2 0 0  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 1 -1  - >
+ 8  alpha = -0.2887 |2 0 0  +  ; 2 1 -1  +  ; 3 2 1  +  ; 2 1 0  - >
+ 9  alpha = -0.8660 |2 0 0  +  ; 2 1 0  +  ; 2 1 1  +  ; 3 2 -1  - >
+ 10  alpha = -0.2887 |2 1 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 0 0  - >
+ 11  alpha = 0.2887 |2 0 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 1 0  - >
+ 12  alpha = -0.2887 |2 0 0  +  ; 2 1 0  +  ; 3 2 -1  +  ; 2 1 1  - >
+
+
+# L2 OPERATOR RESULT IS: #
+
+
+ 1  alpha = 2.0000 |2 0 0  +  ; 2 1 -1  +  ; 2 1 1  +  ; 3 2 0  - >
+ 2  alpha = -1.7321 |2 0 0  +  ; 2 1 -1  +  ; 2 1 0  +  ; 3 2 1  - >
+ 3  alpha = -1.7321 |2 0 0  +  ; 2 1 0  +  ; 2 1 1  +  ; 3 2 -1  - >
+ 4  alpha = 0.6667 |2 1 -1  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 0 0  - >
+ 5  alpha = -0.5774 |2 1 -1  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 0 0  - >
+ 6  alpha = -0.5774 |2 1 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 0 0  - >
+ 7  alpha = -0.6667 |2 0 0  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 1 -1  - >
+ 8  alpha = 0.5774 |2 0 0  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 1 -1  - >
+ 9  alpha = 0.5774 |2 0 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 1 0  - >
+ 10  alpha = -0.5774 |2 0 0  +  ; 2 1 0  +  ; 3 2 -1  +  ; 2 1 1  - >
+ 11  alpha = 0.6667 |2 0 0  +  ; 2 1 -1  +  ; 3 2 0  +  ; 2 1 1  - >
+ 12  alpha = -0.5774 |2 0 0  +  ; 2 1 -1  +  ; 3 2 1  +  ; 2 1 0  - >
+
+
+# eigenvalue is 2.00 corresponding to L = 1.0
+# L2(KETS) AND lambda * KETS ARE EQUAL # 
+
+
+
+# NOW APPLYING S2 TO PROJECTED KET.
+# [ first normalising and then dividing ket by first vector's coefficient = 0.5477 ] 
+
+neact = 4
+# ks: #
+
+
+ 1  alpha = 1.0000 |2 0 0  +  ; 2 1 -1  +  ; 2 1 1  +  ; 3 2 0  - >
+ 2  alpha = 0.3333 |2 1 -1  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 0 0  - >
+ 3  alpha = -0.3333 |2 0 0  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 1 -1  - >
+ 4  alpha = 0.3333 |2 0 0  +  ; 2 1 -1  +  ; 3 2 0  +  ; 2 1 1  - >
+ 5  alpha = -0.8660 |2 0 0  +  ; 2 1 -1  +  ; 2 1 0  +  ; 3 2 1  - >
+ 6  alpha = -0.2887 |2 1 -1  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 0 0  - >
+ 7  alpha = 0.2887 |2 0 0  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 1 -1  - >
+ 8  alpha = -0.2887 |2 0 0  +  ; 2 1 -1  +  ; 3 2 1  +  ; 2 1 0  - >
+ 9  alpha = -0.8660 |2 0 0  +  ; 2 1 0  +  ; 2 1 1  +  ; 3 2 -1  - >
+ 10  alpha = -0.2887 |2 1 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 0 0  - >
+ 11  alpha = 0.2887 |2 0 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 1 0  - >
+ 12  alpha = -0.2887 |2 0 0  +  ; 2 1 0  +  ; 3 2 -1  +  ; 2 1 1  - >
+
+
+# S2 OPERATOR RESULT IS: #
+
+
+ 1  alpha = 2.0000 |2 0 0  +  ; 2 1 -1  +  ; 2 1 1  +  ; 3 2 0  - >
+ 2  alpha = 0.6667 |2 1 -1  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 0 0  - >
+ 3  alpha = -0.6667 |2 0 0  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 1 -1  - >
+ 4  alpha = 0.6667 |2 0 0  +  ; 2 1 -1  +  ; 3 2 0  +  ; 2 1 1  - >
+ 5  alpha = -1.7321 |2 0 0  +  ; 2 1 -1  +  ; 2 1 0  +  ; 3 2 1  - >
+ 6  alpha = -0.5774 |2 1 -1  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 0 0  - >
+ 7  alpha = 0.5774 |2 0 0  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 1 -1  - >
+ 8  alpha = -0.5774 |2 0 0  +  ; 2 1 -1  +  ; 3 2 1  +  ; 2 1 0  - >
+ 9  alpha = -1.7321 |2 0 0  +  ; 2 1 0  +  ; 2 1 1  +  ; 3 2 -1  - >
+ 10  alpha = -0.5774 |2 1 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 0 0  - >
+ 11  alpha = 0.5774 |2 0 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 1 0  - >
+ 12  alpha = -0.5774 |2 0 0  +  ; 2 1 0  +  ; 3 2 -1  +  ; 2 1 1  - >
+
+
+# eigenvalue is 2.00 corresponding to S = 1.00
+# S2(KETS) AND lambda * KETS ARE EQUAL # 
+
+
+___________________________________________________________________
+
+
+___________________________________________________________________
+
+
+# OPERATING ON STARTING CONFIGURATION # 11
+
+
+alpha = 1.0000 | 0  +  ;  0  +  ;  0  +  ;  0  - >
+
+
+
+# INITIALISING Lall #
+
+# CSFGEN: finding min and max L value. 
+# min L = 0 MAX L = 4
+
+# APPLYING -- L -- PROJECTOR FOR L = 1
+
+# finding min and max S value. 
+# min S = 0.0 MAX S = 2.0
+
+# APPLYING -- S -- PROJECTOR FOR S = 1.0
+
+
+# PROJECTED KET FOR S = 1.00
+
+-- RESULT IS NULL KET -- 
+
+
+
+
+# NOW APPLYING L2 TO PROJECTED KET.
+
+# PROJECTED VECTOR IS NULL, STOPPING #
+
+
+
+# NOW APPLYING S2 TO PROJECTED KET.
+
+# PROJECTED VECTOR IS NULL, STOPPING #
+
+
+___________________________________________________________________
+
+
+___________________________________________________________________
+
+
+# OPERATING ON STARTING CONFIGURATION # 12
+
+
+alpha = 1.0000 | 0  +  ;  1  +  ;  -1  +  ;  0  - >
+
+
+
+# INITIALISING Lall #
+
+# CSFGEN: finding min and max L value. 
+# min L = 0 MAX L = 4
+
+# APPLYING -- L -- PROJECTOR FOR L = 1
+
+# finding min and max S value. 
+# min S = 0.0 MAX S = 2.0
+
+# APPLYING -- S -- PROJECTOR FOR S = 1.0
+
+
+# PROJECTED KET FOR S = 1.00
+
+
+ 1  alpha = 0.1250 |2 0 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 1 0  - >
+ 2  alpha = 0.0750 |2 1 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 0 0  - >
+ 3  alpha = -0.0250 |2 0 0  +  ; 2 1 0  +  ; 3 2 -1  +  ; 2 1 1  - >
+ 4  alpha = -0.0750 |2 0 0  +  ; 2 1 0  +  ; 2 1 1  +  ; 3 2 -1  - >
+ 5  alpha = -0.1414 |2 0 0  +  ; 2 1 1  +  ; 3 2 -2  +  ; 2 1 1  - >
+ 6  alpha = -0.0866 |2 0 0  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 1 -1  - >
+ 7  alpha = -0.0866 |2 1 -1  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 0 0  - >
+ 8  alpha = 0.0866 |2 0 0  +  ; 2 1 -1  +  ; 3 2 0  +  ; 2 1 1  - >
+ 9  alpha = 0.0866 |2 0 0  +  ; 2 1 -1  +  ; 2 1 1  +  ; 3 2 0  - >
+ 10  alpha = -0.1250 |2 0 0  +  ; 2 1 -1  +  ; 3 2 1  +  ; 2 1 0  - >
+ 11  alpha = 0.0750 |2 1 -1  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 0 0  - >
+ 12  alpha = 0.0250 |2 0 0  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 1 -1  - >
+ 13  alpha = -0.0750 |2 0 0  +  ; 2 1 -1  +  ; 2 1 0  +  ; 3 2 1  - >
+ 14  alpha = 0.1414 |2 0 0  +  ; 2 1 -1  +  ; 3 2 2  +  ; 2 1 -1  - >
+
+
+
+
+# NOW APPLYING L2 TO PROJECTED KET.
+# [ first normalising and dividing ket by first vector's coefficient = 0.3536 ] 
+
+
+# ks: #
+
+
+ 1  alpha = 1.0000 |2 0 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 1 0  - >
+ 2  alpha = 0.6000 |2 1 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 0 0  - >
+ 3  alpha = -0.2000 |2 0 0  +  ; 2 1 0  +  ; 3 2 -1  +  ; 2 1 1  - >
+ 4  alpha = -0.6000 |2 0 0  +  ; 2 1 0  +  ; 2 1 1  +  ; 3 2 -1  - >
+ 5  alpha = -1.1314 |2 0 0  +  ; 2 1 1  +  ; 3 2 -2  +  ; 2 1 1  - >
+ 6  alpha = -0.6928 |2 0 0  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 1 -1  - >
+ 7  alpha = -0.6928 |2 1 -1  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 0 0  - >
+ 8  alpha = 0.6928 |2 0 0  +  ; 2 1 -1  +  ; 3 2 0  +  ; 2 1 1  - >
+ 9  alpha = 0.6928 |2 0 0  +  ; 2 1 -1  +  ; 2 1 1  +  ; 3 2 0  - >
+ 10  alpha = -1.0000 |2 0 0  +  ; 2 1 -1  +  ; 3 2 1  +  ; 2 1 0  - >
+ 11  alpha = 0.6000 |2 1 -1  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 0 0  - >
+ 12  alpha = 0.2000 |2 0 0  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 1 -1  - >
+ 13  alpha = -0.6000 |2 0 0  +  ; 2 1 -1  +  ; 2 1 0  +  ; 3 2 1  - >
+ 14  alpha = 1.1314 |2 0 0  +  ; 2 1 -1  +  ; 3 2 2  +  ; 2 1 -1  - >
+
+
+# L2 OPERATOR RESULT IS: #
+
+
+ 1  alpha = 2.0000 |2 0 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 1 0  - >
+ 2  alpha = -0.4000 |2 0 0  +  ; 2 1 0  +  ; 3 2 -1  +  ; 2 1 1  - >
+ 3  alpha = -2.2627 |2 0 0  +  ; 2 1 1  +  ; 3 2 -2  +  ; 2 1 1  - >
+ 4  alpha = -1.3856 |2 0 0  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 1 -1  - >
+ 5  alpha = 1.2000 |2 1 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 0 0  - >
+ 6  alpha = -1.3856 |2 1 -1  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 0 0  - >
+ 7  alpha = 1.3856 |2 0 0  +  ; 2 1 -1  +  ; 3 2 0  +  ; 2 1 1  - >
+ 8  alpha = -1.2000 |2 0 0  +  ; 2 1 0  +  ; 2 1 1  +  ; 3 2 -1  - >
+ 9  alpha = 1.3856 |2 0 0  +  ; 2 1 -1  +  ; 2 1 1  +  ; 3 2 0  - >
+ 10  alpha = 0.4000 |2 0 0  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 1 -1  - >
+ 11  alpha = 1.2000 |2 1 -1  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 0 0  - >
+ 12  alpha = -2.0000 |2 0 0  +  ; 2 1 -1  +  ; 3 2 1  +  ; 2 1 0  - >
+ 13  alpha = -1.2000 |2 0 0  +  ; 2 1 -1  +  ; 2 1 0  +  ; 3 2 1  - >
+ 14  alpha = 2.2627 |2 0 0  +  ; 2 1 -1  +  ; 3 2 2  +  ; 2 1 -1  - >
+
+
+# eigenvalue is 2.00 corresponding to L = 1.0
+# L2(KETS) AND lambda * KETS ARE EQUAL # 
+
+
+
+# NOW APPLYING S2 TO PROJECTED KET.
+# [ first normalising and then dividing ket by first vector's coefficient = 0.3536 ] 
+
+neact = 4
+# ks: #
+
+
+ 1  alpha = 1.0000 |2 0 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 1 0  - >
+ 2  alpha = 0.6000 |2 1 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 0 0  - >
+ 3  alpha = -0.2000 |2 0 0  +  ; 2 1 0  +  ; 3 2 -1  +  ; 2 1 1  - >
+ 4  alpha = -0.6000 |2 0 0  +  ; 2 1 0  +  ; 2 1 1  +  ; 3 2 -1  - >
+ 5  alpha = -1.1314 |2 0 0  +  ; 2 1 1  +  ; 3 2 -2  +  ; 2 1 1  - >
+ 6  alpha = -0.6928 |2 0 0  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 1 -1  - >
+ 7  alpha = -0.6928 |2 1 -1  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 0 0  - >
+ 8  alpha = 0.6928 |2 0 0  +  ; 2 1 -1  +  ; 3 2 0  +  ; 2 1 1  - >
+ 9  alpha = 0.6928 |2 0 0  +  ; 2 1 -1  +  ; 2 1 1  +  ; 3 2 0  - >
+ 10  alpha = -1.0000 |2 0 0  +  ; 2 1 -1  +  ; 3 2 1  +  ; 2 1 0  - >
+ 11  alpha = 0.6000 |2 1 -1  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 0 0  - >
+ 12  alpha = 0.2000 |2 0 0  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 1 -1  - >
+ 13  alpha = -0.6000 |2 0 0  +  ; 2 1 -1  +  ; 2 1 0  +  ; 3 2 1  - >
+ 14  alpha = 1.1314 |2 0 0  +  ; 2 1 -1  +  ; 3 2 2  +  ; 2 1 -1  - >
+
+
+# S2 OPERATOR RESULT IS: #
+
+
+ 1  alpha = 2.0000 |2 0 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 1 0  - >
+ 2  alpha = 1.2000 |2 1 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 0 0  - >
+ 3  alpha = -0.4000 |2 0 0  +  ; 2 1 0  +  ; 3 2 -1  +  ; 2 1 1  - >
+ 4  alpha = -1.2000 |2 0 0  +  ; 2 1 0  +  ; 2 1 1  +  ; 3 2 -1  - >
+ 5  alpha = -2.2627 |2 0 0  +  ; 2 1 1  +  ; 3 2 -2  +  ; 2 1 1  - >
+ 6  alpha = 1.3856 |2 0 0  +  ; 2 1 -1  +  ; 3 2 0  +  ; 2 1 1  - >
+ 7  alpha = -1.3856 |2 0 0  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 1 -1  - >
+ 8  alpha = 1.3856 |2 0 0  +  ; 2 1 -1  +  ; 2 1 1  +  ; 3 2 0  - >
+ 9  alpha = -1.3856 |2 1 -1  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 0 0  - >
+ 10  alpha = -2.0000 |2 0 0  +  ; 2 1 -1  +  ; 3 2 1  +  ; 2 1 0  - >
+ 11  alpha = 1.2000 |2 1 -1  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 0 0  - >
+ 12  alpha = 0.4000 |2 0 0  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 1 -1  - >
+ 13  alpha = -1.2000 |2 0 0  +  ; 2 1 -1  +  ; 2 1 0  +  ; 3 2 1  - >
+ 14  alpha = 2.2627 |2 0 0  +  ; 2 1 -1  +  ; 3 2 2  +  ; 2 1 -1  - >
+
+
+# eigenvalue is 2.00 corresponding to S = 1.00
+# S2(KETS) AND lambda * KETS ARE EQUAL # 
+
+
+___________________________________________________________________
+
+
+___________________________________________________________________
+
+
+# OPERATING ON STARTING CONFIGURATION # 13
+
+
+alpha = -1.0000 | 0  +  ;  0  +  ;  -1  +  ;  1  - >
+
+
+
+# INITIALISING Lall #
+
+# CSFGEN: finding min and max L value. 
+# min L = 0 MAX L = 4
+
+# APPLYING -- L -- PROJECTOR FOR L = 1
+
+# finding min and max S value. 
+# min S = 0.0 MAX S = 2.0
+
+# APPLYING -- S -- PROJECTOR FOR S = 1.0
+
+
+# PROJECTED KET FOR S = 1.00
+
+
+ 1  alpha = -0.1250 |2 0 0  +  ; 2 1 0  +  ; 3 2 -1  +  ; 2 1 1  - >
+ 2  alpha = 0.0750 |2 1 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 0 0  - >
+ 3  alpha = 0.0250 |2 0 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 1 0  - >
+ 4  alpha = -0.0750 |2 0 0  +  ; 2 1 0  +  ; 2 1 1  +  ; 3 2 -1  - >
+ 5  alpha = 0.0866 |2 0 0  +  ; 2 1 -1  +  ; 3 2 0  +  ; 2 1 1  - >
+ 6  alpha = -0.0866 |2 1 -1  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 0 0  - >
+ 7  alpha = -0.0866 |2 0 0  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 1 -1  - >
+ 8  alpha = 0.0866 |2 0 0  +  ; 2 1 -1  +  ; 2 1 1  +  ; 3 2 0  - >
+ 9  alpha = 0.1414 |2 0 0  +  ; 2 1 1  +  ; 3 2 -2  +  ; 2 1 1  - >
+ 10  alpha = -0.0250 |2 0 0  +  ; 2 1 -1  +  ; 3 2 1  +  ; 2 1 0  - >
+ 11  alpha = 0.0750 |2 1 -1  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 0 0  - >
+ 12  alpha = 0.1250 |2 0 0  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 1 -1  - >
+ 13  alpha = -0.0750 |2 0 0  +  ; 2 1 -1  +  ; 2 1 0  +  ; 3 2 1  - >
+ 14  alpha = -0.1414 |2 0 0  +  ; 2 1 -1  +  ; 3 2 2  +  ; 2 1 -1  - >
+
+
+
+
+# NOW APPLYING L2 TO PROJECTED KET.
+# [ first normalising and dividing ket by first vector's coefficient = -0.3536 ] 
+
+
+# ks: #
+
+
+ 1  alpha = 1.0000 |2 0 0  +  ; 2 1 0  +  ; 3 2 -1  +  ; 2 1 1  - >
+ 2  alpha = -0.6000 |2 1 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 0 0  - >
+ 3  alpha = -0.2000 |2 0 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 1 0  - >
+ 4  alpha = 0.6000 |2 0 0  +  ; 2 1 0  +  ; 2 1 1  +  ; 3 2 -1  - >
+ 5  alpha = -0.6928 |2 0 0  +  ; 2 1 -1  +  ; 3 2 0  +  ; 2 1 1  - >
+ 6  alpha = 0.6928 |2 1 -1  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 0 0  - >
+ 7  alpha = 0.6928 |2 0 0  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 1 -1  - >
+ 8  alpha = -0.6928 |2 0 0  +  ; 2 1 -1  +  ; 2 1 1  +  ; 3 2 0  - >
+ 9  alpha = -1.1314 |2 0 0  +  ; 2 1 1  +  ; 3 2 -2  +  ; 2 1 1  - >
+ 10  alpha = 0.2000 |2 0 0  +  ; 2 1 -1  +  ; 3 2 1  +  ; 2 1 0  - >
+ 11  alpha = -0.6000 |2 1 -1  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 0 0  - >
+ 12  alpha = -1.0000 |2 0 0  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 1 -1  - >
+ 13  alpha = 0.6000 |2 0 0  +  ; 2 1 -1  +  ; 2 1 0  +  ; 3 2 1  - >
+ 14  alpha = 1.1314 |2 0 0  +  ; 2 1 -1  +  ; 3 2 2  +  ; 2 1 -1  - >
+
+
+# L2 OPERATOR RESULT IS: #
+
+
+ 1  alpha = 2.0000 |2 0 0  +  ; 2 1 0  +  ; 3 2 -1  +  ; 2 1 1  - >
+ 2  alpha = -1.3856 |2 0 0  +  ; 2 1 -1  +  ; 3 2 0  +  ; 2 1 1  - >
+ 3  alpha = -2.2627 |2 0 0  +  ; 2 1 1  +  ; 3 2 -2  +  ; 2 1 1  - >
+ 4  alpha = -0.4000 |2 0 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 1 0  - >
+ 5  alpha = -1.2000 |2 1 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 0 0  - >
+ 6  alpha = 1.3856 |2 1 -1  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 0 0  - >
+ 7  alpha = 1.3856 |2 0 0  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 1 -1  - >
+ 8  alpha = 1.2000 |2 0 0  +  ; 2 1 0  +  ; 2 1 1  +  ; 3 2 -1  - >
+ 9  alpha = -1.3856 |2 0 0  +  ; 2 1 -1  +  ; 2 1 1  +  ; 3 2 0  - >
+ 10  alpha = 0.4000 |2 0 0  +  ; 2 1 -1  +  ; 3 2 1  +  ; 2 1 0  - >
+ 11  alpha = -1.2000 |2 1 -1  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 0 0  - >
+ 12  alpha = -2.0000 |2 0 0  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 1 -1  - >
+ 13  alpha = 1.2000 |2 0 0  +  ; 2 1 -1  +  ; 2 1 0  +  ; 3 2 1  - >
+ 14  alpha = 2.2627 |2 0 0  +  ; 2 1 -1  +  ; 3 2 2  +  ; 2 1 -1  - >
+
+
+# eigenvalue is 2.00 corresponding to L = 1.0
+# L2(KETS) AND lambda * KETS ARE EQUAL # 
+
+
+
+# NOW APPLYING S2 TO PROJECTED KET.
+# [ first normalising and then dividing ket by first vector's coefficient = -0.3536 ] 
+
+neact = 4
+# ks: #
+
+
+ 1  alpha = 1.0000 |2 0 0  +  ; 2 1 0  +  ; 3 2 -1  +  ; 2 1 1  - >
+ 2  alpha = -0.6000 |2 1 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 0 0  - >
+ 3  alpha = -0.2000 |2 0 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 1 0  - >
+ 4  alpha = 0.6000 |2 0 0  +  ; 2 1 0  +  ; 2 1 1  +  ; 3 2 -1  - >
+ 5  alpha = -0.6928 |2 0 0  +  ; 2 1 -1  +  ; 3 2 0  +  ; 2 1 1  - >
+ 6  alpha = 0.6928 |2 1 -1  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 0 0  - >
+ 7  alpha = 0.6928 |2 0 0  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 1 -1  - >
+ 8  alpha = -0.6928 |2 0 0  +  ; 2 1 -1  +  ; 2 1 1  +  ; 3 2 0  - >
+ 9  alpha = -1.1314 |2 0 0  +  ; 2 1 1  +  ; 3 2 -2  +  ; 2 1 1  - >
+ 10  alpha = 0.2000 |2 0 0  +  ; 2 1 -1  +  ; 3 2 1  +  ; 2 1 0  - >
+ 11  alpha = -0.6000 |2 1 -1  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 0 0  - >
+ 12  alpha = -1.0000 |2 0 0  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 1 -1  - >
+ 13  alpha = 0.6000 |2 0 0  +  ; 2 1 -1  +  ; 2 1 0  +  ; 3 2 1  - >
+ 14  alpha = 1.1314 |2 0 0  +  ; 2 1 -1  +  ; 3 2 2  +  ; 2 1 -1  - >
+
+
+# S2 OPERATOR RESULT IS: #
+
+
+ 1  alpha = 2.0000 |2 0 0  +  ; 2 1 0  +  ; 3 2 -1  +  ; 2 1 1  - >
+ 2  alpha = -1.2000 |2 1 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 0 0  - >
+ 3  alpha = -0.4000 |2 0 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 1 0  - >
+ 4  alpha = 1.2000 |2 0 0  +  ; 2 1 0  +  ; 2 1 1  +  ; 3 2 -1  - >
+ 5  alpha = -1.3856 |2 0 0  +  ; 2 1 -1  +  ; 3 2 0  +  ; 2 1 1  - >
+ 6  alpha = 1.3856 |2 0 0  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 1 -1  - >
+ 7  alpha = -1.3856 |2 0 0  +  ; 2 1 -1  +  ; 2 1 1  +  ; 3 2 0  - >
+ 8  alpha = 1.3856 |2 1 -1  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 0 0  - >
+ 9  alpha = -2.2627 |2 0 0  +  ; 2 1 1  +  ; 3 2 -2  +  ; 2 1 1  - >
+ 10  alpha = 0.4000 |2 0 0  +  ; 2 1 -1  +  ; 3 2 1  +  ; 2 1 0  - >
+ 11  alpha = -1.2000 |2 1 -1  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 0 0  - >
+ 12  alpha = -2.0000 |2 0 0  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 1 -1  - >
+ 13  alpha = 1.2000 |2 0 0  +  ; 2 1 -1  +  ; 2 1 0  +  ; 3 2 1  - >
+ 14  alpha = 2.2627 |2 0 0  +  ; 2 1 -1  +  ; 3 2 2  +  ; 2 1 -1  - >
+
+
+# eigenvalue is 2.00 corresponding to S = 1.00
+# S2(KETS) AND lambda * KETS ARE EQUAL # 
+
+
+___________________________________________________________________
+
+
+___________________________________________________________________
+
+
+# OPERATING ON STARTING CONFIGURATION # 14
+
+
+alpha = 1.0000 | 0  +  ;  0  +  ;  1  +  ;  -1  - >
+
+
+
+# INITIALISING Lall #
+
+# CSFGEN: finding min and max L value. 
+# min L = 0 MAX L = 4
+
+# APPLYING -- L -- PROJECTOR FOR L = 1
+
+# finding min and max S value. 
+# min S = 0.0 MAX S = 2.0
+
+# APPLYING -- S -- PROJECTOR FOR S = 1.0
+
+
+# PROJECTED KET FOR S = 1.00
+
+
+ 1  alpha = 0.2250 |2 0 0  +  ; 2 1 0  +  ; 2 1 1  +  ; 3 2 -1  - >
+ 2  alpha = 0.0750 |2 1 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 0 0  - >
+ 3  alpha = -0.0750 |2 0 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 1 0  - >
+ 4  alpha = 0.0750 |2 0 0  +  ; 2 1 0  +  ; 3 2 -1  +  ; 2 1 1  - >
+ 5  alpha = -0.2598 |2 0 0  +  ; 2 1 -1  +  ; 2 1 1  +  ; 3 2 0  - >
+ 6  alpha = -0.0866 |2 1 -1  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 0 0  - >
+ 7  alpha = 0.0866 |2 0 0  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 1 -1  - >
+ 8  alpha = -0.0866 |2 0 0  +  ; 2 1 -1  +  ; 3 2 0  +  ; 2 1 1  - >
+ 9  alpha = 0.2250 |2 0 0  +  ; 2 1 -1  +  ; 2 1 0  +  ; 3 2 1  - >
+ 10  alpha = 0.0750 |2 1 -1  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 0 0  - >
+ 11  alpha = -0.0750 |2 0 0  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 1 -1  - >
+ 12  alpha = 0.0750 |2 0 0  +  ; 2 1 -1  +  ; 3 2 1  +  ; 2 1 0  - >
+
+
+
+
+# NOW APPLYING L2 TO PROJECTED KET.
+# [ first normalising and dividing ket by first vector's coefficient = 0.4743 ] 
+
+
+# ks: #
+
+
+ 1  alpha = 1.0000 |2 0 0  +  ; 2 1 0  +  ; 2 1 1  +  ; 3 2 -1  - >
+ 2  alpha = 0.3333 |2 1 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 0 0  - >
+ 3  alpha = -0.3333 |2 0 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 1 0  - >
+ 4  alpha = 0.3333 |2 0 0  +  ; 2 1 0  +  ; 3 2 -1  +  ; 2 1 1  - >
+ 5  alpha = -1.1547 |2 0 0  +  ; 2 1 -1  +  ; 2 1 1  +  ; 3 2 0  - >
+ 6  alpha = -0.3849 |2 1 -1  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 0 0  - >
+ 7  alpha = 0.3849 |2 0 0  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 1 -1  - >
+ 8  alpha = -0.3849 |2 0 0  +  ; 2 1 -1  +  ; 3 2 0  +  ; 2 1 1  - >
+ 9  alpha = 1.0000 |2 0 0  +  ; 2 1 -1  +  ; 2 1 0  +  ; 3 2 1  - >
+ 10  alpha = 0.3333 |2 1 -1  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 0 0  - >
+ 11  alpha = -0.3333 |2 0 0  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 1 -1  - >
+ 12  alpha = 0.3333 |2 0 0  +  ; 2 1 -1  +  ; 3 2 1  +  ; 2 1 0  - >
+
+
+# L2 OPERATOR RESULT IS: #
+
+
+ 1  alpha = 2.0000 |2 0 0  +  ; 2 1 0  +  ; 2 1 1  +  ; 3 2 -1  - >
+ 2  alpha = -2.3094 |2 0 0  +  ; 2 1 -1  +  ; 2 1 1  +  ; 3 2 0  - >
+ 3  alpha = 0.6667 |2 1 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 0 0  - >
+ 4  alpha = -0.7698 |2 1 -1  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 0 0  - >
+ 5  alpha = -0.6667 |2 0 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 1 0  - >
+ 6  alpha = 0.7698 |2 0 0  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 1 -1  - >
+ 7  alpha = 0.6667 |2 0 0  +  ; 2 1 0  +  ; 3 2 -1  +  ; 2 1 1  - >
+ 8  alpha = -0.7698 |2 0 0  +  ; 2 1 -1  +  ; 3 2 0  +  ; 2 1 1  - >
+ 9  alpha = 2.0000 |2 0 0  +  ; 2 1 -1  +  ; 2 1 0  +  ; 3 2 1  - >
+ 10  alpha = 0.6667 |2 1 -1  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 0 0  - >
+ 11  alpha = -0.6667 |2 0 0  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 1 -1  - >
+ 12  alpha = 0.6667 |2 0 0  +  ; 2 1 -1  +  ; 3 2 1  +  ; 2 1 0  - >
+
+
+# eigenvalue is 2.00 corresponding to L = 1.0
+# L2(KETS) AND lambda * KETS ARE EQUAL # 
+
+
+
+# NOW APPLYING S2 TO PROJECTED KET.
+# [ first normalising and then dividing ket by first vector's coefficient = 0.4743 ] 
+
+neact = 4
+# ks: #
+
+
+ 1  alpha = 1.0000 |2 0 0  +  ; 2 1 0  +  ; 2 1 1  +  ; 3 2 -1  - >
+ 2  alpha = 0.3333 |2 1 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 0 0  - >
+ 3  alpha = -0.3333 |2 0 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 1 0  - >
+ 4  alpha = 0.3333 |2 0 0  +  ; 2 1 0  +  ; 3 2 -1  +  ; 2 1 1  - >
+ 5  alpha = -1.1547 |2 0 0  +  ; 2 1 -1  +  ; 2 1 1  +  ; 3 2 0  - >
+ 6  alpha = -0.3849 |2 1 -1  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 0 0  - >
+ 7  alpha = 0.3849 |2 0 0  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 1 -1  - >
+ 8  alpha = -0.3849 |2 0 0  +  ; 2 1 -1  +  ; 3 2 0  +  ; 2 1 1  - >
+ 9  alpha = 1.0000 |2 0 0  +  ; 2 1 -1  +  ; 2 1 0  +  ; 3 2 1  - >
+ 10  alpha = 0.3333 |2 1 -1  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 0 0  - >
+ 11  alpha = -0.3333 |2 0 0  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 1 -1  - >
+ 12  alpha = 0.3333 |2 0 0  +  ; 2 1 -1  +  ; 3 2 1  +  ; 2 1 0  - >
+
+
+# S2 OPERATOR RESULT IS: #
+
+
+ 1  alpha = 2.0000 |2 0 0  +  ; 2 1 0  +  ; 2 1 1  +  ; 3 2 -1  - >
+ 2  alpha = 0.6667 |2 1 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 0 0  - >
+ 3  alpha = -0.6667 |2 0 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 1 0  - >
+ 4  alpha = 0.6667 |2 0 0  +  ; 2 1 0  +  ; 3 2 -1  +  ; 2 1 1  - >
+ 5  alpha = -2.3094 |2 0 0  +  ; 2 1 -1  +  ; 2 1 1  +  ; 3 2 0  - >
+ 6  alpha = -0.7698 |2 1 -1  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 0 0  - >
+ 7  alpha = 0.7698 |2 0 0  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 1 -1  - >
+ 8  alpha = -0.7698 |2 0 0  +  ; 2 1 -1  +  ; 3 2 0  +  ; 2 1 1  - >
+ 9  alpha = 2.0000 |2 0 0  +  ; 2 1 -1  +  ; 2 1 0  +  ; 3 2 1  - >
+ 10  alpha = 0.6667 |2 1 -1  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 0 0  - >
+ 11  alpha = -0.6667 |2 0 0  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 1 -1  - >
+ 12  alpha = 0.6667 |2 0 0  +  ; 2 1 -1  +  ; 3 2 1  +  ; 2 1 0  - >
+
+
+# eigenvalue is 2.00 corresponding to S = 1.00
+# S2(KETS) AND lambda * KETS ARE EQUAL # 
+
+
+___________________________________________________________________
+
+
+___________________________________________________________________
+
+
+# OPERATING ON STARTING CONFIGURATION # 15
+
+
+alpha = 1.0000 | 0  +  ;  1  +  ;  -2  +  ;  1  - >
+
+
+
+# INITIALISING Lall #
+
+# CSFGEN: finding min and max L value. 
+# min L = 0 MAX L = 4
+
+# APPLYING -- L -- PROJECTOR FOR L = 1
+
+# finding min and max S value. 
+# min S = 0.0 MAX S = 2.0
+
+# APPLYING -- S -- PROJECTOR FOR S = 1.0
+
+
+# PROJECTED KET FOR S = 1.00
+
+
+ 1  alpha = 0.4000 |2 0 0  +  ; 2 1 1  +  ; 3 2 -2  +  ; 2 1 1  - >
+ 2  alpha = -0.1414 |2 0 0  +  ; 2 1 0  +  ; 3 2 -1  +  ; 2 1 1  - >
+ 3  alpha = -0.1414 |2 0 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 1 0  - >
+ 4  alpha = 0.1414 |2 0 0  +  ; 2 1 -1  +  ; 3 2 1  +  ; 2 1 0  - >
+ 5  alpha = 0.1414 |2 0 0  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 1 -1  - >
+ 6  alpha = -0.4000 |2 0 0  +  ; 2 1 -1  +  ; 3 2 2  +  ; 2 1 -1  - >
+
+
+
+
+# NOW APPLYING L2 TO PROJECTED KET.
+# [ first normalising and dividing ket by first vector's coefficient = 0.6325 ] 
+
+
+# ks: #
+
+
+ 1  alpha = 1.0000 |2 0 0  +  ; 2 1 1  +  ; 3 2 -2  +  ; 2 1 1  - >
+ 2  alpha = -0.3536 |2 0 0  +  ; 2 1 0  +  ; 3 2 -1  +  ; 2 1 1  - >
+ 3  alpha = -0.3536 |2 0 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 1 0  - >
+ 4  alpha = 0.3536 |2 0 0  +  ; 2 1 -1  +  ; 3 2 1  +  ; 2 1 0  - >
+ 5  alpha = 0.3536 |2 0 0  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 1 -1  - >
+ 6  alpha = -1.0000 |2 0 0  +  ; 2 1 -1  +  ; 3 2 2  +  ; 2 1 -1  - >
+
+
+# L2 OPERATOR RESULT IS: #
+
+
+ 1  alpha = 2.0000 |2 0 0  +  ; 2 1 1  +  ; 3 2 -2  +  ; 2 1 1  - >
+ 2  alpha = -0.7071 |2 0 0  +  ; 2 1 0  +  ; 3 2 -1  +  ; 2 1 1  - >
+ 3  alpha = -0.7071 |2 0 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 1 0  - >
+ 4  alpha = 0.7071 |2 0 0  +  ; 2 1 -1  +  ; 3 2 1  +  ; 2 1 0  - >
+ 5  alpha = 0.7071 |2 0 0  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 1 -1  - >
+ 6  alpha = -2.0000 |2 0 0  +  ; 2 1 -1  +  ; 3 2 2  +  ; 2 1 -1  - >
+
+
+# eigenvalue is 2.00 corresponding to L = 1.0
+# L2(KETS) AND lambda * KETS ARE EQUAL # 
+
+
+
+# NOW APPLYING S2 TO PROJECTED KET.
+# [ first normalising and then dividing ket by first vector's coefficient = 0.6325 ] 
+
+neact = 4
+# ks: #
+
+
+ 1  alpha = 1.0000 |2 0 0  +  ; 2 1 1  +  ; 3 2 -2  +  ; 2 1 1  - >
+ 2  alpha = -0.3536 |2 0 0  +  ; 2 1 0  +  ; 3 2 -1  +  ; 2 1 1  - >
+ 3  alpha = -0.3536 |2 0 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 1 0  - >
+ 4  alpha = 0.3536 |2 0 0  +  ; 2 1 -1  +  ; 3 2 1  +  ; 2 1 0  - >
+ 5  alpha = 0.3536 |2 0 0  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 1 -1  - >
+ 6  alpha = -1.0000 |2 0 0  +  ; 2 1 -1  +  ; 3 2 2  +  ; 2 1 -1  - >
+
+
+# S2 OPERATOR RESULT IS: #
+
+
+ 1  alpha = 2.0000 |2 0 0  +  ; 2 1 1  +  ; 3 2 -2  +  ; 2 1 1  - >
+ 2  alpha = -0.7071 |2 0 0  +  ; 2 1 0  +  ; 3 2 -1  +  ; 2 1 1  - >
+ 3  alpha = -0.7071 |2 0 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 1 0  - >
+ 4  alpha = 0.7071 |2 0 0  +  ; 2 1 -1  +  ; 3 2 1  +  ; 2 1 0  - >
+ 5  alpha = 0.7071 |2 0 0  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 1 -1  - >
+ 6  alpha = -2.0000 |2 0 0  +  ; 2 1 -1  +  ; 3 2 2  +  ; 2 1 -1  - >
+
+
+# eigenvalue is 2.00 corresponding to S = 1.00
+# S2(KETS) AND lambda * KETS ARE EQUAL # 
+
+
+___________________________________________________________________
+
+
+
+
+
+
+
+
+
+---------------------------------------------
+# APPLYING GRAM-SCHMIDT TO RESULTING KETS 
+
+# KET no. 4 IS NULL 
+
+# KET no. 5 IS NULL 
+
+# KET no. 6 IS NULL 
+
+# END GRAM-SCHMIDT  
+---------------------------------------------
+
+
+
+
+
+___________________________________________________________
+___________________________________________________________
+ # FINAL RESULT: 
+
+# TOTAL NUMBER OF CSF's = 3
+
+# AFTER G-S: EIGENKET OBTAINED FROM CONFIG NO. 4,  PAGE 1 FROM CONFIGURATION 4
+
+
+ 1  alpha = 0.1826 |2 0 0  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 1 -1  - >
+ 2  alpha = 0.5477 |2 1 -1  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 0 0  - >
+ 3  alpha = -0.1826 |2 0 0  +  ; 2 1 -1  +  ; 3 2 0  +  ; 2 1 1  - >
+ 4  alpha = 0.1826 |2 0 0  +  ; 2 1 -1  +  ; 2 1 1  +  ; 3 2 0  - >
+ 5  alpha = -0.1581 |2 0 0  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 1 -1  - >
+ 6  alpha = -0.4743 |2 1 -1  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 0 0  - >
+ 7  alpha = 0.1581 |2 0 0  +  ; 2 1 -1  +  ; 3 2 1  +  ; 2 1 0  - >
+ 8  alpha = -0.1581 |2 0 0  +  ; 2 1 -1  +  ; 2 1 0  +  ; 3 2 1  - >
+ 9  alpha = -0.1581 |2 0 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 1 0  - >
+ 10  alpha = -0.4743 |2 1 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 0 0  - >
+ 11  alpha = 0.1581 |2 0 0  +  ; 2 1 0  +  ; 3 2 -1  +  ; 2 1 1  - >
+ 12  alpha = -0.1581 |2 0 0  +  ; 2 1 0  +  ; 2 1 1  +  ; 3 2 -1  - >
+
+
+# MODULUS: 1.0
+# AFTER G-S: EIGENKET OBTAINED FROM CONFIG NO. 4,  PAGE 2 FROM CONFIGURATION 4
+
+
+ 1  alpha = -0.2236 |2 0 0  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 1 -1  - >
+ 2  alpha = 0.6325 |2 0 0  +  ; 2 1 -1  +  ; 3 2 2  +  ; 2 1 -1  - >
+ 3  alpha = -0.2236 |2 0 0  +  ; 2 1 -1  +  ; 3 2 1  +  ; 2 1 0  - >
+ 4  alpha = 0.2236 |2 0 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 1 0  - >
+ 5  alpha = 0.2236 |2 0 0  +  ; 2 1 0  +  ; 3 2 -1  +  ; 2 1 1  - >
+ 6  alpha = -0.6325 |2 0 0  +  ; 2 1 1  +  ; 3 2 -2  +  ; 2 1 1  - >
+
+
+# MODULUS: 1.0
+# AFTER G-S: EIGENKET OBTAINED FROM CONFIG NO. 4,  PAGE 3 FROM CONFIGURATION 4
+
+
+ 1  alpha = 0.2236 |2 0 0  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 1 -1  - >
+ 2  alpha = -0.4472 |2 0 0  +  ; 2 1 -1  +  ; 2 1 0  +  ; 3 2 1  - >
+ 3  alpha = -0.2582 |2 0 0  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 1 -1  - >
+ 4  alpha = 0.2582 |2 0 0  +  ; 2 1 -1  +  ; 3 2 0  +  ; 2 1 1  - >
+ 5  alpha = 0.5164 |2 0 0  +  ; 2 1 -1  +  ; 2 1 1  +  ; 3 2 0  - >
+ 6  alpha = -0.2236 |2 0 0  +  ; 2 1 0  +  ; 3 2 -1  +  ; 2 1 1  - >
+ 7  alpha = -0.4472 |2 0 0  +  ; 2 1 0  +  ; 2 1 1  +  ; 3 2 -1  - >
+ 8  alpha = -0.2236 |2 0 0  +  ; 2 1 -1  +  ; 3 2 1  +  ; 2 1 0  - >
+ 9  alpha = 0.2236 |2 0 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 1 0  - >
+
+
+# MODULUS: 1.0
+
+
+______________________________________________________________
+
+
+# CONVERTING WAVEFUNCTION TO REAL 
+
+
+# CSFORD: iconf = 4
+# CSFORD: iconf = 4
+# CSFORD: iconf = 4
+
+# TOTAL NUMBER OF CSF's = 3
+
+# REAL CFS's for CONFIGURATION: 4 PAGE 1 FROM CONFIGURATION 4
+
+
+ 1  alpha = -0.4743  i  |2 1 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 0 0  - >
+ 2  alpha = 0.5477  i  |2 1 -1  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 0 0  - >
+ 3  alpha = -0.4743  i  |2 1 -1  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 0 0  - >
+ 4  alpha = 0.1826  i  |2 0 0  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 1 -1  - >
+ 5  alpha = -0.1581  i  |2 0 0  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 1 -1  - >
+ 6  alpha = -0.1581  i  |2 0 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 1 0  - >
+ 7  alpha = 0.1581  i  |2 0 0  +  ; 2 1 -1  +  ; 3 2 1  +  ; 2 1 0  - >
+ 8  alpha = 0.1581  i  |2 0 0  +  ; 2 1 0  +  ; 3 2 -1  +  ; 2 1 1  - >
+ 9  alpha = -0.1826  i  |2 0 0  +  ; 2 1 -1  +  ; 3 2 0  +  ; 2 1 1  - >
+ 10  alpha = -0.1581  i  |2 0 0  +  ; 2 1 0  +  ; 2 1 1  +  ; 3 2 -1  - >
+ 11  alpha = 0.1826  i  |2 0 0  +  ; 2 1 -1  +  ; 2 1 1  +  ; 3 2 0  - >
+ 12  alpha = -0.1581  i  |2 0 0  +  ; 2 1 -1  +  ; 2 1 0  +  ; 3 2 1  - >
+
+
+# MODULUS: 1.0
+# REAL CFS's for CONFIGURATION: 4 PAGE 2 FROM CONFIGURATION 4
+
+
+ 1  alpha = -0.4472  i  |2 0 0  +  ; 2 1 -1  +  ; 3 2 -2  +  ; 2 1 -1  - >
+ 2  alpha = -0.2236  i  |2 0 0  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 1 -1  - >
+ 3  alpha = -0.4472  i  |2 0 0  +  ; 2 1 1  +  ; 3 2 2  +  ; 2 1 -1  - >
+ 4  alpha = 0.2236  i  |2 0 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 1 0  - >
+ 5  alpha = -0.2236  i  |2 0 0  +  ; 2 1 -1  +  ; 3 2 1  +  ; 2 1 0  - >
+ 6  alpha = 0.4472  i  |2 0 0  +  ; 2 1 1  +  ; 3 2 -2  +  ; 2 1 1  - >
+ 7  alpha = 0.2236  i  |2 0 0  +  ; 2 1 0  +  ; 3 2 -1  +  ; 2 1 1  - >
+ 8  alpha = -0.4472  i  |2 0 0  +  ; 2 1 -1  +  ; 3 2 2  +  ; 2 1 1  - >
+
+
+# MODULUS: 1.0
+# REAL CFS's for CONFIGURATION: 4 PAGE 3 FROM CONFIGURATION 4
+
+
+ 1  alpha = -0.2582  i  |2 0 0  +  ; 2 1 1  +  ; 3 2 0  +  ; 2 1 -1  - >
+ 2  alpha = 0.2236  i  |2 0 0  +  ; 2 1 0  +  ; 3 2 1  +  ; 2 1 -1  - >
+ 3  alpha = 0.2236  i  |2 0 0  +  ; 2 1 1  +  ; 3 2 -1  +  ; 2 1 0  - >
+ 4  alpha = -0.2236  i  |2 0 0  +  ; 2 1 -1  +  ; 3 2 1  +  ; 2 1 0  - >
+ 5  alpha = -0.2236  i  |2 0 0  +  ; 2 1 0  +  ; 3 2 -1  +  ; 2 1 1  - >
+ 6  alpha = 0.2582  i  |2 0 0  +  ; 2 1 -1  +  ; 3 2 0  +  ; 2 1 1  - >
+ 7  alpha = -0.4472  i  |2 0 0  +  ; 2 1 0  +  ; 2 1 1  +  ; 3 2 -1  - >
+ 8  alpha = 0.5164  i  |2 0 0  +  ; 2 1 -1  +  ; 2 1 1  +  ; 3 2 0  - >
+ 9  alpha = -0.4472  i  |2 0 0  +  ; 2 1 -1  +  ; 2 1 0  +  ; 3 2 1  - >
+
+
+# MODULUS: 1.0
+
+
+
+# TOTAL NUMBER OF CSF's = 3
+
+
+
+# MODULUS: 1.0
+
+
+# MODULUS: 1.0
+
+
+# MODULUS: 1.0
+# NON-NULL KET ON PAGE 1
+# FIRST NON-NULL COMPONENT IS NUMBER 1
+
+
+
+# BUILDLISTLEV: NTOP = 2 l1act = 0
+# NUMBER OF TOTAL SPINUP ELECTRONS: 0
+
+# CALLS TO ADDONEKET: 0 TIMES

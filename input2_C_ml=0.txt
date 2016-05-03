@@ -1,0 +1,22 @@
+C		title
+4		nconfig
+2		neinact
+4		neact
+# Config 1
+2		nshell
+2 2 0 		number of electrons, n, l
+2 2 1
+# Config 2
+1		nshell
+4 2 1
+# Config 3
+2		nshell
+2 2 0
+2 3 2
+# Config 4
+3		nshell
+1 2 0
+2 2 1
+1 3 2
+# Common parameters
+

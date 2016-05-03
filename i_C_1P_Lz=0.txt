@@ -1,0 +1,25 @@
+C           atom
+4           nconfig
+4           neact
+2           neinact
+#config1
+2           nshell
+2s2
+2p2
+#config2
+1           nshell
+2p4
+#config3
+3           nshell
+2s1
+2p2
+3d1
+#config4
+2           nshell
+2s2
+3d2
+#Other parameters
+1           S
+1           L
+0           Lz 
+1           Sz
