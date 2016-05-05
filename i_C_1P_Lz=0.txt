@@ -4,22 +4,22 @@ C           atom
 2           neinact
 #config1
 2           nshell
-2s2
-2p2
+2 s 2
+2 p 2
 #config2
 1           nshell
-2p4
-#config3
+2 p 4
+config3
 3           nshell
-2s1
-2p2
-3d1
+2 s 1
+2 p 2
+3 d 1
 #config4
 2           nshell
-2s2
-3d2
+2 s 2
+3 d 2
 #Other parameters
-1           S
+2           2S
 1           L
-0           Lz 
-1           Sz
+2           Sz
+0           Lz
