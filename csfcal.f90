@@ -6,21 +6,29 @@ program csfcal
   
   ! Constants
   integer, parameter :: STRING_MAX_LENGTH = 16
+  integer, parameter :: i16b = SELECTED_INT_KIND(38)
+
   ! Input variables
   integer :: nconfig, Ldes, Sdes_t2, Lzdes, Szdes_t2
   integer :: neinact ! not used
   integer :: neact
-  integer, allocatable :: econfigs (:, :) !
-  integer, allocatable :: nshell(:)
+  integer, allocatable :: econfigs (:, :) !n, l, ne
+  integer, allocatable :: nshell(:) ! number of shells occupied in each config
   
   integer, dimension(5) :: testarray
   call read_input()
-  !call checkSmin() !tested
-  !call checkSmax() !tested
+  call checkSmin() !tested
+  call checkSmax() !tested
   !write(*, '(">>>testing ", 1I5)') Lmin(4, 6)
-  !call checkLmax()
-  testarray(1:5) = 1
-  write(*, *) minsum(testarray, 5)
+  call checkLmax()
+
+!  testarray(1:5) = 1
+!  testarray(1) = 8
+!  testarray(2) = 11
+!  testarray(3) = 6
+!  testarray(4) = 5
+!  write(*, *) minsum(testarray)
+  call checkLmin()
   contains
 
   subroutine read_input()
@@ -177,12 +185,30 @@ program csfcal
       enddo
   end subroutine checkLmax
 
-  function minsum(array, n)
-      integer, intent(in) :: n, array(n)
-      integer :: i, minsum
-      minsum = sum(array(:))
-      !! TO DO
-  end function minsum
+   function minsum(array)
+       implicit none
+       integer :: n, array(:), i, j, minsum, tmpsum
+       integer(i16b) :: b
+       b = 0
+       n = size(array)
+       minsum = 100*n
+       do i = 1, 2**n
+           tmpsum = 0
+           do j = 1, n
+               if (btest(b,j)) then
+                   tmpsum = tmpsum - array(j)
+               else
+                   tmpsum = tmpsum + array(j)
+               endif
+           enddo
+           tmpsum = abs(tmpsum)
+           if (tmpsum.lt.minsum) then
+               minsum =tmpsum
+           end if
+           b = b + 1
+       enddo
+ 
+   end function minsum
 
 
   
@@ -194,18 +220,30 @@ program csfcal
       do i = istart, iend
         do j = 1, econfigs(i, 3) 
           larray(k) = econfigs(i, 2)
-          write(*, '("electron #: , l=", 2I5)') k, econfigs(i, 2)
+         ! write(*, '("electron #: , l=", 2I5)') k, econfigs(i, 2)
           k = k + 1
         enddo
       enddo
-      Lmin = minsum(larray, neact)
+      Lmin = minsum(larray)
   end function Lmin
 
 
 
 
   subroutine checkLmin()
-      !!TO DO
+      integer :: istart, iend, tpLmin, i
+      iend = 0
+      do i = 1, nconfig
+        istart = iend + 1
+        iend = istart + nshell(i) - 1
+        write(*, *) istart, iend, Lmin(istart, iend)
+        tpLmin = Lmin(istart, iend)
+        if(Ldes.lt.tpLmin) then 
+            write(*, '("Error: L_des < L_min, in config #", 1I5)') i
+            write(*, '("L_des  <= ", 1I5)') tpLmin
+            stop 1
+        endif
+      enddo
   end subroutine checkLmin
 
 
