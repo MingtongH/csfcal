@@ -9,7 +9,8 @@ program csfcal
   integer, parameter :: i16b = SELECTED_INT_KIND(38)
 
   ! Input variables
-  integer :: nconfig, Ldes, Sdes_t2, Lzdes, Szdes_t2
+  integer :: nconfig, Ldes, Sdes_t2, Lzdes, Szdes_t2, Ides
+  !Ides is read in as 1/-1, but then converted to 0/1 (even/odd)
   integer :: neinact ! not used
   integer :: neact
   integer, allocatable :: econfigs (:, :) !n, l, ne
@@ -20,8 +21,8 @@ program csfcal
   call checkSmin() !tested
   call checkSmax() !tested
   !write(*, '(">>>testing ", 1I5)') Lmin(4, 6)
-  call checkLmax()
-
+  call checkILmax()
+    
 !  testarray(1:5) = 1
 !  testarray(1) = 8
 !  testarray(2) = 11
@@ -83,7 +84,17 @@ program csfcal
      read(*, *) Ldes
      read(*, *) Szdes_t2
      read(*, *) Lzdes
-     write(*, '("desired S*2 L Sz*2 Lz:", 4I5)') Sdes_t2, Ldes, Szdes_t2,  Lzdes
+     read(*, *) Ides
+     write(*, '("desired S*2 L Sz*2 Lz I :", 5I5)') Sdes_t2, Ldes, Szdes_t2,  Lzdes, Ides
+     if(Ides.eq.1) then 
+         Ides = 0
+     elseif(Ides.eq.-1) then
+         Ides = 1
+     else
+         write(*, '("Error: Input for desired I not correct. 1 for even and -1 for odd ")') 
+         stop 1
+     endif
+     write(*, '("Ides converted")')
      write(*, '("==== End Reading Input ====")')
 
   end subroutine read_input
@@ -115,7 +126,7 @@ program csfcal
   
   subroutine checkSmin()
       if(Sdes_t2.lt.Smin_t2(neact)) then
-          write(*, '("Error: S_des < S_min, change neact, Smin*2 = ", 1I5)') Smin_t2(neact)
+          write(*, '("Error: S_des < S_min, current Smin*2 = ", 1I5)') Smin_t2(neact)
           stop 1
       endif
   end subroutine checkSmin
@@ -155,7 +166,7 @@ program csfcal
         tpSmax_t2 = Smax_t2(istart, iend)
         if(Sdes_t2.gt.tpSmax_t2) then
             write(*, '("Error: S_des > S_max, in config #", 1I5)') i
-            write(*, '("S_des * 2 <= ", 1I5)') tpSmax_t2
+            write(*, '("Current Smax * 2 = ", 1I5)') tpSmax_t2
             stop 1
         endif
       enddo
@@ -170,20 +181,28 @@ program csfcal
       end do
   end function Lmax
   
-  subroutine checkLmax()
-      integer :: istart, iend, tpLmax, i
+  subroutine checkILmax()
+      integer :: istart, iend, tpLmax, i, tpI
       iend = 0
       do i = 1, nconfig
         istart = iend + 1
         iend = istart + nshell(i) - 1
         tpLmax = Lmax(istart, iend)
+        tpI = mod(tpLmax, 2) !0 for even, 1 for odd
+
         if(Ldes.gt.tpLmax) then 
             write(*, '("Error: L_des > L_max, in config #", 1I5)') i
-            write(*, '("L_des  <= ", 1I5)') tpLmax
+            write(*, '("Current Lmax  = ", 1I5)') tpLmax
             stop 1
         endif
+        if(Ides.ne.tpI) then
+            write(*, '("Error: Wrong parity in config #", 1I5)') i
+            stop 3
+        endif
+
+        
       enddo
-  end subroutine checkLmax
+  end subroutine checkILmax
 
    function minsum(array)
        implicit none
@@ -240,7 +259,7 @@ program csfcal
         tpLmin = Lmin(istart, iend)
         if(Ldes.lt.tpLmin) then 
             write(*, '("Error: L_des < L_min, in config #", 1I5)') i
-            write(*, '("L_des  <= ", 1I5)') tpLmin
+            write(*, '("Current Lmin = ", 1I5)') tpLmin
             stop 1
         endif
       enddo
