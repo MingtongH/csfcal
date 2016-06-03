@@ -124,7 +124,6 @@ module prep
       Smin_t2 = mod(ne, 2)
   end function Smin_t2
   
-  
   subroutine checkSmin()
       if(Sdes_t2.lt.Smin_t2(neact)) then
           write(*, '("Error: S_des < S_min, current Smin*2 = ", 1I5)') Smin_t2(neact)
@@ -150,12 +149,12 @@ module prep
 
 
 
-  function Smax_t2(istart, iend)
-      integer, intent(in) :: istart, iend
+  function Smax_t2(config)
+      integer, intent(in) :: config(:, :)
       integer :: i, Smax_t2
       Smax_t2 = 0
-      do i = istart, iend
-        Smax_t2 = Smax_t2 + Smax_t2_oneshell(econfigs(i, 2), econfigs(i, 3))
+      do i = 1, size(config, 1)
+        Smax_t2 = Smax_t2 + Smax_t2_oneshell(config(i, 2), config(i, 3))
       end do 
   end function Smax_t2
 
@@ -165,7 +164,8 @@ module prep
       do i = 1, nconfig
         istart = iend + 1
         iend = istart + nshell(i) - 1
-        tpSmax_t2 = Smax_t2(istart, iend)
+        tpSmax_t2 = Smax_t2(econfigs(istart:iend, 1:3))
+        write(*, '("checking Smax for config: , Smax *2 = ", 2I5)') i, tpSmax_t2
         if(Sdes_t2.gt.tpSmax_t2) then
             write(*, '("Error: S_des > S_max, in config #", 1I5)') i
             write(*, '("Current Smax * 2 = ", 1I5)') tpSmax_t2
@@ -175,12 +175,12 @@ module prep
       write(*, '("Smax checked")')
   end subroutine checkSmax
 
-  function Lmax(istart, iend)
-      integer, intent(in) :: istart, iend
+  function Lmax(config)
+      integer, intent(in) :: config(:, :)
       integer :: Lmax, i
       Lmax = 0
-      do i = istart, iend
-        Lmax = Lmax + econfigs(i, 2)*econfigs(i, 3)
+      do i = 1, size(config, 1)
+        Lmax = Lmax + config(i, 2)*config(i, 3)
       end do
   end function Lmax
   
@@ -190,7 +190,8 @@ module prep
       do i = 1, nconfig
         istart = iend + 1
         iend = istart + nshell(i) - 1
-        tpLmax = Lmax(istart, iend)
+        tpLmax = Lmax(econfigs(istart:iend, 1:3))
+        write(*, '(" Checking Lmax for config: , Lmax = ", 2I5)') i, tpLmax
         tpI = mod(tpLmax, 2) !0 for even, 1 for odd
 
         if(Ldes.gt.tpLmax) then 
@@ -234,14 +235,14 @@ module prep
 
 
   
-  function Lmin(istart, iend)
-      integer, intent(in) :: istart, iend
+  function Lmin(config)
+      integer, intent(in) :: config(:, :)
       integer :: i, j, k, Lmin
       integer, dimension(neact) :: larray
       k = 1
-      do i = istart, iend
-        do j = 1, econfigs(i, 3) 
-          larray(k) = econfigs(i, 2)
+      do i = 1, size(config, 1)
+        do j = 1, config(i, 3) 
+          larray(k) = config(i, 2)
          ! write(*, '("electron #: , l=", 2I5)') k, econfigs(i, 2)
           k = k + 1
         enddo
@@ -259,7 +260,8 @@ module prep
         istart = iend + 1
         iend = istart + nshell(i) - 1
         !write(*, *) istart, iend, Lmin(istart, iend)
-        tpLmin = Lmin(istart, iend)
+        tpLmin = Lmin(econfigs(istart:iend, 1:3))
+        write(*, '(" Checking Lmin for config: , Lmin = ", 2I5)') i, tpLmin
         if(Ldes.lt.tpLmin) then 
             write(*, '("Error: L_des < L_min, in config #", 1I5)') i
             write(*, '("Current Lmin = ", 1I5)') tpLmin
