@@ -21,6 +21,4 @@ config3
 #Other parameters
 2           2S
 1           L
-2           Sz
-0           Lz
 1           I(1 for even, -1 for odd)
