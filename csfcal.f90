@@ -11,7 +11,7 @@ program csfcal
            call checkSmin()
            call checkSmax()
            call checkILmax()
-           call checkLmin()
+          !call checkLmin() !Lmin not that simple
        end subroutine main
  end program csfcal
 

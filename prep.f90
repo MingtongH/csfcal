@@ -63,8 +63,7 @@ module prep
              tmpl = orbTol(tmporb)
              econfigs(k, 1) = tmpn
              econfigs(k, 2) = tmpl
-             econfigs(k, 3) = tmpne !ne(j)Smin*2 = ", 1I5)') Smin_t2(neact://www.phy.ornl.gov/csep/pl/node17.html
-
+             econfigs(k, 3) = tmpne 
              write(*, '("shell # : n, l, ne ", 4I5)') j, tmpn, tmpl, tmpne
 
              k = k + 1
@@ -183,6 +182,18 @@ module prep
         Lmax = Lmax + config(i, 2)*config(i, 3)
       end do
   end function Lmax
+
+  function Lzmax(config)
+      integer, intent(in) :: config(:, :)
+      integer :: Lzmax, i, prs
+      Lzmax = 0
+      do i = 1, size(config, 1)
+       prs = config(i, 3)/2
+       Lzmax = Lzmax + (2* config(i, 2) - prs + 1) * prs + (config(i, 2) - prs) * mod( config(i, 3), 2)
+       ! lmax = 2*(l + l-1 +... l-(prs - 1) ) + (l - prs) * (N mod 2) 
+
+      end do
+  end function Lzmax
   
   subroutine checkILmax()
       integer :: istart, iend, tpLmax, i, tpI
@@ -234,7 +245,7 @@ module prep
    end function minsum
 
 
-  
+ ! Do not use! Not so simple 
   function Lmin(config)
       integer, intent(in) :: config(:, :)
       integer :: i, j, k, Lmin
