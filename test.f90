@@ -32,8 +32,22 @@ program test
         write(*, *) occ_up
         write(*, *) occ_dn
       enddo
-
+      
+      !bit manipulation POS starts from idex 0
+      !det = 2
+      !write(*, *) BTEST(det, 0)
+      !write(*, *) BTEST(det, 1)
+      !write(*, *) BTEST(det, 2) 
       !call assign_shell(det, 0, 0, 0, 0, 0, 0, configs, 0, 3)
-
+      det = 2
+     ! write(*, *) trailz(det) 
+      det = 26
+      write(*, *) Lz_updn(0, 3, det)
+      det = 4
+      write(*, *) Lz_updn(0, 2, det)
+      det = 8
+      write(*, *) Lz_updn(0, 2, det)
+     ! Lz_unit correct
+     ! Lz_updn correct
 
 end program test

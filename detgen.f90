@@ -77,8 +77,15 @@ module detgen
               do i = 2*tpdetlen - necur + 1, 2*tpdetlen
                 tpdet = ibset(tpdet, i)
               enddo
+              ! use just one combined det dn_det-up_det
+              ! tpdet is the last curdet with largest value
 
               do curdet = 1, tpdet
+              !TODO if occ_count = necur
+              !      if Lz within range
+                 ! call next shell recursive function
+
+
                 !call get_occ_orbs(ibits(curdet, tpdetlen,tpdetlen), ibits(curdet, 2*tpdetlen, tpdetlen), occ_up, occ_dn, ecount)
                ! if (ecount.eq.necur) then
                     !Calculate curLz, check range
@@ -178,14 +185,33 @@ module detgen
 
   end subroutine get_occ_orbs
 
-!  function Lz_shell(m_min, m_max, det_up, det_dn)
-!      integer :: Lz_shell
-      !! TODO
-!      Lz_shell = 0
-!  end function Lz_shell
+  integer function Lz_unit(m_min, det)
+      !det has one shell one spin
+      integer, intent(in) :: m_min
+      integer(i16b), intent(in) :: det
+      integer(i16b) :: tmp_det
+      integer :: i_elec, i
+      Lz_unit = 0
+      tmp_det = det
+      i_elec = 0
+      do while (tmp_det.ne.0)
+        i = trailz(tmp_det) ! number of trailing 0s = index of the first 1(starting from 0) 
+        Lz_unit = Lz_unit + m_min + i
+        !i_elec = i_elec + 1
+        tmp_det = ibclr(tmp_det, i)
+      enddo
+  end function Lz_unit
 
+  integer function Lz_updn(m_min, m_max, det)
+      !det_dn(m_max...m_min)--det_up(m_max...m_min)
+      integer, intent(in) :: m_min, m_max
+      integer :: halflen
+      integer(i16b), intent(in) :: det
+      integer(i16b) :: det_up, det_dn
+      halflen = m_max - m_min + 1
+      det_up = ibits(det, 0, halflen)
+      det_dn = ibits(det, halflen, halflen)
+      Lz_updn = Lz_unit(m_min, det_up) + Lz_unit(m_min, det_dn)
+  end function Lz_updn
 
-
-
-    
 end module detgen
