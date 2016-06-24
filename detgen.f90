@@ -17,25 +17,27 @@ module detgen
           endif
       end function isHalfFull
 
-      recursive subroutine assign_shell(prdet, prLz, pr2Sz, maxremLz, maxrem2Sz, desLz, des2Sz, configs, ncurr, nshell_tot)
+      recursive subroutine assign_shell(prdet_up,prdet_dn,prLz,pr2Sz,maxremLz,maxrem2Sz,desLz,des2Sz,configs,ncurr)
           !input maxrem includes all shells not assigned
           !including the one to be assigned in this recursion
           !only calculated by Lzmax(), no consideration of desLz
           implicit none
-          integer, intent(in) :: prLz, pr2Sz, maxremLz, maxrem2Sz, ncurr, nshell_tot
+          integer, intent(in) :: prLz, pr2Sz, maxremLz, maxrem2Sz, ncurr
           ! ncurr = current shell number
           integer, intent(in) :: desLz, des2Sz
           integer, intent(in) :: configs(:, :)
-          integer(i16b), intent(in) :: prdet
-          integer(i16b) :: curdet, tpdet,  det_range, ecount
+          integer :: nshell_tot
+          integer(i16b), intent(in) :: prdet_up, prdet_dn
+          integer(i16b) :: curdet, tpdet, det_range!det_dn--det_up
+          integer(i16b) :: detup, detdn
           integer :: curLz, cur2Sz, i, halflen
           integer :: curLzmax, curLzmin, m_max, m_min, cur2Szmax, cur2Szmin
           integer :: tpLz, tp2Sz, tpmaxremLz, tpmaxrem2Sz
           integer :: necur ! number of electrons in current shell
-          
+          nshell_tot = size(configs, 1)
           write(*, '("nshell_tot = ", 1I5)') nshell_tot
           write(*, '(">>>>>>>>>>> Now at shell :",1I5)') ncurr
-          write(*, '("prdet, prLz, pr2Sz, maxremLz, maxrem2Sz", 5I5)') prdet, prLz, pr2Sz, maxremLz, maxrem2Sz
+          write(*, '("prdet, prLz, pr2Sz, maxremLz, maxrem2Sz", 6I5)') prdet_up, prdet_dn, prLz, pr2Sz, maxremLz, maxrem2Sz
 
           !*************************last shell
           if(ncurr.eq.nshell_tot) then
@@ -48,16 +50,24 @@ module detgen
             !else if (cur2Sz.gt.maxrem2Sz.OR.cur2Sz.lt.(-maxrem2Sz)) then
             !    return
             else 
-                !write(*, '("isHalfFull = ")') isHalfFull(configs(ncurr:ncurr, 1:3))
-                !!TODO if there is valid assignment, update curdet
+                !!TODO if there is valid assignment, construct and store complete det_up, prdet_dn
+                !!TODO find all curdet that has curLz and cur2Sz
+               ! detup = prdet_up 
+               ! call detmod_shell(configs(ncurr, 1), configs(ncurr, 2), m_min, ibits(curdet, 0, halflen), detup)
+               ! detdn = prdet_dn
+               ! call  detmod_shell(configs(ncurr, 1), configs(ncurr, 2), m_min, ibits(curdet, halflen, halflen), detdn)
+               ! write(*, '("*** Branch shell, curLz = ", 2I5)') ncurr, curLz
+               ! call assign_shell(detup, detdn, tpLz, tp2Sz, tpmaxremLz, tpmaxrem2Sz, desLz, des2Sz, configs, ncurr+1)
+                
                 write(*, '("*** Branch shell, curlz = ", 2I5)') ncurr, curLz
                 write(*, '("Last shell! Successfully generated one det!")')
                 return
             endif
           !**************************first shell(only need inputs as 0)
           else if(ncurr.eq.0) then
-              curdet = 0!
-              call assign_shell(curdet, 0, 0, Lzmax(configs), Smax_t2(configs), desLz, des2Sz, configs, ncurr+1, nshell_tot)
+              detup = 0
+              detdn = 0
+              call assign_shell(detup, detdn, 0, 0, Lzmax(configs), Smax_t2(configs), desLz, des2Sz, configs, ncurr+1)
           !*****************************recur
           else
               necur = configs(ncurr, 3)
@@ -67,8 +77,9 @@ module detgen
              ! write(*, '("maxremLz of next recur = ", 1I5)') tpmaxremLz
               curLzmax = min(tpLz, desLz - prLz + tpmaxremLz)
               curLzmin = max(-tpLz, desLz - prLz - tpmaxremLz)
-              m_max = configs(ncurr, 2) 
+              m_max = configs(ncurr, 2) !lz 
               m_min = - configs(ncurr, 2) 
+              
               !!>>>>  May need to change m_max, m_min for pruning
               !!>>>>  check Sz beforehand to save time
               !cursmax_t2 = Smax_t2(configs(ncurr:ncurr, 1:3))
@@ -76,7 +87,7 @@ module detgen
               
               halflen = m_max - m_min + 1
               det_range = 0
-              do i = 2*halflen - necur + 1, 2*halflen
+              do i = 2*halflen - necur, 2*halflen-1
                 det_range = ibset(det_range, i)
               enddo
               !------------------------------------------------
@@ -93,15 +104,17 @@ module detgen
               !-------------------------------------------
                  if (count_occ_orbs(curdet) .eq. necur) then
                      curLz = Lz_oneshell(m_min, halflen, curdet)
-                     cur2Sz = Szt2_oneshell(halflen, curdet) 
                      if(curLz.le.curLzmax .AND. curLz.ge.curLzmin) then
                          tpLz = prLz + curLz
                          cur2Sz = Szt2_oneshell(halflen, curdet)
                          tp2Sz = pr2Sz + cur2Sz
-                         tpdet = prdet + curdet
-                         tpmaxrem2Sz = 0!Change later
-                         write(*, '("*** Branch shell, curlz = ", 2I5)') ncurr, curLz
-                         call assign_shell(tpdet, tpLz, tp2Sz, tpmaxremLz, tpmaxrem2Sz, desLz, des2Sz, configs, ncurr+1, nshell_tot)
+                         tpmaxrem2Sz = 0!Change later 
+                         detup = prdet_up 
+                         call detmod_shell(configs(ncurr, 1), configs(ncurr, 2), m_min, ibits(curdet, 0, halflen), detup)
+                         detdn = prdet_dn
+                         call  detmod_shell(configs(ncurr, 1), configs(ncurr, 2), m_min, ibits(curdet, halflen, halflen), detdn)
+                         write(*, '("*** Branch shell, curLz = ", 2I5)') ncurr, curLz
+                         call assign_shell(detup, detdn, tpLz, tp2Sz, tpmaxremLz, tpmaxrem2Sz, desLz, des2Sz, configs, ncurr+1)
                      endif
                  endif
               enddo
@@ -110,10 +123,19 @@ module detgen
           endif
       end subroutine assign_shell
 
-  subroutine detmod_shell(n, l, m_min, m_max, subdet, det)
-      integer, intent(in) :: n, l, m_min, m_max
+  subroutine detmod_shell(n, l, m_min, subdet, det)
+      integer, intent(in) :: n, l, m_min
       integer(i16b), intent(in) :: subdet
-      integer(i16b) :: det
+      integer(i16b) :: det ! single spin det, inout
+      integer(i16b) :: tpdet
+      integer :: pos, i
+      tpdet = subdet
+      do while(tpdet.ne.0)
+        i = trailz(tpdet)
+        pos = locate_det(n, l, i + m_min)
+        det = ibset(det, pos)
+        tpdet = ibclr(tpdet, i)
+      enddo
   end subroutine detmod_shell
                 
 
@@ -132,7 +154,7 @@ module detgen
       det_up = ibits(det, 0, halflen)
       det_dn = ibits(det, halflen, halflen)
       Szt2_oneshell = count_occ_orbs(det_up) - count_occ_orbs(det_dn)
-  end function
+  end function Szt2_oneshell
           
   integer function count_occ_orbs(det)
       integer(i16b), intent(in) :: det
@@ -218,6 +240,9 @@ module detgen
       det_dn = ibits(det, halflen, halflen)
       Lz_oneshell = Lz_unit(m_min, det_up) + Lz_unit(m_min, det_dn)
   end function Lz_oneshell
-
+  subroutine showconfig(det)
+      integer(i16b), intent(in) :: det
+      !TODO
+  end subroutine showconfig
 
 end module detgen

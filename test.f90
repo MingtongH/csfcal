@@ -9,16 +9,16 @@ program test
       !det(1, 2) = 3
       !Lz_test = Lz(det)
       integer, allocatable :: configs (:, :)
-      integer(i16b) :: det
+      integer(i16b) :: det, subdet
       integer :: nocc
       integer, allocatable :: occ_up(:), occ_dn(:)
       allocate(configs(3, 3))
       configs(1, 1:3) = (/2, 0, 1/)
       configs(2, 1:3) = (/2, 1, 5/)
       configs(3, 1:3) = (/3, 2, 1/)
-      write(*, *) Lzmax(configs)
+      !write(*, *) Lzmax(configs)
      
-      call assign_shell(det, 0, 0, 0, 0, 0, 0, configs, 0, 3)
+      call assign_shell(det, det, 0, 0, 0, 0, 0, 1, configs, 0)
       !write(*, *) isHalfFull(configs(1, 1:3))
       !allocate(occ_up(3)) 
       !allocate(occ_dn(3))
@@ -57,6 +57,9 @@ program test
      !write(*, *) Lz_updn(0, 2, det)
      ! Lz_unit correct
      ! Lz_updn correct
-     write(*, *) locate_det(3, 2, -1)
-
+     !write(*, *) locate_det(3, 2, -1)
+     !det = 8
+     !subdet = 7
+     !call detmod_shell(3, 1, -1, subdet, det)
+     !write(*, *) det
 end program test
