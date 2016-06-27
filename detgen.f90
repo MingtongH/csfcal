@@ -17,7 +17,7 @@ module detgen
           endif
       end function isHalfFull
 
-      recursive subroutine assign_shell(prdet_up,prdet_dn,prLz,pr2Sz,maxremLz,maxrem2Sz,desLz,des2Sz,configs,ncurr)
+      recursive subroutine assign_shell(prdet_up,prdet_dn,prLz,pr2Sz,maxremLz,maxrem2Sz,desLz,des2Sz,configs,ncurr, tot)
           !input maxrem includes all shells not assigned
           !including the one to be assigned in this recursion
           !only calculated by Lzmax(), no consideration of desLz
@@ -26,7 +26,7 @@ module detgen
           ! ncurr = current shell number
           integer, intent(in) :: desLz, des2Sz
           integer, intent(in) :: configs(:, :)
-          integer :: nshell_tot
+          integer :: nshell_tot, tot
           integer(i16b), intent(in) :: prdet_up, prdet_dn
           integer(i16b) :: curdet, tpdet, det_range!det_dn--det_up
           integer(i16b) :: detup, detdn
@@ -44,7 +44,7 @@ module detgen
           if(ncurr.eq.0) then !1
               detup = 0
               detdn = 0
-              call assign_shell(detup, detdn, 0, 0, Lzmax(configs), Smax_t2(configs), desLz, des2Sz, configs, ncurr+1)
+              call assign_shell(detup, detdn, 0, 0, Lzmax(configs), Smax_t2(configs), desLz, des2Sz, configs, ncurr+1, tot)
 
           !*************************last shell
           else if(ncurr.eq.nshell_tot) then !if1
@@ -98,6 +98,8 @@ module detgen
                              call  detmod_shell(configs(ncurr, 1), configs(ncurr, 2), m_min, ibits(curdet, halflen, halflen), detdn)
                              write(*, '("!!!Success!!! Generated detup:", B16)') detup 
                              write(*, '("!!!Success!!! Generated detdn:", B16)') detdn
+                             tot = tot + 1
+                             write(*, *) tot
                          endif
                      endif
                  endif !4
@@ -152,7 +154,7 @@ module detgen
                          detdn = prdet_dn
                          call  detmod_shell(configs(ncurr, 1), configs(ncurr, 2), m_min, ibits(curdet, halflen, halflen), detdn)
                          write(*, '("*** Branch shell#, curLz ", 2I5)') ncurr, curLz
-                         call assign_shell(detup, detdn, tpLz, tp2Sz, tpmaxremLz, tpmaxrem2Sz, desLz, des2Sz, configs, ncurr+1)
+                         call assign_shell(detup, detdn, tpLz, tp2Sz, tpmaxremLz, tpmaxrem2Sz, desLz, des2Sz, configs, ncurr+1, tot)
                      endif
                  endif
               enddo
