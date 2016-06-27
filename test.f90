@@ -18,7 +18,7 @@ program test
       configs(3, 1:3) = (/3, 2, 1/)
       !write(*, *) Lzmax(configs)
      
-      call assign_shell(det, det, 0, 0, 0, 0, 0, 1, configs, 0)
+     call assign_shell(det, det, 0, 0, 0, 0, 0, 1, configs, 0)
       !write(*, *) isHalfFull(configs(1, 1:3))
       !allocate(occ_up(3)) 
       !allocate(occ_dn(3))
@@ -35,14 +35,18 @@ program test
       !  write(*, *) occ_dn
       !enddo
       
-      !bit manipulation POS starts from idex 0
-      !det = 2
-      !write(*, *) BTEST(det, 0)
-      !write(*, *) BTEST(det, 1)
-      !write(*, *) BTEST(det, 2)
-      
+      !bit manipulation POS starts from idex 0, btest
+      !det = 0
+      !write(*, *) ibset(det, 0)
+      !write(*, *) ibset(det, 1)
+      !write(*, *) ibset(det, 2)
+     ! det = 14
+     ! det = ishft(det, -1)
+     ! write(*, *) det
+     ! det = ishft(det, -2)
+     ! write(*, *) det
      ! det = 2
-     ! write(*, *) trailz(det) 
+    !  write(*, *) trailz(det) 
      ! det = 26
      ! write(*, *) count_occ_orbs(det)
 
@@ -58,8 +62,10 @@ program test
      ! Lz_unit correct
      ! Lz_updn correct
      !write(*, *) locate_det(3, 2, -1)
-     !det = 8
-     !subdet = 7
+     !det = 12
+     !subdet = 4
      !call detmod_shell(3, 1, -1, subdet, det)
-     !write(*, *) det
+     !write(*, '(3B16)') 12, subdet, det
+     !det = 20
+     !write(*,*) detdisplay(det)
 end program test
