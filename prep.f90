@@ -1,14 +1,15 @@
 module prep
-  
+!1. Read input configurations 
+!2. Check inputs are within range of Smin, Smax, Lmax and of correct I(parity)  
   use, intrinsic :: iso_fortran_env, only: rk => real64
 
   implicit none
   
-  ! Constants
+  !>>>>>>>> Constants
   integer, parameter :: STRING_MAX_LENGTH = 16
   integer, parameter :: i16b = SELECTED_INT_KIND(38)
 
-  ! Input variables
+  !>>>>>>>> Input variables
   integer :: nconfig, Ldes, Sdes_t2, Ides
   !Lzdes, Szdes_t2 not defined here
   !Ides is read in as 1/-1, but then converted to 0/1 (even/odd)
@@ -17,19 +18,12 @@ module prep
   integer, allocatable :: econfigs (:, :) !n, l, ne
   integer, allocatable :: nshell(:) ! number of shells occupied in each config
   
-  !call read_input()
-  !call checkSmin() !tested
-  !call checkSmax() !tested
-  !write(*, '(">>>testing ", 1I5)') Lmin(4, 6)
-  !call checkILmax()
-    
-!  testarray(1:5) = 1
-!  testarray(1) = 8
-!  testarray(2) = 11
-!  testarray(3) = 6
-!  testarray(4) = 5
-!  write(*, *) minsum(testarray)
-  !call checkLmin()
+  !>>>>>>>> functions and subroutines:
+  ! read_input(), orbTol(orb)
+  ! minsum(array), Lmin(config), checkLmin() ! not used 
+  ! Smin_t2(ne), Smax_t2_oneshell(l, N), checkSmin(), checkSmax(), checILmax(), 
+  ! Smax_t2(config), Lmax(config), Lzmax(config) !these are for later use
+
   contains
 
   subroutine read_input()

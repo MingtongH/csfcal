@@ -1,8 +1,33 @@
 module detgen
-  use prep, only: i16b, Lzmax, Smax_t2
+!Generate all determinants of Lz = 0 and Sz = S(from readinput) given one configuration
+!such as 2s2, 2p5, 3d1
+!Mingtong Han, June 27 2016
+!TODO create a list for all the succesfully generated dets
+!     coeff will be Lz^2 - Lz, which should be 0
+use prep, only: i16b, Lzmax, Smax_t2
   implicit none
   contains
+!>>>>>>> functions and subroutines
+!isHalfFull(shellconfig), 
+!assign_shell(prdet_up,prdet_dn,prLz,pr2Sz,maxremLz,maxrem2Sz, desLz,des2Sz,configs,ncurr, tot)
+!detmod_shell(n, l, m_min, subdet, det), locate_det(n, l, m)
+!Szt2_oneshell(halflen, det), count_occ_orbs(det)
+!Lz_unit(m_min, det), Lz_oneshell(m_min, halflen, det)
 
+
+!L+L-
+!TODO Lraise, Llower
+! Given one determinant, a table of coeffs (first call empty)
+! for each electron i , apply lplus or lminus
+!    calculate coeff
+!    if not zero:
+!        calculate new csf with lplus() or lminu()
+!        (if operating on up, keep dn the same, vice versa)
+!        add to list if not already in there
+!        add new column in table, previous csf coeffs for this det should be set to 0
+!        
+!TODO lplus, lminus
+! given l, lz, return new csf
       function isHalfFull(shellconfig)
           implicit none
           integer, dimension(1,3), intent(in) :: shellconfig
@@ -259,7 +284,7 @@ module detgen
 
   
   integer function Lz_unit(m_min, det)
-      !det has one shell one spin
+      !det contains only  one shell one spin, with the first(rightmost) digit for m_min
       integer, intent(in) :: m_min
       integer(i16b), intent(in) :: det
       integer(i16b) :: tmp_det
@@ -275,7 +300,7 @@ module detgen
 
   
   integer function Lz_oneshell(m_min, halflen, det)
-      !det_dn(m_max...m_min)--det_up(m_max...m_min)
+      !det = det_dn(m_max...m_min)--det_up(m_max...m_min)
       integer, intent(in) :: m_min, halflen
       integer(i16b), intent(in) :: det
       integer(i16b) :: det_up, det_dn
