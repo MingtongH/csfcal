@@ -30,11 +30,11 @@ use prep, only: i16b, Lzmax, Smax_t2, ARRAY_START_LENGTH
 ! given l, lz, return new csf
 !      subroutine lpls(detin, pos, coef, detout)
 !      end subroutine lpls
-      subroutine lpls(detin, pos, coef, detout)
-          integer :: pos !The position of the electron that will be operated
+!      subroutine lpls(detin, pos, coef, detout)
+!          integer :: pos !The position of the electron that will be operated
                          !in the determinant, starting from 0 from the right
 
-      end subroutine lpls
+!      end subroutine lpls
       function isHalfFull(shellconfig)
           implicit none
           integer, dimension(1,3), intent(in) :: shellconfig
