@@ -8,6 +8,7 @@ module prep
   !>>>>>>>> Constants
   integer, parameter :: STRING_MAX_LENGTH = 16
   integer, parameter :: i16b = SELECTED_INT_KIND(38)
+  integer, parameter :: ARRAY_START_LENGTH = 100
 
   !>>>>>>>> Input variables
   integer :: nconfig, Ldes, Sdes_t2, Ides

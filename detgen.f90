@@ -4,7 +4,7 @@ module detgen
 !Mingtong Han, June 27 2016
 !TODO create a list for all the succesfully generated dets
 !     coeff will be Lz^2 - Lz, which should be 0
-use prep, only: i16b, Lzmax, Smax_t2
+use prep, only: i16b, Lzmax, Smax_t2, ARRAY_START_LENGTH
   implicit none
   contains
 !>>>>>>> functions and subroutines
@@ -16,18 +16,25 @@ use prep, only: i16b, Lzmax, Smax_t2
 
 
 !L+L-
-!TODO Lraise, Llower
+!TODO Lplus, Lminus
 ! Given one determinant, a table of coeffs (first call empty)
-! for each electron i , apply lplus or lminus
+! for each electron i , apply lpls or lmns
 !    calculate coeff
 !    if not zero:
-!        calculate new csf with lplus() or lminu()
+!        calculate new csf with lpls() or lmns()
 !        (if operating on up, keep dn the same, vice versa)
 !        add to list if not already in there
 !        add new column in table, previous csf coeffs for this det should be set to 0
 !        
 !TODO lplus, lminus
 ! given l, lz, return new csf
+!      subroutine lpls(detin, pos, coef, detout)
+!      end subroutine lpls
+      subroutine lpls(detin, pos, coef, detout)
+          integer :: pos !The position of the electron that will be operated
+                         !in the determinant, starting from 0 from the right
+
+      end subroutine lpls
       function isHalfFull(shellconfig)
           implicit none
           integer, dimension(1,3), intent(in) :: shellconfig
@@ -42,7 +49,8 @@ use prep, only: i16b, Lzmax, Smax_t2
           endif
       end function isHalfFull
 
-      recursive subroutine assign_shell(prdet_up,prdet_dn,prLz,pr2Sz,maxremLz,maxrem2Sz,desLz,des2Sz,configs,ncurr, tot)
+      recursive subroutine assign_shell(prdet_up,prdet_dn,prLz,pr2Sz,maxremLz, &
+              & maxrem2Sz,desLz,des2Sz,configs,ncurr,tot, detlist)
           !input maxrem includes all shells not assigned
           !including the one to be assigned in this recursion
           !only calculated by Lzmax(), no consideration of desLz
@@ -59,6 +67,7 @@ use prep, only: i16b, Lzmax, Smax_t2
           integer :: curLzmax, curLzmin, m_max, m_min, cur2Szmax, cur2Szmin
           integer :: tpLz, tp2Sz, tpmaxremLz, tpmaxrem2Sz
           integer :: necur ! number of electrons in current shell
+          integer(i16b), allocatable :: detlist(:, :)
           nshell_tot = size(configs, 1)
           !write(*, '("nshell_tot = ", 1I5)') nshell_tot
           write(*, '(">>>>>>>>>>> Now at shell :",1I5)') ncurr
@@ -69,7 +78,11 @@ use prep, only: i16b, Lzmax, Smax_t2
           if(ncurr.eq.0) then !1
               detup = 0
               detdn = 0
-              call assign_shell(detup, detdn, 0, 0, Lzmax(configs), Smax_t2(configs), desLz, des2Sz, configs, ncurr+1, tot)
+              if(.not.allocated(detlist)) then
+                  allocate(detlist(ARRAY_START_LENGTH, 2))
+              endif
+              call assign_shell(detup, detdn, 0, 0, Lzmax(configs), Smax_t2(configs),&
+                  & desLz, des2Sz, configs, ncurr+1, tot, detlist)
 
           !*************************last shell
           else if(ncurr.eq.nshell_tot) then !if1
@@ -115,15 +128,19 @@ use prep, only: i16b, Lzmax, Smax_t2
                          cur2Sz = Szt2_oneshell(halflen, curdet)
                          if(tp2Sz .eq. cur2Sz) then
 
-                             write(*, '("*** Branch last shell, curLz =, cur2Sz = ", 3I5)') ncurr, curLz, cur2Sz
+                             write(*, '("*** Branch last shell, curLz =, cur2Sz = ",&
+                                 & 3I5)') ncurr, curLz, cur2Sz
                              detup = prdet_up 
-                             call detmod_shell(configs(ncurr, 1), configs(ncurr, 2), m_min, ibits(curdet, 0, halflen), detup)
+                             call detmod_shell(configs(ncurr, 1), configs(ncurr, 2),&
+                                 & m_min, ibits(curdet, 0, halflen), detup)
                              detdn = prdet_dn
                              write(*, '("curdet = ", B16)') curdet
-                             call  detmod_shell(configs(ncurr, 1), configs(ncurr, 2), m_min, ibits(curdet, halflen, halflen), detdn)
+                             call  detmod_shell(configs(ncurr, 1), configs(ncurr, 2),&
+                                 & m_min, ibits(curdet, halflen, halflen), detdn)
                              write(*, '("!!!Success!!! Generated detup:", B16)') detup 
                              write(*, '("!!!Success!!! Generated detdn:", B16)') detdn
                              tot = tot + 1
+                             detlist(tot, 1:2) = (/detup, detdn/)
                              write(*, *) tot
                          endif
                      endif
@@ -175,11 +192,14 @@ use prep, only: i16b, Lzmax, Smax_t2
                          tp2Sz = pr2Sz + cur2Sz
                          tpmaxrem2Sz = 0!Change later 
                          detup = prdet_up 
-                         call detmod_shell(configs(ncurr, 1), configs(ncurr, 2), m_min, ibits(curdet, 0, halflen), detup)
+                         call detmod_shell(configs(ncurr, 1), configs(ncurr, 2),&
+                             & m_min, ibits(curdet, 0, halflen), detup)
                          detdn = prdet_dn
-                         call  detmod_shell(configs(ncurr, 1), configs(ncurr, 2), m_min, ibits(curdet, halflen, halflen), detdn)
+                         call  detmod_shell(configs(ncurr, 1), configs(ncurr, 2),&
+                             & m_min, ibits(curdet, halflen, halflen), detdn)
                          write(*, '("*** Branch shell#, curLz ", 2I5)') ncurr, curLz
-                         call assign_shell(detup, detdn, tpLz, tp2Sz, tpmaxremLz, tpmaxrem2Sz, desLz, des2Sz, configs, ncurr+1, tot)
+                         call assign_shell(detup, detdn, tpLz, tp2Sz, tpmaxremLz,&
+                             & tpmaxrem2Sz, desLz, des2Sz, configs, ncurr+1, tot, detlist)
                      endif
                  endif
               enddo
@@ -190,6 +210,8 @@ use prep, only: i16b, Lzmax, Smax_t2
 
 
   subroutine detmod_shell(n, l, m_min, subdet, det)
+      !modify the a full single spin determinant with a segment determinant of !
+      !n, l starting with m_min on the very right position
       integer, intent(in) :: n, l, m_min
       integer(i16b), intent(in) :: subdet
       integer(i16b) :: det ! single spin det, inout
@@ -238,7 +260,7 @@ use prep, only: i16b, Lzmax, Smax_t2
     enddo
   end function count_occ_orbs
 
-
+!This subroutine is not used 
   subroutine get_occ_orbs(det_up,det_dn,occ_up,occ_dn, nocc)
   ! Get lists of which orbitals are occupied in given configuration
   ! A Holmes, 21 Mar 2015
@@ -284,7 +306,7 @@ use prep, only: i16b, Lzmax, Smax_t2
 
   
   integer function Lz_unit(m_min, det)
-      !det contains only  one shell one spin, with the first(rightmost) digit for m_min
+      !det contains only  one subshell one spin, with the first(rightmost) digit for m_min
       integer, intent(in) :: m_min
       integer(i16b), intent(in) :: det
       integer(i16b) :: tmp_det

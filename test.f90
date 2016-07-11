@@ -10,16 +10,20 @@ program test
       !Lz_test = Lz(det)
       integer, allocatable :: configs (:, :)
       integer(i16b) :: det, subdet
-      integer :: nocc, count_tot
+      integer :: nocc, count_tot, i
       integer, allocatable :: occ_up(:), occ_dn(:)
+      integer(i16b), allocatable :: detlist(:, :)
       allocate(configs(3, 3))
-      configs(1, 1:3) = (/2, 0, 1/)
+      configs(1, 1:3) = (/2, 0, 2/)
       configs(2, 1:3) = (/2, 1, 5/)
       configs(3, 1:3) = (/3, 2, 1/)
       !write(*, *) Lzmax(configs)
      count_tot = 0
-     call assign_shell(det, det, 0, 0, 0, 0, 0, 1, configs, 0, count_tot)
+     call assign_shell(det, det, 0, 0, 0, 0, 0, 0, configs, 0, count_tot, detlist)
       write(*, *) count_tot
+      do i = 1, count_tot
+        write(*, '(2B16)') detlist(i, 1:2)
+      enddo
       !write(*, *) isHalfFull(configs(1, 1:3))
       !allocate(occ_up(3)) 
       !allocate(occ_dn(3))
