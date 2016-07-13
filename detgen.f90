@@ -4,7 +4,8 @@ module detgen
 !Mingtong Han, June 27 2016
 !TODO create a list for all the succesfully generated dets
 !     coeff will be Lz^2 - Lz, which should be 0
-use prep, only: i16b, Lzmax, Smax_t2, ARRAY_START_LENGTH
+use prep, only: i16b, Lzmax, Smax_t2, ARRAY_START_LENGTH, DET_MAX_LENGTH
+use, intrinsic :: iso_fortran_env, only: rk => real64
   implicit none
   contains
 !>>>>>>> functions and subroutines
@@ -30,11 +31,112 @@ use prep, only: i16b, Lzmax, Smax_t2, ARRAY_START_LENGTH
 ! given l, lz, return new csf
 !      subroutine lpls(detin, pos, coef, detout)
 !      end subroutine lpls
-      subroutine lpls(detin, pos, coef, detout)
-          integer :: pos !The position of the electron that will be operated
-                         !in the determinant, starting from 0 from the right
+      !subroutine lpls(detin, pos, coef, detout)
+      !    integer :: pos !The position of the electron that will be operated
+      !                   !in the determinant, starting from 0 from the right
+
+      !end subroutine lpls
+      subroutine lpls(pos, det, epos, coef)
+          !pos is the position of the electron that l+ is appled on, starting from 0
+          integer(i16b) :: det
+          integer, allocatable :: epos(:)
+          real(rk) :: coef
+          integer, intent(in) :: pos
+          integer :: n, l, lz, csq
+          if(.not.btest(det, pos)) then
+              return
+          endif
+          if(coef.eq.0) then 
+              return
+          endif
+          call pos2nlm(pos, n, l, lz)
+          csq = l*(l+1) - lz*(lz+1)
+          if(csq.eq.0) then
+              coef = 0
+              return
+          elseif(btest(det, pos+1)) then
+              coef = 0
+              return
+          else
+              write(*, '(15I4)') epos(1:15)
+              coef = sqrt(real(csq))
+              det = ibset(det, pos + 1)
+              det = ibclr(det, pos)
+              epos(pos+2) = epos(pos+1)
+              epos(pos+1) = 0 !index of epos array starts from 1
+              write(*, '(15I4)') epos(1:15)
+          endif
+
 
       end subroutine lpls
+
+      subroutine lms(pos, det, epos, coef)
+          integer(i16b) :: det
+          integer, allocatable :: epos(:)
+          real(rk) :: coef
+          integer, intent(in) :: pos
+          integer :: n, l, lz, csq
+          if(.not.btest(det, pos)) then
+              return
+          endif
+          if(coef.eq.0) then 
+              return
+          endif
+          call pos2nlm(pos, n, l, lz)
+          csq = l*(l+1) - lz*(lz-1)
+          if(csq.eq.0) then
+              !!Might need a flag
+              coef = 0.0
+              return
+          elseif(btest(det, pos-1)) then
+              !!Might need a flag
+              coef = 0
+              return
+          else
+              write(*, '(15I4)') epos(1:15)
+              coef = sqrt(real(csq))
+              det = ibset(det, pos - 1)
+              det = ibclr(det, pos)
+              epos(pos) = epos(pos+1)
+              epos(pos+1) = 0 !index of epos array starts from 1
+              write(*, '(15I4)') epos(1:15)
+          endif
+      end subroutine lms
+
+
+          
+
+      subroutine eposinit(eposup, eposdn, detup, detdn)
+          integer, allocatable :: eposup(:), eposdn(:)
+          integer(i16b), intent(in) :: detup, detdn
+          integer(i16b) :: tpdet
+          integer :: i, l
+          allocate(eposup(DET_MAX_LENGTH))
+          allocate(eposdn(DET_MAX_LENGTH))
+          do i = 1, DET_MAX_LENGTH
+            eposup(i) = 0
+            eposdn(i) = 0
+          enddo
+          
+          l = 1
+          tpdet = detup
+          do while(tpdet.ne.0)
+            i = trailz(tpdet) !Starting from 0
+            eposup(i+1) = l
+            l = l+1
+            tpdet = ibclr(tpdet, i)
+          enddo
+
+          tpdet = detdn
+          do while(tpdet.ne.0)
+            i = trailz(tpdet)
+            eposdn(i+1) = l
+            l = l+1
+            tpdet = ibclr(tpdet, i)
+          enddo
+      end subroutine eposinit
+
+
       function isHalfFull(shellconfig)
           implicit none
           integer, dimension(1,3), intent(in) :: shellconfig
@@ -52,7 +154,8 @@ use prep, only: i16b, Lzmax, Smax_t2, ARRAY_START_LENGTH
       recursive subroutine assign_shell(prdet_up,prdet_dn,prLz,pr2Sz,maxremLz, &
               & maxrem2Sz,desLz,des2Sz,configs,ncurr,tot, detlist)
           !input maxrem includes all shells not assigned
-          !including the one to be assigned in this recursion
+          !including the one
+          !to be assigned in this recursion
           !only calculated by Lzmax(), no consideration of desLz
           implicit none
           integer, intent(in) :: prLz, pr2Sz, maxremLz, maxrem2Sz, ncurr
@@ -233,7 +336,50 @@ use prep, only: i16b, Lzmax, Smax_t2, ARRAY_START_LENGTH
       locate_det = (n-1)*n*(2*n-1)/6 + l**2 + m + l
   end function locate_det
 
-  
+  subroutine delocate(pos, nout, lout, mout)
+      integer, intent(in) :: pos
+      integer :: n, l, tp, nout, lout, mout
+      do n = 1, 20
+        if (pos.eq.(n-1)*n*(2*n-1)/6) then
+            nout = n
+            lout = 0
+            mout = 0
+            return
+        elseif(pos.lt.(n-1)*n*(2*n-1)/6) then
+            nout = n - 1
+            tp = pos - (nout-1)*nout*(2*nout-1)/6
+            do l = 0, 10
+              if(tp.eq.l**2) then
+                  lout = l
+                  mout = -lout 
+                  return
+              elseif(tp.lt.l**2) then
+                  lout = l - 1
+                  mout = tp - lout**2 - lout
+                  return
+              endif
+            enddo
+        endif
+      enddo
+      
+  end subroutine
+  subroutine pos2nlm(pos, n, l, m)
+      integer, intent(in) :: pos
+      integer :: n, l, m
+      select case(pos)
+        case(0)
+            n = 1
+            l = 0
+            m = 0
+        case(1)
+            n = 2
+            l = 0
+            m = 0
+        case default
+            call delocate(pos, n, l, m)
+      end select
+  end subroutine pos2nlm
+
   integer function Szt2_oneshell(halflen, det)
   !det_dn(m_max...m_min)--det_up(m_max...m_min)
 

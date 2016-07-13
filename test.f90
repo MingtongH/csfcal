@@ -10,20 +10,43 @@ program test
       !Lz_test = Lz(det)
       integer, allocatable :: configs (:, :)
       integer(i16b) :: det, subdet
-      integer :: nocc, count_tot, i
-      integer, allocatable :: occ_up(:), occ_dn(:)
+      integer :: nocc, count_tot, i, n, l, m
+      integer, allocatable :: occ_up(:), occ_dn(:), eposup(:), eposdn(:), tmpepos
       integer(i16b), allocatable :: detlist(:, :)
+      real(rk) :: coef
       allocate(configs(3, 3))
-      configs(1, 1:3) = (/2, 0, 2/)
+      configs(1, 1:3) = (/2, 0, 1/)
       configs(2, 1:3) = (/2, 1, 5/)
       configs(3, 1:3) = (/3, 2, 1/)
       !write(*, *) Lzmax(configs)
      count_tot = 0
-     call assign_shell(det, det, 0, 0, 0, 0, 0, 0, configs, 0, count_tot, detlist)
+     call assign_shell(det, det, 0, 0, 0, 0, 0, 1, configs, 0, count_tot, detlist)
       write(*, *) count_tot
       do i = 1, count_tot
         write(*, '(2B16)') detlist(i, 1:2)
       enddo
+      
+      call eposinit(eposup, eposdn, detlist(1, 1), detlist(1, 2))
+      write(*, '(15I4)') eposup(1:15)
+      write(*, '(15I4)') eposdn(1:15)
+      do i = 0, 15
+        det = detlist(1, 2)
+        write(*, '("i = ", 1I5)') i
+        write(*, '(1B16)') det
+        coef = 1
+        !call lpls(i, det, eposdn, coef)
+        call lms(i, det, eposdn, coef)
+        write(*, *) coef
+        write(*, '(1B16)') det
+      end do
+     ! do i = 0, DET_MAX_LENGTH
+     !   call delocate(i, n, l, m)
+     !   write(*, '(4I5)') i, n, l, m
+     !   call pos2nlm(i, n, l, m)
+     !   write(*, '(4I5)') i, n, l, m
+     ! enddo
+
+
       !write(*, *) isHalfFull(configs(1, 1:3))
       !allocate(occ_up(3)) 
       !allocate(occ_dn(3))
