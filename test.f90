@@ -63,6 +63,11 @@ program test
          & basislist, coeflist, eposlist, iszerolist, num)
      !TODO Attention! Initialize this
       outnum = 0
+      call Sminus_multiple(basislist, coeflist, eposlist, iszerolist, num, &
+          & outbasislist, outcoeflist, outeposlist, outiszerolist, outnum)
+      call Splus_multiple(basislist, coeflist, eposlist, iszerolist, num, &
+          & outbasislist, outcoeflist, outeposlist, outiszerolist, outnum)
+      
       !call Lplus_multiple(basislist, coeflist, eposlist, iszerolist, num, &
       !    & outbasislist, outcoeflist, outeposlist, outiszerolist, outnum)
       !call Lminus_multiple(basislist, coeflist, eposlist, iszerolist, num, &
