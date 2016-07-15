@@ -1,6 +1,7 @@
 program test
       use prep
       use detgen
+      use projection
 
       implicit none
       !integer :: Lz_test
@@ -14,6 +15,13 @@ program test
       integer, allocatable :: occ_up(:), occ_dn(:), eposup(:), eposdn(:), tmpepos
       integer(i16b), allocatable :: detlist(:, :)
       real(rk) :: coef
+      logical :: iszero
+      logical, allocatable :: iszerolist(:)
+      integer(i16b), allocatable :: basislist(:, :)
+      real(rk), allocatable :: coeflist(:)
+      integer, allocatable :: eposlist(:, :, :)
+      integer :: num
+
       allocate(configs(3, 3))
       configs(1, 1:3) = (/2, 0, 1/)
       configs(2, 1:3) = (/2, 1, 5/)
@@ -26,20 +34,29 @@ program test
         write(*, '(2B16)') detlist(i, 1:2)
       enddo
       
-      call eposinit(eposup, eposdn, detlist(1, 1), detlist(1, 2))
+      call eposinit(eposup, eposdn, detlist(8, 1), detlist(8, 2))
       write(*, '(15I4)') eposup(1:15)
       write(*, '(15I4)') eposdn(1:15)
-      do i = 0, 15
-        det = detlist(1, 2)
-        write(*, '("i = ", 1I5)') i
-        write(*, '(1B16)') det
-        coef = 1
-        !call lpls(i, det, eposdn, coef)
-        call lms(i, det, eposdn, coef)
-        write(*, *) coef
-        write(*, '(1B16)') det
-      end do
-     ! do i = 0, DET_MAX_LENGTH
+      !do i = 0, 15
+      !  det = detlist(1, 2)
+      !  write(*, '("i = ", 1I5)') i
+      !  write(*, '(1B16)') det
+      !  coef = 1
+      !  iszero = .false.
+      !  !call lpls(i, det, eposdn, coef)
+      !  call lms(i, det, eposdn, coef, iszero)
+      !  write(*, *) coef, iszero
+      !  write(*, '(1B16)') det
+      !end do
+      coef = 1
+      iszero = .false.
+      num = 0
+
+      call Lplus_single(detlist(8, 1), detlist(8, 2), eposup, eposdn, coef, iszero, &
+          & basislist, coeflist, eposlist, iszerolist, num)
+     call Lminus_single(detlist(8, 1), detlist(8, 2), eposup, eposdn, coef, iszero, &
+          & basislist, coeflist, eposlist, iszerolist, num)
+! do i = 0, DET_MAX_LENGTH
      !   call delocate(i, n, l, m)
      !   write(*, '(4I5)') i, n, l, m
      !   call pos2nlm(i, n, l, m)
