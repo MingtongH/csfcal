@@ -53,17 +53,24 @@ program test
       iszero = .false.
       num = 0
 
-      call Lplus_single(detlist(9, 1), detlist(9, 2), eposup, eposdn, coef, iszero, &
-          & basislist, coeflist, eposlist, iszerolist, num)
-     call Lminus_single(detlist(9, 1), detlist(9, 2), eposup, eposdn, coef, iszero, &
-          & basislist, coeflist, eposlist, iszerolist, num)
-      !TODO Attention! Initialize this
+     ! call Lplus_single(detlist(9, 1), detlist(9, 2), eposup, eposdn, coef, iszero, &
+     !     & basislist, coeflist, eposlist, iszerolist, num)
+     !call Lminus_single(detlist(9, 1), detlist(9, 2), eposup, eposdn, coef, iszero, &
+     !     & basislist, coeflist, eposlist, iszerolist, num)
+     call Sminus_single(detlist(9, 1), detlist(9, 2), eposup, eposdn, coef, iszero, &
+         & basislist, coeflist, eposlist, iszerolist, num)
+     
+     !TODO Attention! Initialize this
       outnum = 0
-      call Lplus_multiple(basislist, coeflist, eposlist, iszerolist, num, &
-          & outbasislist, outcoeflist, outeposlist, outiszerolist, outnum)
-      call Lminus_multiple(basislist, coeflist, eposlist, iszerolist, num, &
-          & outbasislist, outcoeflist, outeposlist, outiszerolist, outnum)
-! do i = 0, DET_MAX_LENGTH
+      !call Lplus_multiple(basislist, coeflist, eposlist, iszerolist, num, &
+      !    & outbasislist, outcoeflist, outeposlist, outiszerolist, outnum)
+      !call Lminus_multiple(basislist, coeflist, eposlist, iszerolist, num, &
+      !    & outbasislist, outcoeflist, outeposlist, outiszerolist, outnum)
+
+      
+      
+      
+      ! do i = 0, DET_MAX_LENGTH
      !   call delocate(i, n, l, m)
      !   write(*, '(4I5)') i, n, l, m
      !   call pos2nlm(i, n, l, m)

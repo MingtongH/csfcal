@@ -16,13 +16,82 @@ use, intrinsic :: iso_fortran_env, only: rk => real64
 !Lz_unit(m_min, det), Lz_oneshell(m_min, halflen, det)
 
 !operator subroutines
-!lpls, lms, eposinit
+!lpls, lms, eposinit, TODO spls, sms
+      subroutine spls(pos, detup, detdn, eposup, eposdn, coef, iszero)
+          !s can only be 1/2, sz can only be 1/2 or -1/2
+          !pos refers to the position of the electron in operation in detdn 
+          !pos starts from 0
+          integer, intent(in) :: pos
+          integer(i16b) :: detup, detdn
+          integer, allocatable :: eposup(:), eposdn(:)
+          real(rk) :: coef, csq !Need initializion (1) at first run
+          logical :: iszero !Need initializion(.false.) at first run
+          if(.not.btest(detdn, pos)) then 
+              return
+          endif
+          if(iszero) then
+              return
+          endif
+          if(btest(detup, pos)) then
+              !pos up is occupied
+              coef = 0.0
+              iszero = .true.
+              return
+          else
+              write(*, '(15I4)') eposup(1:15)
+              write(*, '(15I4)') eposdn(1:15)
+              csq = 1 !1/2(1/2+1)-(-1/2)(-1/2 + 1)
+              coef = coef*sqrt(real(csq))
+              detup = ibset(detup, pos)
+              detdn = ibclr(detdn, pos)
+              eposup(pos+1) = eposdn(pos+1)
+              eposdn(pos+1) = 0
+          endif
+      end subroutine spls
+
+      subroutine sms(pos, detup, detdn, eposup, eposdn, coef, iszero)
+          !s can only be 1/2, sz can only be 1/2 or -1/2
+          !pos refers to the position of the electron in operation in detdn 
+          !pos starts from 0
+          integer, intent(in) :: pos
+          integer(i16b) :: detup, detdn
+          integer, allocatable :: eposup(:), eposdn(:)
+          real(rk) :: coef, csq !Need initializion (1) at first run
+          logical :: iszero !Need initializion(.false.) at first run
+          if(.not.btest(detup, pos)) then 
+              return
+          endif
+          if(iszero) then
+              return
+          endif
+          if(btest(detdn, pos)) then
+              !pos up is occupied
+              coef = 0.0
+              iszero = .true.
+              return
+          else
+              write(*, '(15I4)') eposup(1:15)
+              write(*, '(15I4)') eposdn(1:15)
+              csq = 1 !1/2(1/2+1)-(-1/2)(-1/2 + 1)
+              coef = coef*sqrt(real(csq))
+              detdn = ibset(detdn, pos)
+              detup = ibclr(detup, pos)
+              eposdn(pos+1) = eposup(pos+1)
+              eposup(pos+1) = 0
+          endif
+      end subroutine sms
+
+
+
+
+
+
       subroutine lpls(pos, det, epos, coef, iszero)
           !pos is the position of the electron that l+ is appled on, starting from 0
+          integer, intent(in) :: pos
           integer(i16b) :: det
           integer, allocatable :: epos(:)
           real(rk) :: coef ! Should be initialized as 1 if used for the first time
-          integer, intent(in) :: pos
           logical :: iszero ! Should be initialized as .false. if used for the first time
           integer :: n, l, lz, csq
 
@@ -58,7 +127,7 @@ use, intrinsic :: iso_fortran_env, only: rk => real64
 
       subroutine lms(pos, det, epos, coef, iszero)
           integer(i16b) :: det
-          integer, allocatable :: epos(:)
+          integer, allocatable :: epos(:) !should have been initialized
           real(rk) :: coef
           integer, intent(in) :: pos
           integer :: n, l, lz, csq
