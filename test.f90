@@ -16,11 +16,11 @@ program test
       integer(i16b), allocatable :: detlist(:, :)
       real(rk) :: coef
       logical :: iszero
-      logical, allocatable :: iszerolist(:)
-      integer(i16b), allocatable :: basislist(:, :)
-      real(rk), allocatable :: coeflist(:)
-      integer, allocatable :: eposlist(:, :, :)
-      integer :: num
+      logical, allocatable :: iszerolist(:), outiszerolist(:)
+      integer(i16b), allocatable :: basislist(:, :), outbasislist(:, :)
+      real(rk), allocatable :: coeflist(:), outcoeflist(:)
+      integer, allocatable :: eposlist(:, :, :), outeposlist(:, :, :)
+      integer :: num, outnum
 
       allocate(configs(3, 3))
       configs(1, 1:3) = (/2, 0, 1/)
@@ -34,7 +34,7 @@ program test
         write(*, '(2B16)') detlist(i, 1:2)
       enddo
       
-      call eposinit(eposup, eposdn, detlist(8, 1), detlist(8, 2))
+      call eposinit(eposup, eposdn, detlist(9, 1), detlist(9, 2))
       write(*, '(15I4)') eposup(1:15)
       write(*, '(15I4)') eposdn(1:15)
       !do i = 0, 15
@@ -48,14 +48,21 @@ program test
       !  write(*, *) coef, iszero
       !  write(*, '(1B16)') det
       !end do
+      !TODO Attention! Initialize these
       coef = 1
       iszero = .false.
       num = 0
 
-      call Lplus_single(detlist(8, 1), detlist(8, 2), eposup, eposdn, coef, iszero, &
+      call Lplus_single(detlist(9, 1), detlist(9, 2), eposup, eposdn, coef, iszero, &
           & basislist, coeflist, eposlist, iszerolist, num)
-     call Lminus_single(detlist(8, 1), detlist(8, 2), eposup, eposdn, coef, iszero, &
+     call Lminus_single(detlist(9, 1), detlist(9, 2), eposup, eposdn, coef, iszero, &
           & basislist, coeflist, eposlist, iszerolist, num)
+      !TODO Attention! Initialize this
+      outnum = 0
+      call Lplus_multiple(basislist, coeflist, eposlist, iszerolist, num, &
+          & outbasislist, outcoeflist, outeposlist, outiszerolist, outnum)
+      call Lminus_multiple(basislist, coeflist, eposlist, iszerolist, num, &
+          & outbasislist, outcoeflist, outeposlist, outiszerolist, outnum)
 ! do i = 0, DET_MAX_LENGTH
      !   call delocate(i, n, l, m)
      !   write(*, '(4I5)') i, n, l, m
