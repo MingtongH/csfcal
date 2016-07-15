@@ -44,6 +44,7 @@ module projection
               endif
           endif
           allocate(outepos(DET_MAX_LENGTH))
+          !apply l+ on detup
           tpdet = detup
           do while(tpdet.ne.0)
               i = trailz(tpdet) ! starting from 0
@@ -53,7 +54,7 @@ module projection
               outis0 = iszero
               call lpls(i, outdet, outepos, outcoef, outis0)
               !Original det is not added to the list here when outis0 = true
-              write(*, '("l+ on e at pos:", 1I4)') i
+              write(*, '("l+ on e at up pos:", 1I4)') i
               write(*, *) outis0
               if(.not.outis0) then
                   num = num + 1
@@ -70,7 +71,34 @@ module projection
 
               tpdet = ibclr(tpdet, i) 
           enddo
-          deallocate(outepos)
+           !apply l+ on detdn
+          tpdet = detdn
+          do while(tpdet.ne.0)
+              i = trailz(tpdet) ! starting from 0
+              outdet = detdn
+              outepos(:) = eposdn(:)
+              outcoef = coef
+              outis0 = iszero
+              call lpls(i, outdet, outepos, outcoef, outis0)
+              !Original det is not added to the list here when outis0 = true
+              write(*, '("l+ on e at dn pos:", 1I4)') i
+              write(*, *) outis0
+              if(.not.outis0) then
+                  num = num + 1
+                  basislist(num, 1:2) = (/detup, outdet/)
+                  coeflist(num) = outcoef
+                  eposlist(num, 1, :) = eposup(:)
+                  eposlist(num, 2, :) = outepos(:)
+                  iszerolist(num) = outis0
+                  write(*, '("Output detup, detdn: ", 2B16)') basislist(num, 1:2)
+                  write(*, '(15I3)') eposlist(num, 1, 1:15)
+                  write(*, '(15I3)') eposlist(num, 2, 1:15)
+                  write(*, *) coeflist(num), iszerolist(num), num
+              endif
+
+              tpdet = ibclr(tpdet, i) 
+          enddo
+         deallocate(outepos)
 
      end subroutine Lplus_single
             

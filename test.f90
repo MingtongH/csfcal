@@ -34,7 +34,7 @@ program test
         write(*, '(2B16)') detlist(i, 1:2)
       enddo
       
-      call eposinit(eposup, eposdn, detlist(6, 1), detlist(6, 2))
+      call eposinit(eposup, eposdn, detlist(9, 1), detlist(9, 2))
       write(*, '(15I4)') eposup(1:15)
       write(*, '(15I4)') eposdn(1:15)
       !do i = 0, 15
@@ -52,7 +52,7 @@ program test
       iszero = .false.
       num = 0
 
-      call Lplus_single(detlist(6, 1), detlist(6, 2), eposup, eposdn, coef, iszero, &
+      call Lplus_single(detlist(8, 1), detlist(8, 2), eposup, eposdn, coef, iszero, &
           & basislist, coeflist, eposlist, iszerolist, num)
      ! do i = 0, DET_MAX_LENGTH
      !   call delocate(i, n, l, m)
