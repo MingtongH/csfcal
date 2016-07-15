@@ -59,7 +59,8 @@ program test
      !     & basislist, coeflist, eposlist, iszerolist, num)
      call Sminus_single(detlist(9, 1), detlist(9, 2), eposup, eposdn, coef, iszero, &
          & basislist, coeflist, eposlist, iszerolist, num)
-     
+     call Splus_single(detlist(9, 1), detlist(9, 2), eposup, eposdn, coef, iszero, &
+         & basislist, coeflist, eposlist, iszerolist, num)
      !TODO Attention! Initialize this
       outnum = 0
       !call Lplus_multiple(basislist, coeflist, eposlist, iszerolist, num, &
