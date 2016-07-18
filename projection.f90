@@ -7,6 +7,84 @@ module projection
       implicit none
       contains
 
+!TODO collect all  determinants and coefs
+
+      subroutine getallsigns(basislist, coeflist, eposlist, iszerolist, num)
+          integer(i16b), intent(in) :: basislist(:, :)
+          real(rk) :: coeflist(:)
+          integer, intent(in) :: eposlist(:, :, :), num
+          logical, intent(in) :: iszerolist(:)
+          integer :: i
+          do i = 1, num
+              if(.not.iszerolist(i)) then
+                  call getsign(basislist(i, 1), basislist(i, 2), eposlist(i, 1, :),&
+                      & eposlist(i, 2, :), coeflist(i))
+              endif
+          enddo
+      end subroutine getallsigns
+
+
+      subroutine getsign(detup, detdn, eposup, eposdn, coef)
+          integer(i16b), intent(in) :: detup, detdn
+          integer, intent(in) :: eposup(:), eposdn(:)
+          integer, allocatable :: tparray(:)
+          real(rk) :: coef
+          integer(i16b) :: tpdet
+          integer :: num, i, swaps
+          allocate(tparray(2*size(eposup)))
+          tpdet = detup
+          num = 0
+          do while (tpdet.ne.0)
+              i = trailz(tpdet)
+              num = num + 1
+              tparray(num) = eposup(i+1)
+              tpdet = ibclr(tpdet, i)
+          enddo
+          tpdet = detdn
+          do while (tpdet.ne.0)
+              i = trailz(tpdet)
+              num = num + 1
+              tparray(num) = eposdn(i+1)
+              tpdet = ibclr(tpdet, i)
+          enddo
+          swaps = countswps(tparray, num)
+          i = mod(swaps, 2)
+          if(i.ne.0) then
+              coef = - coef
+          endif
+          write(*, '("Sign:", 1I4)') i
+          deallocate(tparray)
+      end subroutine getsign
+      
+      
+      integer function  countswps(array, num)
+            integer, allocatable:: array(:)
+            integer:: num, i, tp
+            countswps = 0
+            write(*, '("Start array:")')
+            write(*, *) array(1:num)
+            do i = 1, num
+                do while (i.ne.array(i))
+                    tp = array(i)
+                    array(i) = array(tp)
+                    array(tp) = tp
+                    countswps = countswps + 1
+                enddo
+            enddo
+            write(*, '("End array:, number of swps")')
+            write(*, *) array(1:num)
+            write(*, *) countswps
+            end function countswps
+
+          
+
+
+
+
+
+      !TODO collect determinants
+
+
       subroutine Sminus_multiple(inbasis, incoefs, inepos, iniszeros, innum, &
               & basislist, coeflist, eposlist, iszerolist, num)
           !append to output list
@@ -122,7 +200,7 @@ module projection
 
       subroutine Lplus_multiple(inbasis, incoefs, inepos, iniszeros, innum, &
               & basislist, coeflist, eposlist, iszerolist, num)
-          !append to output list
+          !append to outaut list
           integer(i16b), allocatable, intent(in) :: inbasis(:, :)
           real(rk), allocatable, intent(in) :: incoefs(:)
           integer, allocatable, intent(in) :: inepos(:, :, :)
@@ -304,7 +382,7 @@ module projection
  
 
 
-          !TODO add original det in L+single, L-single
+          !TODO add original det in L+single, L-single? may not need to
       subroutine Lminus_single(detup, detdn, eposup, eposdn, coef, iszero, &
               & basislist, coeflist, eposlist, iszerolist, num )
           integer(i16b), intent(in) :: detup, detdn

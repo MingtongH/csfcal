@@ -10,17 +10,19 @@ program test
       !det(1, 2) = 3
       !Lz_test = Lz(det)
       integer, allocatable :: configs (:, :)
-      integer(i16b) :: det, subdet
+      integer(i16b) :: det, subdet, detup, detdn
       integer :: nocc, count_tot, i, n, l, m
       integer, allocatable :: occ_up(:), occ_dn(:), eposup(:), eposdn(:), tmpepos
       integer(i16b), allocatable :: detlist(:, :)
       real(rk) :: coef
       logical :: iszero
-      logical, allocatable :: iszerolist(:), outiszerolist(:)
-      integer(i16b), allocatable :: basislist(:, :), outbasislist(:, :)
-      real(rk), allocatable :: coeflist(:), outcoeflist(:)
-      integer, allocatable :: eposlist(:, :, :), outeposlist(:, :, :)
-      integer :: num, outnum
+      logical, allocatable :: iszerolist(:), outiszerolist(:), iszerolist1(:),&
+          & iszerolist2(:), iszerolist3(:)
+      integer(i16b), allocatable :: basislist(:, :), outbasislist(:, :), basislist1(:, :),&
+          & basislist2(:, :), basislist3(:, :)
+      real(rk), allocatable :: coeflist(:), outcoeflist(:), coeflist1(:), coeflist2(:), coeflist3(:)
+      integer, allocatable :: eposlist(:, :, :), outeposlist(:, :, :), eposlist1(:, :, :), eposlist2(:, :, :), eposlist3(:, :, :)
+      integer :: num, outnum, num1, num2, num3
 
       allocate(configs(3, 3))
       configs(1, 1:3) = (/2, 0, 1/)
@@ -34,9 +36,19 @@ program test
         write(*, '(2B16)') detlist(i, 1:2)
       enddo
       
-      call eposinit(eposup, eposdn, detlist(9, 1), detlist(9, 2))
-      write(*, '(15I4)') eposup(1:15)
-      write(*, '(15I4)') eposdn(1:15)
+      !call eposinit(eposup, eposdn, detlist(9, 1), detlist(9, 2))
+      !write(*, '(15I4)') eposup(1:15)
+      !write(*, '(15I4)') eposdn(1:15)
+      
+      write(*, '("************series of operators *********************")')
+      detup = 9
+      detdn = 4
+      call eposinit(eposup, eposdn, detup, detdn)
+      write(*, '(2B16)') detup, detdn
+      write(*, '(5I4)') eposup(1:5)
+      write(*, '(5I4)') eposdn(1:5)
+      call getsign(detup, detdn, eposup, eposdn, coef)
+
       !do i = 0, 15
       !  det = detlist(1, 2)
       !  write(*, '("i = ", 1I5)') i
@@ -53,20 +65,36 @@ program test
       iszero = .false.
       num = 0
 
-     ! call Lplus_single(detlist(9, 1), detlist(9, 2), eposup, eposdn, coef, iszero, &
+      call Lminus_single(detup, detdn, eposup, eposdn, coef, iszero, &
+          & basislist, coeflist, eposlist, iszerolist, num)
+     !call Lplus_single(detlist(9, 1), detlist(9, 2), eposup, eposdn, coef, iszero, &
      !     & basislist, coeflist, eposlist, iszerolist, num)
-     !call Lminus_single(detlist(9, 1), detlist(9, 2), eposup, eposdn, coef, iszero, &
-     !     & basislist, coeflist, eposlist, iszerolist, num)
-     call Sminus_single(detlist(9, 1), detlist(9, 2), eposup, eposdn, coef, iszero, &
-         & basislist, coeflist, eposlist, iszerolist, num)
-     call Splus_single(detlist(9, 1), detlist(9, 2), eposup, eposdn, coef, iszero, &
-         & basislist, coeflist, eposlist, iszerolist, num)
+     !call Sminus_single(detlist(9, 1), detlist(9, 2), eposup, eposdn, coef, iszero, &
+     !    & basislist, coeflist, eposlist, iszerolist, num)
+     !call Splus_single(detlist(9, 1), detlist(9, 2), eposup, eposdn, coef, iszero, &
+     !    & basislist, coeflist, eposlist, iszerolist, num)
      !TODO Attention! Initialize this
       outnum = 0
-      call Sminus_multiple(basislist, coeflist, eposlist, iszerolist, num, &
-          & outbasislist, outcoeflist, outeposlist, outiszerolist, outnum)
-      call Splus_multiple(basislist, coeflist, eposlist, iszerolist, num, &
-          & outbasislist, outcoeflist, outeposlist, outiszerolist, outnum)
+      num1 = 0
+      num2 = 0
+      num3 = 0
+      call Lplus_multiple(basislist, coeflist, eposlist, iszerolist, num, &
+           & basislist1, coeflist1, eposlist1, iszerolist1, num1)
+      call Sminus_multiple(basislist1, coeflist1, eposlist1, iszerolist1, num1, &
+           & basislist2, coeflist2, eposlist2, iszerolist2, num2)
+      call Splus_multiple(basislist2, coeflist2, eposlist2, iszerolist2, num2, &
+           & basislist3, coeflist3, eposlist3, iszerolist3, num3)
+      call getallsigns(basislist3, coeflist3, eposlist3, iszerolist3, num3)
+      write(*, *) coeflist3(1:num3)
+       !call getsign(basislist3(2, 1), basislist3(2, 2), eposlist3(2, 1, :), eposlist3(2, 2, :), coef)
+      !eposup(1:5) = (/4, 2, 1, 3, 5/)  
+      !outnum = countswps(eposup, 5) 
+
+
+      !call Sminus_multiple(basislist, coeflist, eposlist, iszerolist, num, &
+      !    & outbasislist, outcoeflist, outeposlist, outiszerolist, outnum)
+      !call Splus_multiple(basislist, coeflist, eposlist, iszerolist, num, &
+      !    & outbasislist, outcoeflist, outeposlist, outiszerolist, outnum)
       
       !call Lplus_multiple(basislist, coeflist, eposlist, iszerolist, num, &
       !    & outbasislist, outcoeflist, outeposlist, outiszerolist, outnum)

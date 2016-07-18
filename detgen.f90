@@ -16,7 +16,7 @@ use, intrinsic :: iso_fortran_env, only: rk => real64
 !Lz_unit(m_min, det), Lz_oneshell(m_min, halflen, det)
 
 !operator subroutines
-!lpls, lms, eposinit, TODO spls, sms
+!lpls, lms, eposinit, spls, sms
       subroutine spls(pos, detup, detdn, eposup, eposdn, coef, iszero)
           !s can only be 1/2, sz can only be 1/2 or -1/2
           !pos refers to the position of the electron in operation in detdn 
@@ -112,14 +112,14 @@ use, intrinsic :: iso_fortran_env, only: rk => real64
               iszero = .true.
               return
           else
-              write(*, '(15I4)') epos(1:15)
+              !write(*, '(15I4)') epos(1:15)
               coef = sqrt(real(csq))*coef
               det = ibset(det, pos + 1)
               det = ibclr(det, pos)
               epos(pos+2) = epos(pos+1)
               epos(pos+1) = 0 !index of epos array starts from 1
-              write(*, '(15I3)') epos(1:15)
-              write(*, *) coef
+             ! write(*, '(15I3)') epos(1:15)
+             ! write(*, *) coef
           endif
 
 
@@ -149,13 +149,13 @@ use, intrinsic :: iso_fortran_env, only: rk => real64
               iszero = .true.
               return
           else
-              write(*, '(15I4)') epos(1:15)
+              !write(*, '(15I4)') epos(1:15)
               coef = sqrt(real(csq)) * coef
               det = ibset(det, pos - 1)
               det = ibclr(det, pos)
               epos(pos) = epos(pos+1)
               epos(pos+1) = 0 !index of epos array starts from 1
-              write(*, '(15I4)') epos(1:15)
+              !write(*, '(15I4)') epos(1:15)
           endif
       end subroutine lms
 
