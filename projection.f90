@@ -6,8 +6,26 @@ module projection
 
       implicit none
       contains
+      
+      subroutine normalizetable(coeftable, ndets, ncsf)
+          !call this after coeftable is complete
+          real(rk) :: coeftable(:, :), sumcol
+          integer, intent(in) :: ndets, ncsf
+          integer :: i, j
+          do i = 1, ncsf
+            sumcol = 0
+            do j = 1, ndets
+              sumcol = sumcol + coeftable(j, i)**2
+            enddo
+            sumcol = sqrt(sumcol)
+            do j = 1, ndets
+              coeftable(j, i) = coeftable(j, i)/sumcol
+            enddo
+          enddo
+      end subroutine normalizetable
+              
+          
 
-!TODO collect all  determinants and coefs
 
       subroutine getallsigns(basislist, coeflist, eposlist, iszerolist, num)
           integer(i16b), intent(in) :: basislist(:, :)
@@ -74,7 +92,7 @@ module projection
             write(*, '("End array:, number of swps")')
             write(*, *) array(1:num)
             write(*, *) countswps
-            end function countswps
+      end function countswps
 
           
 
@@ -82,7 +100,88 @@ module projection
 
 
 
-      !TODO collect determinants
+      subroutine collect_csf(basislist, coeflist, iszerolist, num,&
+              & allbasis, coeftable, ndets, ncsf)
+          !add a csf to coeftable
+          !num = dimension of the basislist
+          !ndets, ncsf are coeftable sizes
+          !coeflist after calling getsign
+          integer(i16b), intent(in):: basislist(:, :)
+          real(rk), intent(in) :: coeflist(:)
+          logical, intent(in) :: iszerolist(:)
+          integer, intent(in) :: num
+          integer(i16b), allocatable :: allbasis(:, :)
+          real(rk), allocatable :: coeftable(:, :)!ndets, ncsf
+          integer :: ndets, ncsf, i,j, tp
+
+          !Firsty entry initialize
+          if(ndets.eq.0 .OR. ncsf.eq.0) then
+              if(.not.allocated(allbasis)) then
+                  allocate(allbasis(ARRAY_START_LENGTH, 2))
+                  write(*, '("Allocated allbasis")')
+              endif
+              if(.not.allocated(coeftable)) then
+                  allocate(coeftable(ARRAY_START_LENGTH, ARRAY_START_LENGTH))
+                  write(*, '("Allocated coeftable")')
+              endif
+          endif
+          !Initialize new column to be 0, ndets 0s
+          if(ndets.ne. 0) then
+              do i = 1, ndets
+                coeftable(i, ncsf+1) = .0
+              enddo
+              write(*, '("Initialized new column to 0")')
+          endif
+
+
+          do i = 1, num
+              write(*, '("Processing det# from list:", 1I3)') i
+              if(iszerolist(i)) then
+                  cycle
+              endif
+
+              tp = findindetlist(basislist(i, :), allbasis(1:ndets, :), ndets)
+              write(*, '("findindetlist()=", 1I4)') tp
+              !If not in the list, add new det
+              !! now this is only appending, may need to order dets later TODO
+              if(tp.eq.0) then
+                  allbasis(ndets + 1, :) = basislist(i, :)
+                  do j = 1, ncsf
+                    coeftable(ndets + 1, j) = .0
+                  enddo
+                  write(*, *) 'Initialized new row'
+                  coeftable(ndets +1, ncsf+1) = coeflist(i)
+                  ndets = ndets + 1
+                  write(*, '("Added new det row", 1I5)') ndets
+              else!If in the list, add coef
+                  coeftable(tp, ncsf+1) = coeftable(tp, ncsf+1) + coeflist(i)
+                  write(*, '("Combined coef with existing det")')
+              endif
+          enddo
+          ncsf = ncsf + 1
+          !--------------------------------------
+          !if all coefs in the coef list are zero
+          !ncsf will not be incremented, so even if the new column is initialized 
+          !it will still be overwritten by the next loop, or accessible if no next loop 
+      end subroutine collect_csf
+
+      integer function findindetlist(det, allbasis, ndets)
+          integer(i16b), intent(in) :: det(:), allbasis(:, :)
+          integer, intent(in) :: ndets
+          integer :: i
+          do i = 1, ndets
+            if(det(1).eq.allbasis(i, 1)) then
+                if(det(2).eq.allbasis(i, 2)) then
+                    findindetlist = i
+                    return
+                endif
+            endif
+          enddo
+          findindetlist = 0
+      end function findindetlist
+
+
+
 
 
       subroutine Sminus_multiple(inbasis, incoefs, inepos, iniszeros, innum, &
@@ -115,7 +214,7 @@ module projection
           endif
           do i = 1, innum
             write(*, *)
-            write(*, '(">>>>>>>>>>>>> Applying S- to multiple dets, now at No.", 1I3)') i 
+            write(*, '(">>>>>>>>>>>>> Applying S- ta multiple dets, now at No.", 1I3)') i 
             call Sminus_single(inbasis(i,1), inbasis(i, 2), inepos(i, 1, :), &
                 &inepos(i, 2, :), incoefs(i), iniszeros(i), &
                 & basislist, coeflist, eposlist, iszerolist, num)
@@ -571,11 +670,9 @@ module projection
          deallocate(outepos)
 
      end subroutine Lplus_single
-            
+!TODO Lz            
 
           
-      !TODO Lz
-      !TODO
 
 end module projection
       

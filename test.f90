@@ -19,10 +19,10 @@ program test
       logical, allocatable :: iszerolist(:), outiszerolist(:), iszerolist1(:),&
           & iszerolist2(:), iszerolist3(:)
       integer(i16b), allocatable :: basislist(:, :), outbasislist(:, :), basislist1(:, :),&
-          & basislist2(:, :), basislist3(:, :)
-      real(rk), allocatable :: coeflist(:), outcoeflist(:), coeflist1(:), coeflist2(:), coeflist3(:)
+          & basislist2(:, :), basislist3(:, :), allbasis(:, :)
+      real(rk), allocatable :: coeflist(:), outcoeflist(:), coeflist1(:), coeflist2(:), coeflist3(:), coeftable(:, :)
       integer, allocatable :: eposlist(:, :, :), outeposlist(:, :, :), eposlist1(:, :, :), eposlist2(:, :, :), eposlist3(:, :, :)
-      integer :: num, outnum, num1, num2, num3
+      integer :: num, outnum, num1, num2, num3, ndets, ncsf, j
 
       allocate(configs(3, 3))
       configs(1, 1:3) = (/2, 0, 1/)
@@ -85,7 +85,26 @@ program test
       call Splus_multiple(basislist2, coeflist2, eposlist2, iszerolist2, num2, &
            & basislist3, coeflist3, eposlist3, iszerolist3, num3)
       call getallsigns(basislist3, coeflist3, eposlist3, iszerolist3, num3)
-      write(*, *) coeflist3(1:num3)
+      do i = 1, num3
+        write(*, '(1I3, 2b16, 1f18.15)') i,  basislist3(i, :), coeflist3(i)
+        write(*,'(10I3)') eposlist3(i, 1, 1:10)
+        write(*, '(10I3)') eposlist3(i, 2, 1:10)
+      enddo
+      ndets = 0
+      ncsf = 0
+      call collect_csf(basislist3, coeflist3, iszerolist3, num3, &
+          & allbasis, coeftable, ndets, ncsf)
+      call collect_csf(basislist2, coeflist2, iszerolist2, num2, &
+          & allbasis, coeftable, ndets, ncsf)
+
+      do i = 1, ndets
+          write(*, '(2b16, 2F15.9)') allbasis(i, 1:2), coeftable(i, 1:2)
+      enddo
+      call normalizetable(coeftable, ndets, ncsf)
+     do i = 1, ndets
+          write(*, '(2b16, 2F15.9)') allbasis(i, 1:2), coeftable(i, 1:2)
+      enddo
+
        !call getsign(basislist3(2, 1), basislist3(2, 2), eposlist3(2, 1, :), eposlist3(2, 2, :), coef)
       !eposup(1:5) = (/4, 2, 1, 3, 5/)  
       !outnum = countswps(eposup, 5) 
