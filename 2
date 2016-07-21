@@ -78,15 +78,8 @@ program test
       num1 = 0
       num2 = 0
       num3 = 0
-      coef = -1.0
       call Lplus_multiple(basislist, coeflist, eposlist, iszerolist, num, &
            & basislist1, coeflist1, eposlist1, iszerolist1, num1)
-      write(*, *) num1
-      call scalar_append(coef, basislist, coeflist, eposlist, iszerolist, num, &
-          & basislist1, coeflist1, eposlist1, iszerolist1, num1)
-      write(*, '("Called scalar_append")')
-      write(*, *) num1
-      write(*, *) coeflist1(num1)
       call Sminus_multiple(basislist1, coeflist1, eposlist1, iszerolist1, num1, &
            & basislist2, coeflist2, eposlist2, iszerolist2, num2)
       call Splus_multiple(basislist2, coeflist2, eposlist2, iszerolist2, num2, &
@@ -106,6 +99,8 @@ program test
 
       coef = -1.0
       
+      call scalar_append(coef, basislist2, coeflist2,eposlist2, iszerolist2, num2, &
+          & allbasis, coeftable, ndets, ncsf)
       do i = 1, ndets
           write(*, '(2b16, 2F15.9)') allbasis(i, 1:2), coeftable(i, 1:2)
       enddo

@@ -23,9 +23,6 @@ module projection
             enddo
           enddo
       end subroutine normalizetable
-              
-          
-
 
       subroutine getallsigns(basislist, coeflist, eposlist, iszerolist, num)
           integer(i16b), intent(in) :: basislist(:, :)
@@ -94,11 +91,6 @@ module projection
             write(*, *) countswps
       end function countswps
 
-          
-
-
-
-
 
       subroutine collect_csf(basislist, coeflist, iszerolist, num,&
               & allbasis, coeftable, ndets, ncsf)
@@ -133,7 +125,6 @@ module projection
               write(*, '("Initialized new column to 0")')
           endif
 
-
           do i = 1, num
               write(*, '("Processing det# from list:", 1I3)') i
               if(iszerolist(i)) then
@@ -165,6 +156,7 @@ module projection
           !it will still be overwritten by the next loop, or accessible if no next loop 
       end subroutine collect_csf
 
+
       integer function findindetlist(det, allbasis, ndets)
           integer(i16b), intent(in) :: det(:), allbasis(:, :)
           integer, intent(in) :: ndets
@@ -181,16 +173,57 @@ module projection
       end function findindetlist
 
 
+      subroutine scalar_append(const, inbasis, incoefs, inepos, iniszeros, innum, &
+              & basislist, coeflist, eposlist, iszerolist, num)
+          !append to output list
+          integer(i16b), intent(in) :: inbasis(:, :)
+          real(rk),  intent(in) :: incoefs(:), const
+          integer, intent(in) :: inepos(:, :, :)
+          logical, intent(in) :: iniszeros(:)
+          integer, intent(in) :: innum
+          integer(i16b), allocatable :: basislist(:, :)
+          real(rk), allocatable :: coeflist(:)
+          integer, allocatable :: eposlist(:, :, :)
+          logical, allocatable :: iszerolist(:)
+          integer :: num, i
 
+          if(num.eq.0) then
+              if(.not.allocated(basislist)) then 
+                  allocate(basislist(ARRAY_START_LENGTH, 2))
+              endif 
+              if(.not.allocated(coeflist)) then
+                  allocate(coeflist(ARRAY_START_LENGTH))
+              endif
+              if(.not.allocated(eposlist)) then
+                  allocate(eposlist(ARRAY_START_LENGTH, 2, DET_MAX_LENGTH))
+              endif
+              if(.not.allocated(iszerolist)) then
+                  allocate(iszerolist(ARRAY_START_LENGTH))
+              endif
+          endif
+          !if const == 0.0, return
+
+          do i = 1, innum
+            if(iniszeros(i)) then 
+                cycle
+            endif
+            num = num + 1
+            basislist(num, 1:2) = inbasis(i, 1:2)
+            coeflist(num) = incoefs(i)*const
+            eposlist(num, 1, :) = inepos(i, 1, :)
+            eposlist(num, 2, :) = inepos(i, 2, :)
+            iszerolist(num) = iszerolist(i)
+          end do
+      end subroutine scalar_append
 
 
       subroutine Sminus_multiple(inbasis, incoefs, inepos, iniszeros, innum, &
               & basislist, coeflist, eposlist, iszerolist, num)
           !append to output list
-          integer(i16b), allocatable, intent(in) :: inbasis(:, :)
-          real(rk), allocatable, intent(in) :: incoefs(:)
-          integer, allocatable, intent(in) :: inepos(:, :, :)
-          logical, allocatable, intent(in) :: iniszeros(:)
+          integer(i16b), intent(in) :: inbasis(:, :)
+          real(rk),  intent(in) :: incoefs(:)
+          integer, intent(in) :: inepos(:, :, :)
+          logical, intent(in) :: iniszeros(:)
           integer, intent(in) :: innum
           integer(i16b), allocatable :: basislist(:, :)
           real(rk), allocatable :: coeflist(:)
@@ -224,10 +257,10 @@ module projection
       subroutine Splus_multiple(inbasis, incoefs, inepos, iniszeros, innum, &
               & basislist, coeflist, eposlist, iszerolist, num)
           !append to output list
-          integer(i16b), allocatable, intent(in) :: inbasis(:, :)
-          real(rk), allocatable, intent(in) :: incoefs(:)
-          integer, allocatable, intent(in) :: inepos(:, :, :)
-          logical, allocatable, intent(in) :: iniszeros(:)
+          integer(i16b), intent(in) :: inbasis(:, :)
+          real(rk), intent(in) :: incoefs(:)
+          integer, intent(in) :: inepos(:, :, :)
+          logical, intent(in) :: iniszeros(:)
           integer, intent(in) :: innum
           integer(i16b), allocatable :: basislist(:, :)
           real(rk), allocatable :: coeflist(:)
@@ -263,10 +296,10 @@ module projection
       subroutine Lminus_multiple(inbasis, incoefs, inepos, iniszeros, innum, &
               & basislist, coeflist, eposlist, iszerolist, num)
           !append to output list
-          integer(i16b), allocatable, intent(in) :: inbasis(:, :)
-          real(rk), allocatable, intent(in) :: incoefs(:)
-          integer, allocatable, intent(in) :: inepos(:, :, :)
-          logical, allocatable, intent(in) :: iniszeros(:)
+          integer(i16b), intent(in) :: inbasis(:, :)
+          real(rk), intent(in) :: incoefs(:)
+          integer, intent(in) :: inepos(:, :, :)
+          logical, intent(in) :: iniszeros(:)
           integer, intent(in) :: innum
           integer(i16b), allocatable :: basislist(:, :)
           real(rk), allocatable :: coeflist(:)
@@ -300,10 +333,10 @@ module projection
       subroutine Lplus_multiple(inbasis, incoefs, inepos, iniszeros, innum, &
               & basislist, coeflist, eposlist, iszerolist, num)
           !append to outaut list
-          integer(i16b), allocatable, intent(in) :: inbasis(:, :)
-          real(rk), allocatable, intent(in) :: incoefs(:)
-          integer, allocatable, intent(in) :: inepos(:, :, :)
-          logical, allocatable, intent(in) :: iniszeros(:)
+          integer(i16b), intent(in) :: inbasis(:, :)
+          real(rk),  intent(in) :: incoefs(:)
+          integer, intent(in) :: inepos(:, :, :)
+          logical, intent(in) :: iniszeros(:)
           integer, intent(in) :: innum
           integer(i16b), allocatable :: basislist(:, :)
           real(rk), allocatable :: coeflist(:)
@@ -670,7 +703,9 @@ module projection
          deallocate(outepos)
 
      end subroutine Lplus_single
-!TODO Lz            
+         
+
+
 
           
 

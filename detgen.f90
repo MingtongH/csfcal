@@ -2,8 +2,6 @@ module detgen
 !Generate all determinants of Lz = 0 and Sz = S(from readinput) given one configuration
 !such as 2s2, 2p5, 3d1
 !Mingtong Han, June 27 2016
-!TODO create a list for all the succesfully generated dets
-!     coeff will be Lz^2 - Lz, which should be 0
 use prep, only: i16b, Lzmax, Smax_t2, ARRAY_START_LENGTH, DET_MAX_LENGTH
 use, intrinsic :: iso_fortran_env, only: rk => real64
   implicit none
@@ -419,6 +417,7 @@ use, intrinsic :: iso_fortran_env, only: rk => real64
       enddo
       
   end subroutine
+
   subroutine pos2nlm(pos, n, l, m)
       integer, intent(in) :: pos
       integer :: n, l, m
@@ -533,7 +532,22 @@ use, intrinsic :: iso_fortran_env, only: rk => real64
       Lz_oneshell = Lz_unit(m_min, det_up) + Lz_unit(m_min, det_dn)
   end function Lz_oneshell
   
-  
+ integer function Lz_det(det)
+     integer(i16b), intent(in) :: det
+     integer(i16b) :: tpdet 
+     integer :: i, n, l, lz
+     tpdet = det
+     Lz_det = 0
+     do while (tpdet.ne.0)
+       i = trailz(tpdet)
+       call delocate(i, n, l, lz)
+       Lz_det = Lz_det + lz
+       tpdet = ibclr(tpdet, i)
+     end do
+ end function Lz_det
+
+
+
  ! character(LEN=16) function detdisplay(det)
  !     integer(i16b), intent(in) :: det
  !     integer(i16b) :: tmpdet

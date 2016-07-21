@@ -1,0 +1,516 @@
+>>>>>>>>>>> Now at shell :    0
+prdet_up****************
+prdet_dn****************
+prLz, pr2Sz, maxremLz, maxrem2Sz    0    0    0    0
+>>>>>>>>>>> Now at shell :    1
+prdet_up               0
+prdet_dn               0
+prLz, pr2Sz, maxremLz, maxrem2Sz    0    0    3    3
+ Searching det range 1 to               10
+*** Branch shell#, curLz     1    0
+>>>>>>>>>>> Now at shell :    2
+prdet_up              10
+prdet_dn               0
+prLz, pr2Sz, maxremLz, maxrem2Sz    0    1    3    0
+ Searching det range 1 to           111110
+*** Branch shell#, curLz     2   -1
+>>>>>>>>>>> Now at shell :    3
+prdet_up           11110
+prdet_dn            1100
+prLz, pr2Sz, maxremLz, maxrem2Sz   -1    2    2    0
+ At last shell 
+ Searching det range 1 to       1000000000
+*** Branch last shell, curLz =, cur2Sz =     3    1   -1
+curdet =        100000000
+!!!Success!!! Generated detup:           11110
+!!!Success!!! Generated detdn:   1000000001100
+           1
+*** Branch shell#, curLz     2    0
+>>>>>>>>>>> Now at shell :    3
+prdet_up           11110
+prdet_dn           10100
+prLz, pr2Sz, maxremLz, maxrem2Sz    0    2    2    0
+ At last shell 
+ Searching det range 1 to       1000000000
+*** Branch last shell, curLz =, cur2Sz =     3    0   -1
+curdet =         10000000
+!!!Success!!! Generated detup:           11110
+!!!Success!!! Generated detdn:    100000010100
+           2
+*** Branch shell#, curLz     2    1
+>>>>>>>>>>> Now at shell :    3
+prdet_up           11110
+prdet_dn           11000
+prLz, pr2Sz, maxremLz, maxrem2Sz    1    2    2    0
+ At last shell 
+ Searching det range 1 to       1000000000
+*** Branch last shell, curLz =, cur2Sz =     3   -1   -1
+curdet =          1000000
+!!!Success!!! Generated detup:           11110
+!!!Success!!! Generated detdn:     10000011000
+           3
+*** Branch shell#, curLz     2   -1
+>>>>>>>>>>> Now at shell :    3
+prdet_up            1110
+prdet_dn           11100
+prLz, pr2Sz, maxremLz, maxrem2Sz   -1    0    2    0
+ At last shell 
+ Searching det range 1 to       1000000000
+*** Branch last shell, curLz =, cur2Sz =     3    1    1
+curdet =             1000
+!!!Success!!! Generated detup:   1000000001110
+!!!Success!!! Generated detdn:           11100
+           4
+*** Branch shell#, curLz     2    0
+>>>>>>>>>>> Now at shell :    3
+prdet_up           10110
+prdet_dn           11100
+prLz, pr2Sz, maxremLz, maxrem2Sz    0    0    2    0
+ At last shell 
+ Searching det range 1 to       1000000000
+*** Branch last shell, curLz =, cur2Sz =     3    0    1
+curdet =              100
+!!!Success!!! Generated detup:    100000010110
+!!!Success!!! Generated detdn:           11100
+           5
+*** Branch shell#, curLz     2    1
+>>>>>>>>>>> Now at shell :    3
+prdet_up           11010
+prdet_dn           11100
+prLz, pr2Sz, maxremLz, maxrem2Sz    1    0    2    0
+ At last shell 
+ Searching det range 1 to       1000000000
+*** Branch last shell, curLz =, cur2Sz =     3   -1    1
+curdet =               10
+!!!Success!!! Generated detup:     10000011010
+!!!Success!!! Generated detdn:           11100
+           6
+*** Branch shell#, curLz     1    0
+>>>>>>>>>>> Now at shell :    2
+prdet_up               0
+prdet_dn              10
+prLz, pr2Sz, maxremLz, maxrem2Sz    0   -1    3    0
+ Searching det range 1 to           111110
+*** Branch shell#, curLz     2   -1
+>>>>>>>>>>> Now at shell :    3
+prdet_up           11100
+prdet_dn            1110
+prLz, pr2Sz, maxremLz, maxrem2Sz   -1    0    2    0
+ At last shell 
+ Searching det range 1 to       1000000000
+*** Branch last shell, curLz =, cur2Sz =     3    1    1
+curdet =             1000
+!!!Success!!! Generated detup:   1000000011100
+!!!Success!!! Generated detdn:            1110
+           7
+*** Branch shell#, curLz     2    0
+>>>>>>>>>>> Now at shell :    3
+prdet_up           11100
+prdet_dn           10110
+prLz, pr2Sz, maxremLz, maxrem2Sz    0    0    2    0
+ At last shell 
+ Searching det range 1 to       1000000000
+*** Branch last shell, curLz =, cur2Sz =     3    0    1
+curdet =              100
+!!!Success!!! Generated detup:    100000011100
+!!!Success!!! Generated detdn:           10110
+           8
+*** Branch shell#, curLz     2    1
+>>>>>>>>>>> Now at shell :    3
+prdet_up           11100
+prdet_dn           11010
+prLz, pr2Sz, maxremLz, maxrem2Sz    1    0    2    0
+ At last shell 
+ Searching det range 1 to       1000000000
+*** Branch last shell, curLz =, cur2Sz =     3   -1    1
+curdet =               10
+!!!Success!!! Generated detup:     10000011100
+!!!Success!!! Generated detdn:           11010
+           9
+*** Branch shell#, curLz     2   -1
+>>>>>>>>>>> Now at shell :    3
+prdet_up            1100
+prdet_dn           11110
+prLz, pr2Sz, maxremLz, maxrem2Sz   -1   -2    2    0
+*** Branch shell#, curLz     2    0
+>>>>>>>>>>> Now at shell :    3
+prdet_up           10100
+prdet_dn           11110
+prLz, pr2Sz, maxremLz, maxrem2Sz    0   -2    2    0
+*** Branch shell#, curLz     2    1
+>>>>>>>>>>> Now at shell :    3
+prdet_up           11000
+prdet_dn           11110
+prLz, pr2Sz, maxremLz, maxrem2Sz    1   -2    2    0
+           9
+           11110   1000000001100
+           11110    100000010100
+           11110     10000011000
+   1000000001110           11100
+    100000010110           11100
+     10000011010           11100
+   1000000011100            1110
+    100000011100           10110
+     10000011100           11010
+************series of operators *********************
+            1001             100
+   1   0   0   2   0
+   0   0   3   0   0
+Start array:
+           1           2           3
+End array:, number of swps
+           1           2           3
+           0
+Sign:   0
+-----------Apply L- on detup, detdn:             1001             100
+  1  0  0  2  0  0  0  0  0  0  0  0  0  0  0
+  0  0  3  0  0  0  0  0  0  0  0  0  0  0  0
+   1.0000000000000000      F           0
+l- on e at up pos:   0
+ T
+l- on e at up pos:   3
+ F
+Output detup, detdn:              101             100
+  1  0  2  0  0  0  0  0  0  0  0  0  0  0  0
+  0  0  3  0  0  0  0  0  0  0  0  0  0  0  0
+   1.4142135381698608      F           1
+l- on e at dn pos:   2
+ T
+
+>>>>>>>>>>>>> Applying L+ to multiple dets, now at No.  1
+-----------Apply L+ on detup, detdn:              101             100
+  1  0  2  0  0  0  0  0  0  0  0  0  0  0  0
+  0  0  3  0  0  0  0  0  0  0  0  0  0  0  0
+   1.4142135381698608      F           0
+l+ on e at up pos:   0
+ T
+l+ on e at up pos:   2
+ F
+Output detup, detdn:             1001             100
+  1  0  0  2  0  0  0  0  0  0  0  0  0  0  0
+  0  0  3  0  0  0  0  0  0  0  0  0  0  0  0
+   1.9999999315429164      F           1
+l+ on e at dn pos:   2
+ F
+Output detup, detdn:              101            1000
+  1  0  2  0  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  3  0  0  0  0  0  0  0  0  0  0  0
+   1.9999999315429164      F           2
+           2
+Called scalar_append
+           3
+  -1.4142135381698608     
+
+>>>>>>>>>>>>> Applying S- ta multiple dets, now at No.  1
+-----------Apply S- on detup, detdn:             1001             100
+  1  0  0  2  0  0  0  0  0  0  0  0  0  0  0
+  0  0  3  0  0  0  0  0  0  0  0  0  0  0  0
+   1.9999999315429164      F           0
+   1   0   0   2   0   0   0   0   0   0   0   0   0   0   0
+   0   0   3   0   0   0   0   0   0   0   0   0   0   0   0
+s- on e at up pos:   0
+ F
+Output detup, detdn:             1000             101
+  0  0  0  2  0  0  0  0  0  0  0  0  0  0  0
+  1  0  3  0  0  0  0  0  0  0  0  0  0  0  0
+   1.9999999315429164      F           1
+   1   0   0   2   0   0   0   0   0   0   0   0   0   0   0
+   0   0   3   0   0   0   0   0   0   0   0   0   0   0   0
+s- on e at up pos:   3
+ F
+Output detup, detdn:                1            1100
+  1  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+  0  0  3  2  0  0  0  0  0  0  0  0  0  0  0
+   1.9999999315429164      F           2
+
+>>>>>>>>>>>>> Applying S- ta multiple dets, now at No.  2
+-----------Apply S- on detup, detdn:              101            1000
+  1  0  2  0  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  3  0  0  0  0  0  0  0  0  0  0  0
+   1.9999999315429164      F           2
+   1   0   2   0   0   0   0   0   0   0   0   0   0   0   0
+   0   0   0   3   0   0   0   0   0   0   0   0   0   0   0
+s- on e at up pos:   0
+ F
+Output detup, detdn:              100            1001
+  0  0  2  0  0  0  0  0  0  0  0  0  0  0  0
+  1  0  0  3  0  0  0  0  0  0  0  0  0  0  0
+   1.9999999315429164      F           3
+   1   0   2   0   0   0   0   0   0   0   0   0   0   0   0
+   0   0   0   3   0   0   0   0   0   0   0   0   0   0   0
+s- on e at up pos:   2
+ F
+Output detup, detdn:                1            1100
+  1  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+  0  0  2  3  0  0  0  0  0  0  0  0  0  0  0
+   1.9999999315429164      F           4
+
+>>>>>>>>>>>>> Applying S- ta multiple dets, now at No.  3
+-----------Apply S- on detup, detdn:              101             100
+  1  0  2  0  0  0  0  0  0  0  0  0  0  0  0
+  0  0  3  0  0  0  0  0  0  0  0  0  0  0  0
+  -1.4142135381698608      F           4
+   1   0   2   0   0   0   0   0   0   0   0   0   0   0   0
+   0   0   3   0   0   0   0   0   0   0   0   0   0   0   0
+s- on e at up pos:   0
+ F
+Output detup, detdn:              100             101
+  0  0  2  0  0  0  0  0  0  0  0  0  0  0  0
+  1  0  3  0  0  0  0  0  0  0  0  0  0  0  0
+  -1.4142135381698608      F           5
+s- on e at up pos:   2
+ T
+
+>>>>>>>>>>>>> Applying S+ to multiple dets, now at No.  1
+-----------Apply S+ on detup, detdn:             1000             101
+  0  0  0  2  0  0  0  0  0  0  0  0  0  0  0
+  1  0  3  0  0  0  0  0  0  0  0  0  0  0  0
+   1.9999999315429164      F           0
+   0   0   0   2   0   0   0   0   0   0   0   0   0   0   0
+   1   0   3   0   0   0   0   0   0   0   0   0   0   0   0
+s+ on e at up pos:   0
+ F
+Output detup, detdn:             1001             100
+  1  0  0  2  0  0  0  0  0  0  0  0  0  0  0
+  0  0  3  0  0  0  0  0  0  0  0  0  0  0  0
+   1.9999999315429164      F           1
+   0   0   0   2   0   0   0   0   0   0   0   0   0   0   0
+   1   0   3   0   0   0   0   0   0   0   0   0   0   0   0
+s+ on e at up pos:   2
+ F
+Output detup, detdn:             1100               1
+  0  0  3  2  0  0  0  0  0  0  0  0  0  0  0
+  1  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+   1.9999999315429164      F           2
+
+>>>>>>>>>>>>> Applying S+ to multiple dets, now at No.  2
+-----------Apply S+ on detup, detdn:                1            1100
+  1  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+  0  0  3  2  0  0  0  0  0  0  0  0  0  0  0
+   1.9999999315429164      F           2
+   1   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+   0   0   3   2   0   0   0   0   0   0   0   0   0   0   0
+s+ on e at up pos:   2
+ F
+Output detup, detdn:              101            1000
+  1  0  3  0  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  2  0  0  0  0  0  0  0  0  0  0  0
+   1.9999999315429164      F           3
+   1   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+   0   0   3   2   0   0   0   0   0   0   0   0   0   0   0
+s+ on e at up pos:   3
+ F
+Output detup, detdn:             1001             100
+  1  0  0  2  0  0  0  0  0  0  0  0  0  0  0
+  0  0  3  0  0  0  0  0  0  0  0  0  0  0  0
+   1.9999999315429164      F           4
+
+>>>>>>>>>>>>> Applying S+ to multiple dets, now at No.  3
+-----------Apply S+ on detup, detdn:              100            1001
+  0  0  2  0  0  0  0  0  0  0  0  0  0  0  0
+  1  0  0  3  0  0  0  0  0  0  0  0  0  0  0
+   1.9999999315429164      F           4
+   0   0   2   0   0   0   0   0   0   0   0   0   0   0   0
+   1   0   0   3   0   0   0   0   0   0   0   0   0   0   0
+s+ on e at up pos:   0
+ F
+Output detup, detdn:              101            1000
+  1  0  2  0  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  3  0  0  0  0  0  0  0  0  0  0  0
+   1.9999999315429164      F           5
+   0   0   2   0   0   0   0   0   0   0   0   0   0   0   0
+   1   0   0   3   0   0   0   0   0   0   0   0   0   0   0
+s+ on e at up pos:   3
+ F
+Output detup, detdn:             1100               1
+  0  0  2  3  0  0  0  0  0  0  0  0  0  0  0
+  1  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+   1.9999999315429164      F           6
+
+>>>>>>>>>>>>> Applying S+ to multiple dets, now at No.  4
+-----------Apply S+ on detup, detdn:                1            1100
+  1  0  0  0  0  0  0  0  0  0  0  0  0  0  0
+  0  0  2  3  0  0  0  0  0  0  0  0  0  0  0
+   1.9999999315429164      F           6
+   1   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+   0   0   2   3   0   0   0   0   0   0   0   0   0   0   0
+s+ on e at up pos:   2
+ F
+Output detup, detdn:              101            1000
+  1  0  2  0  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  3  0  0  0  0  0  0  0  0  0  0  0
+   1.9999999315429164      F           7
+   1   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+   0   0   2   3   0   0   0   0   0   0   0   0   0   0   0
+s+ on e at up pos:   3
+ F
+Output detup, detdn:             1001             100
+  1  0  0  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  2  0  0  0  0  0  0  0  0  0  0  0  0
+   1.9999999315429164      F           8
+
+>>>>>>>>>>>>> Applying S+ to multiple dets, now at No.  5
+-----------Apply S+ on detup, detdn:              100             101
+  0  0  2  0  0  0  0  0  0  0  0  0  0  0  0
+  1  0  3  0  0  0  0  0  0  0  0  0  0  0  0
+  -1.4142135381698608      F           8
+   0   0   2   0   0   0   0   0   0   0   0   0   0   0   0
+   1   0   3   0   0   0   0   0   0   0   0   0   0   0   0
+s+ on e at up pos:   0
+ F
+Output detup, detdn:              101             100
+  1  0  2  0  0  0  0  0  0  0  0  0  0  0  0
+  0  0  3  0  0  0  0  0  0  0  0  0  0  0  0
+  -1.4142135381698608      F           9
+s+ on e at up pos:   2
+ T
+Start array:
+           1           2           3
+End array:, number of swps
+           1           2           3
+           0
+Sign:   0
+Start array:
+           3           2           1
+End array:, number of swps
+           1           2           3
+           1
+Sign:   1
+Start array:
+           1           3           2
+End array:, number of swps
+           1           2           3
+           1
+Sign:   1
+Start array:
+           1           2           3
+End array:, number of swps
+           1           2           3
+           0
+Sign:   0
+Start array:
+           1           2           3
+End array:, number of swps
+           1           2           3
+           0
+Sign:   0
+Start array:
+           2           3           1
+End array:, number of swps
+           1           2           3
+           2
+Sign:   0
+Start array:
+           1           2           3
+End array:, number of swps
+           1           2           3
+           0
+Sign:   0
+Start array:
+           1           3           2
+End array:, number of swps
+           1           2           3
+           1
+Sign:   1
+Start array:
+           1           2           3
+End array:, number of swps
+           1           2           3
+           0
+Sign:   0
+  1            1001             100 1.999999931542916
+  1  0  0  2  0  0  0  0  0  0
+  0  0  3  0  0  0  0  0  0  0
+  2            1100               1-1.999999931542916
+  0  0  3  2  0  0  0  0  0  0
+  1  0  0  0  0  0  0  0  0  0
+  3             101            1000-1.999999931542916
+  1  0  3  0  0  0  0  0  0  0
+  0  0  0  2  0  0  0  0  0  0
+  4            1001             100 1.999999931542916
+  1  0  0  2  0  0  0  0  0  0
+  0  0  3  0  0  0  0  0  0  0
+  5             101            1000 1.999999931542916
+  1  0  2  0  0  0  0  0  0  0
+  0  0  0  3  0  0  0  0  0  0
+  6            1100               1 1.999999931542916
+  0  0  2  3  0  0  0  0  0  0
+  1  0  0  0  0  0  0  0  0  0
+  7             101            1000 1.999999931542916
+  1  0  2  0  0  0  0  0  0  0
+  0  0  0  3  0  0  0  0  0  0
+  8            1001             100-1.999999931542916
+  1  0  0  3  0  0  0  0  0  0
+  0  0  2  0  0  0  0  0  0  0
+  9             101             100-1.414213538169861
+  1  0  2  0  0  0  0  0  0  0
+  0  0  3  0  0  0  0  0  0  0
+Allocated allbasis
+Allocated coeftable
+Processing det# from list:  1
+findindetlist()=   0
+ Initialized new row
+Added new det row    1
+Processing det# from list:  2
+findindetlist()=   0
+ Initialized new row
+Added new det row    2
+Processing det# from list:  3
+findindetlist()=   0
+ Initialized new row
+Added new det row    3
+Processing det# from list:  4
+findindetlist()=   1
+Combined coef with existing det
+Processing det# from list:  5
+findindetlist()=   3
+Combined coef with existing det
+Processing det# from list:  6
+findindetlist()=   2
+Combined coef with existing det
+Processing det# from list:  7
+findindetlist()=   3
+Combined coef with existing det
+Processing det# from list:  8
+findindetlist()=   1
+Combined coef with existing det
+Processing det# from list:  9
+findindetlist()=   0
+ Initialized new row
+Added new det row    4
+Initialized new column to 0
+Processing det# from list:  1
+findindetlist()=   0
+ Initialized new row
+Added new det row    5
+Processing det# from list:  2
+findindetlist()=   0
+ Initialized new row
+Added new det row    6
+Processing det# from list:  3
+findindetlist()=   0
+ Initialized new row
+Added new det row    7
+Processing det# from list:  4
+findindetlist()=   6
+Combined coef with existing det
+Processing det# from list:  5
+findindetlist()=   0
+ Initialized new row
+Added new det row    8
+            1001             100    1.999999932    0.000000000
+            1100               1    0.000000000    0.000000000
+             101            1000    1.999999932    0.000000000
+             101             100   -1.414213538    0.000000000
+            1000             101    0.000000000    1.999999932
+               1            1100    0.000000000    3.999999863
+             100            1001    0.000000000    1.999999932
+             100             101    0.000000000   -1.414213538
+            1001             100    0.632455530    0.000000000
+            1100               1    0.000000000    0.000000000
+             101            1000    0.632455530    0.000000000
+             101             100   -0.447213602    0.000000000
+            1000             101    0.000000000    0.392232270
+               1            1100    0.000000000    0.784464540
+             100            1001    0.000000000    0.392232270
+             100             101    0.000000000   -0.277350102
