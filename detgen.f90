@@ -8,7 +8,7 @@ use, intrinsic :: iso_fortran_env, only: rk => real64
   contains
 !>>>>>>> functions and subroutines
 !isHalfFull(shellconfig), 
-!assign_shell(prdet_up,prdet_dn,prLz,pr2Sz,maxremLz,maxrem2Sz, desLz,des2Sz,configs,ncurr, tot)
+!assign_shell(prdet_up,prdet_dn,prLz,pr2Sz,maxremLz,maxrem2Sz, desLz,des2Sz,config,ncurr, tot)
 !detmod_shell(n, l, m_min, subdet, det), locate_det(n, l, m)
 !Szt2_oneshell(halflen, det), count_occ_orbs(det)
 !Lz_unit(m_min, det), Lz_oneshell(m_min, halflen, det)
@@ -206,7 +206,8 @@ use, intrinsic :: iso_fortran_env, only: rk => real64
       end function isHalfFull
 
       recursive subroutine assign_shell(prdet_up,prdet_dn,prLz,pr2Sz,maxremLz, &
-              & maxrem2Sz,desLz,des2Sz,configs,ncurr,tot, detlist)
+              & maxrem2Sz,desLz,des2Sz,config,ncurr,tot, detlist)
+          !Assign all subshells for one configuration
           !input maxrem includes all shells not assigned
           !including the one
           !to be assigned in this recursion
@@ -215,7 +216,7 @@ use, intrinsic :: iso_fortran_env, only: rk => real64
           integer, intent(in) :: prLz, pr2Sz, maxremLz, maxrem2Sz, ncurr
           ! ncurr = current shell number
           integer, intent(in) :: desLz, des2Sz
-          integer, intent(in) :: configs(:, :)
+          integer, intent(in) :: config(:, :)
           integer :: nshell_tot, tot
           integer(i16b), intent(in) :: prdet_up, prdet_dn
           integer(i16b) :: curdet, tpdet, det_range!det_dn--det_up
@@ -225,7 +226,7 @@ use, intrinsic :: iso_fortran_env, only: rk => real64
           integer :: tpLz, tp2Sz, tpmaxremLz, tpmaxrem2Sz
           integer :: necur ! number of electrons in current shell
           integer(i16b), allocatable :: detlist(:, :)
-          nshell_tot = size(configs, 1)
+          nshell_tot = size(config, 1)
           !write(*, '("nshell_tot = ", 1I5)') nshell_tot
           write(*, '(">>>>>>>>>>> Now at shell :",1I5)') ncurr
           write(*, '("prdet_up", B16)') prdet_up
@@ -238,15 +239,15 @@ use, intrinsic :: iso_fortran_env, only: rk => real64
               if(.not.allocated(detlist)) then
                   allocate(detlist(ARRAY_START_LENGTH, 2))
               endif
-              call assign_shell(detup, detdn, 0, 0, Lzmax(configs), Smax_t2(configs),&
-                  & desLz, des2Sz, configs, ncurr+1, tot, detlist)
+              call assign_shell(detup, detdn, 0, 0, Lzmax(config), Smax_t2(config),&
+                  & desLz, des2Sz, config, ncurr+1, tot, detlist)
 
           !*************************last shell
           else if(ncurr.eq.nshell_tot) then !if1
-            necur = configs(ncurr, 3) 
+            necur = config(ncurr, 3) 
             tpLz = desLz - prLz
             tp2Sz = des2Sz - pr2Sz
-            tpmaxrem2Sz = Smax_t2(configs(ncurr:ncurr, 1:3)) 
+            tpmaxrem2Sz = Smax_t2(config(ncurr:ncurr, 1:3)) 
             !No need of this line if this is calculated for all previous levels
             if(tpLz.gt.maxremLz.OR.tpLz.lt.(-maxremLz)) then!if2
                 write(*, '("Cannot assign for des with Lz = ", 1I5)') tpLz
@@ -257,9 +258,9 @@ use, intrinsic :: iso_fortran_env, only: rk => real64
                 !!construct and store complete det_up, prdet_dn:
                 ! find all curdet that has curLz and cur2Sz
               write(*, '(" At last shell ")')
-              necur = configs(ncurr, 3)
-              m_max = configs(ncurr, 2) !lz 
-              m_min = - configs(ncurr, 2) 
+              necur = config(ncurr, 3)
+              m_max = config(ncurr, 2) !lz 
+              m_min = - config(ncurr, 2) 
               !!>>>>  May need to change m_max, m_min for pruning
               halflen = m_max - m_min + 1
               det_range = 0
@@ -288,11 +289,11 @@ use, intrinsic :: iso_fortran_env, only: rk => real64
                              write(*, '("*** Branch last shell, curLz =, cur2Sz = ",&
                                  & 3I5)') ncurr, curLz, cur2Sz
                              detup = prdet_up 
-                             call detmod_shell(configs(ncurr, 1), configs(ncurr, 2),&
+                             call detmod_shell(config(ncurr, 1), config(ncurr, 2),&
                                  & m_min, ibits(curdet, 0, halflen), detup)
                              detdn = prdet_dn
                              write(*, '("curdet = ", B16)') curdet
-                             call  detmod_shell(configs(ncurr, 1), configs(ncurr, 2),&
+                             call  detmod_shell(config(ncurr, 1), config(ncurr, 2),&
                                  & m_min, ibits(curdet, halflen, halflen), detdn)
                              write(*, '("!!!Success!!! Generated detup:", B16)') detup 
                              write(*, '("!!!Success!!! Generated detdn:", B16)') detdn
@@ -309,19 +310,19 @@ use, intrinsic :: iso_fortran_env, only: rk => real64
             endif !2
           !*****************************recur
           else !1
-              necur = configs(ncurr, 3)
-              tpLz = Lzmax(configs(ncurr:ncurr, 1:3))
+              necur = config(ncurr, 3)
+              tpLz = Lzmax(config(ncurr:ncurr, 1:3))
              ! write(*, '("Lzmax of this shell = ", 1I5)') tpLz
               tpmaxremLz = maxremLz - tpLz ! tpmaxremLz no longer include current shell
              ! write(*, '("maxremLz of next recur = ", 1I5)') tpmaxremLz
               curLzmax = min(tpLz, desLz - prLz + tpmaxremLz)
               curLzmin = max(-tpLz, desLz - prLz - tpmaxremLz)
-              m_max = configs(ncurr, 2) !lz 
-              m_min = - configs(ncurr, 2) 
+              m_max = config(ncurr, 2) !lz 
+              m_min = - config(ncurr, 2) 
               
               !!>>>>  May need to change m_max, m_min for pruning
               !!>>>>  check Sz beforehand to save time
-              !cursmax_t2 = Smax_t2(configs(ncurr:ncurr, 1:3))
+              !cursmax_t2 = Smax_t2(config(ncurr:ncurr, 1:3))
               !tpmaxrem2Sz = 1
               
               halflen = m_max - m_min + 1
@@ -349,14 +350,14 @@ use, intrinsic :: iso_fortran_env, only: rk => real64
                          tp2Sz = pr2Sz + cur2Sz
                          tpmaxrem2Sz = 0!Change later 
                          detup = prdet_up 
-                         call detmod_shell(configs(ncurr, 1), configs(ncurr, 2),&
+                         call detmod_shell(config(ncurr, 1), config(ncurr, 2),&
                              & m_min, ibits(curdet, 0, halflen), detup)
                          detdn = prdet_dn
-                         call  detmod_shell(configs(ncurr, 1), configs(ncurr, 2),&
+                         call  detmod_shell(config(ncurr, 1), config(ncurr, 2),&
                              & m_min, ibits(curdet, halflen, halflen), detdn)
                          write(*, '("*** Branch shell#, curLz ", 2I5)') ncurr, curLz
                          call assign_shell(detup, detdn, tpLz, tp2Sz, tpmaxremLz,&
-                             & tpmaxrem2Sz, desLz, des2Sz, configs, ncurr+1, tot, detlist)
+                             & tpmaxrem2Sz, desLz, des2Sz, config, ncurr+1, tot, detlist)
                      endif
                  endif
               enddo

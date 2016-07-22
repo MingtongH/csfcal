@@ -9,7 +9,7 @@ module prep
   integer, parameter :: STRING_MAX_LENGTH = 16
   integer, parameter :: i16b = SELECTED_INT_KIND(38)
   integer, parameter :: ARRAY_START_LENGTH = 100, DET_MAX_LENGTH = 30
-
+  integer, parameter :: Lzdes = 0
   !>>>>>>>> Input variables
   integer :: nconfig, Ldes, Sdes_t2, Ides
   !Lzdes, Szdes_t2 not defined here
@@ -80,7 +80,7 @@ module prep
      !read(*, *) Lzdes
      read(*, *) Ides
      !write(*, '("desired S*2 L Sz*2 Lz I :", 5I5)') Sdes_t2, Ldes, Szdes_t2,  Lzdes, Ides
-     write(*, '("desired S*2 L Sz*2 Lz I :", 5I5)') Sdes_t2, Ldes, Ides
+     write(*, '("desired S*2 L I:", 5I5)') Sdes_t2, Ldes, Ides
      if(Ides.eq.1) then 
          Ides = 0
      elseif(Ides.eq.-1) then

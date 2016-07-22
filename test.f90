@@ -9,7 +9,7 @@ program test
       !det(1, 1) = 5
       !det(1, 2) = 3
       !Lz_test = Lz(det)
-      integer, allocatable :: configs (:, :)
+      integer, allocatable :: config (:, :)
       integer(i16b) :: det, subdet, detup, detdn
       integer :: nocc, count_tot, i, n, l, m
       integer, allocatable :: occ_up(:), occ_dn(:), eposup(:), eposdn(:), tmpepos
@@ -24,13 +24,13 @@ program test
       integer, allocatable :: eposlist(:, :, :), outeposlist(:, :, :), eposlist1(:, :, :), eposlist2(:, :, :), eposlist3(:, :, :)
       integer :: num, outnum, num1, num2, num3, ndets, ncsf, j
 
-      allocate(configs(3, 3))
-      configs(1, 1:3) = (/2, 0, 1/)
-      configs(2, 1:3) = (/2, 1, 5/)
-      configs(3, 1:3) = (/3, 2, 1/)
-      !write(*, *) Lzmax(configs)
+      allocate(config(3, 3))
+      config(1, 1:3) = (/2, 0, 1/)
+      config(2, 1:3) = (/2, 1, 5/)
+      config(3, 1:3) = (/3, 2, 1/)
+      !write(*, *) Lzmax(config)
      count_tot = 0
-     call assign_shell(det, det, 0, 0, 0, 0, 0, 1, configs, 0, count_tot, detlist)
+     call assign_shell(0_i16b, 0_i16b, 0, 0, 0, 0, 0, 1, config, 0, count_tot, detlist)
       write(*, *) count_tot
       do i = 1, count_tot
         write(*, '(2B16)') detlist(i, 1:2)
@@ -141,7 +141,7 @@ program test
      ! enddo
 
 
-      !write(*, *) isHalfFull(configs(1, 1:3))
+      !write(*, *) isHalfFull(config(1, 1:3))
       !allocate(occ_up(3)) 
       !allocate(occ_dn(3))
       !do det = 0, 8
