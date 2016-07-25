@@ -1,0 +1,4698 @@
+==== Start Reading Input ====
+Atom: C               
+Number of configs:     4
+Number of active electrons:     4
+Number of inactive electrons:     2
+>>> Reading Config     1
+Number of shells occupied:     2
+shell # : n, l, ne     1    2    0    2
+shell # : n, l, ne     2    2    1    2
+>>> Reading Config     2
+Number of shells occupied:     1
+shell # : n, l, ne     1    2    1    4
+>>> Reading Config     3
+Number of shells occupied:     3
+shell # : n, l, ne     1    2    0    1
+shell # : n, l, ne     2    2    1    2
+shell # : n, l, ne     3    3    2    1
+>>> Reading Config     4
+Number of shells occupied:     2
+shell # : n, l, ne     1    2    0    2
+shell # : n, l, ne     2    3    2    2
+>>> Reading other parameters
+desired S*2 L I:    2    1    1
+Ides converted
+==== End Reading Input ====
+Smin checked. 
+checking Smax for config: , Smax *2 =     1    2
+checking Smax for config: , Smax *2 =     2    2
+checking Smax for config: , Smax *2 =     3    4
+checking Smax for config: , Smax *2 =     4    2
+Smax checked
+ Checking Lmax for config: , Lmax =     1    2
+ Checking Lmax for config: , Lmax =     2    4
+ Checking Lmax for config: , Lmax =     3    4
+ Checking Lmax for config: , Lmax =     4    4
+I checked. 
+Lmax checked. 
+ %%%%%%%%%%%%%%%%%%%%%%  Assign_shell for Config           1   %%%%%%%%%%%%%%%%%%%
+------------ Now at shell :    0
+prdet_up               0
+prdet_dn               0
+prLz, pr2Sz, maxremLz, maxrem2Sz    0    0    0    0
+------------ Now at shell :    1
+prdet_up               0
+prdet_dn               0
+prLz, pr2Sz, maxremLz, maxrem2Sz    0    0    2    2
+ Searching det range 1 to               11
+---- Branch shell#, curLz     1    0
+------------ Now at shell :    2
+prdet_up              10
+prdet_dn              10
+prLz, pr2Sz, maxremLz, maxrem2Sz    0    0    2    0
+ At last shell 
+ Searching det range 1 to           110000
+---- Branch last shell, curLz =, cur2Sz =     2    0    2
+curdet =              101
+!!!Success!!! Generated detup:           10110
+!!!Success!!! Generated detdn:              10
+           1
+           1
+           10110              10
+ xxxxxxxxxxxxxxxxxxxxx  Projection of det #           1   xxxxxxxxxxxxxxxxxxxx
+ >>>>>>>>>>>>>>>>>>>>>>> Projection P_L 
+  
+====================== Now at Lp =  0
+
+-------------------- Applying L+ to multiple dets, now at No.  1
+---------------------- Apply L+ on detup, detdn:            10110              10
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  4  0  0  0  0  0  0  0  0  0  0  0  0  0
+   1.0000000000000000      F           0
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   2
+ F
+Output detup, detdn:            11010              10
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  4  0  0  0  0  0  0  0  0  0  0  0  0  0
+   1.4142135381698608      F           1
+l+ on e at up pos:   4
+ T
+l+ on e at dn pos:   1
+ T
+
+---------------------- Applying L- to multiple dets, now at No.  1
+---------------------- Apply L- on detup, detdn:            11010              10
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  4  0  0  0  0  0  0  0  0  0  0  0  0  0
+   1.4142135381698608      F           0
+l- on e at up pos:   1
+ T
+l- on e at up pos:   3
+ F
+Output detup, detdn:            10110              10
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  4  0  0  0  0  0  0  0  0  0  0  0  0  0
+   1.9999999315429164      F           1
+l- on e at up pos:   4
+ T
+l- on e at dn pos:   1
+ T
+  ------------------- Append tail to basislist 
+tail =    0.0000000000
+Total number of dets in basislist   2
+  
+====================== Now at Lp =  1
+
+-------------------- Applying L+ to multiple dets, now at No.  1
+---------------------- Apply L+ on detup, detdn:            10110              10
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  4  0  0  0  0  0  0  0  0  0  0  0  0  0
+   1.9999999315429164      F           0
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   2
+ F
+Output detup, detdn:            11010              10
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  4  0  0  0  0  0  0  0  0  0  0  0  0  0
+   2.8284269795267871      F           1
+l+ on e at up pos:   4
+ T
+l+ on e at dn pos:   1
+ T
+
+-------------------- Applying L+ to multiple dets, now at No.  2
+---------------------- Apply L+ on detup, detdn:            10110              10
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  4  0  0  0  0  0  0  0  0  0  0  0  0  0
+   0.0000000000000000      F           1
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   2
+ F
+Output detup, detdn:            11010              10
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  4  0  0  0  0  0  0  0  0  0  0  0  0  0
+   0.0000000000000000      F           2
+l+ on e at up pos:   4
+ T
+l+ on e at dn pos:   1
+ T
+
+---------------------- Applying L- to multiple dets, now at No.  1
+---------------------- Apply L- on detup, detdn:            11010              10
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  4  0  0  0  0  0  0  0  0  0  0  0  0  0
+   2.8284269795267871      F           0
+l- on e at up pos:   1
+ T
+l- on e at up pos:   3
+ F
+Output detup, detdn:            10110              10
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  4  0  0  0  0  0  0  0  0  0  0  0  0  0
+   3.9999997261716702      F           1
+l- on e at up pos:   4
+ T
+l- on e at dn pos:   1
+ T
+
+---------------------- Applying L- to multiple dets, now at No.  2
+---------------------- Apply L- on detup, detdn:            11010              10
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  4  0  0  0  0  0  0  0  0  0  0  0  0  0
+   0.0000000000000000      F           1
+l- on e at up pos:   1
+ T
+l- on e at up pos:   3
+ F
+Output detup, detdn:            10110              10
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  4  0  0  0  0  0  0  0  0  0  0  0  0  0
+   0.0000000000000000      F           2
+l- on e at up pos:   4
+ T
+l- on e at dn pos:   1
+ T
+  ------------------- Append tail to basislist 
+tail =   -2.0000000000
+Total number of dets in basislist   4
+  
+====================== Now at Lp =  2
+
+-------------------- Applying L+ to multiple dets, now at No.  1
+---------------------- Apply L+ on detup, detdn:            10110              10
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  4  0  0  0  0  0  0  0  0  0  0  0  0  0
+   3.9999997261716702      F           0
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   2
+ F
+Output detup, detdn:            11010              10
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  4  0  0  0  0  0  0  0  0  0  0  0  0  0
+   5.6568537654277122      F           1
+l+ on e at up pos:   4
+ T
+l+ on e at dn pos:   1
+ T
+
+-------------------- Applying L+ to multiple dets, now at No.  2
+---------------------- Apply L+ on detup, detdn:            10110              10
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  4  0  0  0  0  0  0  0  0  0  0  0  0  0
+   0.0000000000000000      F           1
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   2
+ F
+Output detup, detdn:            11010              10
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  4  0  0  0  0  0  0  0  0  0  0  0  0  0
+   0.0000000000000000      F           2
+l+ on e at up pos:   4
+ T
+l+ on e at dn pos:   1
+ T
+
+-------------------- Applying L+ to multiple dets, now at No.  3
+---------------------- Apply L+ on detup, detdn:            10110              10
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  4  0  0  0  0  0  0  0  0  0  0  0  0  0
+  -3.9999998630858329      F           2
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   2
+ F
+Output detup, detdn:            11010              10
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  4  0  0  0  0  0  0  0  0  0  0  0  0  0
+  -5.6568539590535742      F           3
+l+ on e at up pos:   4
+ T
+l+ on e at dn pos:   1
+ T
+
+-------------------- Applying L+ to multiple dets, now at No.  4
+---------------------- Apply L+ on detup, detdn:            10110              10
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  4  0  0  0  0  0  0  0  0  0  0  0  0  0
+  -0.0000000000000000      F           3
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   2
+ F
+Output detup, detdn:            11010              10
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  4  0  0  0  0  0  0  0  0  0  0  0  0  0
+  -0.0000000000000000      F           4
+l+ on e at up pos:   4
+ T
+l+ on e at dn pos:   1
+ T
+
+---------------------- Applying L- to multiple dets, now at No.  1
+---------------------- Apply L- on detup, detdn:            11010              10
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  4  0  0  0  0  0  0  0  0  0  0  0  0  0
+   5.6568537654277122      F           0
+l- on e at up pos:   1
+ T
+l- on e at up pos:   3
+ F
+Output detup, detdn:            10110              10
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  4  0  0  0  0  0  0  0  0  0  0  0  0  0
+   7.9999991785150248      F           1
+l- on e at up pos:   4
+ T
+l- on e at dn pos:   1
+ T
+
+---------------------- Applying L- to multiple dets, now at No.  2
+---------------------- Apply L- on detup, detdn:            11010              10
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  4  0  0  0  0  0  0  0  0  0  0  0  0  0
+   0.0000000000000000      F           1
+l- on e at up pos:   1
+ T
+l- on e at up pos:   3
+ F
+Output detup, detdn:            10110              10
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  4  0  0  0  0  0  0  0  0  0  0  0  0  0
+   0.0000000000000000      F           2
+l- on e at up pos:   4
+ T
+l- on e at dn pos:   1
+ T
+
+---------------------- Applying L- to multiple dets, now at No.  3
+---------------------- Apply L- on detup, detdn:            11010              10
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  4  0  0  0  0  0  0  0  0  0  0  0  0  0
+  -5.6568539590535742      F           2
+l- on e at up pos:   1
+ T
+l- on e at up pos:   3
+ F
+Output detup, detdn:            10110              10
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  4  0  0  0  0  0  0  0  0  0  0  0  0  0
+  -7.9999994523433404      F           3
+l- on e at up pos:   4
+ T
+l- on e at dn pos:   1
+ T
+
+---------------------- Applying L- to multiple dets, now at No.  4
+---------------------- Apply L- on detup, detdn:            11010              10
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  4  0  0  0  0  0  0  0  0  0  0  0  0  0
+  -0.0000000000000000      F           3
+l- on e at up pos:   1
+ T
+l- on e at up pos:   3
+ F
+Output detup, detdn:            10110              10
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  4  0  0  0  0  0  0  0  0  0  0  0  0  0
+  -0.0000000000000000      F           4
+l- on e at up pos:   4
+ T
+l- on e at dn pos:   1
+ T
+  ------------------- Append tail to basislist 
+tail =   -6.0000000000
+Total number of dets in basislist   8
+ >>>>>>>>>>>>>>>>>>>> Get all signs of basislist <<<<<<<<<<<<<<<<<<<
+ Getsign()
+           10110              10
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  4  0  0  0  0  0  0  0  0  0  0  0  0  0
+Start array:
+           1           2           3           4
+End array:, number of swps
+           1           2           3           4
+Count swps =    0
+Sign:   0
+ Getsign()
+           10110              10
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  4  0  0  0  0  0  0  0  0  0  0  0  0  0
+Start array:
+           1           2           3           4
+End array:, number of swps
+           1           2           3           4
+Count swps =    0
+Sign:   0
+ Getsign()
+           10110              10
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  4  0  0  0  0  0  0  0  0  0  0  0  0  0
+Start array:
+           1           2           3           4
+End array:, number of swps
+           1           2           3           4
+Count swps =    0
+Sign:   0
+ Getsign()
+           10110              10
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  4  0  0  0  0  0  0  0  0  0  0  0  0  0
+Start array:
+           1           2           3           4
+End array:, number of swps
+           1           2           3           4
+Count swps =    0
+Sign:   0
+ Getsign()
+           10110              10
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  4  0  0  0  0  0  0  0  0  0  0  0  0  0
+Start array:
+           1           2           3           4
+End array:, number of swps
+           1           2           3           4
+Count swps =    0
+Sign:   0
+ Getsign()
+           10110              10
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  4  0  0  0  0  0  0  0  0  0  0  0  0  0
+Start array:
+           1           2           3           4
+End array:, number of swps
+           1           2           3           4
+Count swps =    0
+Sign:   0
+ Getsign()
+           10110              10
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  4  0  0  0  0  0  0  0  0  0  0  0  0  0
+Start array:
+           1           2           3           4
+End array:, number of swps
+           1           2           3           4
+Count swps =    0
+Sign:   0
+ Getsign()
+           10110              10
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  4  0  0  0  0  0  0  0  0  0  0  0  0  0
+Start array:
+           1           2           3           4
+End array:, number of swps
+           1           2           3           4
+Count swps =    0
+Sign:   0
+ >>>>>>>>>>>>>>>>>>>>>>>>> Collect one csf <<<<<<<<<<<<<<<<<<<<<<<<
+Allocated allbasis
+Allocated coeftable
+Processing det# from list:  1
+findindetlist()=   0
+ Initialized new row
+Added new det row    1
+Processing det# from list:  2
+findindetlist()=   1
+Combined coef with existing det
+Processing det# from list:  3
+findindetlist()=   1
+Combined coef with existing det
+Processing det# from list:  4
+findindetlist()=   1
+Combined coef with existing det
+Processing det# from list:  5
+findindetlist()=   1
+Combined coef with existing det
+Processing det# from list:  6
+findindetlist()=   1
+Combined coef with existing det
+Processing det# from list:  7
+findindetlist()=   1
+Combined coef with existing det
+Processing det# from list:  8
+findindetlist()=   1
+Combined coef with existing det
+--------------- Collected csf #:  1
+Basis:      detup         detdn     coefs of new csf
+           10110              10 0.000000547656658
+ %%%%%%%%%%%%%%%%%%%%%%  Assign_shell for Config           2   %%%%%%%%%%%%%%%%%%%
+------------ Now at shell :    0
+prdet_up               0
+prdet_dn               0
+prLz, pr2Sz, maxremLz, maxrem2Sz    0    0    0    0
+------------ Now at shell :    1
+prdet_up               0
+prdet_dn               0
+prLz, pr2Sz, maxremLz, maxrem2Sz    0    0    2    2
+ At last shell 
+ Searching det range 1 to           111100
+---- Branch last shell, curLz =, cur2Sz =     1    0    2
+curdet =            10111
+!!!Success!!! Generated detup:           11100
+!!!Success!!! Generated detdn:            1000
+           1
+           1
+           11100            1000
+ xxxxxxxxxxxxxxxxxxxxx  Projection of det #           1   xxxxxxxxxxxxxxxxxxxx
+ >>>>>>>>>>>>>>>>>>>>>>> Projection P_L 
+  
+====================== Now at Lp =  0
+
+-------------------- Applying L+ to multiple dets, now at No.  1
+---------------------- Apply L+ on detup, detdn:            11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+   1.0000000000000000      F           0
+l+ on e at up pos:   2
+ T
+l+ on e at up pos:   3
+ T
+l+ on e at up pos:   4
+ T
+l+ on e at dn pos:   3
+ F
+Output detup, detdn:            11100           10000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  4  0  0  0  0  0  0  0  0  0  0
+   1.4142135381698608      F           1
+
+---------------------- Applying L- to multiple dets, now at No.  1
+---------------------- Apply L- on detup, detdn:            11100           10000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  4  0  0  0  0  0  0  0  0  0  0
+   1.4142135381698608      F           0
+l- on e at up pos:   2
+ T
+l- on e at up pos:   3
+ T
+l- on e at up pos:   4
+ T
+l- on e at dn pos:   4
+ F
+Output detup, detdn:            11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+   1.9999999315429164      F           1
+  ------------------- Append tail to basislist 
+tail =    0.0000000000
+Total number of dets in basislist   2
+  
+====================== Now at Lp =  1
+
+-------------------- Applying L+ to multiple dets, now at No.  1
+---------------------- Apply L+ on detup, detdn:            11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+   1.9999999315429164      F           0
+l+ on e at up pos:   2
+ T
+l+ on e at up pos:   3
+ T
+l+ on e at up pos:   4
+ T
+l+ on e at dn pos:   3
+ F
+Output detup, detdn:            11100           10000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  4  0  0  0  0  0  0  0  0  0  0
+   2.8284269795267871      F           1
+
+-------------------- Applying L+ to multiple dets, now at No.  2
+---------------------- Apply L+ on detup, detdn:            11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+   0.0000000000000000      F           1
+l+ on e at up pos:   2
+ T
+l+ on e at up pos:   3
+ T
+l+ on e at up pos:   4
+ T
+l+ on e at dn pos:   3
+ F
+Output detup, detdn:            11100           10000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  4  0  0  0  0  0  0  0  0  0  0
+   0.0000000000000000      F           2
+
+---------------------- Applying L- to multiple dets, now at No.  1
+---------------------- Apply L- on detup, detdn:            11100           10000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  4  0  0  0  0  0  0  0  0  0  0
+   2.8284269795267871      F           0
+l- on e at up pos:   2
+ T
+l- on e at up pos:   3
+ T
+l- on e at up pos:   4
+ T
+l- on e at dn pos:   4
+ F
+Output detup, detdn:            11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+   3.9999997261716702      F           1
+
+---------------------- Applying L- to multiple dets, now at No.  2
+---------------------- Apply L- on detup, detdn:            11100           10000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  4  0  0  0  0  0  0  0  0  0  0
+   0.0000000000000000      F           1
+l- on e at up pos:   2
+ T
+l- on e at up pos:   3
+ T
+l- on e at up pos:   4
+ T
+l- on e at dn pos:   4
+ F
+Output detup, detdn:            11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+   0.0000000000000000      F           2
+  ------------------- Append tail to basislist 
+tail =   -2.0000000000
+Total number of dets in basislist   4
+  
+====================== Now at Lp =  2
+
+-------------------- Applying L+ to multiple dets, now at No.  1
+---------------------- Apply L+ on detup, detdn:            11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+   3.9999997261716702      F           0
+l+ on e at up pos:   2
+ T
+l+ on e at up pos:   3
+ T
+l+ on e at up pos:   4
+ T
+l+ on e at dn pos:   3
+ F
+Output detup, detdn:            11100           10000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  4  0  0  0  0  0  0  0  0  0  0
+   5.6568537654277122      F           1
+
+-------------------- Applying L+ to multiple dets, now at No.  2
+---------------------- Apply L+ on detup, detdn:            11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+   0.0000000000000000      F           1
+l+ on e at up pos:   2
+ T
+l+ on e at up pos:   3
+ T
+l+ on e at up pos:   4
+ T
+l+ on e at dn pos:   3
+ F
+Output detup, detdn:            11100           10000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  4  0  0  0  0  0  0  0  0  0  0
+   0.0000000000000000      F           2
+
+-------------------- Applying L+ to multiple dets, now at No.  3
+---------------------- Apply L+ on detup, detdn:            11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+  -3.9999998630858329      F           2
+l+ on e at up pos:   2
+ T
+l+ on e at up pos:   3
+ T
+l+ on e at up pos:   4
+ T
+l+ on e at dn pos:   3
+ F
+Output detup, detdn:            11100           10000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  4  0  0  0  0  0  0  0  0  0  0
+  -5.6568539590535742      F           3
+
+-------------------- Applying L+ to multiple dets, now at No.  4
+---------------------- Apply L+ on detup, detdn:            11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+  -0.0000000000000000      F           3
+l+ on e at up pos:   2
+ T
+l+ on e at up pos:   3
+ T
+l+ on e at up pos:   4
+ T
+l+ on e at dn pos:   3
+ F
+Output detup, detdn:            11100           10000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  4  0  0  0  0  0  0  0  0  0  0
+  -0.0000000000000000      F           4
+
+---------------------- Applying L- to multiple dets, now at No.  1
+---------------------- Apply L- on detup, detdn:            11100           10000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  4  0  0  0  0  0  0  0  0  0  0
+   5.6568537654277122      F           0
+l- on e at up pos:   2
+ T
+l- on e at up pos:   3
+ T
+l- on e at up pos:   4
+ T
+l- on e at dn pos:   4
+ F
+Output detup, detdn:            11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+   7.9999991785150248      F           1
+
+---------------------- Applying L- to multiple dets, now at No.  2
+---------------------- Apply L- on detup, detdn:            11100           10000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  4  0  0  0  0  0  0  0  0  0  0
+   0.0000000000000000      F           1
+l- on e at up pos:   2
+ T
+l- on e at up pos:   3
+ T
+l- on e at up pos:   4
+ T
+l- on e at dn pos:   4
+ F
+Output detup, detdn:            11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+   0.0000000000000000      F           2
+
+---------------------- Applying L- to multiple dets, now at No.  3
+---------------------- Apply L- on detup, detdn:            11100           10000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  4  0  0  0  0  0  0  0  0  0  0
+  -5.6568539590535742      F           2
+l- on e at up pos:   2
+ T
+l- on e at up pos:   3
+ T
+l- on e at up pos:   4
+ T
+l- on e at dn pos:   4
+ F
+Output detup, detdn:            11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+  -7.9999994523433404      F           3
+
+---------------------- Applying L- to multiple dets, now at No.  4
+---------------------- Apply L- on detup, detdn:            11100           10000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  4  0  0  0  0  0  0  0  0  0  0
+  -0.0000000000000000      F           3
+l- on e at up pos:   2
+ T
+l- on e at up pos:   3
+ T
+l- on e at up pos:   4
+ T
+l- on e at dn pos:   4
+ F
+Output detup, detdn:            11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+  -0.0000000000000000      F           4
+  ------------------- Append tail to basislist 
+tail =   -6.0000000000
+Total number of dets in basislist   8
+  
+====================== Now at Lp =  3
+
+-------------------- Applying L+ to multiple dets, now at No.  1
+---------------------- Apply L+ on detup, detdn:            11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+   7.9999991785150248      F           0
+l+ on e at up pos:   2
+ T
+l+ on e at up pos:   3
+ T
+l+ on e at up pos:   4
+ T
+l+ on e at dn pos:   3
+ F
+Output detup, detdn:            11100           10000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  4  0  0  0  0  0  0  0  0  0  0
+   11.313707143603713      F           1
+
+-------------------- Applying L+ to multiple dets, now at No.  2
+---------------------- Apply L+ on detup, detdn:            11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+   0.0000000000000000      F           1
+l+ on e at up pos:   2
+ T
+l+ on e at up pos:   3
+ T
+l+ on e at up pos:   4
+ T
+l+ on e at dn pos:   3
+ F
+Output detup, detdn:            11100           10000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  4  0  0  0  0  0  0  0  0  0  0
+   0.0000000000000000      F           2
+
+-------------------- Applying L+ to multiple dets, now at No.  3
+---------------------- Apply L+ on detup, detdn:            11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+  -7.9999994523433404      F           2
+l+ on e at up pos:   2
+ T
+l+ on e at up pos:   3
+ T
+l+ on e at up pos:   4
+ T
+l+ on e at dn pos:   3
+ F
+Output detup, detdn:            11100           10000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  4  0  0  0  0  0  0  0  0  0  0
+  -11.313707530855424      F           3
+
+-------------------- Applying L+ to multiple dets, now at No.  4
+---------------------- Apply L+ on detup, detdn:            11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+  -0.0000000000000000      F           3
+l+ on e at up pos:   2
+ T
+l+ on e at up pos:   3
+ T
+l+ on e at up pos:   4
+ T
+l+ on e at dn pos:   3
+ F
+Output detup, detdn:            11100           10000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  4  0  0  0  0  0  0  0  0  0  0
+  -0.0000000000000000      F           4
+
+-------------------- Applying L+ to multiple dets, now at No.  5
+---------------------- Apply L+ on detup, detdn:            11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+  -23.999998357030023      F           4
+l+ on e at up pos:   2
+ T
+l+ on e at up pos:   3
+ T
+l+ on e at up pos:   4
+ T
+l+ on e at dn pos:   3
+ F
+Output detup, detdn:            11100           10000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  4  0  0  0  0  0  0  0  0  0  0
+  -33.941122592566273      F           5
+
+-------------------- Applying L+ to multiple dets, now at No.  6
+---------------------- Apply L+ on detup, detdn:            11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+  -0.0000000000000000      F           5
+l+ on e at up pos:   2
+ T
+l+ on e at up pos:   3
+ T
+l+ on e at up pos:   4
+ T
+l+ on e at dn pos:   3
+ F
+Output detup, detdn:            11100           10000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  4  0  0  0  0  0  0  0  0  0  0
+  -0.0000000000000000      F           6
+
+-------------------- Applying L+ to multiple dets, now at No.  7
+---------------------- Apply L+ on detup, detdn:            11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+   23.999999178514997      F           6
+l+ on e at up pos:   2
+ T
+l+ on e at up pos:   3
+ T
+l+ on e at up pos:   4
+ T
+l+ on e at dn pos:   3
+ F
+Output detup, detdn:            11100           10000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  4  0  0  0  0  0  0  0  0  0  0
+   33.941123754321445      F           7
+
+-------------------- Applying L+ to multiple dets, now at No.  8
+---------------------- Apply L+ on detup, detdn:            11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+   0.0000000000000000      F           7
+l+ on e at up pos:   2
+ T
+l+ on e at up pos:   3
+ T
+l+ on e at up pos:   4
+ T
+l+ on e at dn pos:   3
+ F
+Output detup, detdn:            11100           10000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  4  0  0  0  0  0  0  0  0  0  0
+   0.0000000000000000      F           8
+
+---------------------- Applying L- to multiple dets, now at No.  1
+---------------------- Apply L- on detup, detdn:            11100           10000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  4  0  0  0  0  0  0  0  0  0  0
+   11.313707143603713      F           0
+l- on e at up pos:   2
+ T
+l- on e at up pos:   3
+ T
+l- on e at up pos:   4
+ T
+l- on e at dn pos:   4
+ F
+Output detup, detdn:            11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+   15.999997809373436      F           1
+
+---------------------- Applying L- to multiple dets, now at No.  2
+---------------------- Apply L- on detup, detdn:            11100           10000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  4  0  0  0  0  0  0  0  0  0  0
+   0.0000000000000000      F           1
+l- on e at up pos:   2
+ T
+l- on e at up pos:   3
+ T
+l- on e at up pos:   4
+ T
+l- on e at dn pos:   4
+ F
+Output detup, detdn:            11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+   0.0000000000000000      F           2
+
+---------------------- Applying L- to multiple dets, now at No.  3
+---------------------- Apply L- on detup, detdn:            11100           10000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  4  0  0  0  0  0  0  0  0  0  0
+  -11.313707530855424      F           2
+l- on e at up pos:   2
+ T
+l- on e at up pos:   3
+ T
+l- on e at up pos:   4
+ T
+l- on e at dn pos:   4
+ F
+Output detup, detdn:            11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+  -15.999998357030050      F           3
+
+---------------------- Applying L- to multiple dets, now at No.  4
+---------------------- Apply L- on detup, detdn:            11100           10000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  4  0  0  0  0  0  0  0  0  0  0
+  -0.0000000000000000      F           3
+l- on e at up pos:   2
+ T
+l- on e at up pos:   3
+ T
+l- on e at up pos:   4
+ T
+l- on e at dn pos:   4
+ F
+Output detup, detdn:            11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+  -0.0000000000000000      F           4
+
+---------------------- Applying L- to multiple dets, now at No.  5
+---------------------- Apply L- on detup, detdn:            11100           10000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  4  0  0  0  0  0  0  0  0  0  0
+  -33.941122592566273      F           4
+l- on e at up pos:   2
+ T
+l- on e at up pos:   3
+ T
+l- on e at up pos:   4
+ T
+l- on e at dn pos:   4
+ F
+Output detup, detdn:            11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+  -47.999995071090147      F           5
+
+---------------------- Applying L- to multiple dets, now at No.  6
+---------------------- Apply L- on detup, detdn:            11100           10000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  4  0  0  0  0  0  0  0  0  0  0
+  -0.0000000000000000      F           5
+l- on e at up pos:   2
+ T
+l- on e at up pos:   3
+ T
+l- on e at up pos:   4
+ T
+l- on e at dn pos:   4
+ F
+Output detup, detdn:            11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+  -0.0000000000000000      F           6
+
+---------------------- Applying L- to multiple dets, now at No.  7
+---------------------- Apply L- on detup, detdn:            11100           10000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  4  0  0  0  0  0  0  0  0  0  0
+   33.941123754321445      F           6
+l- on e at up pos:   2
+ T
+l- on e at up pos:   3
+ T
+l- on e at up pos:   4
+ T
+l- on e at dn pos:   4
+ F
+Output detup, detdn:            11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+   47.999996714060039      F           7
+
+---------------------- Applying L- to multiple dets, now at No.  8
+---------------------- Apply L- on detup, detdn:            11100           10000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  4  0  0  0  0  0  0  0  0  0  0
+   0.0000000000000000      F           7
+l- on e at up pos:   2
+ T
+l- on e at up pos:   3
+ T
+l- on e at up pos:   4
+ T
+l- on e at dn pos:   4
+ F
+Output detup, detdn:            11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+   0.0000000000000000      F           8
+  ------------------- Append tail to basislist 
+tail =  -12.0000000000
+Total number of dets in basislist  16
+  
+====================== Now at Lp =  4
+
+-------------------- Applying L+ to multiple dets, now at No.  1
+---------------------- Apply L+ on detup, detdn:            11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+   15.999997809373436      F           0
+l+ on e at up pos:   2
+ T
+l+ on e at up pos:   3
+ T
+l+ on e at up pos:   4
+ T
+l+ on e at dn pos:   3
+ F
+Output detup, detdn:            11100           10000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  4  0  0  0  0  0  0  0  0  0  0
+   22.627413512704031      F           1
+
+-------------------- Applying L+ to multiple dets, now at No.  2
+---------------------- Apply L+ on detup, detdn:            11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+   0.0000000000000000      F           1
+l+ on e at up pos:   2
+ T
+l+ on e at up pos:   3
+ T
+l+ on e at up pos:   4
+ T
+l+ on e at dn pos:   3
+ F
+Output detup, detdn:            11100           10000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  4  0  0  0  0  0  0  0  0  0  0
+   0.0000000000000000      F           2
+
+-------------------- Applying L+ to multiple dets, now at No.  3
+---------------------- Apply L+ on detup, detdn:            11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+  -15.999998357030050      F           2
+l+ on e at up pos:   2
+ T
+l+ on e at up pos:   3
+ T
+l+ on e at up pos:   4
+ T
+l+ on e at dn pos:   3
+ F
+Output detup, detdn:            11100           10000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  4  0  0  0  0  0  0  0  0  0  0
+  -22.627414287207426      F           3
+
+-------------------- Applying L+ to multiple dets, now at No.  4
+---------------------- Apply L+ on detup, detdn:            11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+  -0.0000000000000000      F           3
+l+ on e at up pos:   2
+ T
+l+ on e at up pos:   3
+ T
+l+ on e at up pos:   4
+ T
+l+ on e at dn pos:   3
+ F
+Output detup, detdn:            11100           10000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  4  0  0  0  0  0  0  0  0  0  0
+  -0.0000000000000000      F           4
+
+-------------------- Applying L+ to multiple dets, now at No.  5
+---------------------- Apply L+ on detup, detdn:            11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+  -47.999995071090147      F           4
+l+ on e at up pos:   2
+ T
+l+ on e at up pos:   3
+ T
+l+ on e at up pos:   4
+ T
+l+ on e at dn pos:   3
+ F
+Output detup, detdn:            11100           10000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  4  0  0  0  0  0  0  0  0  0  0
+  -67.882242861622274      F           5
+
+-------------------- Applying L+ to multiple dets, now at No.  6
+---------------------- Apply L+ on detup, detdn:            11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+  -0.0000000000000000      F           5
+l+ on e at up pos:   2
+ T
+l+ on e at up pos:   3
+ T
+l+ on e at up pos:   4
+ T
+l+ on e at dn pos:   3
+ F
+Output detup, detdn:            11100           10000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  4  0  0  0  0  0  0  0  0  0  0
+  -0.0000000000000000      F           6
+
+-------------------- Applying L+ to multiple dets, now at No.  7
+---------------------- Apply L+ on detup, detdn:            11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+   47.999996714060039      F           6
+l+ on e at up pos:   2
+ T
+l+ on e at up pos:   3
+ T
+l+ on e at up pos:   4
+ T
+l+ on e at dn pos:   3
+ F
+Output detup, detdn:            11100           10000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  4  0  0  0  0  0  0  0  0  0  0
+   67.882245185132547      F           7
+
+-------------------- Applying L+ to multiple dets, now at No.  8
+---------------------- Apply L+ on detup, detdn:            11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+   0.0000000000000000      F           7
+l+ on e at up pos:   2
+ T
+l+ on e at up pos:   3
+ T
+l+ on e at up pos:   4
+ T
+l+ on e at dn pos:   3
+ F
+Output detup, detdn:            11100           10000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  4  0  0  0  0  0  0  0  0  0  0
+   0.0000000000000000      F           8
+
+-------------------- Applying L+ to multiple dets, now at No.  9
+---------------------- Apply L+ on detup, detdn:            11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+  -95.999990142180295      F           8
+l+ on e at up pos:   2
+ T
+l+ on e at up pos:   3
+ T
+l+ on e at up pos:   4
+ T
+l+ on e at dn pos:   3
+ F
+Output detup, detdn:            11100           10000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  4  0  0  0  0  0  0  0  0  0  0
+  -135.76448572324455      F           9
+
+-------------------- Applying L+ to multiple dets, now at No. 10
+---------------------- Apply L+ on detup, detdn:            11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+  -0.0000000000000000      F           9
+l+ on e at up pos:   2
+ T
+l+ on e at up pos:   3
+ T
+l+ on e at up pos:   4
+ T
+l+ on e at dn pos:   3
+ F
+Output detup, detdn:            11100           10000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  4  0  0  0  0  0  0  0  0  0  0
+  -0.0000000000000000      F          10
+
+-------------------- Applying L+ to multiple dets, now at No. 11
+---------------------- Apply L+ on detup, detdn:            11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+   95.999993428120092      F          10
+l+ on e at up pos:   2
+ T
+l+ on e at up pos:   3
+ T
+l+ on e at up pos:   4
+ T
+l+ on e at dn pos:   3
+ F
+Output detup, detdn:            11100           10000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  4  0  0  0  0  0  0  0  0  0  0
+   135.76449037026509      F          11
+
+-------------------- Applying L+ to multiple dets, now at No. 12
+---------------------- Apply L+ on detup, detdn:            11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+   0.0000000000000000      F          11
+l+ on e at up pos:   2
+ T
+l+ on e at up pos:   3
+ T
+l+ on e at up pos:   4
+ T
+l+ on e at dn pos:   3
+ F
+Output detup, detdn:            11100           10000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  4  0  0  0  0  0  0  0  0  0  0
+   0.0000000000000000      F          12
+
+-------------------- Applying L+ to multiple dets, now at No. 13
+---------------------- Apply L+ on detup, detdn:            11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+   287.99998028436028      F          12
+l+ on e at up pos:   2
+ T
+l+ on e at up pos:   3
+ T
+l+ on e at up pos:   4
+ T
+l+ on e at dn pos:   3
+ F
+Output detup, detdn:            11100           10000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  4  0  0  0  0  0  0  0  0  0  0
+   407.29347111079534      F          13
+
+-------------------- Applying L+ to multiple dets, now at No. 14
+---------------------- Apply L+ on detup, detdn:            11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+   0.0000000000000000      F          13
+l+ on e at up pos:   2
+ T
+l+ on e at up pos:   3
+ T
+l+ on e at up pos:   4
+ T
+l+ on e at dn pos:   3
+ F
+Output detup, detdn:            11100           10000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  4  0  0  0  0  0  0  0  0  0  0
+   0.0000000000000000      F          14
+
+-------------------- Applying L+ to multiple dets, now at No. 15
+---------------------- Apply L+ on detup, detdn:            11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+  -287.99999014217997      F          14
+l+ on e at up pos:   2
+ T
+l+ on e at up pos:   3
+ T
+l+ on e at up pos:   4
+ T
+l+ on e at dn pos:   3
+ F
+Output detup, detdn:            11100           10000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  4  0  0  0  0  0  0  0  0  0  0
+  -407.29348505185737      F          15
+
+-------------------- Applying L+ to multiple dets, now at No. 16
+---------------------- Apply L+ on detup, detdn:            11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+  -0.0000000000000000      F          15
+l+ on e at up pos:   2
+ T
+l+ on e at up pos:   3
+ T
+l+ on e at up pos:   4
+ T
+l+ on e at dn pos:   3
+ F
+Output detup, detdn:            11100           10000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  4  0  0  0  0  0  0  0  0  0  0
+  -0.0000000000000000      F          16
+
+---------------------- Applying L- to multiple dets, now at No.  1
+---------------------- Apply L- on detup, detdn:            11100           10000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  4  0  0  0  0  0  0  0  0  0  0
+   22.627413512704031      F           0
+l- on e at up pos:   2
+ T
+l- on e at up pos:   3
+ T
+l- on e at up pos:   4
+ T
+l- on e at dn pos:   4
+ F
+Output detup, detdn:            11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+   31.999994523433688      F           1
+
+---------------------- Applying L- to multiple dets, now at No.  2
+---------------------- Apply L- on detup, detdn:            11100           10000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  4  0  0  0  0  0  0  0  0  0  0
+   0.0000000000000000      F           1
+l- on e at up pos:   2
+ T
+l- on e at up pos:   3
+ T
+l- on e at up pos:   4
+ T
+l- on e at dn pos:   4
+ F
+Output detup, detdn:            11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+   0.0000000000000000      F           2
+
+---------------------- Applying L- to multiple dets, now at No.  3
+---------------------- Apply L- on detup, detdn:            11100           10000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  4  0  0  0  0  0  0  0  0  0  0
+  -22.627414287207426      F           2
+l- on e at up pos:   2
+ T
+l- on e at up pos:   3
+ T
+l- on e at up pos:   4
+ T
+l- on e at dn pos:   4
+ F
+Output detup, detdn:            11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+  -31.999995618746873      F           3
+
+---------------------- Applying L- to multiple dets, now at No.  4
+---------------------- Apply L- on detup, detdn:            11100           10000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  4  0  0  0  0  0  0  0  0  0  0
+  -0.0000000000000000      F           3
+l- on e at up pos:   2
+ T
+l- on e at up pos:   3
+ T
+l- on e at up pos:   4
+ T
+l- on e at dn pos:   4
+ F
+Output detup, detdn:            11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+  -0.0000000000000000      F           4
+
+---------------------- Applying L- to multiple dets, now at No.  5
+---------------------- Apply L- on detup, detdn:            11100           10000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  4  0  0  0  0  0  0  0  0  0  0
+  -67.882242861622274      F           4
+l- on e at up pos:   2
+ T
+l- on e at up pos:   3
+ T
+l- on e at up pos:   4
+ T
+l- on e at dn pos:   4
+ F
+Output detup, detdn:            11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+  -95.999986856240611      F           5
+
+---------------------- Applying L- to multiple dets, now at No.  6
+---------------------- Apply L- on detup, detdn:            11100           10000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  4  0  0  0  0  0  0  0  0  0  0
+  -0.0000000000000000      F           5
+l- on e at up pos:   2
+ T
+l- on e at up pos:   3
+ T
+l- on e at up pos:   4
+ T
+l- on e at dn pos:   4
+ F
+Output detup, detdn:            11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+  -0.0000000000000000      F           6
+
+---------------------- Applying L- to multiple dets, now at No.  7
+---------------------- Apply L- on detup, detdn:            11100           10000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  4  0  0  0  0  0  0  0  0  0  0
+   67.882245185132547      F           6
+l- on e at up pos:   2
+ T
+l- on e at up pos:   3
+ T
+l- on e at up pos:   4
+ T
+l- on e at dn pos:   4
+ F
+Output detup, detdn:            11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+   95.999990142180295      F           7
+
+---------------------- Applying L- to multiple dets, now at No.  8
+---------------------- Apply L- on detup, detdn:            11100           10000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  4  0  0  0  0  0  0  0  0  0  0
+   0.0000000000000000      F           7
+l- on e at up pos:   2
+ T
+l- on e at up pos:   3
+ T
+l- on e at up pos:   4
+ T
+l- on e at dn pos:   4
+ F
+Output detup, detdn:            11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+   0.0000000000000000      F           8
+
+---------------------- Applying L- to multiple dets, now at No.  9
+---------------------- Apply L- on detup, detdn:            11100           10000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  4  0  0  0  0  0  0  0  0  0  0
+  -135.76448572324455      F           8
+l- on e at up pos:   2
+ T
+l- on e at up pos:   3
+ T
+l- on e at up pos:   4
+ T
+l- on e at dn pos:   4
+ F
+Output detup, detdn:            11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+  -191.99997371248122      F           9
+
+---------------------- Applying L- to multiple dets, now at No. 10
+---------------------- Apply L- on detup, detdn:            11100           10000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  4  0  0  0  0  0  0  0  0  0  0
+  -0.0000000000000000      F           9
+l- on e at up pos:   2
+ T
+l- on e at up pos:   3
+ T
+l- on e at up pos:   4
+ T
+l- on e at dn pos:   4
+ F
+Output detup, detdn:            11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+  -0.0000000000000000      F          10
+
+---------------------- Applying L- to multiple dets, now at No. 11
+---------------------- Apply L- on detup, detdn:            11100           10000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  4  0  0  0  0  0  0  0  0  0  0
+   135.76449037026509      F          10
+l- on e at up pos:   2
+ T
+l- on e at up pos:   3
+ T
+l- on e at up pos:   4
+ T
+l- on e at dn pos:   4
+ F
+Output detup, detdn:            11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+   191.99998028436059      F          11
+
+---------------------- Applying L- to multiple dets, now at No. 12
+---------------------- Apply L- on detup, detdn:            11100           10000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  4  0  0  0  0  0  0  0  0  0  0
+   0.0000000000000000      F          11
+l- on e at up pos:   2
+ T
+l- on e at up pos:   3
+ T
+l- on e at up pos:   4
+ T
+l- on e at dn pos:   4
+ F
+Output detup, detdn:            11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+   0.0000000000000000      F          12
+
+---------------------- Applying L- to multiple dets, now at No. 13
+---------------------- Apply L- on detup, detdn:            11100           10000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  4  0  0  0  0  0  0  0  0  0  0
+   407.29347111079534      F          12
+l- on e at up pos:   2
+ T
+l- on e at up pos:   3
+ T
+l- on e at up pos:   4
+ T
+l- on e at dn pos:   4
+ F
+Output detup, detdn:            11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+   575.99994085308185      F          13
+
+---------------------- Applying L- to multiple dets, now at No. 14
+---------------------- Apply L- on detup, detdn:            11100           10000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  4  0  0  0  0  0  0  0  0  0  0
+   0.0000000000000000      F          13
+l- on e at up pos:   2
+ T
+l- on e at up pos:   3
+ T
+l- on e at up pos:   4
+ T
+l- on e at dn pos:   4
+ F
+Output detup, detdn:            11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+   0.0000000000000000      F          14
+
+---------------------- Applying L- to multiple dets, now at No. 15
+---------------------- Apply L- on detup, detdn:            11100           10000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  4  0  0  0  0  0  0  0  0  0  0
+  -407.29348505185737      F          14
+l- on e at up pos:   2
+ T
+l- on e at up pos:   3
+ T
+l- on e at up pos:   4
+ T
+l- on e at dn pos:   4
+ F
+Output detup, detdn:            11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+  -575.99996056872055      F          15
+
+---------------------- Applying L- to multiple dets, now at No. 16
+---------------------- Apply L- on detup, detdn:            11100           10000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  4  0  0  0  0  0  0  0  0  0  0
+  -0.0000000000000000      F          15
+l- on e at up pos:   2
+ T
+l- on e at up pos:   3
+ T
+l- on e at up pos:   4
+ T
+l- on e at dn pos:   4
+ F
+Output detup, detdn:            11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+  -0.0000000000000000      F          16
+  ------------------- Append tail to basislist 
+tail =  -20.0000000000
+Total number of dets in basislist  32
+ >>>>>>>>>>>>>>>>>>>> Get all signs of basislist <<<<<<<<<<<<<<<<<<<
+ Getsign()
+           11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+Start array:
+           1           2           3           4
+End array:, number of swps
+           1           2           3           4
+Count swps =    0
+Sign:   0
+ Getsign()
+           11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+Start array:
+           1           2           3           4
+End array:, number of swps
+           1           2           3           4
+Count swps =    0
+Sign:   0
+ Getsign()
+           11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+Start array:
+           1           2           3           4
+End array:, number of swps
+           1           2           3           4
+Count swps =    0
+Sign:   0
+ Getsign()
+           11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+Start array:
+           1           2           3           4
+End array:, number of swps
+           1           2           3           4
+Count swps =    0
+Sign:   0
+ Getsign()
+           11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+Start array:
+           1           2           3           4
+End array:, number of swps
+           1           2           3           4
+Count swps =    0
+Sign:   0
+ Getsign()
+           11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+Start array:
+           1           2           3           4
+End array:, number of swps
+           1           2           3           4
+Count swps =    0
+Sign:   0
+ Getsign()
+           11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+Start array:
+           1           2           3           4
+End array:, number of swps
+           1           2           3           4
+Count swps =    0
+Sign:   0
+ Getsign()
+           11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+Start array:
+           1           2           3           4
+End array:, number of swps
+           1           2           3           4
+Count swps =    0
+Sign:   0
+ Getsign()
+           11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+Start array:
+           1           2           3           4
+End array:, number of swps
+           1           2           3           4
+Count swps =    0
+Sign:   0
+ Getsign()
+           11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+Start array:
+           1           2           3           4
+End array:, number of swps
+           1           2           3           4
+Count swps =    0
+Sign:   0
+ Getsign()
+           11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+Start array:
+           1           2           3           4
+End array:, number of swps
+           1           2           3           4
+Count swps =    0
+Sign:   0
+ Getsign()
+           11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+Start array:
+           1           2           3           4
+End array:, number of swps
+           1           2           3           4
+Count swps =    0
+Sign:   0
+ Getsign()
+           11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+Start array:
+           1           2           3           4
+End array:, number of swps
+           1           2           3           4
+Count swps =    0
+Sign:   0
+ Getsign()
+           11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+Start array:
+           1           2           3           4
+End array:, number of swps
+           1           2           3           4
+Count swps =    0
+Sign:   0
+ Getsign()
+           11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+Start array:
+           1           2           3           4
+End array:, number of swps
+           1           2           3           4
+Count swps =    0
+Sign:   0
+ Getsign()
+           11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+Start array:
+           1           2           3           4
+End array:, number of swps
+           1           2           3           4
+Count swps =    0
+Sign:   0
+ Getsign()
+           11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+Start array:
+           1           2           3           4
+End array:, number of swps
+           1           2           3           4
+Count swps =    0
+Sign:   0
+ Getsign()
+           11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+Start array:
+           1           2           3           4
+End array:, number of swps
+           1           2           3           4
+Count swps =    0
+Sign:   0
+ Getsign()
+           11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+Start array:
+           1           2           3           4
+End array:, number of swps
+           1           2           3           4
+Count swps =    0
+Sign:   0
+ Getsign()
+           11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+Start array:
+           1           2           3           4
+End array:, number of swps
+           1           2           3           4
+Count swps =    0
+Sign:   0
+ Getsign()
+           11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+Start array:
+           1           2           3           4
+End array:, number of swps
+           1           2           3           4
+Count swps =    0
+Sign:   0
+ Getsign()
+           11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+Start array:
+           1           2           3           4
+End array:, number of swps
+           1           2           3           4
+Count swps =    0
+Sign:   0
+ Getsign()
+           11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+Start array:
+           1           2           3           4
+End array:, number of swps
+           1           2           3           4
+Count swps =    0
+Sign:   0
+ Getsign()
+           11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+Start array:
+           1           2           3           4
+End array:, number of swps
+           1           2           3           4
+Count swps =    0
+Sign:   0
+ Getsign()
+           11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+Start array:
+           1           2           3           4
+End array:, number of swps
+           1           2           3           4
+Count swps =    0
+Sign:   0
+ Getsign()
+           11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+Start array:
+           1           2           3           4
+End array:, number of swps
+           1           2           3           4
+Count swps =    0
+Sign:   0
+ Getsign()
+           11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+Start array:
+           1           2           3           4
+End array:, number of swps
+           1           2           3           4
+Count swps =    0
+Sign:   0
+ Getsign()
+           11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+Start array:
+           1           2           3           4
+End array:, number of swps
+           1           2           3           4
+Count swps =    0
+Sign:   0
+ Getsign()
+           11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+Start array:
+           1           2           3           4
+End array:, number of swps
+           1           2           3           4
+Count swps =    0
+Sign:   0
+ Getsign()
+           11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+Start array:
+           1           2           3           4
+End array:, number of swps
+           1           2           3           4
+Count swps =    0
+Sign:   0
+ Getsign()
+           11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+Start array:
+           1           2           3           4
+End array:, number of swps
+           1           2           3           4
+Count swps =    0
+Sign:   0
+ Getsign()
+           11100            1000
+  0  0  1  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  4  0  0  0  0  0  0  0  0  0  0  0
+Start array:
+           1           2           3           4
+End array:, number of swps
+           1           2           3           4
+Count swps =    0
+Sign:   0
+ >>>>>>>>>>>>>>>>>>>>>>>>> Collect one csf <<<<<<<<<<<<<<<<<<<<<<<<
+Initialized new column to 0
+Processing det# from list:  1
+findindetlist()=   0
+ Initialized new row
+Added new det row    2
+Processing det# from list:  2
+findindetlist()=   2
+Combined coef with existing det
+Processing det# from list:  3
+findindetlist()=   2
+Combined coef with existing det
+Processing det# from list:  4
+findindetlist()=   2
+Combined coef with existing det
+Processing det# from list:  5
+findindetlist()=   2
+Combined coef with existing det
+Processing det# from list:  6
+findindetlist()=   2
+Combined coef with existing det
+Processing det# from list:  7
+findindetlist()=   2
+Combined coef with existing det
+Processing det# from list:  8
+findindetlist()=   2
+Combined coef with existing det
+Processing det# from list:  9
+findindetlist()=   2
+Combined coef with existing det
+Processing det# from list: 10
+findindetlist()=   2
+Combined coef with existing det
+Processing det# from list: 11
+findindetlist()=   2
+Combined coef with existing det
+Processing det# from list: 12
+findindetlist()=   2
+Combined coef with existing det
+Processing det# from list: 13
+findindetlist()=   2
+Combined coef with existing det
+Processing det# from list: 14
+findindetlist()=   2
+Combined coef with existing det
+Processing det# from list: 15
+findindetlist()=   2
+Combined coef with existing det
+Processing det# from list: 16
+findindetlist()=   2
+Combined coef with existing det
+Processing det# from list: 17
+findindetlist()=   2
+Combined coef with existing det
+Processing det# from list: 18
+findindetlist()=   2
+Combined coef with existing det
+Processing det# from list: 19
+findindetlist()=   2
+Combined coef with existing det
+Processing det# from list: 20
+findindetlist()=   2
+Combined coef with existing det
+Processing det# from list: 21
+findindetlist()=   2
+Combined coef with existing det
+Processing det# from list: 22
+findindetlist()=   2
+Combined coef with existing det
+Processing det# from list: 23
+findindetlist()=   2
+Combined coef with existing det
+Processing det# from list: 24
+findindetlist()=   2
+Combined coef with existing det
+Processing det# from list: 25
+findindetlist()=   2
+Combined coef with existing det
+Processing det# from list: 26
+findindetlist()=   2
+Combined coef with existing det
+Processing det# from list: 27
+findindetlist()=   2
+Combined coef with existing det
+Processing det# from list: 28
+findindetlist()=   2
+Combined coef with existing det
+Processing det# from list: 29
+findindetlist()=   2
+Combined coef with existing det
+Processing det# from list: 30
+findindetlist()=   2
+Combined coef with existing det
+Processing det# from list: 31
+findindetlist()=   2
+Combined coef with existing det
+Processing det# from list: 32
+findindetlist()=   2
+Combined coef with existing det
+--------------- Collected csf #:  2
+Basis:      detup         detdn     coefs of new csf
+           11100            1000 0.000000000000000
+           11100            1000 0.000098578198958
+ %%%%%%%%%%%%%%%%%%%%%%  Assign_shell for Config           3   %%%%%%%%%%%%%%%%%%%
+------------ Now at shell :    0
+prdet_up               0
+prdet_dn               0
+prLz, pr2Sz, maxremLz, maxrem2Sz    0    0    0    0
+------------ Now at shell :    1
+prdet_up               0
+prdet_dn               0
+prLz, pr2Sz, maxremLz, maxrem2Sz    0    0    4    4
+ Searching det range 1 to               10
+---- Branch shell#, curLz     1    0
+------------ Now at shell :    2
+prdet_up              10
+prdet_dn               0
+prLz, pr2Sz, maxremLz, maxrem2Sz    0    1    4    0
+ Searching det range 1 to           110000
+---- Branch shell#, curLz     2   -1
+------------ Now at shell :    3
+prdet_up            1110
+prdet_dn               0
+prLz, pr2Sz, maxremLz, maxrem2Sz   -1    3    2    0
+ At last shell 
+ Searching det range 1 to       1000000000
+---- Branch last shell, curLz =, cur2Sz =     3    1   -1
+curdet =        100000000
+!!!Success!!! Generated detup:            1110
+!!!Success!!! Generated detdn:   1000000000000
+           1
+---- Branch shell#, curLz     2    0
+------------ Now at shell :    3
+prdet_up           10110
+prdet_dn               0
+prLz, pr2Sz, maxremLz, maxrem2Sz    0    3    2    0
+ At last shell 
+ Searching det range 1 to       1000000000
+---- Branch last shell, curLz =, cur2Sz =     3    0   -1
+curdet =         10000000
+!!!Success!!! Generated detup:           10110
+!!!Success!!! Generated detdn:    100000000000
+           2
+---- Branch shell#, curLz     2    1
+------------ Now at shell :    3
+prdet_up           11010
+prdet_dn               0
+prLz, pr2Sz, maxremLz, maxrem2Sz    1    3    2    0
+ At last shell 
+ Searching det range 1 to       1000000000
+---- Branch last shell, curLz =, cur2Sz =     3   -1   -1
+curdet =          1000000
+!!!Success!!! Generated detup:           11010
+!!!Success!!! Generated detdn:     10000000000
+           3
+---- Branch shell#, curLz     2   -2
+------------ Now at shell :    3
+prdet_up             110
+prdet_dn             100
+prLz, pr2Sz, maxremLz, maxrem2Sz   -2    1    2    0
+ At last shell 
+ Searching det range 1 to       1000000000
+---- Branch last shell, curLz =, cur2Sz =     3    2    1
+curdet =            10000
+!!!Success!!! Generated detup:  10000000000110
+!!!Success!!! Generated detdn:             100
+           4
+---- Branch shell#, curLz     2   -1
+------------ Now at shell :    3
+prdet_up            1010
+prdet_dn             100
+prLz, pr2Sz, maxremLz, maxrem2Sz   -1    1    2    0
+ At last shell 
+ Searching det range 1 to       1000000000
+---- Branch last shell, curLz =, cur2Sz =     3    1    1
+curdet =             1000
+!!!Success!!! Generated detup:   1000000001010
+!!!Success!!! Generated detdn:             100
+           5
+---- Branch shell#, curLz     2    0
+------------ Now at shell :    3
+prdet_up           10010
+prdet_dn             100
+prLz, pr2Sz, maxremLz, maxrem2Sz    0    1    2    0
+ At last shell 
+ Searching det range 1 to       1000000000
+---- Branch last shell, curLz =, cur2Sz =     3    0    1
+curdet =              100
+!!!Success!!! Generated detup:    100000010010
+!!!Success!!! Generated detdn:             100
+           6
+---- Branch shell#, curLz     2   -1
+------------ Now at shell :    3
+prdet_up             110
+prdet_dn            1000
+prLz, pr2Sz, maxremLz, maxrem2Sz   -1    1    2    0
+ At last shell 
+ Searching det range 1 to       1000000000
+---- Branch last shell, curLz =, cur2Sz =     3    1    1
+curdet =             1000
+!!!Success!!! Generated detup:   1000000000110
+!!!Success!!! Generated detdn:            1000
+           7
+---- Branch shell#, curLz     2    0
+------------ Now at shell :    3
+prdet_up            1010
+prdet_dn            1000
+prLz, pr2Sz, maxremLz, maxrem2Sz    0    1    2    0
+ At last shell 
+ Searching det range 1 to       1000000000
+---- Branch last shell, curLz =, cur2Sz =     3    0    1
+curdet =              100
+!!!Success!!! Generated detup:    100000001010
+!!!Success!!! Generated detdn:            1000
+           8
+---- Branch shell#, curLz     2    1
+------------ Now at shell :    3
+prdet_up           10010
+prdet_dn            1000
+prLz, pr2Sz, maxremLz, maxrem2Sz    1    1    2    0
+ At last shell 
+ Searching det range 1 to       1000000000
+---- Branch last shell, curLz =, cur2Sz =     3   -1    1
+curdet =               10
+!!!Success!!! Generated detup:     10000010010
+!!!Success!!! Generated detdn:            1000
+           9
+---- Branch shell#, curLz     2   -1
+------------ Now at shell :    3
+prdet_up              10
+prdet_dn            1100
+prLz, pr2Sz, maxremLz, maxrem2Sz   -1   -1    2    0
+---- Branch shell#, curLz     2    0
+------------ Now at shell :    3
+prdet_up             110
+prdet_dn           10000
+prLz, pr2Sz, maxremLz, maxrem2Sz    0    1    2    0
+ At last shell 
+ Searching det range 1 to       1000000000
+---- Branch last shell, curLz =, cur2Sz =     3    0    1
+curdet =              100
+!!!Success!!! Generated detup:    100000000110
+!!!Success!!! Generated detdn:           10000
+          10
+---- Branch shell#, curLz     2    1
+------------ Now at shell :    3
+prdet_up            1010
+prdet_dn           10000
+prLz, pr2Sz, maxremLz, maxrem2Sz    1    1    2    0
+ At last shell 
+ Searching det range 1 to       1000000000
+---- Branch last shell, curLz =, cur2Sz =     3   -1    1
+curdet =               10
+!!!Success!!! Generated detup:     10000001010
+!!!Success!!! Generated detdn:           10000
+          11
+---- Branch shell#, curLz     2    2
+------------ Now at shell :    3
+prdet_up           10010
+prdet_dn           10000
+prLz, pr2Sz, maxremLz, maxrem2Sz    2    1    2    0
+ At last shell 
+ Searching det range 1 to       1000000000
+---- Branch last shell, curLz =, cur2Sz =     3   -2    1
+curdet =                1
+!!!Success!!! Generated detup:      1000010010
+!!!Success!!! Generated detdn:           10000
+          12
+---- Branch shell#, curLz     2    0
+------------ Now at shell :    3
+prdet_up              10
+prdet_dn           10100
+prLz, pr2Sz, maxremLz, maxrem2Sz    0   -1    2    0
+---- Branch shell#, curLz     2    1
+------------ Now at shell :    3
+prdet_up              10
+prdet_dn           11000
+prLz, pr2Sz, maxremLz, maxrem2Sz    1   -1    2    0
+---- Branch shell#, curLz     1    0
+------------ Now at shell :    2
+prdet_up               0
+prdet_dn              10
+prLz, pr2Sz, maxremLz, maxrem2Sz    0   -1    4    0
+ Searching det range 1 to           110000
+---- Branch shell#, curLz     2   -1
+------------ Now at shell :    3
+prdet_up            1100
+prdet_dn              10
+prLz, pr2Sz, maxremLz, maxrem2Sz   -1    1    2    0
+ At last shell 
+ Searching det range 1 to       1000000000
+---- Branch last shell, curLz =, cur2Sz =     3    1    1
+curdet =             1000
+!!!Success!!! Generated detup:   1000000001100
+!!!Success!!! Generated detdn:              10
+          13
+---- Branch shell#, curLz     2    0
+------------ Now at shell :    3
+prdet_up           10100
+prdet_dn              10
+prLz, pr2Sz, maxremLz, maxrem2Sz    0    1    2    0
+ At last shell 
+ Searching det range 1 to       1000000000
+---- Branch last shell, curLz =, cur2Sz =     3    0    1
+curdet =              100
+!!!Success!!! Generated detup:    100000010100
+!!!Success!!! Generated detdn:              10
+          14
+---- Branch shell#, curLz     2    1
+------------ Now at shell :    3
+prdet_up           11000
+prdet_dn              10
+prLz, pr2Sz, maxremLz, maxrem2Sz    1    1    2    0
+ At last shell 
+ Searching det range 1 to       1000000000
+---- Branch last shell, curLz =, cur2Sz =     3   -1    1
+curdet =               10
+!!!Success!!! Generated detup:     10000011000
+!!!Success!!! Generated detdn:              10
+          15
+---- Branch shell#, curLz     2   -2
+------------ Now at shell :    3
+prdet_up             100
+prdet_dn             110
+prLz, pr2Sz, maxremLz, maxrem2Sz   -2   -1    2    0
+---- Branch shell#, curLz     2   -1
+------------ Now at shell :    3
+prdet_up            1000
+prdet_dn             110
+prLz, pr2Sz, maxremLz, maxrem2Sz   -1   -1    2    0
+---- Branch shell#, curLz     2    0
+------------ Now at shell :    3
+prdet_up           10000
+prdet_dn             110
+prLz, pr2Sz, maxremLz, maxrem2Sz    0   -1    2    0
+---- Branch shell#, curLz     2   -1
+------------ Now at shell :    3
+prdet_up             100
+prdet_dn            1010
+prLz, pr2Sz, maxremLz, maxrem2Sz   -1   -1    2    0
+---- Branch shell#, curLz     2    0
+------------ Now at shell :    3
+prdet_up            1000
+prdet_dn            1010
+prLz, pr2Sz, maxremLz, maxrem2Sz    0   -1    2    0
+---- Branch shell#, curLz     2    1
+------------ Now at shell :    3
+prdet_up           10000
+prdet_dn            1010
+prLz, pr2Sz, maxremLz, maxrem2Sz    1   -1    2    0
+---- Branch shell#, curLz     2   -1
+------------ Now at shell :    3
+prdet_up               0
+prdet_dn            1110
+prLz, pr2Sz, maxremLz, maxrem2Sz   -1   -3    2    0
+---- Branch shell#, curLz     2    0
+------------ Now at shell :    3
+prdet_up             100
+prdet_dn           10010
+prLz, pr2Sz, maxremLz, maxrem2Sz    0   -1    2    0
+---- Branch shell#, curLz     2    1
+------------ Now at shell :    3
+prdet_up            1000
+prdet_dn           10010
+prLz, pr2Sz, maxremLz, maxrem2Sz    1   -1    2    0
+---- Branch shell#, curLz     2    2
+------------ Now at shell :    3
+prdet_up           10000
+prdet_dn           10010
+prLz, pr2Sz, maxremLz, maxrem2Sz    2   -1    2    0
+---- Branch shell#, curLz     2    0
+------------ Now at shell :    3
+prdet_up               0
+prdet_dn           10110
+prLz, pr2Sz, maxremLz, maxrem2Sz    0   -3    2    0
+---- Branch shell#, curLz     2    1
+------------ Now at shell :    3
+prdet_up               0
+prdet_dn           11010
+prLz, pr2Sz, maxremLz, maxrem2Sz    1   -3    2    0
+          15
+            1110   1000000000000
+           10110    100000000000
+           11010     10000000000
+  10000000000110             100
+   1000000001010             100
+    100000010010             100
+   1000000000110            1000
+    100000001010            1000
+     10000010010            1000
+    100000000110           10000
+     10000001010           10000
+      1000010010           10000
+   1000000001100              10
+    100000010100              10
+     10000011000              10
+ xxxxxxxxxxxxxxxxxxxxx  Projection of det #           1   xxxxxxxxxxxxxxxxxxxx
+ >>>>>>>>>>>>>>>>>>>>>>> Projection P_L 
+  
+====================== Now at Lp =  0
+
+-------------------- Applying L+ to multiple dets, now at No.  1
+---------------------- Apply L+ on detup, detdn:             1110   1000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   1.0000000000000000      F           0
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   2
+ T
+l+ on e at up pos:   3
+ F
+Output detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   1.4142135381698608      F           1
+l+ on e at dn pos:  12
+ F
+Output detup, detdn:             1110  10000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  0  4  0
+   2.0000000000000000      F           2
+
+---------------------- Applying L- to multiple dets, now at No.  1
+---------------------- Apply L- on detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   1.4142135381698608      F           0
+l- on e at up pos:   1
+ T
+l- on e at up pos:   2
+ T
+l- on e at up pos:   4
+ F
+Output detup, detdn:             1110   1000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   1.9999999315429164      F           1
+l- on e at dn pos:  12
+ F
+Output detup, detdn:            10110    100000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   3.4641016819169579      F           2
+
+---------------------- Applying L- to multiple dets, now at No.  2
+---------------------- Apply L- on detup, detdn:             1110  10000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  0  4  0
+   2.0000000000000000      F           2
+l- on e at up pos:   1
+ T
+l- on e at up pos:   2
+ T
+l- on e at up pos:   3
+ T
+l- on e at dn pos:  13
+ F
+Output detup, detdn:             1110   1000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   4.0000000000000000      F           3
+  ------------------- Append tail to basislist 
+tail =    0.0000000000
+Total number of dets in basislist   4
+  
+====================== Now at Lp =  1
+
+-------------------- Applying L+ to multiple dets, now at No.  1
+---------------------- Apply L+ on detup, detdn:             1110   1000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   1.9999999315429164      F           0
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   2
+ T
+l+ on e at up pos:   3
+ F
+Output detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   2.8284269795267871      F           1
+l+ on e at dn pos:  12
+ F
+Output detup, detdn:             1110  10000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  0  4  0
+   3.9999998630858329      F           2
+
+-------------------- Applying L+ to multiple dets, now at No.  2
+---------------------- Apply L+ on detup, detdn:            10110    100000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   3.4641016819169579      F           2
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   2
+ F
+Output detup, detdn:            11010    100000000000
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   4.8989794961639470      F           3
+l+ on e at up pos:   4
+ T
+l+ on e at dn pos:  11
+ F
+Output detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   8.4852818466079345      F           4
+
+-------------------- Applying L+ to multiple dets, now at No.  3
+---------------------- Apply L+ on detup, detdn:             1110   1000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   4.0000000000000000      F           4
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   2
+ T
+l+ on e at up pos:   3
+ F
+Output detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   5.6568541526794434      F           5
+l+ on e at dn pos:  12
+ F
+Output detup, detdn:             1110  10000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  0  4  0
+   8.0000000000000000      F           6
+
+-------------------- Applying L+ to multiple dets, now at No.  4
+---------------------- Apply L+ on detup, detdn:             1110   1000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   0.0000000000000000      F           6
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   2
+ T
+l+ on e at up pos:   3
+ F
+Output detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   0.0000000000000000      F           7
+l+ on e at dn pos:  12
+ F
+Output detup, detdn:             1110  10000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  0  4  0
+   0.0000000000000000      F           8
+
+---------------------- Applying L- to multiple dets, now at No.  1
+---------------------- Apply L- on detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   2.8284269795267871      F           0
+l- on e at up pos:   1
+ T
+l- on e at up pos:   2
+ T
+l- on e at up pos:   4
+ F
+Output detup, detdn:             1110   1000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   3.9999997261716702      F           1
+l- on e at dn pos:  12
+ F
+Output detup, detdn:            10110    100000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   6.9282031266916171      F           2
+
+---------------------- Applying L- to multiple dets, now at No.  2
+---------------------- Apply L- on detup, detdn:             1110  10000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  0  4  0
+   3.9999998630858329      F           2
+l- on e at up pos:   1
+ T
+l- on e at up pos:   2
+ T
+l- on e at up pos:   3
+ T
+l- on e at dn pos:  13
+ F
+Output detup, detdn:             1110   1000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   7.9999997261716658      F           3
+
+---------------------- Applying L- to multiple dets, now at No.  3
+---------------------- Apply L- on detup, detdn:            11010    100000000000
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   4.8989794961639470      F           3
+l- on e at up pos:   1
+ T
+l- on e at up pos:   3
+ F
+Output detup, detdn:            10110    100000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   6.9282031266916180      F           4
+l- on e at up pos:   4
+ T
+l- on e at dn pos:  11
+ F
+Output detup, detdn:            11010     10000000000
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  4  0  0  0  0
+   12.000000462659896      F           5
+
+---------------------- Applying L- to multiple dets, now at No.  4
+---------------------- Apply L- on detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   8.4852818466079345      F           5
+l- on e at up pos:   1
+ T
+l- on e at up pos:   2
+ T
+l- on e at up pos:   4
+ F
+Output detup, detdn:             1110   1000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   12.000000462659898      F           6
+l- on e at dn pos:  12
+ F
+Output detup, detdn:            10110    100000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   20.784611604279160      F           7
+
+---------------------- Applying L- to multiple dets, now at No.  5
+---------------------- Apply L- on detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   5.6568541526794434      F           7
+l- on e at up pos:   1
+ T
+l- on e at up pos:   2
+ T
+l- on e at up pos:   4
+ F
+Output detup, detdn:             1110   1000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   7.9999997261716658      F           8
+l- on e at dn pos:  12
+ F
+Output detup, detdn:            10110    100000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   13.856406727667832      F           9
+
+---------------------- Applying L- to multiple dets, now at No.  6
+---------------------- Apply L- on detup, detdn:             1110  10000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  0  4  0
+   8.0000000000000000      F           9
+l- on e at up pos:   1
+ T
+l- on e at up pos:   2
+ T
+l- on e at up pos:   3
+ T
+l- on e at dn pos:  13
+ F
+Output detup, detdn:             1110   1000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   16.000000000000000      F          10
+
+---------------------- Applying L- to multiple dets, now at No.  7
+---------------------- Apply L- on detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   0.0000000000000000      F          10
+l- on e at up pos:   1
+ T
+l- on e at up pos:   2
+ T
+l- on e at up pos:   4
+ F
+Output detup, detdn:             1110   1000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   0.0000000000000000      F          11
+l- on e at dn pos:  12
+ F
+Output detup, detdn:            10110    100000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   0.0000000000000000      F          12
+
+---------------------- Applying L- to multiple dets, now at No.  8
+---------------------- Apply L- on detup, detdn:             1110  10000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  0  4  0
+   0.0000000000000000      F          12
+l- on e at up pos:   1
+ T
+l- on e at up pos:   2
+ T
+l- on e at up pos:   3
+ T
+l- on e at dn pos:  13
+ F
+Output detup, detdn:             1110   1000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   0.0000000000000000      F          13
+  ------------------- Append tail to basislist 
+tail =   -2.0000000000
+Total number of dets in basislist  17
+  
+====================== Now at Lp =  2
+
+-------------------- Applying L+ to multiple dets, now at No.  1
+---------------------- Apply L+ on detup, detdn:             1110   1000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   3.9999997261716702      F           0
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   2
+ T
+l+ on e at up pos:   3
+ F
+Output detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   5.6568537654277122      F           1
+l+ on e at dn pos:  12
+ F
+Output detup, detdn:             1110  10000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  0  4  0
+   7.9999994523433404      F           2
+
+-------------------- Applying L+ to multiple dets, now at No.  2
+---------------------- Apply L+ on detup, detdn:            10110    100000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   6.9282031266916171      F           2
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   2
+ F
+Output detup, detdn:            11010    100000000000
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   9.7979586569580448      F           3
+l+ on e at up pos:   4
+ T
+l+ on e at dn pos:  11
+ F
+Output detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   16.970563112338219      F           4
+
+-------------------- Applying L+ to multiple dets, now at No.  3
+---------------------- Apply L+ on detup, detdn:             1110   1000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   7.9999997261716658      F           4
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   2
+ T
+l+ on e at up pos:   3
+ F
+Output detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   11.313707918107148      F           5
+l+ on e at dn pos:  12
+ F
+Output detup, detdn:             1110  10000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  0  4  0
+   15.999999452343332      F           6
+
+-------------------- Applying L+ to multiple dets, now at No.  4
+---------------------- Apply L+ on detup, detdn:            10110    100000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   6.9282031266916180      F           6
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   2
+ F
+Output detup, detdn:            11010    100000000000
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   9.7979586569580466      F           7
+l+ on e at up pos:   4
+ T
+l+ on e at dn pos:  11
+ F
+Output detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   16.970563112338219      F           8
+
+-------------------- Applying L+ to multiple dets, now at No.  5
+---------------------- Apply L+ on detup, detdn:            11010     10000000000
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  4  0  0  0  0
+   12.000000462659896      F           8
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   3
+ T
+l+ on e at up pos:   4
+ T
+l+ on e at dn pos:  10
+ F
+Output detup, detdn:            11010    100000000000
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   29.393879116373974      F           9
+
+-------------------- Applying L+ to multiple dets, now at No.  6
+---------------------- Apply L+ on detup, detdn:             1110   1000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   12.000000462659898      F           9
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   2
+ T
+l+ on e at up pos:   3
+ F
+Output detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   16.970563112338223      F          10
+l+ on e at dn pos:  12
+ F
+Output detup, detdn:             1110  10000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  0  4  0
+   24.000000925319796      F          11
+
+-------------------- Applying L+ to multiple dets, now at No.  7
+---------------------- Apply L+ on detup, detdn:            10110    100000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   20.784611604279160      F          11
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   2
+ F
+Output detup, detdn:            11010    100000000000
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   29.393879116373977      F          12
+l+ on e at up pos:   4
+ T
+l+ on e at dn pos:  11
+ F
+Output detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   50.911694785180494      F          13
+
+-------------------- Applying L+ to multiple dets, now at No.  8
+---------------------- Apply L+ on detup, detdn:             1110   1000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   7.9999997261716658      F          13
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   2
+ T
+l+ on e at up pos:   3
+ F
+Output detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   11.313707918107148      F          14
+l+ on e at dn pos:  12
+ F
+Output detup, detdn:             1110  10000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  0  4  0
+   15.999999452343332      F          15
+
+-------------------- Applying L+ to multiple dets, now at No.  9
+---------------------- Apply L+ on detup, detdn:            10110    100000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   13.856406727667832      F          15
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   2
+ F
+Output detup, detdn:            11010    100000000000
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   19.595917984655788      F          16
+l+ on e at up pos:   4
+ T
+l+ on e at dn pos:  11
+ F
+Output detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   33.941127386431738      F          17
+
+-------------------- Applying L+ to multiple dets, now at No. 10
+---------------------- Apply L+ on detup, detdn:             1110   1000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   16.000000000000000      F          17
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   2
+ T
+l+ on e at up pos:   3
+ F
+Output detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   22.627416610717773      F          18
+l+ on e at dn pos:  12
+ F
+Output detup, detdn:             1110  10000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  0  4  0
+   32.000000000000000      F          19
+
+-------------------- Applying L+ to multiple dets, now at No. 11
+---------------------- Apply L+ on detup, detdn:             1110   1000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   0.0000000000000000      F          19
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   2
+ T
+l+ on e at up pos:   3
+ F
+Output detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   0.0000000000000000      F          20
+l+ on e at dn pos:  12
+ F
+Output detup, detdn:             1110  10000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  0  4  0
+   0.0000000000000000      F          21
+
+-------------------- Applying L+ to multiple dets, now at No. 12
+---------------------- Apply L+ on detup, detdn:            10110    100000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   0.0000000000000000      F          21
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   2
+ F
+Output detup, detdn:            11010    100000000000
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   0.0000000000000000      F          22
+l+ on e at up pos:   4
+ T
+l+ on e at dn pos:  11
+ F
+Output detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   0.0000000000000000      F          23
+
+-------------------- Applying L+ to multiple dets, now at No. 13
+---------------------- Apply L+ on detup, detdn:             1110   1000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   0.0000000000000000      F          23
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   2
+ T
+l+ on e at up pos:   3
+ F
+Output detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   0.0000000000000000      F          24
+l+ on e at dn pos:  12
+ F
+Output detup, detdn:             1110  10000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  0  4  0
+   0.0000000000000000      F          25
+
+-------------------- Applying L+ to multiple dets, now at No. 14
+---------------------- Apply L+ on detup, detdn:             1110   1000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+  -3.9999998630858329      F          25
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   2
+ T
+l+ on e at up pos:   3
+ F
+Output detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+  -5.6568539590535742      F          26
+l+ on e at dn pos:  12
+ F
+Output detup, detdn:             1110  10000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  0  4  0
+  -7.9999997261716658      F          27
+
+-------------------- Applying L+ to multiple dets, now at No. 15
+---------------------- Apply L+ on detup, detdn:            10110    100000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+  -6.9282033638339158      F          27
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   2
+ F
+Output detup, detdn:            11010    100000000000
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+  -9.7979589923278940      F          28
+l+ on e at up pos:   4
+ T
+l+ on e at dn pos:  11
+ F
+Output detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+  -16.970563693215869      F          29
+
+-------------------- Applying L+ to multiple dets, now at No. 16
+---------------------- Apply L+ on detup, detdn:             1110   1000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+  -8.0000000000000000      F          29
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   2
+ T
+l+ on e at up pos:   3
+ F
+Output detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+  -11.313708305358887      F          30
+l+ on e at dn pos:  12
+ F
+Output detup, detdn:             1110  10000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  0  4  0
+  -16.000000000000000      F          31
+
+-------------------- Applying L+ to multiple dets, now at No. 17
+---------------------- Apply L+ on detup, detdn:             1110   1000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+  -0.0000000000000000      F          31
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   2
+ T
+l+ on e at up pos:   3
+ F
+Output detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+  -0.0000000000000000      F          32
+l+ on e at dn pos:  12
+ F
+Output detup, detdn:             1110  10000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  0  4  0
+  -0.0000000000000000      F          33
+
+---------------------- Applying L- to multiple dets, now at No.  1
+---------------------- Apply L- on detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   5.6568537654277122      F           0
+l- on e at up pos:   1
+ T
+l- on e at up pos:   2
+ T
+l- on e at up pos:   4
+ F
+Output detup, detdn:             1110   1000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   7.9999991785150248      F           1
+l- on e at dn pos:  12
+ F
+Output detup, detdn:            10110    100000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   13.856405779098655      F           2
+
+---------------------- Applying L- to multiple dets, now at No.  2
+---------------------- Apply L- on detup, detdn:             1110  10000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  0  4  0
+   7.9999994523433404      F           2
+l- on e at up pos:   1
+ T
+l- on e at up pos:   2
+ T
+l- on e at up pos:   3
+ T
+l- on e at dn pos:  13
+ F
+Output detup, detdn:             1110   1000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   15.999998904686681      F           3
+
+---------------------- Applying L- to multiple dets, now at No.  3
+---------------------- Apply L- on detup, detdn:            11010    100000000000
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   9.7979586569580448      F           3
+l- on e at up pos:   1
+ T
+l- on e at up pos:   3
+ F
+Output detup, detdn:            10110    100000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   13.856405779098655      F           4
+l- on e at up pos:   4
+ T
+l- on e at dn pos:  11
+ F
+Output detup, detdn:            11010     10000000000
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  4  0  0  0  0
+   24.000000103834758      F           5
+
+---------------------- Applying L- to multiple dets, now at No.  4
+---------------------- Apply L- on detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   16.970563112338219      F           5
+l- on e at up pos:   1
+ T
+l- on e at up pos:   2
+ T
+l- on e at up pos:   4
+ F
+Output detup, detdn:             1110   1000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   24.000000103834758      F           6
+l- on e at dn pos:  12
+ F
+Output detup, detdn:            10110    100000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   41.569221785704421      F           7
+
+---------------------- Applying L- to multiple dets, now at No.  5
+---------------------- Apply L- on detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   11.313707918107148      F           7
+l- on e at up pos:   1
+ T
+l- on e at up pos:   2
+ T
+l- on e at up pos:   4
+ F
+Output detup, detdn:             1110   1000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   15.999998904686681      F           8
+l- on e at dn pos:  12
+ F
+Output detup, detdn:            10110    100000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   27.712812506766468      F           9
+
+---------------------- Applying L- to multiple dets, now at No.  6
+---------------------- Apply L- on detup, detdn:             1110  10000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  0  4  0
+   15.999999452343332      F           9
+l- on e at up pos:   1
+ T
+l- on e at up pos:   2
+ T
+l- on e at up pos:   3
+ T
+l- on e at dn pos:  13
+ F
+Output detup, detdn:             1110   1000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   31.999998904686663      F          10
+
+---------------------- Applying L- to multiple dets, now at No.  7
+---------------------- Apply L- on detup, detdn:            11010    100000000000
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   9.7979586569580466      F          10
+l- on e at up pos:   1
+ T
+l- on e at up pos:   3
+ F
+Output detup, detdn:            10110    100000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   13.856405779098656      F          11
+l- on e at up pos:   4
+ T
+l- on e at dn pos:  11
+ F
+Output detup, detdn:            11010     10000000000
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  4  0  0  0  0
+   24.000000103834761      F          12
+
+---------------------- Applying L- to multiple dets, now at No.  8
+---------------------- Apply L- on detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   16.970563112338219      F          12
+l- on e at up pos:   1
+ T
+l- on e at up pos:   2
+ T
+l- on e at up pos:   4
+ F
+Output detup, detdn:             1110   1000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   24.000000103834758      F          13
+l- on e at dn pos:  12
+ F
+Output detup, detdn:            10110    100000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   41.569221785704421      F          14
+
+---------------------- Applying L- to multiple dets, now at No.  9
+---------------------- Apply L- on detup, detdn:            11010    100000000000
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   29.393879116373974      F          14
+l- on e at up pos:   1
+ T
+l- on e at up pos:   3
+ F
+Output detup, detdn:            10110    100000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   41.569221785704421      F          15
+l- on e at up pos:   4
+ T
+l- on e at dn pos:  11
+ F
+Output detup, detdn:            11010     10000000000
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  4  0  0  0  0
+   72.000008016374153      F          16
+
+---------------------- Applying L- to multiple dets, now at No. 10
+---------------------- Apply L- on detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   16.970563112338223      F          16
+l- on e at up pos:   1
+ T
+l- on e at up pos:   2
+ T
+l- on e at up pos:   4
+ F
+Output detup, detdn:             1110   1000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   24.000000103834765      F          17
+l- on e at dn pos:  12
+ F
+Output detup, detdn:            10110    100000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   41.569221785704428      F          18
+
+---------------------- Applying L- to multiple dets, now at No. 11
+---------------------- Apply L- on detup, detdn:             1110  10000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  0  4  0
+   24.000000925319796      F          18
+l- on e at up pos:   1
+ T
+l- on e at up pos:   2
+ T
+l- on e at up pos:   3
+ T
+l- on e at dn pos:  13
+ F
+Output detup, detdn:             1110   1000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   48.000001850639592      F          19
+
+---------------------- Applying L- to multiple dets, now at No. 12
+---------------------- Apply L- on detup, detdn:            11010    100000000000
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   29.393879116373977      F          19
+l- on e at up pos:   1
+ T
+l- on e at up pos:   3
+ F
+Output detup, detdn:            10110    100000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   41.569221785704428      F          20
+l- on e at up pos:   4
+ T
+l- on e at dn pos:  11
+ F
+Output detup, detdn:            11010     10000000000
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  4  0  0  0  0
+   72.000008016374153      F          21
+
+---------------------- Applying L- to multiple dets, now at No. 13
+---------------------- Apply L- on detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   50.911694785180494      F          21
+l- on e at up pos:   1
+ T
+l- on e at up pos:   2
+ T
+l- on e at up pos:   4
+ F
+Output detup, detdn:             1110   1000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   72.000008016374153      F          22
+l- on e at dn pos:  12
+ F
+Output detup, detdn:            10110    100000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   124.70767870234008      F          23
+
+---------------------- Applying L- to multiple dets, now at No. 14
+---------------------- Apply L- on detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   11.313707918107148      F          23
+l- on e at up pos:   1
+ T
+l- on e at up pos:   2
+ T
+l- on e at up pos:   4
+ F
+Output detup, detdn:             1110   1000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   15.999998904686681      F          24
+l- on e at dn pos:  12
+ F
+Output detup, detdn:            10110    100000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   27.712812506766468      F          25
+
+---------------------- Applying L- to multiple dets, now at No. 15
+---------------------- Apply L- on detup, detdn:             1110  10000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  0  4  0
+   15.999999452343332      F          25
+l- on e at up pos:   1
+ T
+l- on e at up pos:   2
+ T
+l- on e at up pos:   3
+ T
+l- on e at dn pos:  13
+ F
+Output detup, detdn:             1110   1000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   31.999998904686663      F          26
+
+---------------------- Applying L- to multiple dets, now at No. 16
+---------------------- Apply L- on detup, detdn:            11010    100000000000
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   19.595917984655788      F          26
+l- on e at up pos:   1
+ T
+l- on e at up pos:   3
+ F
+Output detup, detdn:            10110    100000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   27.712812506766472      F          27
+l- on e at up pos:   4
+ T
+l- on e at dn pos:  11
+ F
+Output detup, detdn:            11010     10000000000
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  4  0  0  0  0
+   48.000001850639585      F          28
+
+---------------------- Applying L- to multiple dets, now at No. 17
+---------------------- Apply L- on detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   33.941127386431738      F          28
+l- on e at up pos:   1
+ T
+l- on e at up pos:   2
+ T
+l- on e at up pos:   4
+ F
+Output detup, detdn:             1110   1000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   48.000001850639592      F          29
+l- on e at dn pos:  12
+ F
+Output detup, detdn:            10110    100000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   83.138446417116640      F          30
+
+---------------------- Applying L- to multiple dets, now at No. 18
+---------------------- Apply L- on detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   22.627416610717773      F          30
+l- on e at up pos:   1
+ T
+l- on e at up pos:   2
+ T
+l- on e at up pos:   4
+ F
+Output detup, detdn:             1110   1000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   31.999998904686663      F          31
+l- on e at dn pos:  12
+ F
+Output detup, detdn:            10110    100000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   55.425626910671326      F          32
+
+---------------------- Applying L- to multiple dets, now at No. 19
+---------------------- Apply L- on detup, detdn:             1110  10000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  0  4  0
+   32.000000000000000      F          32
+l- on e at up pos:   1
+ T
+l- on e at up pos:   2
+ T
+l- on e at up pos:   3
+ T
+l- on e at dn pos:  13
+ F
+Output detup, detdn:             1110   1000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   64.000000000000000      F          33
+
+---------------------- Applying L- to multiple dets, now at No. 20
+---------------------- Apply L- on detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   0.0000000000000000      F          33
+l- on e at up pos:   1
+ T
+l- on e at up pos:   2
+ T
+l- on e at up pos:   4
+ F
+Output detup, detdn:             1110   1000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   0.0000000000000000      F          34
+l- on e at dn pos:  12
+ F
+Output detup, detdn:            10110    100000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   0.0000000000000000      F          35
+
+---------------------- Applying L- to multiple dets, now at No. 21
+---------------------- Apply L- on detup, detdn:             1110  10000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  0  4  0
+   0.0000000000000000      F          35
+l- on e at up pos:   1
+ T
+l- on e at up pos:   2
+ T
+l- on e at up pos:   3
+ T
+l- on e at dn pos:  13
+ F
+Output detup, detdn:             1110   1000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   0.0000000000000000      F          36
+
+---------------------- Applying L- to multiple dets, now at No. 22
+---------------------- Apply L- on detup, detdn:            11010    100000000000
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   0.0000000000000000      F          36
+l- on e at up pos:   1
+ T
+l- on e at up pos:   3
+ F
+Output detup, detdn:            10110    100000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   0.0000000000000000      F          37
+l- on e at up pos:   4
+ T
+l- on e at dn pos:  11
+ F
+Output detup, detdn:            11010     10000000000
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  4  0  0  0  0
+   0.0000000000000000      F          38
+
+---------------------- Applying L- to multiple dets, now at No. 23
+---------------------- Apply L- on detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   0.0000000000000000      F          38
+l- on e at up pos:   1
+ T
+l- on e at up pos:   2
+ T
+l- on e at up pos:   4
+ F
+Output detup, detdn:             1110   1000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   0.0000000000000000      F          39
+l- on e at dn pos:  12
+ F
+Output detup, detdn:            10110    100000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   0.0000000000000000      F          40
+
+---------------------- Applying L- to multiple dets, now at No. 24
+---------------------- Apply L- on detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   0.0000000000000000      F          40
+l- on e at up pos:   1
+ T
+l- on e at up pos:   2
+ T
+l- on e at up pos:   4
+ F
+Output detup, detdn:             1110   1000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   0.0000000000000000      F          41
+l- on e at dn pos:  12
+ F
+Output detup, detdn:            10110    100000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   0.0000000000000000      F          42
+
+---------------------- Applying L- to multiple dets, now at No. 25
+---------------------- Apply L- on detup, detdn:             1110  10000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  0  4  0
+   0.0000000000000000      F          42
+l- on e at up pos:   1
+ T
+l- on e at up pos:   2
+ T
+l- on e at up pos:   3
+ T
+l- on e at dn pos:  13
+ F
+Output detup, detdn:             1110   1000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   0.0000000000000000      F          43
+
+---------------------- Applying L- to multiple dets, now at No. 26
+---------------------- Apply L- on detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+  -5.6568539590535742      F          43
+l- on e at up pos:   1
+ T
+l- on e at up pos:   2
+ T
+l- on e at up pos:   4
+ F
+Output detup, detdn:             1110   1000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+  -7.9999994523433404      F          44
+l- on e at dn pos:  12
+ F
+Output detup, detdn:            10110    100000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+  -13.856406253383234      F          45
+
+---------------------- Applying L- to multiple dets, now at No. 27
+---------------------- Apply L- on detup, detdn:             1110  10000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  0  4  0
+  -7.9999997261716658      F          45
+l- on e at up pos:   1
+ T
+l- on e at up pos:   2
+ T
+l- on e at up pos:   3
+ T
+l- on e at dn pos:  13
+ F
+Output detup, detdn:             1110   1000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+  -15.999999452343332      F          46
+
+---------------------- Applying L- to multiple dets, now at No. 28
+---------------------- Apply L- on detup, detdn:            11010    100000000000
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+  -9.7979589923278940      F          46
+l- on e at up pos:   1
+ T
+l- on e at up pos:   3
+ F
+Output detup, detdn:            10110    100000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+  -13.856406253383236      F          47
+l- on e at up pos:   4
+ T
+l- on e at dn pos:  11
+ F
+Output detup, detdn:            11010     10000000000
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  4  0  0  0  0
+  -24.000000925319792      F          48
+
+---------------------- Applying L- to multiple dets, now at No. 29
+---------------------- Apply L- on detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+  -16.970563693215869      F          48
+l- on e at up pos:   1
+ T
+l- on e at up pos:   2
+ T
+l- on e at up pos:   4
+ F
+Output detup, detdn:             1110   1000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+  -24.000000925319796      F          49
+l- on e at dn pos:  12
+ F
+Output detup, detdn:            10110    100000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+  -41.569223208558320      F          50
+
+---------------------- Applying L- to multiple dets, now at No. 30
+---------------------- Apply L- on detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+  -11.313708305358887      F          50
+l- on e at up pos:   1
+ T
+l- on e at up pos:   2
+ T
+l- on e at up pos:   4
+ F
+Output detup, detdn:             1110   1000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+  -15.999999452343332      F          51
+l- on e at dn pos:  12
+ F
+Output detup, detdn:            10110    100000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+  -27.712813455335663      F          52
+
+---------------------- Applying L- to multiple dets, now at No. 31
+---------------------- Apply L- on detup, detdn:             1110  10000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  0  4  0
+  -16.000000000000000      F          52
+l- on e at up pos:   1
+ T
+l- on e at up pos:   2
+ T
+l- on e at up pos:   3
+ T
+l- on e at dn pos:  13
+ F
+Output detup, detdn:             1110   1000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+  -32.000000000000000      F          53
+
+---------------------- Applying L- to multiple dets, now at No. 32
+---------------------- Apply L- on detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+  -0.0000000000000000      F          53
+l- on e at up pos:   1
+ T
+l- on e at up pos:   2
+ T
+l- on e at up pos:   4
+ F
+Output detup, detdn:             1110   1000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+  -0.0000000000000000      F          54
+l- on e at dn pos:  12
+ F
+Output detup, detdn:            10110    100000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+  -0.0000000000000000      F          55
+
+---------------------- Applying L- to multiple dets, now at No. 33
+---------------------- Apply L- on detup, detdn:             1110  10000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  0  4  0
+  -0.0000000000000000      F          55
+l- on e at up pos:   1
+ T
+l- on e at up pos:   2
+ T
+l- on e at up pos:   3
+ T
+l- on e at dn pos:  13
+ F
+Output detup, detdn:             1110   1000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+  -0.0000000000000000      F          56
+  ------------------- Append tail to basislist 
+tail =   -6.0000000000
+Total number of dets in basislist  73
+  
+====================== Now at Lp =  3
+
+-------------------- Applying L+ to multiple dets, now at No.  1
+---------------------- Apply L+ on detup, detdn:             1110   1000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   7.9999991785150248      F           0
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   2
+ T
+l+ on e at up pos:   3
+ F
+Output detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   11.313707143603713      F           1
+l+ on e at dn pos:  12
+ F
+Output detup, detdn:             1110  10000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  0  4  0
+   15.999998357030050      F           2
+
+-------------------- Applying L+ to multiple dets, now at No.  2
+---------------------- Apply L+ on detup, detdn:            10110    100000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   13.856405779098655      F           2
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   2
+ F
+Output detup, detdn:            11010    100000000000
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   19.595916643176416      F           3
+l+ on e at up pos:   4
+ T
+l+ on e at dn pos:  11
+ F
+Output detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   33.941125062921181      F           4
+
+-------------------- Applying L+ to multiple dets, now at No.  3
+---------------------- Apply L+ on detup, detdn:             1110   1000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   15.999998904686681      F           4
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   2
+ T
+l+ on e at up pos:   3
+ F
+Output detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   22.627415061710849      F           5
+l+ on e at dn pos:  12
+ F
+Output detup, detdn:             1110  10000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  0  4  0
+   31.999997809373362      F           6
+
+-------------------- Applying L+ to multiple dets, now at No.  4
+---------------------- Apply L+ on detup, detdn:            10110    100000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   13.856405779098655      F           6
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   2
+ F
+Output detup, detdn:            11010    100000000000
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   19.595916643176416      F           7
+l+ on e at up pos:   4
+ T
+l+ on e at dn pos:  11
+ F
+Output detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   33.941125062921181      F           8
+
+-------------------- Applying L+ to multiple dets, now at No.  5
+---------------------- Apply L+ on detup, detdn:            11010     10000000000
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  4  0  0  0  0
+   24.000000103834758      F           8
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   3
+ T
+l+ on e at up pos:   4
+ T
+l+ on e at dn pos:  10
+ F
+Output detup, detdn:            11010    100000000000
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   58.787756220528706      F           9
+
+-------------------- Applying L+ to multiple dets, now at No.  6
+---------------------- Apply L+ on detup, detdn:             1110   1000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   24.000000103834758      F           9
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   2
+ T
+l+ on e at up pos:   3
+ F
+Output detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   33.941125062921181      F          10
+l+ on e at dn pos:  12
+ F
+Output detup, detdn:             1110  10000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  0  4  0
+   48.000000207669515      F          11
+
+-------------------- Applying L+ to multiple dets, now at No.  7
+---------------------- Apply L+ on detup, detdn:            10110    100000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   41.569221785704421      F          11
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   2
+ F
+Output detup, detdn:            11010    100000000000
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   58.787756220528713      F          12
+l+ on e at up pos:   4
+ T
+l+ on e at dn pos:  11
+ F
+Output detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   101.82338608509482      F          13
+
+-------------------- Applying L+ to multiple dets, now at No.  8
+---------------------- Apply L+ on detup, detdn:             1110   1000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   15.999998904686681      F          13
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   2
+ T
+l+ on e at up pos:   3
+ F
+Output detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   22.627415061710849      F          14
+l+ on e at dn pos:  12
+ F
+Output detup, detdn:             1110  10000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  0  4  0
+   31.999997809373362      F          15
+
+-------------------- Applying L+ to multiple dets, now at No.  9
+---------------------- Apply L+ on detup, detdn:            10110    100000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   27.712812506766468      F          15
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   2
+ F
+Output detup, detdn:            11010    100000000000
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   39.191834627832179      F          16
+l+ on e at up pos:   4
+ T
+l+ on e at dn pos:  11
+ F
+Output detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   67.882252449352876      F          17
+
+-------------------- Applying L+ to multiple dets, now at No. 10
+---------------------- Apply L+ on detup, detdn:             1110   1000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   31.999998904686663      F          17
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   2
+ T
+l+ on e at up pos:   3
+ F
+Output detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   45.254831672428594      F          18
+l+ on e at dn pos:  12
+ F
+Output detup, detdn:             1110  10000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  0  4  0
+   63.999997809373326      F          19
+
+-------------------- Applying L+ to multiple dets, now at No. 11
+---------------------- Apply L+ on detup, detdn:            10110    100000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   13.856405779098656      F          19
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   2
+ F
+Output detup, detdn:            11010    100000000000
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   19.595916643176420      F          20
+l+ on e at up pos:   4
+ T
+l+ on e at dn pos:  11
+ F
+Output detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   33.941125062921188      F          21
+
+-------------------- Applying L+ to multiple dets, now at No. 12
+---------------------- Apply L+ on detup, detdn:            11010     10000000000
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  4  0  0  0  0
+   24.000000103834761      F          21
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   3
+ T
+l+ on e at up pos:   4
+ T
+l+ on e at dn pos:  10
+ F
+Output detup, detdn:            11010    100000000000
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   58.787756220528713      F          22
+
+-------------------- Applying L+ to multiple dets, now at No. 13
+---------------------- Apply L+ on detup, detdn:             1110   1000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   24.000000103834758      F          22
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   2
+ T
+l+ on e at up pos:   3
+ F
+Output detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   33.941125062921181      F          23
+l+ on e at dn pos:  12
+ F
+Output detup, detdn:             1110  10000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  0  4  0
+   48.000000207669515      F          24
+
+-------------------- Applying L+ to multiple dets, now at No. 14
+---------------------- Apply L+ on detup, detdn:            10110    100000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   41.569221785704421      F          24
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   2
+ F
+Output detup, detdn:            11010    100000000000
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   58.787756220528713      F          25
+l+ on e at up pos:   4
+ T
+l+ on e at dn pos:  11
+ F
+Output detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   101.82338608509482      F          26
+
+-------------------- Applying L+ to multiple dets, now at No. 15
+---------------------- Apply L+ on detup, detdn:            10110    100000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   41.569221785704421      F          26
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   2
+ F
+Output detup, detdn:            11010    100000000000
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   58.787756220528713      F          27
+l+ on e at up pos:   4
+ T
+l+ on e at dn pos:  11
+ F
+Output detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   101.82338608509482      F          28
+
+-------------------- Applying L+ to multiple dets, now at No. 16
+---------------------- Apply L+ on detup, detdn:            11010     10000000000
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  4  0  0  0  0
+   72.000008016374153      F          28
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   3
+ T
+l+ on e at up pos:   4
+ T
+l+ on e at dn pos:  10
+ F
+Output detup, detdn:            11010    100000000000
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   176.36328753458653      F          29
+
+-------------------- Applying L+ to multiple dets, now at No. 17
+---------------------- Apply L+ on detup, detdn:             1110   1000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   24.000000103834765      F          29
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   2
+ T
+l+ on e at up pos:   3
+ F
+Output detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   33.941125062921188      F          30
+l+ on e at dn pos:  12
+ F
+Output detup, detdn:             1110  10000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  0  4  0
+   48.000000207669530      F          31
+
+-------------------- Applying L+ to multiple dets, now at No. 18
+---------------------- Apply L+ on detup, detdn:            10110    100000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   41.569221785704428      F          31
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   2
+ F
+Output detup, detdn:            11010    100000000000
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   58.787756220528721      F          32
+l+ on e at up pos:   4
+ T
+l+ on e at dn pos:  11
+ F
+Output detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   101.82338608509485      F          33
+
+-------------------- Applying L+ to multiple dets, now at No. 19
+---------------------- Apply L+ on detup, detdn:             1110   1000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   48.000001850639592      F          33
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   2
+ T
+l+ on e at up pos:   3
+ F
+Output detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   67.882252449352890      F          34
+l+ on e at dn pos:  12
+ F
+Output detup, detdn:             1110  10000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  0  4  0
+   96.000003701279184      F          35
+
+-------------------- Applying L+ to multiple dets, now at No. 20
+---------------------- Apply L+ on detup, detdn:            10110    100000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   41.569221785704428      F          35
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   2
+ F
+Output detup, detdn:            11010    100000000000
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   58.787756220528721      F          36
+l+ on e at up pos:   4
+ T
+l+ on e at dn pos:  11
+ F
+Output detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   101.82338608509485      F          37
+
+-------------------- Applying L+ to multiple dets, now at No. 21
+---------------------- Apply L+ on detup, detdn:            11010     10000000000
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  4  0  0  0  0
+   72.000008016374153      F          37
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   3
+ T
+l+ on e at up pos:   4
+ T
+l+ on e at dn pos:  10
+ F
+Output detup, detdn:            11010    100000000000
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   176.36328753458653      F          38
+
+-------------------- Applying L+ to multiple dets, now at No. 22
+---------------------- Apply L+ on detup, detdn:             1110   1000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   72.000008016374153      F          38
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   2
+ T
+l+ on e at up pos:   3
+ F
+Output detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   101.82338608509484      F          39
+l+ on e at dn pos:  12
+ F
+Output detup, detdn:             1110  10000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  0  4  0
+   144.00001603274831      F          40
+
+-------------------- Applying L+ to multiple dets, now at No. 23
+---------------------- Apply L+ on detup, detdn:            10110    100000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   124.70767870234008      F          40
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   2
+ F
+Output detup, detdn:            11010    100000000000
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   176.36328753458656      F          41
+l+ on e at up pos:   4
+ T
+l+ on e at dn pos:  11
+ F
+Output detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   305.47019094428185      F          42
+
+-------------------- Applying L+ to multiple dets, now at No. 24
+---------------------- Apply L+ on detup, detdn:             1110   1000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   15.999998904686681      F          42
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   2
+ T
+l+ on e at up pos:   3
+ F
+Output detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   22.627415061710849      F          43
+l+ on e at dn pos:  12
+ F
+Output detup, detdn:             1110  10000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  0  4  0
+   31.999997809373362      F          44
+
+-------------------- Applying L+ to multiple dets, now at No. 25
+---------------------- Apply L+ on detup, detdn:            10110    100000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   27.712812506766468      F          44
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   2
+ F
+Output detup, detdn:            11010    100000000000
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   39.191834627832179      F          45
+l+ on e at up pos:   4
+ T
+l+ on e at dn pos:  11
+ F
+Output detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   67.882252449352876      F          46
+
+-------------------- Applying L+ to multiple dets, now at No. 26
+---------------------- Apply L+ on detup, detdn:             1110   1000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   31.999998904686663      F          46
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   2
+ T
+l+ on e at up pos:   3
+ F
+Output detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   45.254831672428594      F          47
+l+ on e at dn pos:  12
+ F
+Output detup, detdn:             1110  10000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  0  4  0
+   63.999997809373326      F          48
+
+-------------------- Applying L+ to multiple dets, now at No. 27
+---------------------- Apply L+ on detup, detdn:            10110    100000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   27.712812506766472      F          48
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   2
+ F
+Output detup, detdn:            11010    100000000000
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   39.191834627832186      F          49
+l+ on e at up pos:   4
+ T
+l+ on e at dn pos:  11
+ F
+Output detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   67.882252449352876      F          50
+
+-------------------- Applying L+ to multiple dets, now at No. 28
+---------------------- Apply L+ on detup, detdn:            11010     10000000000
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  4  0  0  0  0
+   48.000001850639585      F          50
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   3
+ T
+l+ on e at up pos:   4
+ T
+l+ on e at dn pos:  10
+ F
+Output detup, detdn:            11010    100000000000
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   117.57551646549589      F          51
+
+-------------------- Applying L+ to multiple dets, now at No. 29
+---------------------- Apply L+ on detup, detdn:             1110   1000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   48.000001850639592      F          51
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   2
+ T
+l+ on e at up pos:   3
+ F
+Output detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   67.882252449352890      F          52
+l+ on e at dn pos:  12
+ F
+Output detup, detdn:             1110  10000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  0  4  0
+   96.000003701279184      F          53
+
+-------------------- Applying L+ to multiple dets, now at No. 30
+---------------------- Apply L+ on detup, detdn:            10110    100000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   83.138446417116640      F          53
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   2
+ F
+Output detup, detdn:            11010    100000000000
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   117.57551646549591      F          54
+l+ on e at up pos:   4
+ T
+l+ on e at dn pos:  11
+ F
+Output detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   203.64677914072197      F          55
+
+-------------------- Applying L+ to multiple dets, now at No. 31
+---------------------- Apply L+ on detup, detdn:             1110   1000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   31.999998904686663      F          55
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   2
+ T
+l+ on e at up pos:   3
+ F
+Output detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   45.254831672428594      F          56
+l+ on e at dn pos:  12
+ F
+Output detup, detdn:             1110  10000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  0  4  0
+   63.999997809373326      F          57
+
+-------------------- Applying L+ to multiple dets, now at No. 32
+---------------------- Apply L+ on detup, detdn:            10110    100000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   55.425626910671326      F          57
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   2
+ F
+Output detup, detdn:            11010    100000000000
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   78.383671938623152      F          58
+l+ on e at up pos:   4
+ T
+l+ on e at dn pos:  11
+ F
+Output detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   135.76450954572695      F          59
+
+-------------------- Applying L+ to multiple dets, now at No. 33
+---------------------- Apply L+ on detup, detdn:             1110   1000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   64.000000000000000      F          59
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   2
+ T
+l+ on e at up pos:   3
+ F
+Output detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   90.509666442871094      F          60
+l+ on e at dn pos:  12
+ F
+Output detup, detdn:             1110  10000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  0  4  0
+   128.00000000000000      F          61
+
+-------------------- Applying L+ to multiple dets, now at No. 34
+---------------------- Apply L+ on detup, detdn:             1110   1000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   0.0000000000000000      F          61
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   2
+ T
+l+ on e at up pos:   3
+ F
+Output detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   0.0000000000000000      F          62
+l+ on e at dn pos:  12
+ F
+Output detup, detdn:             1110  10000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  0  4  0
+   0.0000000000000000      F          63
+
+-------------------- Applying L+ to multiple dets, now at No. 35
+---------------------- Apply L+ on detup, detdn:            10110    100000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   0.0000000000000000      F          63
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   2
+ F
+Output detup, detdn:            11010    100000000000
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   0.0000000000000000      F          64
+l+ on e at up pos:   4
+ T
+l+ on e at dn pos:  11
+ F
+Output detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   0.0000000000000000      F          65
+
+-------------------- Applying L+ to multiple dets, now at No. 36
+---------------------- Apply L+ on detup, detdn:             1110   1000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   0.0000000000000000      F          65
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   2
+ T
+l+ on e at up pos:   3
+ F
+Output detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   0.0000000000000000      F          66
+l+ on e at dn pos:  12
+ F
+Output detup, detdn:             1110  10000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  0  4  0
+   0.0000000000000000      F          67
+
+-------------------- Applying L+ to multiple dets, now at No. 37
+---------------------- Apply L+ on detup, detdn:            10110    100000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   0.0000000000000000      F          67
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   2
+ F
+Output detup, detdn:            11010    100000000000
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   0.0000000000000000      F          68
+l+ on e at up pos:   4
+ T
+l+ on e at dn pos:  11
+ F
+Output detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   0.0000000000000000      F          69
+
+-------------------- Applying L+ to multiple dets, now at No. 38
+---------------------- Apply L+ on detup, detdn:            11010     10000000000
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  4  0  0  0  0
+   0.0000000000000000      F          69
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   3
+ T
+l+ on e at up pos:   4
+ T
+l+ on e at dn pos:  10
+ F
+Output detup, detdn:            11010    100000000000
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   0.0000000000000000      F          70
+
+-------------------- Applying L+ to multiple dets, now at No. 39
+---------------------- Apply L+ on detup, detdn:             1110   1000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   0.0000000000000000      F          70
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   2
+ T
+l+ on e at up pos:   3
+ F
+Output detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   0.0000000000000000      F          71
+l+ on e at dn pos:  12
+ F
+Output detup, detdn:             1110  10000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  0  4  0
+   0.0000000000000000      F          72
+
+-------------------- Applying L+ to multiple dets, now at No. 40
+---------------------- Apply L+ on detup, detdn:            10110    100000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   0.0000000000000000      F          72
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   2
+ F
+Output detup, detdn:            11010    100000000000
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   0.0000000000000000      F          73
+l+ on e at up pos:   4
+ T
+l+ on e at dn pos:  11
+ F
+Output detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   0.0000000000000000      F          74
+
+-------------------- Applying L+ to multiple dets, now at No. 41
+---------------------- Apply L+ on detup, detdn:             1110   1000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   0.0000000000000000      F          74
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   2
+ T
+l+ on e at up pos:   3
+ F
+Output detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   0.0000000000000000      F          75
+l+ on e at dn pos:  12
+ F
+Output detup, detdn:             1110  10000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  0  4  0
+   0.0000000000000000      F          76
+
+-------------------- Applying L+ to multiple dets, now at No. 42
+---------------------- Apply L+ on detup, detdn:            10110    100000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   0.0000000000000000      F          76
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   2
+ F
+Output detup, detdn:            11010    100000000000
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+   0.0000000000000000      F          77
+l+ on e at up pos:   4
+ T
+l+ on e at dn pos:  11
+ F
+Output detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   0.0000000000000000      F          78
+
+-------------------- Applying L+ to multiple dets, now at No. 43
+---------------------- Apply L+ on detup, detdn:             1110   1000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   0.0000000000000000      F          78
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   2
+ T
+l+ on e at up pos:   3
+ F
+Output detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+   0.0000000000000000      F          79
+l+ on e at dn pos:  12
+ F
+Output detup, detdn:             1110  10000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  0  4  0
+   0.0000000000000000      F          80
+
+-------------------- Applying L+ to multiple dets, now at No. 44
+---------------------- Apply L+ on detup, detdn:             1110   1000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+  -7.9999994523433404      F          80
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   2
+ T
+l+ on e at up pos:   3
+ F
+Output detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+  -11.313707530855424      F          81
+l+ on e at dn pos:  12
+ F
+Output detup, detdn:             1110  10000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  0  4  0
+  -15.999998904686681      F          82
+
+-------------------- Applying L+ to multiple dets, now at No. 45
+---------------------- Apply L+ on detup, detdn:            10110    100000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+  -13.856406253383234      F          82
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   2
+ F
+Output detup, detdn:            11010    100000000000
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  4  0  0  0
+  -19.595917313916090      F          83
+l+ on e at up pos:   4
+ T
+l+ on e at dn pos:  11
+ F
+Output detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+  -33.941126224676438      F          84
+
+-------------------- Applying L+ to multiple dets, now at No. 46
+---------------------- Apply L+ on detup, detdn:             1110   1000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+  -15.999999452343332      F          84
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   2
+ T
+l+ on e at up pos:   3
+ F
+Output detup, detdn:            10110   1000000000000
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  4  0  0
+  -22.627415836214297      F          85
+l+ on e at dn pos:  12
+ F
+Output detup, detdn:             1110  10000000000000
+  0  1  2  3  0  0  0  0  0  0  0  0  0  0  0
+  0  0  0  0  0  0  0  0  0  0  0  0  0  4  0
+  -31.999998904686663      F          86
+
