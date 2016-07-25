@@ -1,0 +1,444 @@
+==== Start Reading Input ====
+Atom: C               
+Number of configs:     4
+Number of active electrons:     4
+Number of inactive electrons:     2
+>>> Reading Config     1
+Number of shells occupied:     2
+shell # : n, l, ne     1    2    0    2
+shell # : n, l, ne     2    2    1    2
+>>> Reading Config     2
+Number of shells occupied:     1
+shell # : n, l, ne     1    2    1    4
+>>> Reading Config     3
+Number of shells occupied:     3
+shell # : n, l, ne     1    2    0    1
+shell # : n, l, ne     2    2    1    2
+shell # : n, l, ne     3    3    2    1
+>>> Reading Config     4
+Number of shells occupied:     2
+shell # : n, l, ne     1    2    0    2
+shell # : n, l, ne     2    3    2    2
+>>> Reading other parameters
+desired S*2 L I:    2    1    1
+Ides converted
+==== End Reading Input ====
+Smin checked. 
+checking Smax for config: , Smax *2 =     1    2
+checking Smax for config: , Smax *2 =     2    2
+checking Smax for config: , Smax *2 =     3    4
+checking Smax for config: , Smax *2 =     4    2
+Smax checked
+ Checking Lmax for config: , Lmax =     1    2
+ Checking Lmax for config: , Lmax =     2    4
+ Checking Lmax for config: , Lmax =     3    4
+ Checking Lmax for config: , Lmax =     4    4
+I checked. 
+Lmax checked. 
+ %%%%%%%%%%%%%%%%%%%%%%  Assign_shell for Config           1   %%%%%%%%%%%%%%%%%%%
+------------ Now at shell :    0
+prdet_up               0
+prdet_dn               0
+prLz, pr2Sz, maxremLz, maxrem2Sz    0    0    0    0
+------------ Now at shell :    1
+prdet_up               0
+prdet_dn               0
+prLz, pr2Sz, maxremLz, maxrem2Sz    0    0    2    2
+ Searching det range 1 to               11
+---- Branch shell#, curLz     1    0
+------------ Now at shell :    2
+prdet_up              10
+prdet_dn              10
+prLz, pr2Sz, maxremLz, maxrem2Sz    0    0    2    0
+ At last shell 
+ Searching det range 1 to           110000
+---- Branch last shell, curLz =, cur2Sz =     2    0    2
+curdet =              101
+!!!Success!!! Generated detup:           10110
+!!!Success!!! Generated detdn:              10
+           1
+           1
+           10110              10
+ xxxxxxxxxxxxxxxxxxxxx  Projection of det #           1   xxxxxxxxxxxxxxxxxxxx
+ >>>>>>>>>>>>>>>>>>>>>>> Projection P_L 
+  
+====================== Now at Lp =  0
+
+-------------------- Applying L+ to multiple dets, now at No.  1
+---------------------- Apply L+ on detup, detdn:            10110              10
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  4  0  0  0  0  0  0  0  0  0  0  0  0  0
+   1.0000000000000000      F           0
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   2
+ F
+Output detup, detdn:            11010              10
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  4  0  0  0  0  0  0  0  0  0  0  0  0  0
+   1.4142135381698608      F           1
+l+ on e at up pos:   4
+ T
+l+ on e at dn pos:   1
+ T
+
+---------------------- Applying L- to multiple dets, now at No.  1
+---------------------- Apply L- on detup, detdn:            11010              10
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  4  0  0  0  0  0  0  0  0  0  0  0  0  0
+   1.4142135381698608      F           0
+l- on e at up pos:   1
+ T
+l- on e at up pos:   3
+ F
+Output detup, detdn:            10110              10
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  4  0  0  0  0  0  0  0  0  0  0  0  0  0
+   1.9999999315429164      F           1
+l- on e at up pos:   4
+ T
+l- on e at dn pos:   1
+ T
+  ------------------- Append tail to basislist 
+tail =    0.0000000000
+Total number of dets in basislist   2
+  
+====================== Now at Lp =  1
+
+-------------------- Applying L+ to multiple dets, now at No.  1
+---------------------- Apply L+ on detup, detdn:            10110              10
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  4  0  0  0  0  0  0  0  0  0  0  0  0  0
+   1.9999999315429164      F           0
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   2
+ F
+Output detup, detdn:            11010              10
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  4  0  0  0  0  0  0  0  0  0  0  0  0  0
+   2.8284269795267871      F           1
+l+ on e at up pos:   4
+ T
+l+ on e at dn pos:   1
+ T
+
+-------------------- Applying L+ to multiple dets, now at No.  2
+---------------------- Apply L+ on detup, detdn:            10110              10
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  4  0  0  0  0  0  0  0  0  0  0  0  0  0
+   0.0000000000000000      F           1
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   2
+ F
+Output detup, detdn:            11010              10
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  4  0  0  0  0  0  0  0  0  0  0  0  0  0
+   0.0000000000000000      F           2
+l+ on e at up pos:   4
+ T
+l+ on e at dn pos:   1
+ T
+
+---------------------- Applying L- to multiple dets, now at No.  1
+---------------------- Apply L- on detup, detdn:            11010              10
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  4  0  0  0  0  0  0  0  0  0  0  0  0  0
+   2.8284269795267871      F           0
+l- on e at up pos:   1
+ T
+l- on e at up pos:   3
+ F
+Output detup, detdn:            10110              10
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  4  0  0  0  0  0  0  0  0  0  0  0  0  0
+   3.9999997261716702      F           1
+l- on e at up pos:   4
+ T
+l- on e at dn pos:   1
+ T
+
+---------------------- Applying L- to multiple dets, now at No.  2
+---------------------- Apply L- on detup, detdn:            11010              10
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  4  0  0  0  0  0  0  0  0  0  0  0  0  0
+   0.0000000000000000      F           1
+l- on e at up pos:   1
+ T
+l- on e at up pos:   3
+ F
+Output detup, detdn:            10110              10
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  4  0  0  0  0  0  0  0  0  0  0  0  0  0
+   0.0000000000000000      F           2
+l- on e at up pos:   4
+ T
+l- on e at dn pos:   1
+ T
+  ------------------- Append tail to basislist 
+tail =   -2.0000000000
+Total number of dets in basislist   4
+  
+====================== Now at Lp =  2
+
+-------------------- Applying L+ to multiple dets, now at No.  1
+---------------------- Apply L+ on detup, detdn:            10110              10
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  4  0  0  0  0  0  0  0  0  0  0  0  0  0
+   3.9999997261716702      F           0
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   2
+ F
+Output detup, detdn:            11010              10
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  4  0  0  0  0  0  0  0  0  0  0  0  0  0
+   5.6568537654277122      F           1
+l+ on e at up pos:   4
+ T
+l+ on e at dn pos:   1
+ T
+
+-------------------- Applying L+ to multiple dets, now at No.  2
+---------------------- Apply L+ on detup, detdn:            10110              10
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  4  0  0  0  0  0  0  0  0  0  0  0  0  0
+   0.0000000000000000      F           1
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   2
+ F
+Output detup, detdn:            11010              10
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  4  0  0  0  0  0  0  0  0  0  0  0  0  0
+   0.0000000000000000      F           2
+l+ on e at up pos:   4
+ T
+l+ on e at dn pos:   1
+ T
+
+-------------------- Applying L+ to multiple dets, now at No.  3
+---------------------- Apply L+ on detup, detdn:            10110              10
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  4  0  0  0  0  0  0  0  0  0  0  0  0  0
+  -3.9999998630858329      F           2
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   2
+ F
+Output detup, detdn:            11010              10
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  4  0  0  0  0  0  0  0  0  0  0  0  0  0
+  -5.6568539590535742      F           3
+l+ on e at up pos:   4
+ T
+l+ on e at dn pos:   1
+ T
+
+-------------------- Applying L+ to multiple dets, now at No.  4
+---------------------- Apply L+ on detup, detdn:            10110              10
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  4  0  0  0  0  0  0  0  0  0  0  0  0  0
+  -0.0000000000000000      F           3
+l+ on e at up pos:   1
+ T
+l+ on e at up pos:   2
+ F
+Output detup, detdn:            11010              10
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  4  0  0  0  0  0  0  0  0  0  0  0  0  0
+  -0.0000000000000000      F           4
+l+ on e at up pos:   4
+ T
+l+ on e at dn pos:   1
+ T
+
+---------------------- Applying L- to multiple dets, now at No.  1
+---------------------- Apply L- on detup, detdn:            11010              10
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  4  0  0  0  0  0  0  0  0  0  0  0  0  0
+   5.6568537654277122      F           0
+l- on e at up pos:   1
+ T
+l- on e at up pos:   3
+ F
+Output detup, detdn:            10110              10
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  4  0  0  0  0  0  0  0  0  0  0  0  0  0
+   7.9999991785150248      F           1
+l- on e at up pos:   4
+ T
+l- on e at dn pos:   1
+ T
+
+---------------------- Applying L- to multiple dets, now at No.  2
+---------------------- Apply L- on detup, detdn:            11010              10
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  4  0  0  0  0  0  0  0  0  0  0  0  0  0
+   0.0000000000000000      F           1
+l- on e at up pos:   1
+ T
+l- on e at up pos:   3
+ F
+Output detup, detdn:            10110              10
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  4  0  0  0  0  0  0  0  0  0  0  0  0  0
+   0.0000000000000000      F           2
+l- on e at up pos:   4
+ T
+l- on e at dn pos:   1
+ T
+
+---------------------- Applying L- to multiple dets, now at No.  3
+---------------------- Apply L- on detup, detdn:            11010              10
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  4  0  0  0  0  0  0  0  0  0  0  0  0  0
+  -5.6568539590535742      F           2
+l- on e at up pos:   1
+ T
+l- on e at up pos:   3
+ F
+Output detup, detdn:            10110              10
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  4  0  0  0  0  0  0  0  0  0  0  0  0  0
+  -7.9999994523433404      F           3
+l- on e at up pos:   4
+ T
+l- on e at dn pos:   1
+ T
+
+---------------------- Applying L- to multiple dets, now at No.  4
+---------------------- Apply L- on detup, detdn:            11010              10
+  0  1  0  2  3  0  0  0  0  0  0  0  0  0  0
+  0  4  0  0  0  0  0  0  0  0  0  0  0  0  0
+  -0.0000000000000000      F           3
+l- on e at up pos:   1
+ T
+l- on e at up pos:   3
+ F
+Output detup, detdn:            10110              10
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  4  0  0  0  0  0  0  0  0  0  0  0  0  0
+  -0.0000000000000000      F           4
+l- on e at up pos:   4
+ T
+l- on e at dn pos:   1
+ T
+  ------------------- Append tail to basislist 
+tail =   -6.0000000000
+Total number of dets in basislist   8
+ >>>>>>>>>>>>>>>>>>>> Get all signs of basislist <<<<<<<<<<<<<<<<<<<
+ Getsign()
+           10110              10
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  4  0  0  0  0  0  0  0  0  0  0  0  0  0
+Start array:
+           1           2           3           4
+End array:, number of swps
+           1           2           3           4
+Count swps =    0
+Sign:   0
+ Getsign()
+           10110              10
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  4  0  0  0  0  0  0  0  0  0  0  0  0  0
+Start array:
+           1           2           3           4
+End array:, number of swps
+           1           2           3           4
+Count swps =    0
+Sign:   0
+ Getsign()
+           10110              10
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  4  0  0  0  0  0  0  0  0  0  0  0  0  0
+Start array:
+           1           2           3           4
+End array:, number of swps
+           1           2           3           4
+Count swps =    0
+Sign:   0
+ Getsign()
+           10110              10
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  4  0  0  0  0  0  0  0  0  0  0  0  0  0
+Start array:
+           1           2           3           4
+End array:, number of swps
+           1           2           3           4
+Count swps =    0
+Sign:   0
+ Getsign()
+           10110              10
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  4  0  0  0  0  0  0  0  0  0  0  0  0  0
+Start array:
+           1           2           3           4
+End array:, number of swps
+           1           2           3           4
+Count swps =    0
+Sign:   0
+ Getsign()
+           10110              10
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  4  0  0  0  0  0  0  0  0  0  0  0  0  0
+Start array:
+           1           2           3           4
+End array:, number of swps
+           1           2           3           4
+Count swps =    0
+Sign:   0
+ Getsign()
+           10110              10
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  4  0  0  0  0  0  0  0  0  0  0  0  0  0
+Start array:
+           1           2           3           4
+End array:, number of swps
+           1           2           3           4
+Count swps =    0
+Sign:   0
+ Getsign()
+           10110              10
+  0  1  2  0  3  0  0  0  0  0  0  0  0  0  0
+  0  4  0  0  0  0  0  0  0  0  0  0  0  0  0
+Start array:
+           1           2           3           4
+End array:, number of swps
+           1           2           3           4
+Count swps =    0
+Sign:   0
+ >>>>>>>>>>>>>>>>>>>>>>>>> Collect one csf <<<<<<<<<<<<<<<<<<<<<<<<
+Allocated allbasis
+Allocated coeftable
+Processing det# from list:  1
+findindetlist()=   0
+ Initialized new row
+Added new det row    1
+Processing det# from list:  2
+findindetlist()=   1
+Combined coef with existing det
+Processing det# from list:  3
+findindetlist()=   1
+Combined coef with existing det
+Processing det# from list:  4
+findindetlist()=   1
+Combined coef with existing det
+Processing det# from list:  5
+findindetlist()=   1
+Combined coef with existing det
+Processing det# from list:  6
+findindetlist()=   1
+Combined coef with existing det
+Processing det# from list:  7
+findindetlist()=   1
+Combined coef with existing det
+Processing det# from list:  8
+findindetlist()=   1
+Combined coef with existing det
+--------------- Collected csf #:  1
+Basis:      detup         detdn     coefs of new csf
+           10110              10 0.000000547656658
+ -------- Normalize coef table ------------
+   1.0000000000000000     
