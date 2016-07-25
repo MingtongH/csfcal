@@ -6,12 +6,119 @@ module projection
 
       implicit none
       contains
-      
+      subroutine initlists(det, basis, coefs, eposes, iszeros, num)
+          integer(i16b), intent(in) :: det(:)
+          integer(i16b), allocatable :: basis(:, :)
+          real(rk), allocatable :: coefs(:)
+          integer, allocatable :: eposes(:, :, :)
+          logical, allocatable :: iszeros(:)
+          integer :: i, num
+          if(.not.allocated(basis)) then
+              allocate(basis(ARRAY_START_LENGTH, 2))
+          endif
+          if(.not.allocated(coefs)) then
+              allocate(coefs(ARRAY_START_LENGTH))
+          endif
+          if(.not.allocated(eposes)) then
+              allocate(eposes(ARRAY_START_LENGTH, 2, DET_MAX_LENGTH))
+          endif
+          if(.not.allocated(iszeros)) then
+              allocate(iszeros(ARRAY_START_LENGTH))
+          endif
+          basis(1, 1:2) = det(1:2)
+          call eposinit(eposes(1, 1, :), eposes(1, 2, :), det(1), det(2))
+          coefs(1) = 1.0
+          iszeros(1) = .false.
+          num = 1
+      end subroutine initlists
+      subroutine Proj_L(Lmin, Lmax, Ldes, &
+              & inbasis, incoefs, inepos, iniszeros, innum,  &
+              & basislist, coeflist, eposlist, iszerolist, num)
+          integer(i16b), intent(in) :: inbasis(:, :)
+          real(rk), intent(in) :: incoefs(:)
+          integer, intent(in) :: inepos(:, :, :)
+          logical, intent(in) :: iniszeros(:)
+          integer, intent(in) :: Lmax, Lmin, Ldes, innum
+          integer(i16b), allocatable :: basislist(:, :), tpbasis(:, :), basislist1(:, :)
+          real(rk), allocatable :: coeflist(:), tpcoefs(:), coeflist1(:) 
+          integer, allocatable :: eposlist(:, :, :), tpepos(:, :, :), eposlist1(:, :, :)
+          logical, allocatable :: iszerolist(:), tpiszeros(:), iszerolist1(:)
+          integer :: num, tpnum, i, Lp, num1
+          real(rk) :: tail
+          write(*, *) '>>>>>>>>>>>>>>>>>>>>>>> Projection P_L '
+          allocate(tpbasis(ARRAY_START_LENGTH, 2))
+          allocate(tpcoefs(ARRAY_START_LENGTH))
+          allocate(tpepos(ARRAY_START_LENGTH, 2, DET_MAX_LENGTH))
+          allocate(tpiszeros(ARRAY_START_LENGTH))
+          !----------Initialize tp.. as in..
+          do i = 1, innum
+              tpbasis(i, 1:2) = inbasis(i, 1:2)
+              tpcoefs(i) = incoefs(i)
+              tpepos(i, 1, :) = inepos(i, 1, :)
+              tpepos(i, 2, :) = inepos(i, 2, :)
+              tpiszeros(i) = iniszeros(i)
+          enddo
+          tpnum = innum
+          !---------- Apply operators for each Lp -----------
+          do Lp = Lmin, Lmax
+              if(Lp.eq.Ldes) then
+                  continue
+              endif
+
+              !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+              !TODO doesn't include Lz^2 + Lz yet
+              !implement Lz first then change PL
+              !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+              
+              !L^2 = L-L+ + Lz^2 + Lz
+              write(*, *) ' '
+              write(*,  '("====================== Now at Lp =", 1I3)') Lp
+              !-------set intermediates (basislist1...) and output ( basislist ... ) empty
+              num1 = 0
+              num = 0
+              !----------L^2 = L-L+ + Lz^2 + Lz
+              call Lplus_multiple(tpbasis, tpcoefs, tpepos, tpiszeros, tpnum, &
+                  & basislist1, coeflist1, eposlist1, iszerolist1, num1)
+              call Lminus_multiple(basislist1, coeflist1, eposlist1, iszerolist1, num1, &
+                  & basislist, coeflist, eposlist, iszerolist, num)
+              !TODO When adding Lz^2 + Lz
+              !Lminus_multiple output basislist2 etc
+              !Lz^2+Lz takes in basislist2 etc, output basislist etc
+
+              !-------------------(- Lp(Lp+1))---------------------
+              
+              tail = -Lp * (Lp + 1)
+              call scalar_append(tail, tpbasis, tpcoefs, tpepos, tpiszeros, tpnum, &
+                  & basislist, coeflist, eposlist, iszerolist, num)
+              write(*, *) ' ------------------- Append tail to basislist '
+              write(*, '("tail = ", 1f15.10)') tail
+              write(*, '("Total number of dets in basislist", 1I4)') num
+
+              !----------------------------tp.. <- output ( basislist, ...)
+              tpnum = 0
+              do i = 1, num
+                  tpbasis(i, 1:2) = basislist(i, 1:2)
+                  tpcoefs(i) = coeflist(i)
+                  tpepos(i, 1, :) = eposlist(i, 1, :)
+                  tpepos(i, 2, :) = eposlist(i, 2, :)
+                  tpiszeros(i) = iszerolist(i)
+              enddo
+              tpnum = num
+          enddo
+          deallocate(tpbasis)
+          deallocate(tpcoefs)
+          deallocate(tpepos)
+          deallocate(tpiszeros)
+
+      end subroutine Proj_L
+
+
       subroutine normalizetable(coeftable, ndets, ncsf)
           !call this after coeftable is complete
           real(rk) :: coeftable(:, :), sumcol
           integer, intent(in) :: ndets, ncsf
           integer :: i, j
+          write(*, *) '-------- Normalize coef table ------------'
           do i = 1, ncsf
             sumcol = 0
             do j = 1, ndets
@@ -30,6 +137,8 @@ module projection
           integer, intent(in) :: eposlist(:, :, :), num
           logical, intent(in) :: iszerolist(:)
           integer :: i
+
+          write(*, *) '>>>>>>>>>>>>>>>>>>>> Get all signs of basislist <<<<<<<<<<<<<<<<<<<'
           do i = 1, num
               if(.not.iszerolist(i)) then
                   call getsign(basislist(i, 1), basislist(i, 2), eposlist(i, 1, :),&
@@ -46,6 +155,11 @@ module projection
           real(rk) :: coef
           integer(i16b) :: tpdet
           integer :: num, i, swaps
+          write(*, *) 'Getsign()'
+          write(*, '(2b16)') detup, detdn
+          write(*, '(15I3)') eposup(1:15)
+          write(*, '(15I3)') eposdn(1:15)
+
           allocate(tparray(2*size(eposup)))
           tpdet = detup
           num = 0
@@ -88,7 +202,7 @@ module projection
             enddo
             write(*, '("End array:, number of swps")')
             write(*, *) array(1:num)
-            write(*, *) countswps
+            write(*, '("Count swps = ", 1I4)') countswps
       end function countswps
 
 
@@ -105,6 +219,7 @@ module projection
           integer(i16b), allocatable :: allbasis(:, :)
           real(rk), allocatable :: coeftable(:, :)!ndets, ncsf
           integer :: ndets, ncsf, i,j, tp
+          write(*, *) '>>>>>>>>>>>>>>>>>>>>>>>>> Collect one csf <<<<<<<<<<<<<<<<<<<<<<<<'
 
           !Firsty entry initialize
           if(ndets.eq.0 .OR. ncsf.eq.0) then
@@ -150,6 +265,11 @@ module projection
               endif
           enddo
           ncsf = ncsf + 1
+          write(*, '("--------------- Collected csf #:", 1I3)') ncsf
+          write(*, '("Basis:      detup         detdn     coefs of new csf")')
+          do i = 1, ndets
+             write(*, '(2b16, 1f18.15)') allbasis(ncsf, 1:2), coeftable(i, ncsf)
+          enddo
           !--------------------------------------
           !if all coefs in the coef list are zero
           !ncsf will not be incremented, so even if the new column is initialized 
@@ -247,7 +367,7 @@ module projection
           endif
           do i = 1, innum
             write(*, *)
-            write(*, '(">>>>>>>>>>>>> Applying S- ta multiple dets, now at No.", 1I3)') i 
+            write(*, '("=================== Applying S- ta multiple dets, now at No.", 1I3)') i 
             call Sminus_single(inbasis(i,1), inbasis(i, 2), inepos(i, 1, :), &
                 &inepos(i, 2, :), incoefs(i), iniszeros(i), &
                 & basislist, coeflist, eposlist, iszerolist, num)
@@ -284,7 +404,7 @@ module projection
           endif
           do i = 1, innum
             write(*, *)
-            write(*, '(">>>>>>>>>>>>> Applying S+ to multiple dets, now at No.", 1I3)') i 
+            write(*, '("--------------- Applying S+ to multiple dets, now at No.", 1I3)') i 
             call Splus_single(inbasis(i,1), inbasis(i, 2), inepos(i, 1, :), &
                 &inepos(i, 2, :), incoefs(i), iniszeros(i), &
                 & basislist, coeflist, eposlist, iszerolist, num)
@@ -323,7 +443,7 @@ module projection
           endif
           do i = 1, innum
             write(*, *)
-            write(*, '(">>>>>>>>>>>>> Applying L- to multiple dets, now at No.", 1I3)') i 
+            write(*, '("---------------------- Applying L- to multiple dets, now at No.", 1I3)') i 
             call Lminus_single(inbasis(i,1), inbasis(i, 2), inepos(i, 1, :), &
                 &inepos(i, 2, :), incoefs(i), iniszeros(i), &
                 & basislist, coeflist, eposlist, iszerolist, num)
@@ -360,7 +480,7 @@ module projection
           endif
           do i = 1, innum
             write(*, *)
-            write(*, '(">>>>>>>>>>>>> Applying L+ to multiple dets, now at No.", 1I3)') i 
+            write(*, '("-------------------- Applying L+ to multiple dets, now at No.", 1I3)') i 
             call Lplus_single(inbasis(i,1), inbasis(i, 2), inepos(i, 1, :), &
                 &inepos(i, 2, :), incoefs(i), iniszeros(i), &
                 & basislist, coeflist, eposlist, iszerolist, num)
@@ -383,7 +503,7 @@ module projection
           integer, allocatable :: outeposup(:), outeposdn(:)
           logical :: outis0
           real(rk) :: outcoef
-          write(*, '("-----------Apply S- on detup, detdn: ", 2B16)') detup, detdn
+          write(*, '("----------------------- Apply S- on detup, detdn: ", 2B16)') detup, detdn
           write(*, '(15I3)') eposup(1:15)
           write(*, '(15I3)') eposdn(1:15)
           write(*, *) coef, iszero, num
@@ -455,7 +575,8 @@ module projection
           integer, allocatable :: outeposup(:), outeposdn(:)
           logical :: outis0
           real(rk) :: outcoef
-          write(*, '("-----------Apply S+ on detup, detdn: ", 2B16)') detup, detdn
+          write(*, *) ' '
+          write(*, '("--------------------- Apply S+ on detup, detdn: ", 2B16)') detup, detdn
           write(*, '(15I3)') eposup(1:15)
           write(*, '(15I3)') eposdn(1:15)
           write(*, *) coef, iszero, num
@@ -531,7 +652,7 @@ module projection
           integer, allocatable :: outepos(:)
           logical :: outis0
           real(rk) :: outcoef
-          write(*, '("-----------Apply L- on detup, detdn: ", 2B16)') detup, detdn
+          write(*, '("---------------------- Apply L- on detup, detdn: ", 2B16)') detup, detdn
           write(*, '(15I3)') eposup(1:15)
           write(*, '(15I3)') eposdn(1:15)
           write(*, *) coef, iszero, num
@@ -626,7 +747,7 @@ module projection
           integer, allocatable :: outepos(:)
           logical :: outis0
           real(rk) :: outcoef
-          write(*, '("-----------Apply L+ on detup, detdn: ", 2B16)') detup, detdn
+          write(*, '("---------------------- Apply L+ on detup, detdn: ", 2B16)') detup, detdn
           write(*, '(15I3)') eposup(1:15)
           write(*, '(15I3)') eposdn(1:15)
           write(*, *) coef, iszero, num

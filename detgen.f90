@@ -161,12 +161,16 @@ use, intrinsic :: iso_fortran_env, only: rk => real64
           
 
       subroutine eposinit(eposup, eposdn, detup, detdn)
-          integer, allocatable :: eposup(:), eposdn(:)
+          integer :: eposup(:), eposdn(:)
           integer(i16b), intent(in) :: detup, detdn
           integer(i16b) :: tpdet
           integer :: i, l
-          allocate(eposup(DET_MAX_LENGTH))
-          allocate(eposdn(DET_MAX_LENGTH))
+          !if(.not.allocated(eposup)) then
+          !    allocate(eposup(DET_MAX_LENGTH))
+          !endif
+          !if(.not.allocated(eposdn)) then
+          !    allocate(eposdn(DET_MAX_LENGTH))
+          !endif
           do i = 1, DET_MAX_LENGTH
             eposup(i) = 0
             eposdn(i) = 0
@@ -228,7 +232,7 @@ use, intrinsic :: iso_fortran_env, only: rk => real64
           integer(i16b), allocatable :: detlist(:, :)
           nshell_tot = size(config, 1)
           !write(*, '("nshell_tot = ", 1I5)') nshell_tot
-          write(*, '(">>>>>>>>>>> Now at shell :",1I5)') ncurr
+          write(*, '("------------ Now at shell :",1I5)') ncurr
           write(*, '("prdet_up", B16)') prdet_up
           write(*, '("prdet_dn", B16)') prdet_dn
           write(*, '("prLz, pr2Sz, maxremLz, maxrem2Sz", 4I5)') prLz, pr2Sz, maxremLz, maxrem2Sz
@@ -286,7 +290,7 @@ use, intrinsic :: iso_fortran_env, only: rk => real64
                          cur2Sz = Szt2_oneshell(halflen, curdet)
                          if(tp2Sz .eq. cur2Sz) then
 
-                             write(*, '("*** Branch last shell, curLz =, cur2Sz = ",&
+                             write(*, '("---- Branch last shell, curLz =, cur2Sz = ",&
                                  & 3I5)') ncurr, curLz, cur2Sz
                              detup = prdet_up 
                              call detmod_shell(config(ncurr, 1), config(ncurr, 2),&
@@ -355,7 +359,7 @@ use, intrinsic :: iso_fortran_env, only: rk => real64
                          detdn = prdet_dn
                          call  detmod_shell(config(ncurr, 1), config(ncurr, 2),&
                              & m_min, ibits(curdet, halflen, halflen), detdn)
-                         write(*, '("*** Branch shell#, curLz ", 2I5)') ncurr, curLz
+                         write(*, '("---- Branch shell#, curLz ", 2I5)') ncurr, curLz
                          call assign_shell(detup, detdn, tpLz, tp2Sz, tpmaxremLz,&
                              & tpmaxrem2Sz, desLz, des2Sz, config, ncurr+1, tot, detlist)
                      endif
