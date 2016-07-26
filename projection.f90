@@ -26,16 +26,16 @@ module projection
           logical, allocatable :: iszeros(:)
           integer :: i, num
           if(.not.allocated(basis)) then
-              allocate(basis(ARRAY_START_LENGTH, 2))
+              allocate(basis(ARRAY_SHORT_LENGTH, 2))
           endif
           if(.not.allocated(coefs)) then
-              allocate(coefs(ARRAY_START_LENGTH))
+              allocate(coefs(ARRAY_SHORT_LENGTH))
           endif
           if(.not.allocated(eposes)) then
-              allocate(eposes(ARRAY_START_LENGTH, 2, DET_MAX_LENGTH))
+              allocate(eposes(ARRAY_SHORT_LENGTH, 2, DET_MAX_LENGTH))
           endif
           if(.not.allocated(iszeros)) then
-              allocate(iszeros(ARRAY_START_LENGTH))
+              allocate(iszeros(ARRAY_SHORT_LENGTH))
           endif
           basis(1, 1:2) = det(1:2)
           call eposinit(eposes(1, 1, :), eposes(1, 2, :), det(1), det(2))
@@ -344,14 +344,15 @@ module projection
                 write(*, '("iszero, onto next det")')
                 cycle
             endif
-            tp = findindetlist(inbasis(i, 1:2), basislist(1:num, :), num)
-            write(*, '("find in inbasis = ", 1I4)') tp
-            if(tp.ne.0) then
-                !TODO check epos equal? 
-                coeflist(tp) = incoefs(tp) * const
-                write(*, *) 'det in basislist, changed coef'
-                cycle
-            endif
+            !combine if same basis
+            !tp = findindetlist(inbasis(i, 1:2), basislist(1:num, :), num)
+            !write(*, '("find in inbasis = ", 1I4)') tp
+            !if(tp.ne.0) then
+            !    !TODO check epos equal? 
+            !    coeflist(tp) = incoefs(tp) * const
+            !    write(*, *) 'det in basislist, changed coef'
+            !    cycle
+            !endif
             num = num + 1
             basislist(num, 1:2) = inbasis(i, 1:2)
             coeflist(num) = incoefs(i)*const

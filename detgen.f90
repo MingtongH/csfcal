@@ -241,7 +241,7 @@ use, intrinsic :: iso_fortran_env, only: rk => real64
               detup = 0
               detdn = 0
               if(.not.allocated(detlist)) then
-                  allocate(detlist(ARRAY_START_LENGTH, 2))
+                  allocate(detlist(ARRAY_SHORT_LENGTH, 2))
               endif
               call assign_shell(detup, detdn, 0, 0, Lzmax(config), Smax_t2(config),&
                   & desLz, des2Sz, config, ncurr+1, tot, detlist)
