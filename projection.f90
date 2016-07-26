@@ -7,6 +7,7 @@ module projection
       implicit none
       
       real(rk), parameter :: REAL_MIN = 1.0e-31
+
       contains
       logical function equals0(coef)
           real(rk), intent(in) :: coef
