@@ -101,7 +101,7 @@ module projection
 
               !-------------------(- Lp(Lp+1))---------------------
               write(*, *) ' ------------------- Append tail to basislist '
-              tail = real(-Lp * (Lp + 1))
+              tail = real(-Lp * (Lp + 1), rk)
               write(*, '("tail = ", 1f15.10)') tail            
               call scalar_append(tail, tpbasis, tpcoefs, tpepos, tpiszeros, tpnum, &
                   & basislist, coeflist, eposlist, iszerolist, num)
@@ -294,9 +294,9 @@ module projection
           integer(i16b), intent(in) :: det(:), allbasis(:, :)
           integer, intent(in) :: ndets
           integer :: i
-          write(*, *) 'findindetlist(), ndets in all basis = ', ndets
-          write(*, '(2B16)') det(1:2)
-          write(*, '(2B16)') allbasis(1, 1:2)
+          !write(*, *) 'findindetlist(), ndets in all basis = ', ndets
+          !write(*, '(2B16)') det(1:2)
+          !write(*, '(2B16)') allbasis(1, 1:2)
           do i = 1, ndets
             if(det(1).eq.allbasis(i, 1)) then
                 if(det(2).eq.allbasis(i, 2)) then
@@ -347,14 +347,14 @@ module projection
                 write(*, '("iszero, onto next det")')
                 cycle
             endif
-            tp = findindetlist(inbasis(i, 1:2), basislist(1:num, :), num)
-            write(*, '("find in inbasis = ", 1I4)') tp
-            if(tp.ne.0) then
+           ! tp = findindetlist(inbasis(i, 1:2), basislist(1:num, :), num)
+           ! write(*, '("find in inbasis = ", 1I4)') tp
+           ! if(tp.ne.0) then
                 !TODO check epos equal? 
-                coeflist(tp) = incoefs(tp) * const
-                write(*, *) 'det in basislist, changed coef'
-                cycle
-            endif
+           !     coeflist(tp) = incoefs(tp) * const
+           !     write(*, *) 'det in basislist, changed coef'
+           !     cycle
+           ! endif
             num = num + 1
             basislist(num, 1:2) = inbasis(i, 1:2)
             coeflist(num) = incoefs(i)*const

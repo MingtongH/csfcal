@@ -39,7 +39,7 @@ use, intrinsic :: iso_fortran_env, only: rk => real64
               write(*, '(15I4)') eposup(1:15)
               write(*, '(15I4)') eposdn(1:15)
               csq = 1 !1/2(1/2+1)-(-1/2)(-1/2 + 1)
-              coef = coef*sqrt(real(csq))
+              coef = coef*sqrt(real(csq, rk))
               detup = ibset(detup, pos)
               detdn = ibclr(detdn, pos)
               eposup(pos+1) = eposdn(pos+1)
@@ -71,7 +71,7 @@ use, intrinsic :: iso_fortran_env, only: rk => real64
               write(*, '(15I4)') eposup(1:15)
               write(*, '(15I4)') eposdn(1:15)
               csq = 1 !1/2(1/2+1)-(-1/2)(-1/2 + 1)
-              coef = coef*sqrt(real(csq))
+              coef = coef*sqrt(real(csq, rk))
               detdn = ibset(detdn, pos)
               detup = ibclr(detup, pos)
               eposdn(pos+1) = eposup(pos+1)
@@ -111,7 +111,7 @@ use, intrinsic :: iso_fortran_env, only: rk => real64
               return
           else
               !write(*, '(15I4)') epos(1:15)
-              coef = sqrt(real(csq))*coef
+              coef = sqrt(real(csq, rk))*coef
               det = ibset(det, pos + 1)
               det = ibclr(det, pos)
               epos(pos+2) = epos(pos+1)
@@ -148,7 +148,7 @@ use, intrinsic :: iso_fortran_env, only: rk => real64
               return
           else
               !write(*, '(15I4)') epos(1:15)
-              coef = sqrt(real(csq)) * coef
+              coef = sqrt(real(csq, rk)) * coef
               det = ibset(det, pos - 1)
               det = ibclr(det, pos)
               epos(pos) = epos(pos+1)
