@@ -2,7 +2,7 @@ module detgen
 !Generate all determinants of Lz = 0 and Sz = S(from readinput) given one configuration
 !such as 2s2, 2p5, 3d1
 !Mingtong Han, June 27 2016
-use prep, only: i16b, Lzmax, Smax_t2, ARRAY_START_LENGTH, DET_MAX_LENGTH
+use prep, only: i16b, Lzmax, Smax_t2, ARRAY_SHORT_LENGTH, ARRAY_START_LENGTH, DET_MAX_LENGTH
 use, intrinsic :: iso_fortran_env, only: rk => real64
   implicit none
   contains
@@ -223,10 +223,10 @@ use, intrinsic :: iso_fortran_env, only: rk => real64
           integer, intent(in) :: config(:, :)
           integer :: nshell_tot, tot
           integer(i16b), intent(in) :: prdet_up, prdet_dn
-          integer(i16b) :: curdet, tpdet, det_range!det_dn--det_up
+          integer(i16b) :: curdet, det_range!det_dn--det_up
           integer(i16b) :: detup, detdn
           integer :: curLz, cur2Sz, i, halflen
-          integer :: curLzmax, curLzmin, m_max, m_min, cur2Szmax, cur2Szmin
+          integer :: curLzmax, curLzmin, m_max, m_min
           integer :: tpLz, tp2Sz, tpmaxremLz, tpmaxrem2Sz
           integer :: necur ! number of electrons in current shell
           integer(i16b), allocatable :: detlist(:, :)

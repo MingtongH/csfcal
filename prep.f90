@@ -127,30 +127,31 @@ module prep
   end subroutine checkSmin
   !function Smax_t2()
   
-  function Smax_t2_oneshell(l, N)
+  function Szmax_t2_oneshell(l, N)
       integer, intent(in) :: l, N
-      integer :: num_orbs, Smax_t2_oneshell
+      integer :: num_orbs, Szmax_t2_oneshell
       num_orbs = 2*l + 1
       if(N.le.num_orbs) then
-          Smax_t2_oneshell = N
+          Szmax_t2_oneshell = N
       else if (N.gt.(2*num_orbs)) then
           write(*, '("Error: number of electrons more than full on orbital of l = : ", 1I5)') l
           stop 1
       else
-          Smax_t2_oneshell = num_orbs - (N - num_orbs)
+          Szmax_t2_oneshell = num_orbs - (N - num_orbs)
       endif
-  end function Smax_t2_oneshell
+  end function Szmax_t2_oneshell
 
 
 
-  function Smax_t2(config)
+  function Szmax_t2(config)
       integer, intent(in) :: config(:, :)
-      integer :: i, Smax_t2
-      Smax_t2 = 0
+      integer :: i, Szmax_t2
+      Szmax_t2 = 0
       do i = 1, size(config, 1)
-        Smax_t2 = Smax_t2 + Smax_t2_oneshell(config(i, 2), config(i, 3))
+        Szmax_t2 = Szmax_t2 + Szmax_t2_oneshell(config(i, 2), config(i, 3))
       end do 
-  end function Smax_t2
+  end function Szmax_t2
+
 
   subroutine checkSmax()
       integer :: istart, iend, tpSmax_t2, i
@@ -169,6 +170,13 @@ module prep
       write(*, '("Smax checked")')
   end subroutine checkSmax
 
+
+  integer function Smax_t2(config)
+      integer, intent(in) :: config(:, :)
+      integer :: i
+      Smax_t2 = sum(config(:, 3))
+  end function Smax_t2
+
   function Lmax(config)
       integer, intent(in) :: config(:, :)
       integer :: Lmax, i
@@ -177,6 +185,7 @@ module prep
         Lmax = Lmax + config(i, 2)*config(i, 3)
       end do
   end function Lmax
+
 
   function Lzmax(config)
       integer, intent(in) :: config(:, :)
@@ -240,7 +249,6 @@ module prep
    end function minsum
 
 
- ! Do not use! Not so simple 
   function Lmin(config)
       integer, intent(in) :: config(:, :)
       integer :: i, j, k, Lmin

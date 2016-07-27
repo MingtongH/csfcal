@@ -1,7 +1,7 @@
 program csfcal
        use prep, only : i16b, rk, Ldes, Lzdes, Sdes_t2, econfigs, nconfig, nshell, &
             !parameters and variables 
-           & read_input, checkSmin, checkSmax, checkILmax, Lmax
+           & read_input, checkSmin, checkSmax, checkILmax,checkLmin, Lmax
             !subroutines and functions
        use detgen, only : assign_shell
        use projection, only : initlists, Proj_L, getallsigns, collect_csf, normalizetable
@@ -24,13 +24,13 @@ program csfcal
            call checkSmin()
            call checkSmax()
            call checkILmax()
+           call checkLmin()
           !call checkLmin() !Lmin not that simple
            totdets = 0
            nbasis = 0
            ncsf = 0
-           iend = 6
-           iconf = 1!TODO loop
-           do iconf = 4, 4
+           iend = 0
+           do iconf = 1, 4
                istart = iend + 1
                iend = istart + nshell(iconf) - 1
                write(*, *) '%%%%%%%%%%%%%%%%%%%%%%  Assign_shell for Config', iconf, '  %%%%%%%%%%%%%%%%%%%'
