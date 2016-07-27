@@ -101,7 +101,7 @@ module projection
 
               !-------------------(- Lp(Lp+1))---------------------
               write(*, *) ' ------------------- Append tail to basislist '
-              tail = real(-Lp * (Lp + 1))
+              tail = real(-Lp * (Lp + 1), rk)
               write(*, '("tail = ", 1f15.10)') tail            
               call scalar_append(tail, tpbasis, tpcoefs, tpepos, tpiszeros, tpnum, &
                   & basislist, coeflist, eposlist, iszerolist, num)
@@ -281,7 +281,7 @@ module projection
           write(*, '("--------------- Collected csf #:", 1I3)') ncsf
           write(*, '("Basis:      detup         detdn     coefs of new csf")')
           do i = 1, ndets
-             write(*, '(2b16, 1f18.15)') allbasis(ncsf, 1:2), coeftable(i, ncsf)
+             write(*, '(2b16, 1f18.10)') allbasis(i, 1:2), coeftable(i, ncsf)
           enddo
           !--------------------------------------
           !if all coefs in the coef list are zero
@@ -294,6 +294,9 @@ module projection
           integer(i16b), intent(in) :: det(:), allbasis(:, :)
           integer, intent(in) :: ndets
           integer :: i
+          !write(*, *) 'findindetlist(), ndets in all basis = ', ndets
+          !write(*, '(2B16)') det(1:2)
+          !write(*, '(2B16)') allbasis(1, 1:2)
           do i = 1, ndets
             if(det(1).eq.allbasis(i, 1)) then
                 if(det(2).eq.allbasis(i, 2)) then
