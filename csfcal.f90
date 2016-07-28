@@ -29,8 +29,8 @@ program csfcal
            totdets = 0
            nbasis = 0
            ncsf = 0
-           iend = 0
-           do iconf = 1, 4
+           iend = 6
+           do iconf = 4, 4
                istart = iend + 1
                iend = istart + nshell(iconf) - 1
                write(*, *) '%%%%%%%%%%%%%%%%%%%%%%  Assign_shell for Config', iconf, '  %%%%%%%%%%%%%%%%%%%'

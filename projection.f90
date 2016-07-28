@@ -76,7 +76,7 @@ module projection
           !---------- Apply operators for each Lp -----------
           do Lp = Lmin, Lmax
               if(Lp.eq.Ldes) then
-                  continue
+                  cycle
               endif
 
               !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
