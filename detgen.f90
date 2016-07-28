@@ -440,6 +440,13 @@ use, intrinsic :: iso_fortran_env, only: rk => real64
       end select
   end subroutine pos2nlm
 
+  integer function Szt2_det(det)
+      integer(i16b), intent(in) :: det(:)
+      integer(i15b) :: tpdet
+      Szt2_det = count_occ_orbs(det(1)) - count_occ_orbs(det(2))
+  end function Szt2_de
+  
+  
   integer function Szt2_oneshell(halflen, det)
   !det_dn(m_max...m_min)--det_up(m_max...m_min)
 
@@ -538,10 +545,10 @@ use, intrinsic :: iso_fortran_env, only: rk => real64
   end function Lz_oneshell
   
  integer function Lz_det(det)
-     integer(i16b), intent(in) :: det
+     integer(i16b), intent(in) :: det(:)
      integer(i16b) :: tpdet 
      integer :: i, n, l, lz
-     tpdet = det
+     tpdet = det(1)
      Lz_det = 0
      do while (tpdet.ne.0)
        i = trailz(tpdet)
@@ -549,6 +556,13 @@ use, intrinsic :: iso_fortran_env, only: rk => real64
        Lz_det = Lz_det + lz
        tpdet = ibclr(tpdet, i)
      end do
+     tpdet = det(2)
+     do while (tpdet.ne.0)
+       i = trailz(tpdet)
+       call delocate(i, n, l, lz)
+       Lz_det = Lz_det + lz
+       tpdet = ibclr(tpdet, i)
+     enddo
  end function Lz_det
 
 
