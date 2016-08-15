@@ -2,7 +2,7 @@ module projection
       !Generate csf by projection
       use prep, only: i16b, ARRAY_START_LENGTH, ARRAY_SHORT_LENGTH, DET_MAX_LENGTH
       use, intrinsic :: iso_fortran_env, only: rk => real64
-      use detgen, only: lpls, lms, eposinit, spls, sms
+      use detgen, only: lpls, lms, eposinit, spls, sms, Szt2_det
 
       implicit none
       
@@ -24,7 +24,7 @@ module projection
           real(rk), allocatable :: coefs(:)
           integer, allocatable :: eposes(:, :, :)
           logical, allocatable :: iszeros(:)
-          integer :: i, num
+          integer ::  num
           if(.not.allocated(basis)) then
               allocate(basis(ARRAY_SHORT_LENGTH, 2))
           endif
@@ -44,6 +44,80 @@ module projection
           num = 1
       end subroutine initlists
 
+
+      subroutine Proj_S(Smin2, Smax2, Sdes2, &
+              &inbasis, incoefs, inepos, iniszeros, innum, &
+              & basislist, coeflist, eposlist, iszerolist, num)
+          integer(i16b), intent(in) :: inbasis(:, :)
+          real(rk), intent(in) :: incoefs(:)
+          integer, intent(in) :: inepos(:, :, :)
+          logical, intent(in) :: iniszeros(:)
+          integer, intent(in) :: Smax2, Smin2, Sdes2, innum
+          integer(i16b), allocatable :: basislist(:, :), tpbasis(:, :), basislist1(:, :)
+          real(rk), allocatable :: coeflist(:), tpcoefs(:), coeflist1(:) 
+          integer, allocatable :: eposlist(:, :, :), tpepos(:, :, :), eposlist1(:, :, :)
+          logical, allocatable :: iszerolist(:), tpiszeros(:), iszerolist1(:)
+          integer :: num, tpnum, i, Sp2, num1
+          real(rk) :: tail
+          write(*, *) '>>>>>>>>>>>>>>>>>>>>>>> Projection P_S '
+          allocate(tpbasis(ARRAY_START_LENGTH, 2))
+          allocate(tpcoefs(ARRAY_START_LENGTH))
+          allocate(tpepos(ARRAY_START_LENGTH, 2, DET_MAX_LENGTH))
+          allocate(tpiszeros(ARRAY_START_LENGTH))
+          !----------Initialize tp.. as in..
+          do i = 1, innum
+              tpbasis(i, 1:2) = inbasis(i, 1:2)
+              tpcoefs(i) = incoefs(i)
+              tpepos(i, 1, :) = inepos(i, 1, :)
+              tpepos(i, 2, :) = inepos(i, 2, :)
+              tpiszeros(i) = iniszeros(i)
+          enddo
+          tpnum = innum
+          !---------- Apply operators for each Sp2 -----------
+          do Sp2 = Smin2, Smax2
+              if(Sp2.eq.Sdes2) then
+                  cycle
+              endif
+
+              
+              !S^2 = S-S+.....( + Sz^2 + Sz later)
+              write(*, *) ' '
+              write(*,  '("====================== Now at 2Sp =", 1I3)') Sp2
+              !-------set intermediates (basislist1...) and output ( basislist ... ) empty
+              num1 = 0
+              num = 0
+              !----------S^2 = S-S+ + Sz^2 + Sz
+              call Splus_multiple(tpbasis, tpcoefs, tpepos, tpiszeros, tpnum, &
+                  & basislist1, coeflist1, eposlist1, iszerolist1, num1)
+              call Sminus_multiple(basislist1, coeflist1, eposlist1, iszerolist1, num1, &
+                  & basislist, coeflist, eposlist, iszerolist, num)
+              call SzSzplus1_append(tpbasis, tpcoefs, tpepos, tpiszeros, tpnum, &
+                  & basislist, coeflist, eposlist, iszerolist, num)
+
+              !-------------------(- Sp(Sp+1))---------------------
+              write(*, *) ' ------------------- Append tail to basislist '
+              tail = real(-Sp2/2.0 * (Sp2/2.0 + 1.0), rk)
+              write(*, '("tail = ", 1f15.10)') tail            
+              call scalar_append(tail, tpbasis, tpcoefs, tpepos, tpiszeros, tpnum, &
+                  & basislist, coeflist, eposlist, iszerolist, num)
+              write(*, '("Total number of dets in basislist", 1I4)') num
+
+              !----------------------------tp.. <- output ( basislist, ...)
+              tpnum = 0
+              do i = 1, num
+                  tpbasis(i, 1:2) = basislist(i, 1:2)
+                  tpcoefs(i) = coeflist(i)
+                  tpepos(i, 1, :) = eposlist(i, 1, :)
+                  tpepos(i, 2, :) = eposlist(i, 2, :)
+                  tpiszeros(i) = iszerolist(i)
+              enddo
+              tpnum = num
+          enddo
+          deallocate(tpbasis)
+          deallocate(tpcoefs)
+          deallocate(tpepos)
+          deallocate(tpiszeros)
+      end subroutine Proj_S 
 
       subroutine Proj_L(Lmin, Lmax, Ldes, &
               & inbasis, incoefs, inepos, iniszeros, innum,  &
@@ -321,7 +395,7 @@ module projection
           real(rk), allocatable :: coeflist(:)
           integer, allocatable :: eposlist(:, :, :)
           logical, allocatable :: iszerolist(:)
-          integer :: num, i, tp
+          integer :: num, i
           if(equals0(const)) then
               write(*, *) '0.0, exit append'
               return
@@ -365,6 +439,60 @@ module projection
             write(*, '("Appended det #", 1I4)') num
           end do
       end subroutine scalar_append
+
+
+      subroutine SzSzplus1_append(inbasis, incoefs, inepos, iniszeros, innum, &
+              & basislist, coeflist, eposlist, iszerolist, num)
+          !append to output list
+          integer(i16b), intent(in) :: inbasis(:, :)
+          real(rk),  intent(in) :: incoefs(:)
+          integer, intent(in) :: inepos(:, :, :)
+          logical, intent(in) :: iniszeros(:)
+          integer, intent(in) :: innum
+          integer(i16b), allocatable :: basislist(:, :)
+          real(rk), allocatable :: coeflist(:)
+          integer, allocatable :: eposlist(:, :, :)
+          logical, allocatable :: iszerolist(:)
+          integer :: num, i
+          real(rk) :: tpval
+
+          if(num.eq.0) then
+              if(.not.allocated(basislist)) then 
+                  allocate(basislist(ARRAY_START_LENGTH, 2))
+              endif 
+              if(.not.allocated(coeflist)) then
+                  allocate(coeflist(ARRAY_START_LENGTH))
+              endif
+              if(.not.allocated(eposlist)) then
+                  allocate(eposlist(ARRAY_START_LENGTH, 2, DET_MAX_LENGTH))
+              endif
+              if(.not.allocated(iszerolist)) then
+                  allocate(iszerolist(ARRAY_START_LENGTH))
+              endif
+          endif
+          do i = 1, innum
+            if(iniszeros(i)) then
+                cycle
+            endif
+            write(*, *)
+            write(*, '("=================== Applying Sz(Sz+1) to multiple dets, now at No.", 1I5)') i 
+            tpval = real(Szt2_det(inbasis(i, 1:2)), rk)/2.0 !Sz
+            tpval = tpval * (tpval + 1.0)  !Sz(Sz + 1)
+            if(equals0(tpval)) then
+                cycle
+            else
+                num = num + 1
+                basislist(num, 1:2) = inbasis(i, 1:2)
+                coeflist(num) = incoefs(i) * tpval
+                eposlist(num, 1, :) = inepos(i, 1, :)
+                eposlist(num, 2, :) = inepos(i, 2, :)
+                iszerolist(num) = .false.
+                write(*, '(" Added Sz(Sz+1) = ", 1F10.5)') tpval
+            endif
+          end do
+          write(*, '("Final size of output = ", 1I8)') num
+      end subroutine SzSzplus1_append 
+
 
 
       subroutine Sminus_multiple(inbasis, incoefs, inepos, iniszeros, innum, &

@@ -442,9 +442,8 @@ use, intrinsic :: iso_fortran_env, only: rk => real64
 
   integer function Szt2_det(det)
       integer(i16b), intent(in) :: det(:)
-      integer(i15b) :: tpdet
       Szt2_det = count_occ_orbs(det(1)) - count_occ_orbs(det(2))
-  end function Szt2_de
+  end function Szt2_det
   
   
   integer function Szt2_oneshell(halflen, det)
