@@ -89,6 +89,8 @@ module projection
               !----------S^2 = S-S+ + Sz^2 + Sz
               call Splus_multiple(tpbasis, tpcoefs, tpepos, tpiszeros, tpnum, &
                   & basislist1, coeflist1, eposlist1, iszerolist1, num1)
+              write(*, *) ' '
+              write(*, *) 'Calling Sminus'
               call Sminus_multiple(basislist1, coeflist1, eposlist1, iszerolist1, num1, &
                   & basislist, coeflist, eposlist, iszerolist, num)
               call SzSzplus1_append(tpbasis, tpcoefs, tpepos, tpiszeros, tpnum, &
@@ -508,6 +510,7 @@ module projection
           integer, allocatable :: eposlist(:, :, :)
           logical, allocatable :: iszerolist(:)
           integer :: num, i
+          write(*, *) 'subroutine Sminus_multiple'
 
           if(num.eq.0) then
               if(.not.allocated(basislist)) then 
@@ -523,6 +526,7 @@ module projection
                   allocate(iszerolist(ARRAY_START_LENGTH))
               endif
           endif
+          write(*, *) innum
           do i = 1, innum
             write(*, *)
             write(*, '("=================== Applying S- ta multiple dets, now at No.", 1I5)') i 

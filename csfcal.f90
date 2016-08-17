@@ -1,10 +1,11 @@
 program csfcal
-       use prep, only : i16b, rk, Ldes, Lzdes, Sdes_t2, econfigs, nconfig, nshell, &
+       use prep, only : i16b, rk, Ldes, Lzdes, Sdes_t2, econfigs, nconfig, nshell, neact, &
             !parameters and variables 
-           & read_input, checkSmin, checkSmax, checkILmax,checkLmin, Lmax
+           & read_input, checkSmin, checkSmax, checkILmax,checkLmin, Lmax, Lmin, &
+               & Smin_t2, Smax_t2
             !subroutines and functions
        use detgen, only : assign_shell
-       use projection, only : initlists, Proj_L, getallsigns, collect_csf, normalizetable
+       use projection, only : initlists, Proj_L, Proj_S, getallsigns, collect_csf, normalizetable
 
        implicit none
        call main()
@@ -13,11 +14,13 @@ program csfcal
        contains
  
        subroutine main
-           integer :: totdets, minLp, maxLp, innum, num, i, nbasis, ncsf, iconf, iend, istart
-           integer(i16b), allocatable :: detlist(:, :), inbasis(:, :), basislist(:, :), allbasis(:, :)
-           real(rk), allocatable :: incoefs(:), coeflist(:), coeftable(:, :)
-           integer, allocatable :: ineposes(:, :, :), eposlist(:, :, :)
-           logical, allocatable :: iniszeros(:), iszerolist(:)
+           integer :: totdets, minLp, maxLp, innum, num1, num, i, nbasis, ncsf, iconf,&
+               & iend, istart, min2Sp, max2Sp
+           integer(i16b), allocatable :: detlist(:, :), inbasis(:, :), &
+               &basislist1(:, :),basislist(:, :), allbasis(:, :)
+           real(rk), allocatable :: incoefs(:), coeflist1(:), coeflist(:), coeftable(:, :)
+           integer, allocatable :: ineposes(:, :, :), eposlist1(:, :, :), eposlist(:, :, :)
+           logical, allocatable :: iniszeros(:), iszerolist1(:), iszerolist(:)
            
 
            call read_input()
@@ -41,29 +44,37 @@ program csfcal
                do i = 1, totdets
                    write(*, '(2B16)') detlist(i, 1:2)
                enddo
+               minLp = Lmin(econfigs(istart:iend, 1:3))
+               maxLp = Lmax(econfigs(istart:iend, 1:3))
+               min2Sp = Smin_t2(neact)
+               max2Sp = Smax_t2(econfigs(istart:iend, 1:3))
+               ncsf = 0 !Each configs has a csftable, 
+                        !so set size to 0 before filling for current config
                do i = 1, totdets
                    write(*, *) 'xxxxxxxxxxxxxxxxxxxxx  Projection of det #', i,'  xxxxxxxxxxxxxxxxxxxx' 
 
                    call initlists(detlist(i, 1:2), inbasis, incoefs, ineposes, iniszeros, innum)
-                   minLp = 0 
-                   maxLp = Lmax(econfigs(istart:iend, 1:3))
+                   !inbasis... always initialized to arrays with only one det
                    call Proj_L(minLp, maxLp, Ldes, &
                    & inbasis, incoefs, ineposes, iniszeros, innum, &
-                   & basislist, coeflist, eposlist, iszerolist, num)
+                   & basislist1, coeflist1, eposlist1, iszerolist1, num1)
+                   call Proj_S(min2Sp, max2Sp, Sdes_t2, &
+                       &basislist1, coeflist1, eposlist1, iszerolist1, num1, &
+                       &basislist, coeflist, eposlist, iszerolist, num)
 
-                   !TODO call Proj_L
 
                    call getallsigns(basislist, coeflist, eposlist, iszerolist, num)
                    call collect_csf(basislist, coeflist, iszerolist, num, &
                      & allbasis, coeftable, nbasis, ncsf)
                enddo !for each det
-           enddo !for each config
+ 
+               call normalizetable(coeftable, nbasis, ncsf)
+               write(*, *) nbasis, ncsf
+               do i = 1, nbasis
+                 write(*, *) coeftable(i, 1:ncsf)
+               enddo
 
-           call normalizetable(coeftable, nbasis, ncsf)
-           write(*, *) nbasis, ncsf
-           do i = 1, nbasis
-               write(*, *) coeftable(i, 1:ncsf)
-           enddo
+           enddo !for each config
 
 
 
