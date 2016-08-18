@@ -8,7 +8,7 @@ F90FLAGS = -finit-local-zero -O1 -ffree-line-length-none -x f95-cpp-input -Wall 
 .f90.o:
 	$(FC) $(F90FLAGS) -o $@ -c $<
 
-OBJS = csfcal.o  detgen.o  prep.o  projection.o
+OBJS =  prep.o  detgen.o  projection.o  csfcal.o
 
 all: csfcal
 
