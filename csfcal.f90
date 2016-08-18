@@ -74,6 +74,8 @@ program csfcal
                  write(*, *) coeftable(i, 1:ncsf)
                enddo
 
+               !TODO orthorgonalize
+
            enddo !for each config
 
 
