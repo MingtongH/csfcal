@@ -44,6 +44,16 @@ module projection
           num = 1
       end subroutine initlists
 
+      subroutine checkcsfLsq(inbasislist, incoeflist, L, nbasis, ncsf)
+          integer(i16b), intent(in) :: inbasislist
+          real(rk), intent(in) :: incoeflist
+          integer, intent(in) :: nbasis, ncsf
+          integer :: i, j, k 
+!          do i = 1, ncsf
+!              do j = 1, nbasis
+!                 call initlists(inbasislist(j, 1:2), baisslist1, coeflist1, eposes1, iszeros1,   
+      endsubroutine checkcsfLsq
+
 
       subroutine Proj_S(Smin2, Smax2, Sdes2, &
               &inbasis, incoefs, inepos, iniszeros, innum, &

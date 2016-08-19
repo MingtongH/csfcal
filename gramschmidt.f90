@@ -58,11 +58,11 @@ module gramschmidt
           integer, intent(in) :: m, n
           integer :: i, j, k
 
-          if(size(a, 1).ne.m.OR.size(a, 2).ne.n.OR.size(q, 1).ne.m.OR.&
-              &size(q, 2).ne.n.OR.size(t, 1).ne.n.OR.size(t, 2).ne.n) then
-            write(*, *) 'matrix size not right in subroutine mgs'
-            return
-          endif
+          !if(size(a, 1).ne.m.OR.size(a, 2).ne.n.OR.size(q, 1).ne.m.OR.&
+          !    &size(q, 2).ne.n.OR.size(t, 1).ne.n.OR.size(t, 2).ne.n) then
+          !  write(*, *) 'matrix size not right in subroutine mgs'
+          !  return
+          !endif
 
           do j = 1, n
               do i = 1, n
