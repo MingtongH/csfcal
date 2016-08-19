@@ -1,4 +1,4 @@
-module gramschimidt
+module gramschmidt
 !Modified based on
 !     Numerical Analysis:
 !     Mathematics of Scientific Computing
@@ -16,6 +16,41 @@ module gramschimidt
 
       implicit none
       contains
+
+      subroutine orth(a, q, r, m, n)
+          real(rk) :: a(:, :), q(:, :), r(:, :), z
+          integer, intent(in) :: m, n
+          integer :: i, k
+          do k = 1, m
+              print *,' Matrix A'
+              call prtmtx(n,a)
+              z = a(n,n)
+              do i=1,n
+                a(i,i)= a(i,i) - z
+              end do
+              call mgs(a, q, r, n, n)
+              print *,' Matrix Q'
+              call prtmtx(n,q)
+              print *,' Matrix R'
+              call prtmtx(n,r)
+              call mult(r,q, n, n, n, a)
+              do i=1,n
+                 a(i,i)=a(i,i) + z
+              end do
+          enddo
+      end subroutine orth
+      
+      subroutine prtmtx(n,a)
+          real(rk), intent(in):: a(:,:)
+          integer, intent(in) :: n
+
+          integer :: i, j
+          do i=1,n
+              write(*, '(4f10.6)') (a(i,j),j=1,n)
+          enddo
+      end subroutine
+
+   
 
       subroutine mgs(a, q, t, m, n)
           !a(m, n), q(m, n), t(n, n)
@@ -50,7 +85,7 @@ module gramschimidt
               do j = k+1, n
                   z = 0.
                   do i = 1, m
-                      z = z + q(i, k)
+                      z = z + q(i, j) * q(i, k)
                   end do
                   t(k, j) = z
                   do i = 1, m
@@ -58,14 +93,14 @@ module gramschimidt
                   enddo
               enddo
           enddo
-      subroutine mgs
+      end subroutine mgs
 
 
       subroutine mult(A, B, n1, m, n2, C)
       ! Matrix product C(n1, n2) = A(n1, m)*B(m, n2)
       integer, intent(in) :: n1, m, n2
-      real(rk), intent(in) :: A(n1, m), B(m, n2)
-      real(rk) :: C(n1, n2), tp
+      real(rk), intent(in) :: A(:, :), B(:, :)
+      real(rk) :: C(:, :), tp
       integer :: i, j, k
 
         do i = 1, n1
@@ -79,5 +114,4 @@ module gramschimidt
         end do
       end subroutine mult
 
-
-
+end module gramschmidt
