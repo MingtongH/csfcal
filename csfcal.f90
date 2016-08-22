@@ -7,6 +7,8 @@ program csfcal
        use detgen, only : assign_shell
        use projection, only : initlists, Proj_L, Proj_S, getallsigns, collect_csf, normalizetable
        use gramschmidt, only : orth
+       use checkcsfs, only : sortBasisCoefTable
+
 
        implicit none
        call main()
@@ -69,6 +71,7 @@ program csfcal
                      & allbasis, coeftable, nbasis, ncsf)
                enddo !for each det
  
+               call sortBasisCoefTable(basislist, coeftable, nbasis, ncsf)
                call normalizetable(coeftable, nbasis, ncsf)
                write(*, *) nbasis, ncsf
                do i = 1, nbasis

@@ -43,11 +43,11 @@ program test
       write(*, '("************series of operators *********************")')
       detup = 9
       detdn = 4
-      call eposinit(eposup, eposdn, detup, detdn)
-      write(*, '(2B16)') detup, detdn
-      write(*, '(5I4)') eposup(1:5)
-      write(*, '(5I4)') eposdn(1:5)
-      call getsign(detup, detdn, eposup, eposdn, coef)
+      !call eposinit(eposup, eposdn, detup, detdn)
+      !write(*, '(2B16)') detup, detdn
+      !write(*, '(5I4)') eposup(1:5)
+      !write(*, '(5I4)') eposdn(1:5)
+      !call getsign(detup, detdn, eposup, eposdn, coef)
 
       !do i = 0, 15
       !  det = detlist(1, 2)
@@ -61,14 +61,12 @@ program test
       !  write(*, '(1B16)') det
       !end do
       !TODO Attention! Initialize these
-      coef = 1
-      iszero = .false.
-      num = 0
+      !call initlists(detlist(9, 1), basis, coefs, eposes, iszeros, num)
 
-      call Lminus_single(detup, detdn, eposup, eposdn, coef, iszero, &
-          & basislist, coeflist, eposlist, iszerolist, num)
-     !call Lplus_single(detlist(9, 1), detlist(9, 2), eposup, eposdn, coef, iszero, &
+      !call Lminus_single(detup, detdn, eposup, eposdn, coef, iszero, &
      !     & basislist, coeflist, eposlist, iszerolist, num)
+     call Lplus_single(detlist(9, 1), detlist(9, 2), eposup, eposdn, coef, iszero, &
+          & basislist, coeflist, eposlist, iszerolist, num)
      !call Sminus_single(detlist(9, 1), detlist(9, 2), eposup, eposdn, coef, iszero, &
      !    & basislist, coeflist, eposlist, iszerolist, num)
      !call Splus_single(detlist(9, 1), detlist(9, 2), eposup, eposdn, coef, iszero, &
@@ -78,7 +76,7 @@ program test
       num1 = 0
       num2 = 0
       num3 = 0
-      coef = -1.0
+      coef = - 1.0
       call Lplus_multiple(basislist, coeflist, eposlist, iszerolist, num, &
            & basislist1, coeflist1, eposlist1, iszerolist1, num1)
       write(*, *) num1
@@ -110,7 +108,7 @@ program test
           write(*, '(2b16, 2F15.9)') allbasis(i, 1:2), coeftable(i, 1:2)
       enddo
       call normalizetable(coeftable, ndets, ncsf)
-     do i = 1, ndets
+      do i = 1, ndets
           write(*, '(2b16, 2F15.9)') allbasis(i, 1:2), coeftable(i, 1:2)
       enddo
 
