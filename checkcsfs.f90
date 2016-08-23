@@ -36,19 +36,48 @@ module checkcsfs
            nordered = 1 ! number of ordered dets
            do i = 2, nbasis
                 do j = 1, nordered
-                    if(tpbasis(i, 1).lt.tpbasis(order(j), 1)) then  !1
+
+                    if(tpbasis(i, 1).lt.tpbasis(order(j), 1)) then  !1<
                         do k = nordered, j, -1
                             order(k + 1) = order(k)
                         enddo
+                        order(j) = i
                         nordered = nordered + 1
-                    else if(tpbasis(i, 1).eq.tpbasis(order(j), 1)) then
-                        if(tpbasis(i, 2).lt.tpbasis(order(j), 2)) then  !2
+                        exit
+
+                    else if(tpbasis(i, 1).eq.tpbasis(order(j), 1)) then !1=
+                        if(tpbasis(i, 2).lt.tpbasis(order(j), 2)) then  !2<
                             do k = nordered, j, -1
                                 order(k + 1) = order(k)
                             enddo
+                            order(j) = i
                             nordered = nordered + 1
+                            exit
+                        elseif(tpbasis(i, 2).gt.tpbasis(order(j), 2)) then !2>
+                            !i has same updet as order(j) but bigger dndet
+                            !should be placed behind order(j)
+                            if(nordered.eq.j) then   !3
+                                order(j+1) = i
+                                nordered = nordered + 1
+                                exit
+                            else
+                                do k = nordered, j+1, -1
+                                    order(k + 1) = order(k)
+                                enddo
+                                order(j + 1) = i
+                                nordered = nordered + 1
+                                exit
+                            endif        !3
                         endif        !2
+
+                    else!1 basis i, 1 > basis order(j)
+                        if(nordered.eq.j) then
+                            order(j+1) = i
+                            nordered = nordered + 1
+                            exit
+                        endif
                     endif !1
+                    
                 enddo !j
             enddo !i
 
