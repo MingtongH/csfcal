@@ -2,6 +2,7 @@ program test
       use prep
       use detgen
       use projection
+      use checkcsfs
 
       implicit none
       !integer :: Lz_test
@@ -61,17 +62,17 @@ program test
       !  write(*, '(1B16)') det
       !end do
       !TODO Attention! Initialize these
-      !call initlists(detlist(9, 1), basis, coefs, eposes, iszeros, num)
+      call initlists(detlist(9, 1:2), basislist, coeflist, eposlist, iszerolist, num)
 
       !call Lminus_single(detup, detdn, eposup, eposdn, coef, iszero, &
      !     & basislist, coeflist, eposlist, iszerolist, num)
-     call Lplus_single(detlist(9, 1), detlist(9, 2), eposup, eposdn, coef, iszero, &
-          & basislist, coeflist, eposlist, iszerolist, num)
+     !call Lplus_single(detlist(9, 1), detlist(9, 2), eposup, eposdn, coef, iszero, &
+     !     & basislist, coeflist, eposlist, iszerolist, num)
      !call Sminus_single(detlist(9, 1), detlist(9, 2), eposup, eposdn, coef, iszero, &
      !    & basislist, coeflist, eposlist, iszerolist, num)
      !call Splus_single(detlist(9, 1), detlist(9, 2), eposup, eposdn, coef, iszero, &
      !    & basislist, coeflist, eposlist, iszerolist, num)
-     !TODO Attention! Initialize this
+     !TODO Attention! Initialize these
       outnum = 0
       num1 = 0
       num2 = 0
@@ -80,10 +81,10 @@ program test
       call Lplus_multiple(basislist, coeflist, eposlist, iszerolist, num, &
            & basislist1, coeflist1, eposlist1, iszerolist1, num1)
       write(*, *) num1
-      call scalar_append(coef, basislist, coeflist, eposlist, iszerolist, num, &
-          & basislist1, coeflist1, eposlist1, iszerolist1, num1)
-      write(*, '("Called scalar_append")')
-      write(*, *) num1
+      !call scalar_append(coef, basislist, coeflist, eposlist, iszerolist, num, &
+      !    & basislist1, coeflist1, eposlist1, iszerolist1, num1)
+      !write(*, '("Called scalar_append")')
+      !write(*, *) num1
       write(*, *) coeflist1(num1)
       call Sminus_multiple(basislist1, coeflist1, eposlist1, iszerolist1, num1, &
            & basislist2, coeflist2, eposlist2, iszerolist2, num2)
@@ -107,7 +108,8 @@ program test
       do i = 1, ndets
           write(*, '(2b16, 2F15.9)') allbasis(i, 1:2), coeftable(i, 1:2)
       enddo
-      call normalizetable(coeftable, ndets, ncsf)
+      call sortBasisCoefTable(allbasis, coeftable, ndets, ncsf)
+      !call normalizetable(coeftable, ndets, ncsf)
       do i = 1, ndets
           write(*, '(2b16, 2F15.9)') allbasis(i, 1:2), coeftable(i, 1:2)
       enddo
