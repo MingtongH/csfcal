@@ -2,7 +2,7 @@ module projection
       !Generate csf by projection
       use prep, only: i16b, ARRAY_START_LENGTH, ARRAY_SHORT_LENGTH, DET_MAX_LENGTH
       use, intrinsic :: iso_fortran_env, only: rk => real64
-      use detgen, only: lpls, lms, eposinit, spls, sms, Szt2_det
+      use detgen, only: lpls, lms, eposinit, spls, sms, Szt2_det, Lz_det
 
       implicit none
       
@@ -155,11 +155,6 @@ module projection
                   cycle
               endif
 
-              !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-              !TODO doesn't include Lz^2 + Lz yet
-              !implement Lz first then change PL
-              !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-              
               !L^2 = L-L+ + Lz^2 + Lz
               write(*, *) ' '
               write(*,  '("====================== Now at Lp =", 1I3)') Lp
@@ -171,10 +166,8 @@ module projection
                   & basislist1, coeflist1, eposlist1, iszerolist1, num1)
               call Lminus_multiple(basislist1, coeflist1, eposlist1, iszerolist1, num1, &
                   & basislist, coeflist, eposlist, iszerolist, num)
-              !TODO When adding Lz^2 + Lz
-              !Lminus_multiple output basislist2 etc
-              !Lz^2+Lz takes in basislist2 etc, output basislist etc
-
+              call LzLzplus1_append(tpbasis, tpcoefs, tpepos, tpiszeros, tpnum, &
+                  & basislist, coeflist, eposlist, iszerolist, num)
               !-------------------(- Lp(Lp+1))---------------------
               write(*, *) ' ------------------- Append tail to basislist '
               tail = real(-Lp * (Lp + 1), rk)
@@ -442,7 +435,61 @@ module projection
           end do
       end subroutine scalar_append
 
+      subroutine LzLzplus1_append(inbasis, incoefs, inepos, iniszeros, innum, &
+              & basislist, coeflist, eposlist, iszerolist, num)
+          !append to output list
+          integer(i16b), intent(in) :: inbasis(:, :)
+          real(rk),  intent(in) :: incoefs(:)
+          integer, intent(in) :: inepos(:, :, :)
+          logical, intent(in) :: iniszeros(:)
+          integer, intent(in) :: innum
+          integer(i16b), allocatable :: basislist(:, :)
+          real(rk), allocatable :: coeflist(:)
+          integer, allocatable :: eposlist(:, :, :)
+          logical, allocatable :: iszerolist(:)
+          integer :: num, i
+          real(rk) :: tpval
 
+          if(num.eq.0) then
+              if(.not.allocated(basislist)) then 
+                  allocate(basislist(ARRAY_START_LENGTH, 2))
+              endif 
+              if(.not.allocated(coeflist)) then
+                  allocate(coeflist(ARRAY_START_LENGTH))
+              endif
+              if(.not.allocated(eposlist)) then
+                  allocate(eposlist(ARRAY_START_LENGTH, 2, DET_MAX_LENGTH))
+              endif
+              if(.not.allocated(iszerolist)) then
+                  allocate(iszerolist(ARRAY_START_LENGTH))
+              endif
+          endif
+          do i = 1, innum
+            if(iniszeros(i)) then
+                cycle
+            endif
+            write(*, *)
+            write(*, '("=================== Applying Lz(Lz+1) to multiple dets, now at No.", 1I5)') i 
+            tpval = real(Lz_det(inbasis(i, 1:2)), rk) !Lz
+            tpval = tpval * (tpval + 1.0)  !Lz(Lz + 1)
+            if(equals0(tpval)) then
+                cycle
+            else
+                num = num + 1
+                basislist(num, 1:2) = inbasis(i, 1:2)
+                coeflist(num) = incoefs(i) * tpval
+                eposlist(num, 1, :) = inepos(i, 1, :)
+                eposlist(num, 2, :) = inepos(i, 2, :)
+                iszerolist(num) = .false.
+                write(*, '(" Added Lz(Lz+1) = ", 1F10.5)') tpval
+            endif
+          end do
+          write(*, '("Final size of output = ", 1I8)') num
+      end subroutine LzLzplus1_append 
+
+
+
+      
       subroutine SzSzplus1_append(inbasis, incoefs, inepos, iniszeros, innum, &
               & basislist, coeflist, eposlist, iszerolist, num)
           !append to output list
