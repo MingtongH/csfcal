@@ -19,6 +19,7 @@ module projection
       end function equals0
 
       subroutine initlists(det, basis, coefs, eposes, iszeros, num)
+          !init from single det pair
           integer(i16b), intent(in) :: det(:)
           integer(i16b), allocatable :: basis(:, :)
           real(rk), allocatable :: coefs(:)
@@ -44,6 +45,34 @@ module projection
           num = 1
       end subroutine initlists
 
+
+      subroutine initlists_fromlist(detlist, innum, basislist, coeflist, eposlist, iszeroslist)
+          integer(i16b), intent(in) :: detlist(:, :)
+          integer, intent(in) :: innum
+          integer(i16b), allocatable :: basislist(:, :)
+          real(rk), allocatable :: coeflist(:)
+          integer, allocatable :: eposes(:, :, :)
+          logical, allocatable :: iszerolist(:)
+          
+          if(.not.allocated(basislist)) then
+              allocate(basislist(ARRAY_SHORT_LENGTH, 2))
+          endif
+          if(.not.allocated(coeflist)) then
+              allocate(coeflist(ARRAY_SHORT_LENGTH))
+          endif
+          if(.not.allocated(eposlist)) then
+              allocate(eposlist(ARRAY_SHORT_LENGTH, 2, DET_MAX_LENGTH))
+          endif
+          if(.not.allocated(iszerolist)) then
+              allocate(iszerolist(ARRAY_SHORT_LENGTH))
+          endif
+          do i = 1, innum
+              call eposinit(eposlist(i, 1, :), eposlist(i, 2, :), det(i, 1), det(i, 2))
+              coeflist(i) = 1.0
+              iszerolist(i) = .false.
+          enddo
+      end subroutine initlists_fromlist
+          
 
       subroutine Proj_S(Smin2, Smax2, Sdes2, &
               &inbasis, incoefs, inepos, iniszeros, innum, &

@@ -1,11 +1,14 @@
 module checkcsfs
        use prep, only: i16b, ARRAY_START_LENGTH, ARRAY_SHORT_LENGTH, DET_MAX_LENGTH
        use, intrinsic :: iso_fortran_env, only: rk => real64
+       use projection, only : Lplus_multiple, Lminus_multiple, LzLzplus1_append, &
+           &Splus_multiple, Sminus_multiple, SzSzplus1_append
 
  
        implicit none
     
        contains
+
 
        subroutine checkcsfLsq(inbasislist, incoeflist, L, nbasis, ncsf)
            integer(i16b), intent(in) :: inbasislist(:, :)
@@ -17,6 +20,37 @@ module checkcsfs
  !                 call initlists(inbasislist(j, 1:2), baisslist1, coeflist1, eposes1,       iszeros1,   
        endsubroutine checkcsfLsq
  
+
+       subroutine Lsq_multiple(inbasis, incoefs, inepos, iniszeros, innum, &
+               & basislist, coeflist, eposlist, iszerolist, num)
+           integer(i16b), intent(in) :: inbasis(:, :)
+           real(rk), intent(in) :: incoefs(:)
+           integer, intent(in) :: inepos(:, :, :)
+           logical, intent(in) :: iniszeros(:)
+           integer, intent(in) :: innum
+           integer(i16b), allocatable :: basislist(:, :), basislist1(:, :)
+           real(rk), allocatable :: coeflist(:), coeflist1(:)
+           integer, allocatable :: eposlist(:, :, :), eposlist1(:, :, :)
+           logical, allocatable :: iszerolist(:), iszerolist1(:)
+           integer :: num, num1
+
+           write(*, *) '>>>>>>>>>>>>>>>>>>>>>>> Lsq_multiple '
+ 
+           !-------set intermediates (basislist1...) and output ( basislist ... ) empty
+           num1 = 0
+           num = 0
+           !----------L^2 = L-L+ + Lz^2 + Lz
+           call Lplus_multiple(inbasis, incoefs, inepos, iniszeros, innum, &
+                   & basislist1, coeflist1, eposlist1, iszerolist1, num1)
+           call Lminus_multiple(basislist1, coeflist1, eposlist1, iszerolist1, num1, &
+                   & basislist, coeflist, eposlist, iszerolist, num)
+           call LzLzplus1_append(inbasis, incoefs, inepos, iniszeros, innum, &
+                   & basislist, coeflist, eposlist, iszerolist, num)
+       end subroutine Lsq_multiple
+
+
+
+
        subroutine sortBasisCoefTable(inbasislist, incoeftable, nbasis, ncsf)
            integer(i16b) :: inbasislist(:, :)
            integer(i16b), allocatable:: tpbasis(:, :)

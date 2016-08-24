@@ -88,8 +88,10 @@ program test
       write(*, *) coeflist1(num1)
       call Sminus_multiple(basislist1, coeflist1, eposlist1, iszerolist1, num1, &
            & basislist2, coeflist2, eposlist2, iszerolist2, num2)
-      call Splus_multiple(basislist2, coeflist2, eposlist2, iszerolist2, num2, &
-           & basislist3, coeflist3, eposlist3, iszerolist3, num3)
+      !call Splus_multiple(basislist2, coeflist2, eposlist2, iszerolist2, num2, &
+      !     & basislist3, coeflist3, eposlist3, iszerolist3, num3)
+      call Lsq_multiple(basislist2, coeflist2, eposlist2, iszerolist2, num2, &
+          & basislist3, coeflist3, eposlist3, iszerolist3, num3)
       call getallsigns(basislist3, coeflist3, eposlist3, iszerolist3, num3)
       do i = 1, num3
         write(*, '(1I3, 2b16, 1f18.15)') i,  basislist3(i, :), coeflist3(i)
