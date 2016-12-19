@@ -106,7 +106,7 @@ program test
           & allbasis, coeftable, ndets, ncsf)
 
       coef = -1.0
-      
+      write(*, *) 'All basis(upbasis, dnbasis) --- csf1 ------csf2' 
       do i = 1, ndets
           write(*, '(2b16, 2F15.9)') allbasis(i, 1:2), coeftable(i, 1:2)
       enddo

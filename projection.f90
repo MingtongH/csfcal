@@ -9,6 +9,63 @@ module projection
       real(rk), parameter :: REAL_MIN = 1.0e-31
 
       contains
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!################## OPERATORS ##################
+! subroutine scalar_append(const, inbasis, incoefs, inepos, iniszeros, innum, &
+!               & basislist, coeflist, eposlist, iszerolist, num)
+! subroutine Lplus_multiple(inbasis, incoefs, inepos, iniszeros, innum, &
+!               & basislist, coeflist, eposlist, iszerolist, num)
+
+! subroutine Lminus_multiple(inbasis, incoefs, inepos, iniszeros, innum, &
+!               & basislist, coeflist, eposlist, iszerolist, num)
+
+!subroutine Splus_multiple(inbasis, incoefs, inepos, iniszeros, innum, &
+!               & basislist, coeflist, eposlist, iszerolist, num)
+! subroutine Sminus_multiple(inbasis, incoefs, inepos, iniszeros, innum, &
+!               & basislist, coeflist, eposlist, iszerolist, num)
+!
+! subroutine LzLzplus1_append(inbasis, incoefs, inepos, iniszeros, innum, &
+!               & basislist, coeflist, eposlist, iszerolist, num)
+!subroutine SzSzplus1_append(inbasis, incoefs, inepos, iniszeros, innum, &
+!               & basislist, coeflist, eposlist, iszerolist, num)
+
+! subroutine Proj_S(Smin2, Smax2, Sdes2, &
+!              &inbasis, incoefs, inepos, iniszeros, innum, &
+!               & basislist, coeflist, eposlist, iszerolist, num)
+! subroutine Proj_L(Lmin, Lmax, Ldes, &
+!               & inbasis, incoefs, inepos, iniszeros, innum,  &
+!              & basislist, coeflist, eposlist, iszerolist, num)
+
+!################ OPERATOR HELPERS #################
+!!!!!!!! Operators with single det pair as inputs !!!!!!!!!!!!!!!!!!!!
+! subroutine Sminus_single(detup, detdn, eposup, eposdn, coef, iszero, &
+!               & basislist, coeflist, eposlist, iszerolist, num)
+! subroutine Splus_single(detup, detdn, eposup, eposdn, coef, iszero, &
+!               & basislist, coeflist, eposlist, iszerolist, num)
+! subroutine Lminus_single(detup, detdn, eposup, eposdn, coef, iszero, &
+!               & basislist, coeflist, eposlist, iszerolist, num )
+! subroutine Lplus_single(detup, detdn, eposup, eposdn, coef, iszero, &
+!               & basislist, coeflist, eposlist, iszerolist, num )
+
+!################# CSF TABLE SUBROUTINES ##################
+! subroutine normalizetable(coeftable, ndets, ncsf)
+
+! subroutine getallsigns(basislist, coeflist, eposlist, iszerolist, num)
+!               getsign(detup, detdn, eposup, eposdn, coef)
+! subroutine collect_csf(basislist, coeflist, iszerolist, num,&
+!               & allbasis, coeftable, ndets, ncsf)
+
+!################## OTHER SMALL HELPERS #################
+! initlists(det, basis, coefs, eposes, iszeros, num) init from single det pair to basislist and other lists
+!TODO  initlists_fromlist(detlist, innum, basislist, coeflist, eposlist, iszerolist) not tested
+! integer function  countswps(array, num)
+! integer function findindetlist(det, allbasis, ndets)
+! equals0(coef)
+!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+
       logical function equals0(coef)
           real(rk), intent(in) :: coef
           if(abs(coef).le.REAL_MIN) then
@@ -46,12 +103,16 @@ module projection
       end subroutine initlists
 
 
-      subroutine initlists_fromlist(detlist, innum, basislist, coeflist, eposlist, iszeroslist)
+      subroutine initlists_fromlist(detlist, innum, basislist, coeflist, eposlist, iszerolist)
+          !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+          !!TODO
+          !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
           integer(i16b), intent(in) :: detlist(:, :)
           integer, intent(in) :: innum
           integer(i16b), allocatable :: basislist(:, :)
+          integer :: i
           real(rk), allocatable :: coeflist(:)
-          integer, allocatable :: eposes(:, :, :)
+          integer, allocatable :: eposlist(:, :, :)
           logical, allocatable :: iszerolist(:)
           
           if(.not.allocated(basislist)) then
@@ -67,7 +128,7 @@ module projection
               allocate(iszerolist(ARRAY_SHORT_LENGTH))
           endif
           do i = 1, innum
-              call eposinit(eposlist(i, 1, :), eposlist(i, 2, :), det(i, 1), det(i, 2))
+              call eposinit(eposlist(i, 1, :), eposlist(i, 2, :), detlist(i, 1), detlist(i, 2))
               coeflist(i) = 1.0
               iszerolist(i) = .false.
           enddo
