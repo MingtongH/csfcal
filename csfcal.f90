@@ -5,9 +5,9 @@ program csfcal
                & Smin_t2, Smax_t2, ARRAY_SHORT_LENGTH
             !subroutines and functions
        use detgen, only : assign_shell
-       use projection, only : initlists, Proj_L, Proj_S, getallsigns, collect_csf, normalizetable
+       use projection, only : initlists, Proj_L, Proj_S, getallsigns, collect_csf, normalizetable, initlists_fromlists
        use gramschmidt, only : orth
-       use checkcsfs, only : sortBasisCoefTable
+       use checkcsfs, only : sortBasisCoefTable, Lsq_multiple
 
 
        implicit none
@@ -18,10 +18,10 @@ program csfcal
  
        subroutine main
            integer :: totdets, minLp, maxLp, innum, num1, num, i, nbasis, ncsf, iconf,&
-               & iend, istart, min2Sp, max2Sp
+               & iend, istart, min2Sp, max2Sp, nbasis2, ncsf2
            integer(i16b), allocatable :: detlist(:, :), inbasis(:, :), &
-               &basislist1(:, :),basislist(:, :), allbasis(:, :)
-           real(rk), allocatable :: incoefs(:), coeflist1(:), coeflist(:), coeftable(:, :), Q(:, :), R(:, :)
+               &basislist1(:, :),basislist(:, :), allbasis(:, :), basislist2(:, :)
+           real(rk), allocatable :: incoefs(:), coeflist1(:), coeflist(:), coeftable(:, :), coeftable2(:, :),  Q(:, :), R(:, :)
            integer, allocatable :: ineposes(:, :, :), eposlist1(:, :, :), eposlist(:, :, :)
            logical, allocatable :: iniszeros(:), iszerolist1(:), iszerolist(:)
            
@@ -75,21 +75,33 @@ program csfcal
                call normalizetable(coeftable, nbasis, ncsf)
                write(*, *) nbasis, ncsf
                do i = 1, nbasis
-                 write(*, *) coeftable(i, 1:ncsf)
+                 write(*, *) basislist(i, 1:2), coeftable(i, 1:ncsf)
                enddo
-               if(nbasis.ne.ncsf) then
-                   write(*, *) 'coeftable not square'
-                   exit
-               endif
-               if(.not.allocated(Q)) then 
-                   allocate(Q(ARRAY_SHORT_LENGTH, ARRAY_SHORT_LENGTH))
-               endif
-               if(.not.allocated(R)) then
-                   allocate(R(ARRAY_SHORT_LENGTH, ARRAY_SHORT_LENGTH))
-               endif
+
+               call initlists_fromlists(basislist, coeftable(:, 1),  nbasis, coeflist, eposlist, iszerolist)
+               call Lsq_multiple(basislist, coeflist, eposlist, iszerolist, nbasis, &
+                   & basislist1, coeflist1, eposlist1, iszerolist1, num1)
+               call getallsigns(basislist1, coeflist1, eposlist1,  iszerolist1, num1)
+               nbasis2 = 0
+               ncsf2 = 0
+               call collect_csf(basislist1, coeflist1, iszerolist1, num1, &
+                   & basislist2, coeftable2, nbasis2, ncsf2)
+               call sortBasisCoefTable(basislist2, coeftable2, nbasis2, ncsf2)
 
 
-               call orth(coeftable(1:nbasis, 1:ncsf), Q(1:nbasis, 1:ncsf), R(1:nbasis, 1:ncsf), nbasis*4, nbasis)
+               !if(nbasis.ne.ncsf) then
+               !    write(*, *) 'coeftable not square'
+               !    exit
+               !endif
+               !if(.not.allocated(Q)) then 
+               !    allocate(Q(ARRAY_SHORT_LENGTH, ARRAY_SHORT_LENGTH))
+               !endif
+               !if(.not.allocated(R)) then
+               !    allocate(R(ARRAY_SHORT_LENGTH, ARRAY_SHORT_LENGTH))
+               !endif
+
+
+               !call orth(coeftable(1:nbasis, 1:ncsf), Q(1:nbasis, 1:ncsf), R(1:nbasis, 1:ncsf), nbasis*4, nbasis)
                !last two arguments: m, n
 
 

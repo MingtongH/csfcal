@@ -3,6 +3,7 @@ program test
       use detgen
       use projection
       use checkcsfs
+      use gramschmidt
 
       implicit none
       !integer :: Lz_test
@@ -21,7 +22,8 @@ program test
           & iszerolist2(:), iszerolist3(:)
       integer(i16b), allocatable :: basislist(:, :), outbasislist(:, :), basislist1(:, :),&
           & basislist2(:, :), basislist3(:, :), allbasis(:, :)
-      real(rk), allocatable :: coeflist(:), outcoeflist(:), coeflist1(:), coeflist2(:), coeflist3(:), coeftable(:, :)
+      real(rk), allocatable :: coeflist(:), outcoeflist(:), coeflist1(:), coeflist2(:),&
+          & coeflist3(:), coeftable(:, :), Q(:,:), R(:, :)
       integer, allocatable :: eposlist(:, :, :), outeposlist(:, :, :), eposlist1(:, :, :), eposlist2(:, :, :), eposlist3(:, :, :)
       integer :: num, outnum, num1, num2, num3, ndets, ncsf, j
 
@@ -78,6 +80,13 @@ program test
       num2 = 0
       num3 = 0
       coef = - 1.0
+                if(.not.allocated(Q)) then
+                    allocate(Q(ARRAY_SHORT_LENGTH, ARRAY_SHORT_LENGTH))
+                endif
+                if(.not.allocated(R)) then
+                    allocate(R(ARRAY_SHORT_LENGTH, ARRAY_SHORT_LENGTH))
+                endif
+
       call Lplus_multiple(basislist, coeflist, eposlist, iszerolist, num, &
            & basislist1, coeflist1, eposlist1, iszerolist1, num1)
       write(*, *) num1
@@ -104,18 +113,25 @@ program test
           & allbasis, coeftable, ndets, ncsf)
       call collect_csf(basislist2, coeflist2, iszerolist2, num2, &
           & allbasis, coeftable, ndets, ncsf)
+     call collect_csf(basislist2, coeflist2, iszerolist2, num2, &
+                    & allbasis, coeftable, ndets, ncsf)
+     call collect_csf(basislist3, coeflist3, iszerolist3, num3, &
+                    & allbasis, coeftable, ndets, ncsf)
+
 
       coef = -1.0
       write(*, *) 'All basis(upbasis, dnbasis) --- csf1 ------csf2' 
       do i = 1, ndets
-          write(*, '(2b16, 2F15.9)') allbasis(i, 1:2), coeftable(i, 1:2)
+          write(*, '(2b16, 4F15.9)') allbasis(i, 1:2), coeftable(i, 1:ncsf)
       enddo
       call sortBasisCoefTable(allbasis, coeftable, ndets, ncsf)
-      !call normalizetable(coeftable, ndets, ncsf)
+      call normalizetable(coeftable, ndets, ncsf)
       do i = 1, ndets
-          write(*, '(2b16, 2F15.9)') allbasis(i, 1:2), coeftable(i, 1:2)
+          write(*, '(2b16, 4F15.9)') allbasis(i, 1:2), coeftable(i, 1:ncsf)
       enddo
 
+      call orth(coeftable(1:ndets, 1:ncsf), Q(1:ndets, 1:ncsf), &
+          & R(1:ndets, 1:ncsf), ndets*20,  ncsf)
 
        !call getsign(basislist3(2, 1), basislist3(2, 2), eposlist3(2, 1, :), eposlist3(2, 2, :), coef)
       !eposup(1:5) = (/4, 2, 1, 3, 5/)  

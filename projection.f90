@@ -57,7 +57,7 @@ module projection
 
 !################## OTHER SMALL HELPERS #################
 ! initlists(det, basis, coefs, eposes, iszeros, num) init from single det pair to basislist and other lists
-!TODO  initlists_fromlist(detlist, innum, basislist, coeflist, eposlist, iszerolist) not tested
+!TODO  initlists_fromlists(detlist, incoeflist,  innum,coeflist, eposlist, iszerolist) not tested
 ! integer function  countswps(array, num)
 ! integer function findindetlist(det, allbasis, ndets)
 ! equals0(coef)
@@ -103,7 +103,7 @@ module projection
       end subroutine initlists
 
 
-      subroutine initlists_fromlist(detlist, innum, basislist, coeflist, eposlist, iszerolist)
+      subroutine initlists_fromlists(detlist, incoeflist, innum, coeflist, eposlist, iszerolist)
           !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
           !!TODO
           !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -111,6 +111,7 @@ module projection
           integer, intent(in) :: innum
           integer(i16b), allocatable :: basislist(:, :)
           integer :: i
+          real(rk), intent(in) :: incoeflist(:)
           real(rk), allocatable :: coeflist(:)
           integer, allocatable :: eposlist(:, :, :)
           logical, allocatable :: iszerolist(:)
@@ -129,10 +130,11 @@ module projection
           endif
           do i = 1, innum
               call eposinit(eposlist(i, 1, :), eposlist(i, 2, :), detlist(i, 1), detlist(i, 2))
-              coeflist(i) = 1.0
+              coeflist(i) = incoeflist(i)
+
               iszerolist(i) = .false.
           enddo
-      end subroutine initlists_fromlist
+      end subroutine initlists_fromlists
           
 
       subroutine Proj_S(Smin2, Smax2, Sdes2, &

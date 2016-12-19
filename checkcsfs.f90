@@ -48,6 +48,34 @@ module checkcsfs
                    & basislist, coeflist, eposlist, iszerolist, num)
        end subroutine Lsq_multiple
 
+       subroutine Ssq_multiple(inbasis, incoefs, inepos, iniszeros, innum, &
+               & basislist, coeflist, eposlist, iszerolist, num)
+            integer(i16b), intent(in) :: inbasis(:, :)
+            real(rk), intent(in) :: incoefs(:)
+            integer, intent(in) :: inepos(:, :, :)
+            logical, intent(in) :: iniszeros(:)
+            integer, intent(in) :: innum
+            integer(i16b), allocatable :: basislist(:, :), basislist1(:, :)
+            real(rk), allocatable :: coeflist(:), coeflist1(:)
+            integer, allocatable :: eposlist(:, :, :), eposlist1(:, :, :)
+            logical, allocatable :: iszerolist(:), iszerolist1(:)
+            integer :: num, num1
+ 
+            write(*, *) '>>>>>>>>>>>>>>>>>>>>>>> Lsq_multiple '
+ 
+            !-------set intermediates (basislist1...) and output ( basislist ... ) empty
+            num1 = 0
+            num = 0
+            !----------S^2 = S-S+ + Sz^2 + Sz
+            call Splus_multiple(inbasis, incoefs, inepos, iniszeros, innum, &
+                    & basislist1, coeflist1, eposlist1, iszerolist1, num1)
+            call Sminus_multiple(basislist1, coeflist1, eposlist1, iszerolist1, num1, &
+                    & basislist, coeflist, eposlist, iszerolist, num)
+            call SzSzplus1_append(inbasis, incoefs, inepos, iniszeros, innum, &
+                    & basislist, coeflist, eposlist, iszerolist, num)
+       end subroutine Ssq_multiple
+
+
 
 
 
