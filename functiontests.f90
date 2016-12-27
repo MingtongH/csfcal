@@ -20,17 +20,17 @@ program functiontests
       !        write(*, '(2b16, 2I8)') det(1:2), Lz_det(det), Szt2_det(det)
       !    enddo
       !enddo
-      n = 2
-      m = 8
-      allocate(A(n, n), Q(n, n), R(n, n))
-      A(1, :) = (/-1., 1./)
-      A(2, :) = (/2., -2./)
+     ! n = 2
+     ! m = 8
+     ! allocate(A(n, n), Q(n, n), R(n, n))
+     ! A(1, :) = (/-1., 1./)
+     ! A(2, :) = (/2., -2./)
 
       !A(1, :) = (/1., 2., 3., 4./)
       !A(2, :) = (/5.,6.,7.,8./)
       !A(3, :) = (/0.,9.,10.,11./)
       !A(4, :) = (/0.,0.,12.,13./)
-      call orth(A, Q, R, m, n)
+     ! call orth(A, Q, R, m, n)
 
 
 

@@ -9,6 +9,7 @@ module gramschmidt
 !     Section 5.3
 !     Example of modified Gram-Schmidt algorithm
 !     file: qrshif.f
+!Original program only accepts square matrices
 
       use prep, only : i16b
       use, intrinsic :: iso_fortran_env, only: rk => real64

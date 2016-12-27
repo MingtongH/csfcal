@@ -5,8 +5,8 @@ program csfcal
                & Smin_t2, Smax_t2, ARRAY_SHORT_LENGTH
             !subroutines and functions
        use detgen, only : assign_shell
-       use projection, only : initlists, Proj_L, Proj_S, getallsigns, collect_csf, normalizetable
-       use checkcsfs, only: sortBasisCoefTable
+       use projection, only : initlists, Proj_L, Proj_S, getallsigns, collect_csf, normalizetable, initlists_fromlists
+       use checkcsfs, only: sortBasisCoefTable, Lsq_multiple
        use gramschmidt, only : orth
 
        implicit none
@@ -23,7 +23,7 @@ program csfcal
            real(rk), allocatable :: incoefs(:), coeflist1(:), coeflist(:), coeftable(:, :), Q(:, :), R(:, :)
            integer, allocatable :: ineposes(:, :, :), eposlist1(:, :, :), eposlist(:, :, :)
            logical, allocatable :: iniszeros(:), iszerolist1(:), iszerolist(:)
-           
+           character(10) :: line 
 
            call read_input()
            call checkSmin()
@@ -39,6 +39,10 @@ program csfcal
                istart = iend + 1
                iend = istart + nshell(iconf) - 1
                write(*, *) '%%%%%%%%%%%%%%%%%%%%%%  Assign_shell for Config', iconf, '  %%%%%%%%%%%%%%%%%%%'
+
+               !write(*,'(''paused, type [enter] to continue'')')
+               !read(*, *) line
+
                totdets = 0
                call assign_shell(0_i16b, 0_i16b, 0, 0, 0, 0,&
                   & Lzdes, Sdes_t2, econfigs(istart:iend, 1:3), 0, totdets, detlist)
@@ -53,16 +57,29 @@ program csfcal
                ncsf = 0 !Each configs has a csftable,n 
                         !so set size to 0 before filling for current config
                do i = 1, totdets
-                   write(*, *) 'xxxxxxxxxxxxxxxxxxxxx  Projection of det #', i,'  xxxxxxxxxxxxxxxxxxxx' 
+                   !PAUSE 2
+                    !write(*,'(''paused, type [enter] to continue'')')
+                    !      read (*,*) line 
 
+
+                   write(*, *) 'xxxxxxxxxxxxxxxxxxxxx  Projection of det #', i,'  xxxxxxxxxxxxxxxxxxxx' 
                    call initlists(detlist(i, 1:2), inbasis, incoefs, ineposes, iniszeros, innum)
                    !inbasis... always initialized to arrays with only one det
                    call Proj_L(minLp, maxLp, Ldes, &
                    & inbasis, incoefs, ineposes, iniszeros, innum, &
                    & basislist1, coeflist1, eposlist1, iszerolist1, num1)
+                   ! PAUSE 3
+                   ! write(*,'(''paused, type [enter] to continue'')')
+                   !       read (*,*) line
+
                    call Proj_S(min2Sp, max2Sp, Sdes_t2, &
                        &basislist1, coeflist1, eposlist1, iszerolist1, num1, &
                        &basislist, coeflist, eposlist, iszerolist, num)
+
+
+                   !PAUSE 4
+                   ! write(*,'(''paused, type [enter] to continue'')')
+                   !       read (*,*) line
 
 
                    call getallsigns(basislist, coeflist, eposlist, iszerolist, num)
@@ -72,6 +89,11 @@ program csfcal
 
                call sortBasisCoefTable(basislist, coeftable, nbasis, ncsf)
  
+               !PAUSE 5
+               ! write(*,'(''paused, type [enter] to continue'')')
+               !       read (*,*) line
+
+
                call normalizetable(coeftable, nbasis, ncsf)
                write(*, *) nbasis, ncsf
                do i = 1, nbasis
@@ -89,7 +111,20 @@ program csfcal
                endif
 
 
-!               call orth(coeftable(1:nbasis, 1:ncsf), Q(1:nbasis, 1:ncsf), R(1:nbasis, 1:ncsf), nbasis*4, nbasis)
+               call initlists_fromlists(basislist, coeftable(1:nbasis, 1), nbasis,  incoefs, ineposes, iniszeros)
+               num1 = 0
+
+               call Lsq_multiple(basislist, incoefs, ineposes, iniszeros, innum, &
+                   &  basislist1, coeflist1, eposlist1, iszerolist1, num1)
+               call getallsigns(basislist1, coeflist1, eposlist1, iszerolist1, num1)
+               ncsf = 0
+               nbasis = 0
+               call collect_csf(basislist1, coeflist1, iszerolist1, num1, &
+                   & allbasis, coeftable, nbasis, ncsf)
+               call sortBasisCoefTable(allbasis, coeftable, nbasis, ncsf)
+                !write(*,'(''paused, type [enter] to continue'')')
+                !      read (*,*) line
+               !call orth(coeftable(1:nbasis, 1:ncsf), Q(1:nbasis, 1:ncsf), R(1:nbasis, 1:ncsf), nbasis*4, nbasis)
                !last two arguments: m, n
 
 
