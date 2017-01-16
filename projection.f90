@@ -665,7 +665,7 @@ module projection
                   allocate(iszerolist(ARRAY_START_LENGTH))
               endif
           endif
-          write(*, *) innum
+          write(*, '("innum = ")') innum
           do i = 1, innum
             write(*, *)
             write(*, '("=================== Applying S- ta multiple dets, now at No.", 1I5)') i 
