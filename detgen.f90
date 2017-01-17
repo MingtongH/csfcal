@@ -70,7 +70,7 @@ use, intrinsic :: iso_fortran_env, only: rk => real64
           else
               write(*, '(15I4)') eposup(1:15)
               write(*, '(15I4)') eposdn(1:15)
-              csq = 1 !1/2(1/2+1)-(-1/2)(-1/2 + 1)
+              csq = 2 !1/2(1/2+1)-(1/2)(1/2 - 1)
               coef = coef*sqrt(real(csq, rk))
               detdn = ibset(detdn, pos)
               detup = ibclr(detup, pos)

@@ -105,7 +105,7 @@ module projection
 
       subroutine initlists_fromlists(detlist, incoeflist, innum, coeflist, eposlist, iszerolist)
           !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-          !!TODO
+          !!
           !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
           integer(i16b), intent(in) :: detlist(:, :)
           integer, intent(in) :: innum
@@ -423,7 +423,7 @@ module projection
               tp = findindetlist(basislist(i, :), allbasis(1:ndets, :), ndets)
               write(*, '("findindetlist()=", 1I4)') tp
               !If not in the list, add new det
-              !! now this is only appending, may need to order dets later TODO
+              !! now this is only appending, may need to order dets later
               if(tp.eq.0) then
                   allbasis(ndets + 1, :) = basislist(i, :)
                   do j = 1, ncsf
@@ -665,7 +665,7 @@ module projection
                   allocate(iszerolist(ARRAY_START_LENGTH))
               endif
           endif
-          write(*, '("innum = ")') innum
+          write(*, '("innum = ", 1I8)') innum
           do i = 1, innum
             write(*, *)
             write(*, '("=================== Applying S- ta multiple dets, now at No.", 1I5)') i 

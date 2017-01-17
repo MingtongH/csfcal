@@ -34,7 +34,8 @@ module checkcsfs
            logical, allocatable :: iszerolist(:), iszerolist1(:)
            integer :: num, num1
 
-           write(*, *) '>>>>>>>>>>>>>>>>>>>>>>> Lsq_multiple '
+           write(*, *) ' '
+           write(*, *) '>>>>>>>>>>>>>>>>>>>>>>> Lsq_multiple >>>>>>>>>>>>>>>>>>>>>>>>>>> '
  
            !-------set intermediates (basislist1...) and output ( basislist ... ) empty
            num1 = 0
@@ -157,5 +158,9 @@ module checkcsfs
             deallocate(tpcoefs)
             deallocate(order)
 
+            do i = 1, nbasis
+                write(*, '(2B16)') inbasislist(i, 1:2)
+                write(*, *) incoeftable(i, 1:ncsf)
+            end do
        endsubroutine sortBasisCoefTable
 end module checkcsfs

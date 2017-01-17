@@ -6,7 +6,7 @@ program csfcal
             !subroutines and functions
        use detgen, only : assign_shell
        use projection, only : initlists, Proj_L, Proj_S, getallsigns, collect_csf, normalizetable, initlists_fromlists
-       use checkcsfs, only: sortBasisCoefTable, Lsq_multiple
+       use checkcsfs, only: sortBasisCoefTable, Lsq_multiple, Ssq_multiple
        use gramschmidt, only : orth
 
        implicit none
@@ -19,7 +19,7 @@ program csfcal
            integer :: totdets, minLp, maxLp, innum, num1, num, i, nbasis, ncsf, iconf,&
                & iend, istart, min2Sp, max2Sp
            integer(i16b), allocatable :: detlist(:, :), inbasis(:, :), &
-               &basislist1(:, :),basislist(:, :), allbasis(:, :)
+               &basislist1(:, :),basislist(:, :), allbasis(:, :), allbasis1(:, :)
            real(rk), allocatable :: incoefs(:), coeflist1(:), coeflist(:), coeftable(:, :), Q(:, :), R(:, :)
            integer, allocatable :: ineposes(:, :, :), eposlist1(:, :, :), eposlist(:, :, :)
            logical, allocatable :: iniszeros(:), iszerolist1(:), iszerolist(:)
@@ -68,9 +68,6 @@ program csfcal
                    call Proj_L(minLp, maxLp, Ldes, &
                    & inbasis, incoefs, ineposes, iniszeros, innum, &
                    & basislist1, coeflist1, eposlist1, iszerolist1, num1)
-                   ! PAUSE 3
-                   ! write(*,'(''paused, type [enter] to continue'')')
-                   !       read (*,*) line
 
                    call Proj_S(min2Sp, max2Sp, Sdes_t2, &
                        &basislist1, coeflist1, eposlist1, iszerolist1, num1, &
@@ -87,14 +84,11 @@ program csfcal
                      & allbasis, coeftable, nbasis, ncsf)
                enddo !for each det
 
-               call sortBasisCoefTable(basislist, coeftable, nbasis, ncsf)
+               call sortBasisCoefTable(allbasis, coeftable, nbasis, ncsf)
  
-               !PAUSE 5
-               ! write(*,'(''paused, type [enter] to continue'')')
-               !       read (*,*) line
-
 
                call normalizetable(coeftable, nbasis, ncsf)
+               
                write(*, *) nbasis, ncsf
                do i = 1, nbasis
                  write(*, *) coeftable(i, 1:ncsf)
@@ -103,29 +97,101 @@ program csfcal
                    write(*, *) 'coeftable not square'
                    exit
                endif
-               if(.not.allocated(Q)) then 
-                   allocate(Q(ARRAY_SHORT_LENGTH, ARRAY_SHORT_LENGTH))
-               endif
-               if(.not.allocated(R)) then
-                   allocate(R(ARRAY_SHORT_LENGTH, ARRAY_SHORT_LENGTH))
-               endif
+
+               !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+               !All correct up to this point
+               !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+               
+              ! if(.not.allocated(Q)) then 
+              !     allocate(Q(ARRAY_SHORT_LENGTH, ARRAY_SHORT_LENGTH))
+              ! endif
+              ! if(.not.allocated(R)) then
+              !     allocate(R(ARRAY_SHORT_LENGTH, ARRAY_SHORT_LENGTH))
+              ! endif
 
 
-               call initlists_fromlists(basislist, coeftable(1:nbasis, 1), nbasis,  incoefs, ineposes, iniszeros)
+              ! call orth(coeftable, Q, R, 8, ncsf)
+              ! do i = 1, nbasis
+              !    write(*, *) coeftable(i, 1:ncsf)
+              !  enddo
+
+!TODO Need to change a method for orth
+
+
+!!!!test_3
+!test_manual_table
+!Test the rest using results from Mathematica
+               ! coeftable(1, 2) = coeftable(2, 2)
+               ! coeftable(2, 2) = coeftable(1, 1)
+
+!!!!test_4
+!orig_table
+                do i = 1, nbasis
+                   write(*, *) coeftable(i, 1:ncsf)
+                 enddo
+
+
+               call initlists_fromlists(allbasis, coeftable(1:nbasis, 1), nbasis,  incoefs, ineposes, iniszeros)
+
+               write(*, *) '################# Apply Lsq on csf1 ########################'
+
                num1 = 0
+               innum = nbasis
 
-               call Lsq_multiple(basislist, incoefs, ineposes, iniszeros, innum, &
+               call Lsq_multiple(allbasis,  incoefs, ineposes, iniszeros, innum, &
                    &  basislist1, coeflist1, eposlist1, iszerolist1, num1)
                call getallsigns(basislist1, coeflist1, eposlist1, iszerolist1, num1)
                ncsf = 0
                nbasis = 0
                call collect_csf(basislist1, coeflist1, iszerolist1, num1, &
-                   & allbasis, coeftable, nbasis, ncsf)
-               call sortBasisCoefTable(allbasis, coeftable, nbasis, ncsf)
-                !write(*,'(''paused, type [enter] to continue'')')
-                !      read (*,*) line
-               !call orth(coeftable(1:nbasis, 1:ncsf), Q(1:nbasis, 1:ncsf), R(1:nbasis, 1:ncsf), nbasis*4, nbasis)
-               !last two arguments: m, n
+                   & allbasis1, coeftable, nbasis, ncsf)
+               call sortBasisCoefTable(allbasis1, coeftable, nbasis, ncsf)
+                num1 = 0
+                innum = nbasis
+
+                write(*, *) '################# Apply Ssq on csf1 ########################'
+                num1 = 0
+                innum = nbasis
+
+                call Ssq_multiple(allbasis,  incoefs, ineposes, iniszeros, innum, &
+                    &  basislist1, coeflist1, eposlist1, iszerolist1, num1)
+                call getallsigns(basislist1, coeflist1, eposlist1, iszerolist1, num1)
+                ncsf = 0
+                nbasis = 0
+                call collect_csf(basislist1, coeflist1, iszerolist1, num1, &
+                    & allbasis1, coeftable, nbasis, ncsf)
+                call sortBasisCoefTable(allbasis1, coeftable, nbasis, ncsf)
+
+
+                call initlists_fromlists(allbasis, coeftable(1:nbasis, 2), nbasis,  incoefs,       ineposes, iniszeros)
+
+                write(*, *) '################# Apply Lsq on csf2 ########################'
+
+ 
+                num1 = 0
+                innum = nbasis
+
+                call Lsq_multiple(allbasis, incoefs, ineposes, iniszeros, innum, &
+                    &  basislist1, coeflist1, eposlist1, iszerolist1, num1)
+                call getallsigns(basislist1, coeflist1, eposlist1, iszerolist1, num1)
+                ncsf = 0
+                nbasis = 0
+                call collect_csf(basislist1, coeflist1, iszerolist1, num1, &
+                    & allbasis1, coeftable, nbasis, ncsf)
+                call sortBasisCoefTable(allbasis1, coeftable, nbasis, ncsf) 
+
+                 write(*, *) '################# Apply Ssq on csf2 ########################'
+                 num1 = 0
+                 innum = nbasis
+ 
+                 call Ssq_multiple(allbasis,  incoefs, ineposes, iniszeros, innum, &
+                     &  basislist1, coeflist1, eposlist1, iszerolist1, num1)
+                 call getallsigns(basislist1, coeflist1, eposlist1, iszerolist1, num1)
+                 ncsf = 0
+                 nbasis = 0
+                 call collect_csf(basislist1, coeflist1, iszerolist1, num1, &
+                     & allbasis1, coeftable, nbasis, ncsf)
+                 call sortBasisCoefTable(allbasis1, coeftable, nbasis, ncsf)
 
 
            enddo !for each config
