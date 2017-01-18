@@ -194,7 +194,7 @@ module projection
               write(*, '("tail = ", 1f15.10)') tail            
               call scalar_append(tail, tpbasis, tpcoefs, tpepos, tpiszeros, tpnum, &
                   & basislist, coeflist, eposlist, iszerolist, num)
-              write(*, '("Total number of dets in basislist", 1I4)') num
+              write(*, '("Total number of dets in basislist", 1I10)') num
 
               !----------------------------tp.. <- output ( basislist, ...)
               tpnum = 0
