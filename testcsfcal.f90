@@ -197,6 +197,21 @@ program csfcal
            enddo !for each config
 
 
+           deallocate(econfigs)
+           deallocate(detlist)
+           deallocate(inbasis)
+           deallocate(basislist)
+           deallocate(basislist1)
+           deallocate(allbasis)
+           deallocate(allbasis1)
+           deallocate(incoefs)
+           deallocate(coeflist1)
+           deallocate(coeftable)
+           deallocate(ineposes)
+           deallocate(iniszeros)
+           deallocate(iszerolist1)
+           deallocate(iszerolist)
+
 
        end subroutine main
  end program csfcal
