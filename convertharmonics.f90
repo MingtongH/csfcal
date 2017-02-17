@@ -14,8 +14,7 @@ module convertharmonics
           integer(i16b), allocatable :: zbasis(:, :)
           real(rk), allocatable :: zcoeftable(:, :)
           integer :: znbasis, nrows
-          integer :: neact !TODO for testing convenience, delete later
-                     neact = 1
+          integer :: neact 
 
           znbasis = 0
           nrows = 2**neact * ynbasis
@@ -27,13 +26,14 @@ module convertharmonics
           endif
       end subroutine init_Ztable
 
-      subroutine Y2Z_det(det, zbasislist, zcoefs)
+      subroutine Y2Z_det(det, coef, allzbasislist, allzcoefs, nzbasis)
           integer(i16b), intent(in) :: det(:)
-          integer(i16b) :: zbasislist(:, :), tpup, tpdn, tpplus, tpminus
-          real(rk) :: zcoefs(:, :)
-          integer(i16b), allocatable :: singledets(:, :)
-          real(rk), allocatable :: singlecoefs(:, :)
-          integer :: pos, i, j,msign, k, nbasis0, npairnot0, nzbasis, nznot0
+          real(rk), intent(in):: coef
+          integer(i16b) ::  tpup, tpdn, tpplus, tpminus, allzbasislist(:, :)
+          real(rk) ::allzcoefs(:, :)
+          integer(i16b), allocatable :: singledets(:, :), zbasislist(:, :)
+          real(rk), allocatable :: singlecoefs(:, :), zcoefs(:, :)
+          integer :: pos, pos2, i, j,msign, k, nbasis0, npairnot0, nzbasis, nznot0
           !number of dets with m == 0, or m!= 0
           !zbasislist and zcoefs have to be allocated already
          
@@ -54,16 +54,29 @@ module convertharmonics
           write(*, *) 'neact = ', neact
           do while(tpup.ne.0)
             pos = trailz(tpup)
-            msign = sign_m(pos, tpplus, tpminus)
+            msign = sign_m(pos, pos2, tpplus, tpminus)
             
             if(msign.eq.0) then
                 k = k + 1
                 singledets(k, 1) = tpplus !spin up
                 singledets(k, 2) = 0_i16b
-                singlecoefs(k, 1:2) = (/1., 0./)
+                singlecoefs(k, 1:2) = (/sqrt(2.), 0./)
                 write(*, *)  'm = 0   This index ( 2*neact + ) = ', k
                 write(*, '(2B16)') singledets(k, 1:2)
                 write(*, *) singlecoefs(k, 1:2)
+                tpup = ibclr(tpup, pos)
+
+
+            elseif(BTEST(tpup, pos2)) then !msign not 0 and -m is set
+                k = k + 1
+                singledets(k, 1) = ior(tpplus, tpminus) 
+                singledets(k, 2) = 0_i16b
+                singlecoefs(k, 1:2) = (/0., -2./) ! -2i
+                write(*, *) 'm, -m together This index ( 2*neact + ) = ', k
+                write(*, '(2B16)') singledets(k, 1:2)
+                write(*, *) singlecoefs(k, 1:2)
+                tpup = ibclr(tpup, pos)
+                tpup = ibclr(tpup, pos2)
             else
 
                 i = i + 1
@@ -77,22 +90,38 @@ module convertharmonics
                 write(*, *) 'm != 0', '|m| index = ', i, '-|m| index = ', j
                 write(*, '(4B16)') singledets(i, 1:2), singledets(j, 1:2)
                 write(*, *) singlecoefs(i, 1:2), singlecoefs(j, 1:2)
+                tpup = ibclr(tpup, pos)
+
             endif
-            tpup = ibclr(tpup, pos)
+
           enddo
            
           do while(tpdn.ne.0)
              pos = trailz(tpdn)
-             msign = sign_m(pos, tpplus, tpminus)
+             msign = sign_m(pos, pos2, tpplus, tpminus)
  
              if(msign.eq.0) then
                  k = k + 1
                  singledets(k, 2) = tpplus !spin dn
                  singledets(k, 1) = 0_i16b
-                 singlecoefs(k, 1:2) = (/1., 0./)
+                 singlecoefs(k, 1:2) = (/sqrt(2.), 0./)
                  write(*, *)  'm = 0   This index ( 2*neact + ) = ', k
                  write(*, '(2B16)') singledets(k, 1:2) 
                  write(*, *) singlecoefs(k, 1:2)
+                 tpdn = ibclr(tpdn, pos)
+               
+
+            elseif(BTEST(tpdn, pos2)) then !msign not 0 and -m is set
+                k = k + 1
+                singledets(k, 2) = ior(tpplus, tpminus) 
+                singledets(k, 1) = 0_i16b
+                singlecoefs(k, 1:2) = (/0., -2./) ! -2i
+                write(*, *) 'm, -m together This index ( 2*neact + ) = ', k
+                write(*, '(2B16)') singledets(k, 1:2)
+                write(*, *) singlecoefs(k, 1:2)
+                tpdn = ibclr(tpdn, pos)
+                tpdn = ibclr(tpdn, pos2)
+ 
 
              else
  
@@ -108,17 +137,19 @@ module convertharmonics
                  write(*, *) 'm != 0', '|m| index = ', i, '-|m| index = ', j
                  write(*, '(4B16)') singledets(i, 1:2), singledets(j, 1:2)
                  write(*, *) singlecoefs(i, 1:2), singlecoefs(j, 1:2)
-
+                 tpdn = ibclr(tpdn, pos)
+     
              endif
-             tpdn = ibclr(tpdn, pos)
           enddo
-          nbasis0 = k - 2*neact !number of dets that m = 0
+          nbasis0 = k - 2*neact !number of dets that are real
           npairnot0 = i ! number of |m|, -|m| pairs
-          
+          nznot0 = 2**npairnot0
+          !nadd = max(1, nznot0)   ! number of zdet pairs to generate
+
+          allocate(zbasislist(nznot0, 2))
+          allocate(zcoefs(nznot0, 2))
           !Now fill zbasislist and zcoefs
-          nzbasis = 0  !TODO put nzbasis in the input, change all indices to i + nzbasis
           if(npairnot0.gt.0) then
-              nznot0 = 2**npairnot0 
               do i = 1, nznot0/2
                   zbasislist(i, 1:2) = singledets(1, 1:2)
                   zcoefs(i, 1:2) = singlecoefs(1, 1:2)
@@ -126,7 +157,6 @@ module convertharmonics
                   zbasislist(j, 1:2) = singledets(neact + 1, 1:2) 
                   zcoefs(j, 1:2) = singlecoefs(neact + 1, 1:2)
               enddo
-              ! will do nzbasis later nzbasis = nzbasis + nznot0
 
               do k = 2, npairnot0
                   i = 0
@@ -134,17 +164,37 @@ module convertharmonics
                       !fill in det plus
                       do j = 1, 2**(npairnot0 - k)
                             i = i + 1
+                            call product_cmplx(zcoefs(i, 1:2), singlecoefs(k, 1:2), zcoefs(i, 1:2))
+                            !if the det to be combined is smaller, there will be a minus sign 
+                            if(zbasislist(i, 1).gt.singledets(k, 1)) then
+                                zcoefs(i, 1) = - zcoefs(i, 1)
+                                zcoefs(i, 2) = - zcoefs(i, 2)
+                            endif
+                            if(zbasislist(i, 2).gt.singledets(k, 2)) then
+                                zcoefs(i, 1) = -zcoefs(i, 1) 
+                                zcoefs(i, 2) = -zcoefs(i, 1) 
+                            endif
                             zbasislist(i, 1) = ior(zbasislist(i, 1), singledets(k, 1)) 
                             zbasislist(i, 2) = ior(zbasislist(i, 2), singledets(k, 2))
-                            call product_cmplx(zcoefs(i, 1:2), singlecoefs(k, 1:2), zcoefs(i, 1:2))
+ 
                       end do
                       !fill in det minus
                       do j = 1, 2**(npairnot0 - k)
                             i = i + 1
-                            zbasislist(i, 1) = ior(zbasislist(i, 1), singledets(k+neact, 1))
-                            zbasislist(i, 2) = ior(zbasislist(i, 2), singledets(k+neact, 2))
                             call product_cmplx(zcoefs(i, 1:2), singlecoefs(k+neact, 1:2), &
                                 & zcoefs(i, 1:2))
+                            if(zbasislist(i, 1).gt.singledets(k + neact, 1)) then
+                                zcoefs(i, 1) = - zcoefs(i, 1)
+                                zcoefs(i, 2) = - zcoefs(i, 2)
+                            endif
+                            if(zbasislist(i, 2).gt.singledets(k, 2)) then
+                                zcoefs(i, 1) = -zcoefs(i, 1) 
+                                zcoefs(i, 2) = -zcoefs(i, 1) 
+                            endif
+ 
+                            zbasislist(i, 1) = ior(zbasislist(i, 1), singledets(k+neact, 1))
+                            zbasislist(i, 2) = ior(zbasislist(i, 2), singledets(k+neact, 2))
+ 
                        enddo
                    enddo!end while
                    write(*, *) 'For k =', k, 'last i =', i
@@ -155,27 +205,33 @@ module convertharmonics
                       do j = 1, nbasis0
                           zbasislist(i, 1) = ior(zbasislist(i, 1), singledets(j + neact*2, 1))
                           zbasislist(i, 2) = ior(zbasislist(i, 2), singledets(j + neact*2, 2))
+                          call product_cmplx(zcoefs(i, 1:2), singlecoefs(j+neact*2, 1:2), &
+                                & zcoefs(i, 1:2))
+ 
                       enddo
                   enddo
               endif
 
-              nzbasis = nzbasis + nznot0
               ! end of if npairnot0 > 0
           else if(nbasis0.ne.0) then
-              ! npairnot0 = 0 all m = 0 
+              ! npairnot0 = 0 all m = 0, or m, -m together 
               ! put all original ydet into zbasis
-              nzbasis = nzbasis + 1
-              zbasislist(nzbasis, 1:2) = det(1:2)
-              zcoefs(nzbasis, 1:2) = (/1., 0./)
+              zbasislist(1, 1:2) = det(1:2)
+              zcoefs(1, 1:2) = (/1., 0./)
+              do i = 1, nbasis0
+                  call product_cmplx(zcoefs(1, 1:2), singlecoefs(i + neact*2, 1:2), zcoefs(1, 1:2))
+              enddo
           endif
     
 
 
           write(*, *) 'Final Z zbasislist, zcoefs for this csf'
-          do i = 1, nzbasis
+          do i = 1, nznot0
               write(*, '(2B16)') zbasislist(i, 1:2)
               write(*, *) zcoefs(i, 1), ' + i', zcoefs(i, 2)
           enddo
+          deallocate(zbasislist)
+          deallocate(zcoefs)
           deallocate(singlecoefs)
           deallocate(singledets)
       end subroutine Y2Z_det
@@ -190,7 +246,7 @@ module convertharmonics
           nout(2) = n1(1)*n2(2)+ n1(2)*n2(1)
       end subroutine product_cmplx
           
-      integer function sign_m(pos, detplus, detminus)
+      integer function sign_m(pos, pos2, detplus, detminus)
           ! for a single det not a pair
           integer, intent(in) :: pos
           integer(i16b) :: detplus, detminus
@@ -200,6 +256,7 @@ module convertharmonics
               sign_m = 0
               detplus = ibset(0_i16b, pos)
               detminus = 0_i16b
+              pos2 = pos
           elseif(m.gt.0) then
               sign_m = 1
               detplus = ibset(0_i16b, pos)
@@ -211,8 +268,8 @@ module convertharmonics
               pos2 = locate_det(n, l, -m)
               detplus = ibset(0_i16b, pos2)
           endif
-          write(*, *) 'function sign_m : pos, detplus, detminus'
-          write(*, '(1I4, 2b16)') pos, detplus, detminus
+          write(*, *) 'function sign_m : pos, pos2, detplus, detminus'
+          write(*, '(2I4, 2b16)') pos, pos2, detplus, detminus
       end function sign_m
 
 
