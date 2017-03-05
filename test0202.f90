@@ -7,8 +7,8 @@ program test0202
       real(rk), allocatable :: zcoefs(:, :)
       real(rk) :: zoefs
       integer :: pos
-      allocate(zbasislist(10, 2))
-      allocate(zcoefs(10, 2))
+      !allocate(zbasislist(10, 2))
+      !allocate(zcoefs(10, 2))
 
       !pos =13
       !write(*, *) sign_m(pos, detplus, detminus)

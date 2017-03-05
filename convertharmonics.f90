@@ -26,11 +26,16 @@ module convertharmonics
           endif
       end subroutine init_Ztable
 
-      subroutine Y2Z_det(det, coef, allzbasislist, allzcoefs, nzbasis)
+      !subroutine Y2Z_det(det, nshell_1config, econfigs, coef, allzbasislist, allzcoefs, nzbasis)
+      !    integer(i16b), intent(in) :: det(:)
+      !    integer, intent(in) :: nshell_1config, econfigs(:, :)
+      !    real(rk), intent(in):: coef
+      !    integer(i16b)
+
+      subroutine Y2Z_det(det, coef, zbasislist, zcoefs, nzbasis)
           integer(i16b), intent(in) :: det(:)
           real(rk), intent(in):: coef
-          integer(i16b) ::  tpup, tpdn, tpplus, tpminus, allzbasislist(:, :)
-          real(rk) ::allzcoefs(:, :)
+          integer(i16b) ::  tpup, tpdn, tpplus, tpminus
           integer(i16b), allocatable :: singledets(:, :), zbasislist(:, :)
           real(rk), allocatable :: singlecoefs(:, :), zcoefs(:, :)
           integer :: pos, pos2, i, j,msign, k, nbasis0, npairnot0, nzbasis, nznot0
@@ -230,8 +235,6 @@ module convertharmonics
               write(*, '(2B16)') zbasislist(i, 1:2)
               write(*, *) zcoefs(i, 1), ' + i', zcoefs(i, 2)
           enddo
-          deallocate(zbasislist)
-          deallocate(zcoefs)
           deallocate(singlecoefs)
           deallocate(singledets)
       end subroutine Y2Z_det
