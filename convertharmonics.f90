@@ -32,6 +32,14 @@ module convertharmonics
       !    real(rk), intent(in):: coef
       !    integer(i16b)
 
+      integer function sign_ordets(ldet, rdet)
+          integer(i16b), intent(in) :: ldet(:), rdet(:)
+          !In later use, as a convention, should put det already process at rdet, 
+          !but new single det to be incorporated at ldet
+          sign_ordets = 1 !TODO
+      end function sign_ordets
+      !TODO subroutine Y2Z_det not naive - implement algo on notebook
+
       subroutine Y2Z_det(det, coef, zbasislist, zcoefs, nzbasis)
           integer(i16b), intent(in) :: det(:)
           real(rk), intent(in):: coef
