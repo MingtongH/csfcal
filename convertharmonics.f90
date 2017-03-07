@@ -33,10 +33,34 @@ module convertharmonics
       !    integer(i16b)
 
       integer function sign_ordets(ldet, rdet)
-          integer(i16b), intent(in) :: ldet(:), rdet(:)
+          integer(i16b), intent(in) :: ldet, rdet !single det same spin, not a pair
+          !ldet is the newcomer that should be bigger, to be inserted to rdet from the left side
+          integer :: ltail, rhead
           !In later use, as a convention, should put det already process at rdet, 
           !but new single det to be incorporated at ldet
-          sign_ordets = 1 !TODO
+          integer(i16b) ::tpl, subbit
+
+          if(iand(ldet, rdet).ne.0) then 
+              sign_ordets = 0
+          else
+              !position of the leading 1 in rdet
+              rhead = leadz(0_i16b) - leadz(rdet) - 1 !position in bit starts from 0
+              write(*, *) "rhead pos = ", rhead
+              sign_ordets = 1
+              tpl = ldet
+
+              ltail = trailz(tpl)
+              do while(ltail.lt.rhead.AND.tpl.ne.0)
+                  subbit = ibits(rdet, ltail, rhead - ltail + 1)
+                  write(*, '(1B16)') subbit
+                  if(poppar(subbit).eq.1) then 
+                      sign_ordets = - sign_ordets
+                  endif
+                  tpl = ibclr(tpl, ltail)
+                  ltail = trailz(tpl)
+              enddo
+          endif
+
       end function sign_ordets
       !TODO subroutine Y2Z_det not naive - implement algo on notebook
 
