@@ -4,7 +4,8 @@ module convertharmonics
       !Step 2: calculate coefs for each csf
       !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
  use, intrinsic :: iso_fortran_env, only: rk => real64
- use prep, only: i16b!, neact TODO for testing purposed this is not imported, will need to afterwards
+ use prep, only: i16b, ARRAY_START_LENGTljd
+ !, neact TODO for testing purposed this is not imported, will need to afterwards
  use detgen, only: locate_det, delocate
     implicit none
     contains
@@ -62,9 +63,93 @@ module convertharmonics
           endif
 
       end function sign_ordets
-      !TODO subroutine Y2Z_det not naive - implement algo on notebook
 
-      subroutine Y2Z_det(det, coef, zbasislist, zcoefs, nzbasis)
+      !TODO subroutine Y2Z_det not naive - implement algo on notebook
+      subroutine Y2Z_singledet(det, coef, zbasislist, zcoefs, nzbasis)
+          integer(i16b), intent(in) :: det(:)
+          real(rk), intent(in) :: coef
+          integer(i16b) :: zbasislist(:, :) ! Append to this list
+          real(rk) :: zcoefs(:, :) !two columnsn real, imag
+          integer :: nzbasis ! number of rows already in zbasislist
+          integer(i16b), allocatable :: singledets(:, :) !four columns up dn for |m|, -|m| 
+                                                         !             det = 0, m = 0
+          real(rk), allocatable :: singlecoefs(:, :) ! four columns real, imag for each det
+          integer(i16b) :: tpup, tpdn, tpplus, tpminus
+          integer :: nelec, pos, pos2, msign, i, istart, tpsign
+
+           write(*, *) 'Entering Y2Z_singledet, input det pair is '
+           write(*, '(2B16)') det(1:2)
+           tpup = det(1)
+           tpdn = det(2)
+           allocate(singledets(nelec, 4))
+           allocate(singlecoefs(nelec, 4))
+           write(*, *) 'Generating single electron det list'
+
+           i = 1
+           !generate single dets from det up
+           do while(tpup.ne.0)
+               pos = trailz(tpup)
+               msign = sign_m(pos, pos2, tpplus, tpminus)
+               singledets(i, 1:4) = (/tpplus, 0_i16b, tpminus, 0_i16b/)
+               singlecoefs(i, 1:4) = (/1._rk, 0._rk, 0._rk, msign*1._rk/)
+               write(*, '(4B16)') singledets(i, 1:4)
+               write(*, *) singlecoefs(i, 1:4)
+               i = i + 1
+               tpup = ibclr(tpup, pos) !not labeling m, -m coexistance, may need to later
+           end do
+           do while(tpdn.ne.0)
+               pos = trailz(tpdn)
+               msign = sign_m(pos, pos2, tpplus, tpminus)
+               singledets(i, 1:4) = (/ 0_i16b,tpplus, 0_i16b, tpminus/)
+               singlecoefs(i, 1:4) = (/1._rk, 0._rk, 0._rk, msign*1._rk/)
+               write(*, '(4B16)') singledets(i, 1:4)
+               write(*, *) singlecoefs(i, 1:4)
+               i = i + 1
+               tpdn = ibclr(tpdn, pos) !not labeling m, -m coexistance, may need to later
+           end do
+           !now i is index for next row
+           nelec = i - 1
+           write(*, *) 'total number of electrons = ', nelec
+
+           !code above this line tested, all correct 
+           if(.not.allocated(zbasislist)) then
+               allocate(zbasislist(ARRAY_START_LENGTH, 2))
+           endif
+
+           if(.not.allocated(zbasislist)) then
+               allocate(zcoefs(ARRAY_START_LENGTH, 2))
+               nzbasis = 0
+           endif
+           istart = nzbasis + 1
+           zbasislist(istart, 1:2) = (/0_i16b, 0_i16b/)
+           zcoefs(istart, 1:2) = (/1._rk, 0._rk/)
+           iend = istart !range to do ior
+           i = istart !
+           do j = 1, nelec ! index for processing singledets
+               do i = istart, iend
+                     !case m == 0 
+                     if(singledets(j, 3).eq.0.AND.singledets(j, 4).eq.0) then
+                         zbasislist(i, 1) = ior(singledets(j, 1), zbasislist(i, 1))
+                         zbasislist(i, 2) = ior(singledets(j, 2), zbasislist(i, 2))
+                         tpsign = sign_ordets(singledets(j, 1), zbasislist(i, 1)) * &
+                             &sign_ordets(singledets(j, 2), zbasislist(i, 2))
+                         call product_cmplx(singlecoefs(j, 1:2), zbasislist(i, 1:2), &
+                             &zbasislist(i, 1:2))
+                     elseif !TODO case det j not already set
+                            !TODO case det j already set
+                     endif
+
+               enddo
+           enddo
+           deallocate(singlecoefs)
+           deallocate(singledets)
+
+       end subroutine Y2Z_singledet
+
+
+
+
+      subroutine Y2Z_det_incomplete(det, coef, zbasislist, zcoefs, nzbasis)
           integer(i16b), intent(in) :: det(:)
           real(rk), intent(in):: coef
           integer(i16b) ::  tpup, tpdn, tpplus, tpminus
@@ -269,7 +354,7 @@ module convertharmonics
           enddo
           deallocate(singlecoefs)
           deallocate(singledets)
-      end subroutine Y2Z_det
+      end subroutine Y2Z_det_incomplete
 
 
       subroutine product_cmplx(c1, c2, nout)

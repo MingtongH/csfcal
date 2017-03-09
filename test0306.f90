@@ -25,11 +25,18 @@ program test0202
       !2e tests
       !indet(1:2) = (/3_i16b, 0_i16b/)!Correct all m=0  
       !indet(1:2) = (/0_i16b, 3_i16b/)! Correct
-      indet(1:2) = (/43_i16b, 0_i16b/)
+      !indet(1:2) = (/43_i16b, 7_i16b/)
       !indet(1:2) = (/0_i16b, 20_i16b/)
       !call Y2Z_det(indet, 1._rk,  zbasislist, zcoefs, 0)
-      write(*, *) sign_ordets(indet(1), indet(2))
+      !write(*, *) sign_ordets(indet(1), indet(2))
+      ! indet(1:2) = (/43_i16b, 7_i16b/)
+      
 
+      !test0309
+      ! indet(1:2) = (/43_i16b, 7_i16b/)
+      indet(1:2) = (/0_i16b, 31_i16b/)
+       
+      call Y2Z_singledet(indet, 1._rk, zbasislist, zcoefs, 0) 
       !write(*, *) popcnt(indet(1)), popcnt(indet(2)), popcnt(13_i16b)
       !write(*, *) poppar(indet(1)), poppar(indet(2)), poppar(13_i16b)
 
