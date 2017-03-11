@@ -2,11 +2,12 @@ program test0202
       use convertharmonics
       implicit none
 
-      integer(i16b) :: indet(2), detplus, detminus
-      integer(i16b), allocatable :: zbasislist(:, :)
+      integer(i16b) ::detplus, detminus
+      integer(i16b), allocatable :: zbasislist(:, :), indet(:)
       real(rk), allocatable :: zcoefs(:, :)
       real(rk) :: zoefs
-      integer :: pos
+      integer :: pos, nzbasis
+      allocate(indet(2))
       !allocate(zbasislist(10, 2))
       !allocate(zcoefs(10, 2))
 
@@ -35,12 +36,12 @@ program test0202
       !test0309
       ! indet(1:2) = (/43_i16b, 7_i16b/)
       indet(1:2) = (/0_i16b, 31_i16b/)
-       
-      call Y2Z_singledet(indet, 1._rk, zbasislist, zcoefs, 0) 
+      nzbasis = 0 
+      call Y2Z_singledet(indet, 1._rk, zbasislist, zcoefs, nzbasis) 
       !write(*, *) popcnt(indet(1)), popcnt(indet(2)), popcnt(13_i16b)
       !write(*, *) poppar(indet(1)), poppar(indet(2)), poppar(13_i16b)
 
-     ! deallocate(zbasislist)
-     ! deallocate(zcoefs)
+      deallocate(zbasislist)
+      deallocate(zcoefs)
 
 end program test0202
