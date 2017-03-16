@@ -4,7 +4,7 @@ module convertharmonics
       !Step 2: calculate coefs for each csf
       !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
  use, intrinsic :: iso_fortran_env, only: rk => real64
- use prep, only: i16b, ARRAY_START_LENGTH
+ use prep, only: i16b, ARRAY_SHORT_LENGTH
  !, neact TODO for testing purposed this is not imported, will need to afterwards
  use detgen, only: locate_det, delocate
     implicit none
@@ -41,6 +41,7 @@ module convertharmonics
           !but new single det to be incorporated at ldet
           integer(i16b) ::tpl, subbit
 
+          write(*, '("Entering sign_ordets, inputs", 2B16)') ldet, rdet
           if(iand(ldet, rdet).ne.0) then 
               sign_ordets = 0
           else
@@ -62,6 +63,7 @@ module convertharmonics
               enddo
           endif
 
+          write(*, '("sign_ordets = ", 1I6)') sign_ordets
       end function sign_ordets
 
       subroutine Y2Z_singledet(det, coef, zbasislist, zcoefs, nzbasis)
@@ -74,34 +76,53 @@ module convertharmonics
                                                          !             det = 0, m = 0
           real(rk), allocatable :: singlecoefs(:, :) ! four columns real, imag for each det
           integer(i16b) :: tpup, tpdn, tpplus, tpminus
-          integer :: nelec, pos, pos2, msign, i, istart, tpsign, j, k, iend
+          integer :: nelec, pos, pos2, msign, i, istart, tpsign, j, k, iend, tpspin, nsingleup
 
-           write(*, *) 'Entering Y2Z_singledet, input det pair is '
+           write(*, *) ' '
+           write(*, *) '******************* Entering Y2Z_singledet *****************'
+           write(*, *) 'input det pair is'
            write(*, '(2B16)') det(1:2)
            tpup = det(1)
            tpdn = det(2)
+           nelec = popcnt(tpup) + popcnt(tpdn)
+           write(*, *) 'total number of electrons = ', nelec
+
+
            allocate(singledets(nelec, 4))
            allocate(singlecoefs(nelec, 4))
-           write(*, *) 'Generating single electron det list'
+           write(*, *) '=================Generating single electron det list================='
 
            i = 1
-           !generate single dets from det up
+           write(*, *) '------------------Generate single dets from det up-------------------'
            do while(tpup.ne.0)
                pos = trailz(tpup)
-               msign = sign_m(pos, pos2, tpplus, tpminus)
-               singledets(i, 1:4) = (/tpplus, 0_i16b, tpminus, 0_i16b/)
-               singlecoefs(i, 1:4) = (/1._rk, 0._rk, 0._rk, msign*1._rk/)
+               call sign_m(pos, pos2, tpplus, tpminus, msign)
+               !singledets(i, 1:4) = (/tpplus, 0_i16b, tpminus, 0_i16b/)
+               !singlecoefs(i, 1:4) = (/1._rk, 0._rk, 0._rk, msign*1._rk/)
+               singledets(i, 1) = tpplus
+               singledets(i, 2) = 0_i16b
+               singledets(i, 3) = tpminus
+               singledets(i, 4) = 0_i16b
+               singlecoefs(i, 1:3) = (/1._rk, 0._rk, 0._rk/)
+               singlecoefs(i, 4) = msign*1._rk
                write(*, '(4B16)') singledets(i, 1:4)
                write(*, *) singlecoefs(i, 1:4)
                i = i + 1
                tpup = ibclr(tpup, pos) !not labeling m, -m coexistance, may need to later
            end do
-           !generate single dets for det dn
+           nsingleup = i - 1
+           write(*, *) '------------------generate single dets for det dn---------------------'
            do while(tpdn.ne.0)
                pos = trailz(tpdn)
-               msign = sign_m(pos, pos2, tpplus, tpminus)
-               singledets(i, 1:4) = (/ 0_i16b,tpplus, 0_i16b, tpminus/)
-               singlecoefs(i, 1:4) = (/1._rk, 0._rk, 0._rk, msign*1._rk/)
+               call sign_m(pos, pos2, tpplus, tpminus, msign)
+               !singledets(i, 1:4) = (/ 0_i16b,tpplus, 0_i16b, tpminus/)
+               !singlecoefs(i, 1:4) = (/1._rk, 0._rk, 0._rk, msign*1._rk/)
+               singledets(i, 1) = 0_i16b
+               singledets(i, 2) = tpplus
+               singledets(i, 3) = 0_i16b
+               singledets(i, 4) = tpminus
+               singlecoefs(i, 1:3) = (/1._rk, 0._rk, 0._rk/)
+               singlecoefs(i, 4) = msign*1._rk
                write(*, '(4B16)') singledets(i, 1:4)
                write(*, *) singlecoefs(i, 1:4)
                i = i + 1
@@ -109,18 +130,16 @@ module convertharmonics
            end do
            !now i is index for next row
            nelec = i - 1
-           write(*, *) 'total number of electrons = ', nelec
+           write(*, *) 'Confirm total number of electrons = ', nelec
 
            !code above this line tested, all correct 
            if(.not.allocated(zbasislist)) then
-               !allocate(zbasislist(ARRAY_START_LENGTH, 2))
-               allocate(zbasislist(1000, 2))
+               allocate(zbasislist(ARRAY_SHORT_LENGTH, 2))
                write(*, *) 'allocate zbasislist'
            endif
 
            if(.not.allocated(zcoefs)) then
-               !allocate(zcoefs(ARRAY_START_LENGTH, 2))
-               allocate(zcoefs(1000, 2))
+               allocate(zcoefs(ARRAY_SHORT_LENGTH, 2))
                nzbasis = 0
                write(*, *) 'allocate zcoefs'
            endif
@@ -130,38 +149,73 @@ module convertharmonics
            iend = istart !range to do ior
            i = istart !
 
-           write(*, *) 'At the start of second half======================='
-           write(*, *) 'nzbasis =', nzbasis, 'istart=', istart, 'iend=', iend
+           write(*, *) '======================= Generate Z basislist ============================'
            do j = 1, nelec ! index for processing singledets
             
-               write(*, *) 'Now at j = in the do loop ', j
-               if(j.eq.1) then 
-                   zbasislist(istart, 1) = singledets(j, 1)
-                   zbasislist(istart, 2) = singledets(j, 2)
-                   zcoefs(istart, 1) = singlecoefs(j, 1)
-                   zcoefs(istart, 2) = singlecoefs(j, 2)
-                   nzbasis = nzbasis + 1
-                   write(*, *) 'j = 1 directly copy det and coef *******************************'
-                   cycle
+               !write(*, *) 'Now in the  do loop, j = ', j
+               !write(*, *) 'nzbasis =', nzbasis, 'istart=', istart, 'iend=', iend
+               !if(j.eq.1) then 
+                !   zbasislist(istart, 1) = singledets(j, 1)
+                !   zbasislist(istart, 2) = singledets(j, 2)
+                !   zcoefs(istart, 1) = singlecoefs(j, 1)
+                !   zcoefs(istart, 2) = singlecoefs(j, 2)
+                !   nzbasis = nzbasis + 1
+                !   write(*, *) 'j = 1 directly copy det and coef -------------------------------'
+                !   write(*, '(2B16)') zbasislist(i, 1:2)
+                !   write(*, *) zcoefs(i, 1:2)
+                 !  cycle
+              ! endif
+              
+
+               write(*, *) 'j = ', j, '------------------------------------------------------'
+               if(j.le.nsingleup) then 
+                   tpspin = 1
+               else
+                   tpspin = 2
                endif
-            !case m == 0 
-            !=====================================================================================
-               write(*, *) 'j = ', j, '***********************************************'
+               write(*, *) 'tpspin =', tpspin
+               !case m == 0  
+              !=====================================================================================
+                            
                if(singledets(j, 3).eq.0.AND.singledets(j, 4).eq.0) then
-                      write(*, *) 'det m = 0 ---------------------------------------'
+
+                      write(*, *) '>>>> det m = 0'
+                      if(j.eq.1) then 
+                           zbasislist(istart, 1) = singledets(j, 1)
+                           zbasislist(istart, 2) = singledets(j, 2)
+                           zcoefs(istart, 1) = singlecoefs(j, 1)
+                           zcoefs(istart, 2) = singlecoefs(j, 2)
+                           nzbasis = nzbasis + 1
+                           !iend doesn't change still 1, nzbasis 0 to 1
+                           write(*, *) 'j = 1 directly copy det &
+                               & and coef '
+                           write(*, '(2B16)') zbasislist(istart, 1:2)
+                           write(*, *) zcoefs(istart, 1:2)
+   
+                           cycle
+                      endif
+           
+
+                      write(*, *) 'Directly ior existing dets, coefs x 1 not to be changed'
                       do i = istart, iend
                          write(*, *) 'processing det No', i, 'in the appended list'
-                         zbasislist(i, 1) = ior(singledets(j, 1), zbasislist(i, 1))
-                         zbasislist(i, 2) = ior(singledets(j, 2), zbasislist(i, 2))
-                         call product_cmplx(singlecoefs(j, 1:2), zcoefs(i, 1:2), &
-                             &zcoefs(i, 1:2))
-                         tpsign = sign_ordets(singledets(j, 1), zbasislist(i, 1)) * &
-                             &sign_ordets(singledets(j, 2), zbasislist(i, 2))
-                         write(*, *) 'sign = ', tpsign
+                         tpsign = sign_ordets(singledets(j, tpspin), zbasislist(i, tpspin))
+                         zbasislist(i, tpspin) = ior(singledets(j, tpspin), zbasislist(i, tpspin))
+                         !call product_cmplx(singlecoefs(j, 1:2), zcoefs(i, 1:2), &
+                         !    &zcoefs(i, 1:2))
                          zcoefs(i, 1) = tpsign * zcoefs(i, 1)
                          zcoefs(i, 2) = tpsign * zcoefs(i, 2)
+                         write(*, '(2B16)') zbasislist(i, 1:2)
+                         write(*, *) zcoefs(i, 1:2)
+
                       enddo
                       !iend doesn't change, nzbasis doesn't change
+                      write(*, *) ' '
+                      write(*, *) 'Processed dets number', istart, iend
+                      do i = istart, iend
+                            write(*, '(2B16)') zbasislist(i, 1:2)
+                            write(*, *) zcoefs(i, 1:2)
+                      enddo
 
                 !Note: for case det j already set, because the order of process, &
                 !the plus det is always on top, so first det in zbasislist is always m>=0
@@ -169,25 +223,45 @@ module convertharmonics
             !cases m!=0
             !====================================================================================
                 else 
-                    write(*, *) 'det m!=0 ---------------------------------------------'
-                    tpsign = sign_ordets(singledets(j, 1), zbasislist(istart, 1)) * &
-                        &sign_ordets(singledets(j, 2), zbasislist(istart, 2))
+                    write(*, *) '>>>> det m!=0'
+                    if(j.eq.1) then 
+                           zbasislist(istart, 1:2) = singledets(j, 1:2)
+                           zbasislist(istart+1, 1:2) = singledets(j, 3:4)
+                           zcoefs(istart, 1:2) = singlecoefs(j, 1:2)
+                           zcoefs(istart+1, 1:2) = singlecoefs(j, 3:4)
+                           iend = istart + 1
+                           nzbasis = iend
+                           write(*, *) 'j = 1 directly copy  2 dets &
+                               & and coefs '
+                           write(*, *) 'Added dets number', istart, iend
+                            do i = istart, iend
+                              write(*, '(2B16)') zbasislist(i, 1:2)
+                              write(*, *) zcoefs(i, 1:2)
+                            enddo
+                           cycle
+                      endif
+           
+
+          
+                    tpsign = sign_ordets(singledets(j, tpspin), zbasislist(istart, tpspin))
+
                     !----------------------------------------------------------------------
                     !bit already set, m, -m coexist
+                         
                     if(tpsign.eq.0) then
                           write(*, *) 'm, -m coexist has been previously set-----------------'
                           do i = istart, iend
-                              tpsign =  sign_ordets(singledets(j, 1), zbasislist(i, 1)) * &
-                                &sign_ordets(singledets(j, 2), zbasislist(i, 2))
-                              
+                              !tpsign =  sign_ordets(singledets(j, 1), zbasislist(i, 1)) * &
+                              !  &sign_ordets(singledets(j, 2), zbasislist(i, 2))
+                              tpsign = sign_ordets(singledets(j, tpspin), zbasislist(i, tpspin))
 
                               if(tpsign.eq.0) then !or -|m|
+                                  tpsign = sign_ordets(singledets(j, 2+tpspin), &
+                                      &zbasislist(i, tpspin))
                                   zbasislist(i, 1) = ior(singledets(j, 3), zbasislist(i, 1))
                                   zbasislist(i, 2) = ior(singledets(j, 4), zbasislist(i, 2))
                                   call product_cmplx(singlecoefs(j, 3:4), zcoefs(i, 1:2), &
                                     &zcoefs(i, 1:2))
-                                  tpsign = sign_ordets(singledets(j, 3), zbasislist(i, 1)) * &
-                                     &sign_ordets(singledets(j, 4), zbasislist(i, 2))
                                   zcoefs(i, 1) = tpsign * zcoefs(i, 1)
                                   zcoefs(i, 2) = tpsign * zcoefs(i, 2)
 
@@ -201,9 +275,20 @@ module convertharmonics
                               endif
 
                               write(*, *) 'processed det No', i, 'in the appended list'
+                              write(*, '(2B16)') zbasislist(i, 1:2)
+                              write(*, *) zcoefs(i, 1:2)
+
                           enddo
                           !idend, nzbasis unchanged
-                          
+                          write(*, *) ' '
+                          write(*, *) 'Processed dets number', istart, iend
+                          do i = istart, iend
+                            write(*, '(2B16)') zbasislist(i, 1:2)
+                            write(*, *) zcoefs(i, 1:2)
+                          enddo
+
+
+
 
                     !--------------------------------------------------------------------------
                     else !bit not set, copy all previous, or seperately
@@ -213,29 +298,43 @@ module convertharmonics
                             zbasislist(k, 1:2) = zbasislist(i, 1:2)
                             zcoefs(k, 1:2) = zcoefs(i, 1:2)
 
+                            tpsign = sign_ordets(singledets(j, tpspin), zbasislist(i, tpspin))
                             zbasislist(i, 1) = ior(singledets(j, 1), zbasislist(i, 1))
                             zbasislist(i, 2) = ior(singledets(j, 2) , zbasislist(i, 2))
                             call product_cmplx(singlecoefs(j, 1:2), zcoefs(i, 1:2), &
                                 &zcoefs(i, 1:2))
-                            tpsign = sign_ordets(singledets(j,1), zbasislist(i, 1)) * &
-                                &sign_ordets(singledets(j, 2), zbasislist(i, 2))
+                            write(*, *) zcoefs(i, 1:2)
                             zcoefs(i, 1) = tpsign * zcoefs(i, 1)
                             zcoefs(i, 2) = tpsign * zcoefs(i, 2)
+                            write(*, *) zcoefs(i, 1:2)
 
+                            tpsign = sign_ordets(singledets(j, 2 + tpspin), zbasislist(k, tpspin))
                             zbasislist(k, 1) = ior(singledets(j, 3), zbasislist(k, 1))
                             zbasislist(k, 2) = ior(singledets(j, 4), zbasislist(k, 2))
                             call product_cmplx(singlecoefs(j, 3:4), zcoefs(k, 1:2), &
                                 &zcoefs(k, 1:2))
-                            tpsign = sign_ordets(singledets(j,3), zbasislist(k, 1)) * &
-                                &sign_ordets(singledets(j, 4), zbasislist(k, 2))
+                            write(*, *) zcoefs(k, 1:2)
                             zcoefs(k, 1) = tpsign * zcoefs(k, 1)
                             zcoefs(k, 2) = tpsign * zcoefs(k, 2)
-                            write(*, *) 'Processed det number', i, k
+                            write(*, *) zcoefs(k, 1:2)
+                            write(*, *) 'Processed dets number', i, k
+                            write(*, '(2B16)') zbasislist(i, 1:2)
+                            write(*, *) zcoefs(i, 1:2)
+                            write(*, '(2B16)') zbasislist(k, 1:2)
+                            write(*, *) zcoefs(k, 1:2)
 
                             k = k + 1
                         enddo
                         iend = k - 1
                         nzbasis = iend
+                        write(*, *) ' '
+                          write(*, *) 'Processed dets number', istart, iend
+                          do i = istart, iend
+                            write(*, '(2B16)') zbasislist(i, 1:2)
+                            write(*, *) zcoefs(i, 1:2)
+                          enddo
+
+
 
 
                      endif
@@ -247,7 +346,8 @@ module convertharmonics
            enddo
            !end do j 
 
-           write(*, *) 'Appended the following dets and coefs into the list'
+           write(*, *) 'nzbasis =', nzbasis, 'istart=', istart, 'iend=', iend
+           write(*, *) '========== Appended the following dets and coefs into the zlist ============'
            do i = istart, iend
                write(*, '(2B16)') zbasislist(i, 1:2)
                write(*, *) zcoefs(i, 1:2)
@@ -287,7 +387,7 @@ module convertharmonics
           write(*, *) 'neact = ', neact
           do while(tpup.ne.0)
             pos = trailz(tpup)
-            msign = sign_m(pos, pos2, tpplus, tpminus)
+            call sign_m(pos, pos2, tpplus, tpminus, msign)
             
             if(msign.eq.0) then
                 k = k + 1
@@ -331,7 +431,7 @@ module convertharmonics
            
           do while(tpdn.ne.0)
              pos = trailz(tpdn)
-             msign = sign_m(pos, pos2, tpplus, tpminus)
+             call sign_m(pos, pos2, tpplus, tpminus, msign)
  
              if(msign.eq.0) then
                  k = k + 1
@@ -477,31 +577,31 @@ module convertharmonics
           nout(2) = n1(1)*n2(2)+ n1(2)*n2(1)
       end subroutine product_cmplx
           
-      integer function sign_m(pos, pos2, detplus, detminus)
+      subroutine sign_m( pos, pos2, detplus, detminus, msign)
           ! for a single det not a pair
           integer, intent(in) :: pos
           integer(i16b) :: detplus, detminus
-          integer :: pos2, n, l, m
+          integer :: pos2, n, l, m, msign
           call delocate(pos, n, l, m)
           if (m.eq.0) then
-              sign_m = 0
+              msign = 0
               detplus = ibset(0_i16b, pos)
               detminus = 0_i16b
               pos2 = pos
           elseif(m.gt.0) then
-              sign_m = 1
+              msign = 1
               detplus = ibset(0_i16b, pos)
               pos2 =  locate_det(n, l, -m)
               detminus = ibset(0_i16b, pos2)
           else
-              sign_m = -1
+              msign = -1
               detminus = ibset(0_i16b, pos)
               pos2 = locate_det(n, l, -m)
               detplus = ibset(0_i16b, pos2)
           endif
-          write(*, *) 'function sign_m : pos, pos2, detplus, detminus'
-          write(*, '(2I4, 2b16)') pos, pos2, detplus, detminus
-      end function sign_m
+          write(*, *) 'subroutine sign_m : pos, pos2, detplus, detminus'
+          write(*, '(2I5, 2b16)') pos, pos2, detplus, detminus, msign
+      end subroutine sign_m
 
 
 

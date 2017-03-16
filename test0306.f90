@@ -35,7 +35,11 @@ program test0202
 
       !test0309
       ! indet(1:2) = (/43_i16b, 7_i16b/)
-      indet(1:2) = (/0_i16b, 31_i16b/)
+      !test0316 Y2Z_singledet
+      ! indet(1:2) = (/31_i16b, 0_i16b/) !good
+      !indet(1:2) = (/52_i16b, 2_i16b/) !good
+      indet(1) =2_i16b**13 + 2_i16b**11+2_i16b**10 + 2_i16b**9
+      indet(2) = 4_i16b !good
       nzbasis = 0 
       call Y2Z_singledet(indet, 1._rk, zbasislist, zcoefs, nzbasis) 
       !write(*, *) popcnt(indet(1)), popcnt(indet(2)), popcnt(13_i16b)
