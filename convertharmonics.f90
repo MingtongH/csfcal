@@ -66,9 +66,9 @@ module convertharmonics
           write(*, '("sign_ordets = ", 1I6)') sign_ordets
       end function sign_ordets
 
-      subroutine Y2Z_singledet(det, coef, zbasislist, zcoefs, nzbasis)
+      subroutine Y2Z_singledet(det, realcoef, zbasislist, zcoefs, nzbasis)
           integer(i16b), intent(in) :: det(:)
-          real(rk), intent(in) :: coef
+          real(rk), intent(in) :: realcoef
           integer(i16b), allocatable:: zbasislist(:, :) ! Append to this list
           real(rk), allocatable:: zcoefs(:, :) !two columnsn real, imag
           integer :: nzbasis ! number of rows already in zbasislist
@@ -347,6 +347,10 @@ module convertharmonics
            !end do j 
 
            write(*, *) 'nzbasis =', nzbasis, 'istart=', istart, 'iend=', iend
+           do i = istart, iend
+               zcoefs(i, 1) = zcoefs(i, 1) * realcoef
+               zcoefs(i, 2) = zcoefs(i, 2) * realcoef
+           enddo
            write(*, *) '========== Appended the following dets and coefs into the zlist ============'
            do i = istart, iend
                write(*, '(2B16)') zbasislist(i, 1:2)

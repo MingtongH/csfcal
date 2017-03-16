@@ -41,7 +41,7 @@ program test0202
       indet(1) =2_i16b**13 + 2_i16b**11+2_i16b**10 + 2_i16b**9
       indet(2) = 4_i16b !good
       nzbasis = 0 
-      call Y2Z_singledet(indet, 1._rk, zbasislist, zcoefs, nzbasis) 
+      call Y2Z_singledet(indet, 3._rk, zbasislist, zcoefs, nzbasis) 
       !write(*, *) popcnt(indet(1)), popcnt(indet(2)), popcnt(13_i16b)
       !write(*, *) poppar(indet(1)), poppar(indet(2)), poppar(13_i16b)
 
