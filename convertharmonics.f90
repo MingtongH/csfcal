@@ -66,6 +66,22 @@ module convertharmonics
           write(*, '("sign_ordets = ", 1I6)') sign_ordets
       end function sign_ordets
 
+
+      subroutine Y2Zcsf_append1row(det, realcoefs, zbasislist, zcoeftable, nzbasis, ncsf)
+          integer(i16b), intent(in) :: det(:)
+          real(rk), intent(in) :: realcoefs(:)
+          integer(i16b), allocatable :: zbasislist(:, :)!two columns, append to this list
+
+          real(rk), allocatable :: zcoeftable(:, :)!2*ncsf columns, real imag for each csf
+          integer :: nzbasis
+          integer, intent(in) :: ncsf
+          !TODO
+
+
+
+      end subroutine Y2Zcsf_append1row
+
+
       subroutine Y2Z_singledet(det, realcoef, zbasislist, zcoefs, nzbasis)
           integer(i16b), intent(in) :: det(:)
           real(rk), intent(in) :: realcoef
