@@ -68,7 +68,29 @@ module convertharmonics
       end function sign_ordets
 
 
+      subroutine Y2Z_appendtable(ybasislist, ycsftable, ynbasis, ncsf, &
+              &zbasislist, zcoeftable, nzbasis)
+          integer(i16b), intent(in) :: ybasislist(:, :)
+          real(rk), intent(in) :: ycsftable(:, :)
+          integer, intent(in) :: ynbasis, ncsf
+          integer(i16b), allocatable :: zbasislist(:, :)
+          real(rk), allocatable :: zcoeftable(:, :)
+          integer :: nzbasis, i
+          write(*, *) '********************* Converting csftable Y2Z_appendtable *******************'
+          do i = 1, ynbasis
+              call Y2Zcsf_append1row(ybasislist(i, 1:2), ycsftable(i, 1:ncsf), &
+                  &zbasislist, zcoeftable, nzbasis, ncsf)
+          enddo
+
+          call sortBasisCoefTable_removeDups(ybasislist, zcoeftable, nzbasis, 2*ncsf)
+
+          write(*, *) '********************* Final number of rows in the table *********************'
+          write(*, *) ncsf
+
+      end subroutine Y2Z_appendtable
+
       subroutine Y2Zcsf_append1row(det, realcoefs, zbasislist, zcoeftable, nzbasis, ncsf)
+          !nzbasis will be incremented here
           integer(i16b), intent(in) :: det(:)
           real(rk), intent(in) :: realcoefs(:)
           integer(i16b), allocatable :: tpzbasislist(:, :), &
@@ -79,8 +101,9 @@ module convertharmonics
           integer :: nzbasis, i, j, tpnz
           integer, intent(in) :: ncsf
 
-          write(*, *) 'Converting 1 row of Ycsf to Z. Input:'
-          write(*, '(1b16)') det
+          write(*, *) '*******************  Converting 1 row of Ycsf to Z ***********************'
+          write(*, *) 'Input:'
+          write(*, '(2B16)') det(1:2)
           write(*, *) 'Number of ncsf = ', ncsf
           write(*, *) 'Number of rows in zbasislist before =', nzbasis
           call Y2Z_singledet(det, 1._rk, tpzbasislist, tpzcoefs, tpnz)
