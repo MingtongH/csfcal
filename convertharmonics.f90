@@ -7,6 +7,7 @@ module convertharmonics
  use prep, only: i16b, ARRAY_SHORT_LENGTH
  !, neact TODO for testing purposed this is not imported, will need to afterwards
  use detgen, only: locate_det, delocate
+ use checkcsfs, only: sortBasisCoefTable_removeDups
     implicit none
     contains
 
@@ -70,14 +71,45 @@ module convertharmonics
       subroutine Y2Zcsf_append1row(det, realcoefs, zbasislist, zcoeftable, nzbasis, ncsf)
           integer(i16b), intent(in) :: det(:)
           real(rk), intent(in) :: realcoefs(:)
-          integer(i16b), allocatable :: zbasislist(:, :)!two columns, append to this list
+          integer(i16b), allocatable :: tpzbasislist(:, :), &
+              &zbasislist(:, :)!two columns, append to this list
 
-          real(rk), allocatable :: zcoeftable(:, :)!2*ncsf columns, real imag for each csf
-          integer :: nzbasis
+          real(rk), allocatable :: tpzcoefs(:, :),&
+              &zcoeftable(:, :)!2*ncsf columns, real imag for each csf
+          integer :: nzbasis, i, j, tpnz
           integer, intent(in) :: ncsf
-          !TODO
 
+          write(*, *) 'Converting 1 row of Ycsf to Z. Input:'
+          write(*, '(1b16)') det
+          write(*, *) 'Number of ncsf = ', ncsf
+          write(*, *) 'Number of rows in zbasislist before =', nzbasis
+          call Y2Z_singledet(det, 1._rk, tpzbasislist, tpzcoefs, tpnz)
+          call sortBasisCoefTable_removeDups(tpzbasislist, tpzcoefs, tpnz, 2)
 
+          if(.not.allocated(zbasislist)) then
+              allocate(zbasislist(ARRAY_SHORT_LENGTH, 2))
+          endif
+          if(.not.allocated(zcoeftable)) then
+              allocate(zcoeftable(ARRAY_SHORT_LENGTH, 2*ncsf))
+          endif
+
+          write(*, *) 'Appending the following rows to the list and table'
+          do i = 1, tpnz
+              zbasislist(nzbasis + i, 1:2) = tpzbasislist(i, 1:2)
+              write(*, *) '-------------------------------'
+              write(*, '(2B16)') zbasislist(nzbasis + i, 1:2)
+              write(*, *) '--------------------------------'
+
+              do j = 1, ncsf
+                  zcoeftable(nzbasis + i, 2*j - 1) = realcoefs(j) * tpzcoefs(i, 1) 
+                  zcoeftable(nzbasis + i, 2*j) = realcoefs(j) * tpzcoefs(i, 2) 
+                  write(*, *) zcoeftable(nzbasis + i, (2*j-1):(2*j))
+              enddo
+          enddo
+          nzbasis = nzbasis + tpnz
+          write(*, *) 'Now nzbasis =', nzbasis
+          deallocate(tpzbasislist)
+          deallocate(tpzcoefs)
 
       end subroutine Y2Zcsf_append1row
 
