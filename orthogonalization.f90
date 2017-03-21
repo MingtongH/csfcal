@@ -26,41 +26,45 @@ module orthogonalization
           write(*, *) '========================= Orthogonalization ================================'
           write(*, *) 'Input matrix A'
           do i = 1, n
-              write(*, *) A(i, :)
+              write(*, *) A(i, 1:p)
           enddo
 
           j = 1
           do k = 1, p
-              Q(:, k) = A(:, k)
+              Q(1:n, k) = A(1:n, k)
               if(k.ne.1) then
                   do i = 1, k-1
-                      R(i, k) = dot_product(Q(:, i), Q(:, k))
+                      R(i, k) = dot_product(Q(1:n, i), Q(1:n, k))
                   enddo
                   !R(1:k-1, k) = matmul(transpose(Q(:, k-1:k-1)),Q(:, k))
-                  Q(:, k) = Q(:, k) - matmul(Q(:, 1:k-1), R(1:k-1, k))
+                  Q(1:n, k) = Q(1:n, k) - matmul(Q(1:n, 1:k-1), R(1:k-1, k))
               endif
-              R(k, k) = norm2(Q(:, k))
+              R(k, k) = norm2(Q(1:n, k))
               if(equals0(R(k, k))) then
                   do i = 1, n
                       Q(i, k) = 0
                   enddo
               else
-                  Q(:, k) = Q(:, k)/R(k, k)
-                  A(:, j) = Q(:, k)!j<=k
+                  Q(1:n, k) = Q(1:n, k)/R(k, k)
+                  A(1:n, j) = Q(1:n, k)!j<=k
                   j = j + 1
               endif
           enddo
+
+          write(*, *) 'Matrix Q'
+          do i = 1, n
+              write(*, *) Q(i, 1:p)
+          enddo
+          write(*, *) 'Matrix R'
+          do i = 1, p
+              write(*, *) R(i, 1:p)
+          enddo
+
           p = j - 1
           write(*, *) 'Output matrix A'
           do i = 1, n
               write(*, *) A(i, 1:p)
           enddo
-          write(*, *) 'Matrix Q'
-          do i = 1, n
-              write(*, *) Q(i, :)
-          enddo
-          write(*, *) 'Matrix R'
-          write(*, *) R
           write(*, *) 'Output p =', p
           
           deallocate(Q)
@@ -96,22 +100,22 @@ module orthogonalization
           write(*, *) '========================= Orthogonalization ================================'
           j = 1
           do k = 1, p
-              Q(:, k) = A(:, k)
+              Q(1:n, k) = A(1:n, k)
               if(k.ne.1) then
                   do i = 1, k-1
-                      R(i, k) = dot_product(Q(:, i), Q(:, k))
+                      R(i, k) = dot_product(Q(1:n, i), Q(1:n, k))
                   enddo
                   !R(1:k-1, k) = matmul(transpose(Q(:, k-1:k-1)),Q(:, k))
-                  Q(:, k) = Q(:, k) - matmul(Q(:, 1:k-1), R(1:k-1, k))
+                  Q(1:n, k) = Q(1:n, k) - matmul(Q(1:n, 1:k-1), R(1:k-1, k))
               endif
-              R(k, k) = norm2(Q(:, k))
+              R(k, k) = norm2(Q(1:n, k))
               if(equals0(R(k, k))) then
                   do i = 1, n
                       Q(i, k) = 0
                   enddo
               else
-                  Q(:, k) = Q(:, k)/R(k, k)
-                  E(:, j) = Q(:, k)
+                  Q(1:n, k) = Q(1:n, k)/R(k, k)
+                  E(1:n, j) = Q(1:n, k)
                   j = j + 1
               endif
           enddo
