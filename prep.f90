@@ -1,8 +1,10 @@
 module prep
 !1. Read input configurations 
 !2. Check inputs are within range of Smin, Smax, Lmax and of correct I(parity)  
+!equals0(coef)
   use, intrinsic :: iso_fortran_env, only: rk => real64
 
+  
   implicit none
   
   !>>>>>>>> Constants
@@ -10,6 +12,7 @@ module prep
   integer, parameter :: i16b = SELECTED_INT_KIND(38)
   integer, parameter :: ARRAY_START_LENGTH = 100000, DET_MAX_LENGTH = 30, ARRAY_SHORT_LENGTH = 100
   integer, parameter :: Lzdes = 0
+  real(rk), parameter :: REAL_MIN = 1.0e-31
   !>>>>>>>> Input variables
   integer :: nconfig, Ldes, Sdes_t2, Ides
   !Lzdes, Szdes_t2 not defined here
@@ -284,6 +287,15 @@ module prep
       enddo
       write(*, '("Lmin checked. ")')
   end subroutine checkLmin
+
+    logical function equals0(coef)
+           real(rk), intent(in) :: coef
+           if(abs(coef).le.REAL_MIN) then
+               equals0 = .true.
+           else
+               equals0 = .false.
+           endif
+       end function equals0
 
 
 end module prep 

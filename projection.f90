@@ -1,12 +1,11 @@
 module projection
       !Generate csf by projection
-      use prep, only: i16b, ARRAY_START_LENGTH, ARRAY_SHORT_LENGTH, DET_MAX_LENGTH
+      use prep, only: i16b, ARRAY_START_LENGTH, ARRAY_SHORT_LENGTH, DET_MAX_LENGTH, equals0, REAL_MIN
       use, intrinsic :: iso_fortran_env, only: rk => real64
       use detgen, only: lpls, lms, eposinit, spls, sms, Szt2_det, Lz_det
 
       implicit none
       
-      real(rk), parameter :: REAL_MIN = 1.0e-31
 
       contains
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -60,20 +59,21 @@ module projection
 !TODO  initlists_fromlists(detlist, incoeflist,  innum,coeflist, eposlist, iszerolist) not tested
 ! integer function  countswps(array, num)
 ! integer function findindetlist(det, allbasis, ndets)
-! equals0(coef)
 !
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
 
-      logical function equals0(coef)
-          real(rk), intent(in) :: coef
-          if(abs(coef).le.REAL_MIN) then
-              equals0 = .true.
-          else
-              equals0 = .false.
-          endif
-      end function equals0
+
+      !Moved to prep.f90
+      !logical function equals0(coef)
+      !    real(rk), intent(in) :: coef
+      !    if(abs(coef).le.REAL_MIN) then
+      !        equals0 = .true.
+      !    else
+      !        equals0 = .false.
+      !    endif
+      !end function equals0
 
       subroutine initlists(det, basis, coefs, eposes, iszeros, num)
           !init from single det pair
