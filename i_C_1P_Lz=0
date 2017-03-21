@@ -1,0 +1,24 @@
+C           atom
+4           nconfig
+4           neact
+2           neinact
+#config1
+2           nshell
+2 s 2
+2 p 2
+#config2
+1           nshell
+2 p 4
+config3
+3           nshell
+2 s 1
+2 p 2
+3 d 1
+#config4
+2           nshell
+2 s 2
+3 d 2
+#Other parameters
+2           2S
+1           L
+1           I(1 for even, -1 for odd)
