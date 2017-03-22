@@ -1,5 +1,5 @@
 module checkcsfs
-       use prep, only: i16b, ARRAY_START_LENGTH, ARRAY_SHORT_LENGTH, DET_MAX_LENGTH
+       use prep, only: i16b, ARRAY_START_LENGTH, ARRAY_SHORT_LENGTH, DET_MAX_LENGTH, equals0
        use, intrinsic :: iso_fortran_env, only: rk => real64
        use projection, only : Lplus_multiple, Lminus_multiple, LzLzplus1_append, &
            &Splus_multiple, Sminus_multiple, SzSzplus1_append
@@ -164,6 +164,16 @@ module checkcsfs
             end do
        endsubroutine sortBasisCoefTable
 
+       logical function all0(coefs, ncsf)
+           real(rk), intent(in) :: coefs(:)
+           integer, intent(in) :: ncsf
+           integer:: i
+
+           all0 = .true.
+           do i = 1, ncsf
+               all0 = all0.AND.equals0(coefs(i))
+           enddo
+       end function all0
 
        subroutine sortBasisCoefTable_removeDups(inbasislist, incoeftable, nbasis, ncsf)
            integer(i16b) :: inbasislist(:, :)
