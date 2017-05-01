@@ -1,0 +1,27 @@
+N           atom
+4           nconfig
+5           neact
+2           neinact
+#config1
+2           nshell(number of orbitals)
+2 s 2
+2 p 3
+#config2
+3          nshell
+2 s 2
+2 p 1
+3 d 2
+#config3
+3           nshell
+2 s 2
+2 p 2
+3 p 1
+#config4
+3           nshell
+2 s 1
+2 p 1
+3 d 3
+#Other parameters
+3           2S
+0           L
+-1           I(1 for even, -1 for odd)
