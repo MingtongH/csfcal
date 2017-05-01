@@ -1,6 +1,6 @@
 module projection
       !Generate csf by projection
-      use prep, only: i16b, ARRAY_START_LENGTH, ARRAY_SHORT_LENGTH, DET_MAX_LENGTH, equals0, REAL_MIN
+      use prep, only: i16b, ARRAY_START_LENGTH,ARRAY_LONG_LENGTH, ARRAY_SHORT_LENGTH, DET_MAX_LENGTH, equals0, REAL_MIN
       use, intrinsic :: iso_fortran_env, only: rk => real64
       use detgen, only: lpls, lms, eposinit, spls, sms, Szt2_det, Lz_det
 
@@ -152,10 +152,10 @@ module projection
           integer :: num, tpnum, i, Sp2, num1
           real(rk) :: tail
           write(*, *) '>>>>>>>>>>>>>>>>>>>>>>> Projection P_S '
-          allocate(tpbasis(ARRAY_START_LENGTH, 2))
-          allocate(tpcoefs(ARRAY_START_LENGTH))
-          allocate(tpepos(ARRAY_START_LENGTH, 2, DET_MAX_LENGTH))
-          allocate(tpiszeros(ARRAY_START_LENGTH))
+          allocate(tpbasis(ARRAY_LONG_LENGTH, 2))
+          allocate(tpcoefs(ARRAY_LONG_LENGTH))
+          allocate(tpepos(ARRAY_LONG_LENGTH, 2, DET_MAX_LENGTH))
+          allocate(tpiszeros(ARRAY_LONG_LENGTH))
           !----------Initialize tp.. as in..
           do i = 1, innum
               tpbasis(i, 1:2) = inbasis(i, 1:2)
@@ -603,16 +603,16 @@ module projection
 
           if(num.eq.0) then
               if(.not.allocated(basislist)) then 
-                  allocate(basislist(ARRAY_START_LENGTH, 2))
+                  allocate(basislist(ARRAY_LONG_LENGTH, 2))
               endif 
               if(.not.allocated(coeflist)) then
-                  allocate(coeflist(ARRAY_START_LENGTH))
+                  allocate(coeflist(ARRAY_LONG_LENGTH))
               endif
               if(.not.allocated(eposlist)) then
-                  allocate(eposlist(ARRAY_START_LENGTH, 2, DET_MAX_LENGTH))
+                  allocate(eposlist(ARRAY_LONG_LENGTH, 2, DET_MAX_LENGTH))
               endif
               if(.not.allocated(iszerolist)) then
-                  allocate(iszerolist(ARRAY_START_LENGTH))
+                  allocate(iszerolist(ARRAY_LONG_LENGTH))
               endif
           endif
           do i = 1, innum
@@ -657,16 +657,16 @@ module projection
 
           if(num.eq.0) then
               if(.not.allocated(basislist)) then 
-                  allocate(basislist(ARRAY_START_LENGTH, 2))
+                  allocate(basislist(ARRAY_LONG_LENGTH, 2))
               endif 
               if(.not.allocated(coeflist)) then
-                  allocate(coeflist(ARRAY_START_LENGTH))
+                  allocate(coeflist(ARRAY_LONG_LENGTH))
               endif
               if(.not.allocated(eposlist)) then
-                  allocate(eposlist(ARRAY_START_LENGTH, 2, DET_MAX_LENGTH))
+                  allocate(eposlist(ARRAY_LONG_LENGTH, 2, DET_MAX_LENGTH))
               endif
               if(.not.allocated(iszerolist)) then
-                  allocate(iszerolist(ARRAY_START_LENGTH))
+                  allocate(iszerolist(ARRAY_LONG_LENGTH))
               endif
           endif
           write(*, '("innum = ", 1I8)') innum
@@ -695,16 +695,16 @@ module projection
 
           if(num.eq.0) then
               if(.not.allocated(basislist)) then 
-                  allocate(basislist(ARRAY_START_LENGTH, 2))
+                  allocate(basislist(ARRAY_LONG_LENGTH, 2))
               endif 
               if(.not.allocated(coeflist)) then
-                  allocate(coeflist(ARRAY_START_LENGTH))
+                  allocate(coeflist(ARRAY_LONG_LENGTH))
               endif
               if(.not.allocated(eposlist)) then
-                  allocate(eposlist(ARRAY_START_LENGTH, 2, DET_MAX_LENGTH))
+                  allocate(eposlist(ARRAY_LONG_LENGTH, 2, DET_MAX_LENGTH))
               endif
               if(.not.allocated(iszerolist)) then
-                  allocate(iszerolist(ARRAY_START_LENGTH))
+                  allocate(iszerolist(ARRAY_LONG_LENGTH))
               endif
           endif
           do i = 1, innum

@@ -10,7 +10,7 @@ module prep
   !>>>>>>>> Constants
   integer, parameter :: STRING_MAX_LENGTH = 16
   integer, parameter :: i16b = SELECTED_INT_KIND(38)
-  integer, parameter :: ARRAY_START_LENGTH = 100000, DET_MAX_LENGTH = 30, ARRAY_SHORT_LENGTH = 100
+  integer, parameter :: ARRAY_START_LENGTH = 100000, DET_MAX_LENGTH = 30, ARRAY_SHORT_LENGTH = 100, ARRAY_LONG_LENGTH = 10000000
   integer, parameter :: Lzdes = 0
   real(rk), parameter :: REAL_MIN = 1.0e-15
   !>>>>>>>> Input variables
