@@ -4,7 +4,7 @@ module convertharmonics
       !Step 2: calculate coefs for each csf
       !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
  use, intrinsic :: iso_fortran_env, only: rk => real64
- use prep, only: i16b, ARRAY_SHORT_LENGTH
+ use prep, only: i16b, ARRAY_SHORT_LENGTH, equals0
  !, neact TODO for testing purposed this is not imported, will need to afterwards
  use detgen, only: locate_det, delocate
  use checkcsfs, only: sortBasisCoefTable_removeDups
@@ -75,9 +75,20 @@ module convertharmonics
           integer, intent(in) :: ynbasis, ncsf
           integer(i16b), allocatable :: zbasislist(:, :)
           real(rk), allocatable :: zcoeftable(:, :)
-          integer :: nzbasis, i
+          integer :: nzbasis, i, j, all0
           write(*, *) '********************* Converting csftable Y2Z_appendtable *******************'
           do i = 1, ynbasis
+              all0 = 0
+              do j = 1, ncsf
+                  if(.not.equals0(ycsftable(i, j))) then
+                      all0 = 1
+                  endif
+              enddo
+              if(all0.eq.0) then
+                  cycle
+              endif
+            
+
               call Y2Zcsf_append1row(ybasislist(i, 1:2), ycsftable(i, 1:ncsf), &
                   &zbasislist, zcoeftable, nzbasis, ncsf)
           enddo

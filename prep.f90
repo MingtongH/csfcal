@@ -12,7 +12,7 @@ module prep
   integer, parameter :: i16b = SELECTED_INT_KIND(38)
   integer, parameter :: ARRAY_START_LENGTH = 100000, DET_MAX_LENGTH = 30, ARRAY_SHORT_LENGTH = 100
   integer, parameter :: Lzdes = 0
-  real(rk), parameter :: REAL_MIN = 1.0e-31
+  real(rk), parameter :: REAL_MIN = 1.0e-15
   !>>>>>>>> Input variables
   integer :: nconfig, Ldes, Sdes_t2, Ides
   !Lzdes, Szdes_t2 not defined here

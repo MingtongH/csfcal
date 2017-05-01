@@ -420,6 +420,10 @@ module projection
                   cycle
               endif
 
+              if(equals0(coeflist(i))) then
+                  cycle
+              endif
+
               tp = findindetlist(basislist(i, :), allbasis(1:ndets, :), ndets)
               write(*, '("findindetlist()=", 1I4)') tp
               !If not in the list, add new det

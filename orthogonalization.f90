@@ -3,8 +3,10 @@ module orthogonalization
       use prep, only: equals0
       implicit none
 
+      real(rk), parameter :: GS_MIN = 1.0e-9
       contains
       subroutine gs_modify(A, n, p)
+          !classical gs only modifying A to be the end result
           !A: n x p  n is nbasis p is ncsf
           !Q: n x p
           !R: p x p
@@ -40,7 +42,7 @@ module orthogonalization
                   Q(1:n, k) = Q(1:n, k) - matmul(Q(1:n, 1:k-1), R(1:k-1, k))
               endif
               R(k, k) = norm2(Q(1:n, k))
-              if(equals0(R(k, k))) then
+              if(abs(R(k, k)).le.GS_MIN) then
                   do i = 1, n
                       Q(i, k) = 0
                   enddo
