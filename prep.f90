@@ -10,7 +10,7 @@ module prep
   !>>>>>>>> Constants
   integer, parameter :: STRING_MAX_LENGTH = 16
   integer, parameter :: i16b = SELECTED_INT_KIND(38)
-  integer, parameter :: ARRAY_START_LENGTH = 100000, DET_MAX_LENGTH = 30, ARRAY_SHORT_LENGTH = 100, ARRAY_LONG_LENGTH = 10000000
+  integer, parameter :: ARRAY_START_LENGTH = 100000, DET_MAX_LENGTH = 30, ARRAY_SHORT_LENGTH = 100, ARRAY_LONG_LENGTH = 1000000
   integer, parameter :: Lzdes = 0
   real(rk), parameter :: REAL_MIN = 1.0e-15
   !>>>>>>>> Input variables
@@ -124,7 +124,7 @@ module prep
   subroutine checkSmin()
       if(Sdes_t2.lt.Smin_t2(neact)) then
           write(*, '("Error: S_des < S_min, current Smin*2 = ", 1I5)') Smin_t2(neact)
-          stop 1
+          stop 2
       endif
       write(*, '("Smin checked. ")')
   end subroutine checkSmin
@@ -138,7 +138,7 @@ module prep
           Szmax_t2_oneshell = N
       else if (N.gt.(2*num_orbs)) then
           write(*, '("Error: number of electrons more than full on orbital of l = : ", 1I5)') l
-          stop 1
+          stop 3
       else
           Szmax_t2_oneshell = num_orbs - (N - num_orbs)
       endif
@@ -167,7 +167,7 @@ module prep
         if(Sdes_t2.gt.tpSmax_t2) then
             write(*, '("Error: S_des > S_max, in config #", 1I5)') i
             write(*, '("Current Smax * 2 = ", 1I5)') tpSmax_t2
-            stop 1
+            stop 4
         endif
       enddo
       write(*, '("Smax checked")')
@@ -215,11 +215,11 @@ module prep
         if(Ldes.gt.tpLmax) then 
             write(*, '("Error: L_des > L_max, in config #", 1I5)') i
             write(*, '("Current Lmax  = ", 1I5)') tpLmax
-            stop 1
+            stop 5
         endif
         if(Ides.ne.tpI) then
             write(*, '("Error: Wrong parity in config #", 1I5)') i
-            stop 3
+            stop 6
         endif
       enddo
       write(*, '("I checked. ")')
@@ -277,12 +277,12 @@ module prep
         istart = iend + 1
         iend = istart + nshell(i) - 1
         !write(*, *) istart, iend, Lmin(istart, iend)
-        tpLmin = Lmin(econfigs(istart:iend, 1:3))
+        tpLmin = min(0, Lmin(econfigs(istart:iend, 1:3)))
         write(*, '(" Checking Lmin for config: , Lmin = ", 2I5)') i, tpLmin
         if(Ldes.lt.tpLmin) then 
             write(*, '("Error: L_des < L_min, in config #", 1I5)') i
             write(*, '("Current Lmin = ", 1I5)') tpLmin
-            stop 1
+            stop 7
         endif
       enddo
       write(*, '("Lmin checked. ")')
