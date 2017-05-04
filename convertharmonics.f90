@@ -185,12 +185,16 @@ module convertharmonics
                singledets(i, 2) = 0_i16b
                singledets(i, 3) = tpminus
                singledets(i, 4) = 0_i16b
-               singlecoefs(i, 1:3) = (/1._rk, 0._rk, 0._rk/)
-               singlecoefs(i, 4) = msign*1._rk
-
+               !singlecoefs(i, 1:3) = (/1._rk, 0._rk, 0._rk/)
+               !singlecoefs(i, 4) = msign*1._rk
+               !Change of convention
+               singlecoefs(i, 1) = -msign*1._rk
+               singlecoefs(i, 2:4) = (/0._rk, 0._rk, -1._rk/)
                if(msign.eq.0) then
-                   singlecoefs(i, 1) = sqrt(2._rk)
+                   singlecoefs(i, 1:4) = (/sqrt(2._rk), 0._rk, 0._rk, 0._rk/)
+                  ! singlecoefs(i, 1) = sqrt(2._rk)
                endif
+               !Change of convention
 
                write(*, '(4B16)') singledets(i, 1:4)
                write(*, *) singlecoefs(i, 1:4)
@@ -208,10 +212,14 @@ module convertharmonics
                singledets(i, 2) = tpplus
                singledets(i, 3) = 0_i16b
                singledets(i, 4) = tpminus
-               singlecoefs(i, 1:3) = (/1._rk, 0._rk, 0._rk/)
-               singlecoefs(i, 4) = msign*1._rk
+               !singlecoefs(i, 1:3) = (/1._rk, 0._rk, 0._rk/)
+               !singlecoefs(i, 4) = msign*1._rk
+               !Change of convention
+               singlecoefs(i, 1) = -msign*1._rk
+               singlecoefs(i, 2:4) = (/0._rk, 0._rk, -1._rk/)
                if(msign.eq.0) then
-                   singlecoefs(i, 1) = sqrt(2._rk)
+                    singlecoefs(i, 1:4) = (/sqrt(2._rk), 0._rk, 0._rk, 0._rk/)
+                  !singlecoefs(i, 1) = sqrt(2._rk)
                endif
 
                write(*, '(4B16)') singledets(i, 1:4)
