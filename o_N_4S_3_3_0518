@@ -75330,6 +75330,20 @@ Basis:      detup         detdn     coefs of new csf
        100001110              10  -2835.0000000000
         10010110              10   2835.0000000000
          1011010              10  -2835.0000000000
+ ========================== Enter sortBasisCoefTable_removeDups =================
+ .......... Enter i =           2 ...........
+ .........j=           1
+ basis(i, 1) < basis(order(j), 1)
+ ------- one loop, i =            2 ---------
+           2
+           1
+ .......... Enter i =           3 ...........
+ .........j=           1
+ basis(i, 1) < basis(order(j), 1)
+ ------- one loop, i =            3 ---------
+           3
+           2
+           1
  ----------------------- Sorting csf table by dets----------------
            3
            2
@@ -75357,7 +75371,7 @@ Basis:      detup         detdn     coefs of new csf
  -0.57735026918962740        0.0000000000000000        0.0000000000000000     
  Matrix R
    1.0000000000000000       -1.0000000000000002        1.0000000000000000     
-   6.9403647286611588E-310   8.6347948148771719E-015   0.0000000000000000     
+   6.9424420765254714E-310   8.6347948148771719E-015   0.0000000000000000     
    7.4109846876186982E-322   0.0000000000000000        1.2560739669470201E-015
  Output matrix A
  -0.57735026918962651     
@@ -75544,7 +75558,8 @@ sign_ordets =      1
          1001110              10
  -0.50000000000000011        0.0000000000000000     
  nzbasis =           4 istart=           1 iend=           4
- ========== Appended the following dets and coefs into the zlist ============
+ Multiple realcoef =   1.0000000000000000     
+ ========== Generated the following dets and coefs in Z  ============
        100011010              10
   0.50000000000000011        0.0000000000000000     
        100001110              10
@@ -75553,6 +75568,28 @@ sign_ordets =      1
    0.0000000000000000      -0.50000000000000011     
          1001110              10
  -0.50000000000000011        0.0000000000000000     
+ ========================== Enter sortBasisCoefTable_removeDups =================
+ .......... Enter i =           2 ...........
+ .........j=           1
+ basis(i, 1) < basis(order(j), 1)
+ ------- one loop, i =            2 ---------
+           2
+           1
+ .......... Enter i =           3 ...........
+ .........j=           1
+ basis(i, 1) < basis(order(j), 1)
+ ------- one loop, i =            3 ---------
+           3
+           2
+           1
+ .......... Enter i =           4 ...........
+ .........j=           1
+ basis(i, 1) < basis(order(j), 1)
+ ------- one loop, i =            4 ---------
+           4
+           3
+           2
+           1
  ----------------------- Sorting csf table by dets----------------
            4
            3
@@ -75567,6 +75604,7 @@ sign_ordets =      1
    0.0000000000000000      -0.50000000000000011     
        100011010              10
   0.50000000000000011        0.0000000000000000     
+ In Y2Z_append1row>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
  Appending the following rows to the zbasislist and zcoeftable
  -------------------------------
          1001110              10
@@ -75732,17 +75770,30 @@ sign_ordets =      1
         10010110              10
    0.0000000000000000      -0.50000000000000011     
  nzbasis =           2 istart=           1 iend=           2
- ========== Appended the following dets and coefs into the zlist ============
+ Multiple realcoef =   1.0000000000000000     
+ ========== Generated the following dets and coefs in Z  ============
         10010110              10
   -0.0000000000000000      -0.50000000000000011     
         10010110              10
    0.0000000000000000      -0.50000000000000011     
- Found duplicate
+ ========================== Enter sortBasisCoefTable_removeDups =================
+ .......... Enter i =           2 ...........
+ .........j=           1
+ basis(i, 1) = basis(order(j), 1)
+ Found duplicate>>>>>>>>>>>>>
+ This determinant is 
+        10010110              10
+        10010110              10
+ Current index is           2
+ Combine to index           1
+ ------- one loop, i =            2 ---------
+           1
  ----------------------- Sorting csf table by dets----------------
            1
  Final number of dets =            1
         10010110              10
    0.0000000000000000       -1.0000000000000002     
+ In Y2Z_append1row>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
  Appending the following rows to the zbasislist and zcoeftable
  -------------------------------
         10010110              10
@@ -75932,7 +75983,8 @@ sign_ordets =      1
          1001110              10
   0.50000000000000011        0.0000000000000000     
  nzbasis =           4 istart=           1 iend=           4
- ========== Appended the following dets and coefs into the zlist ============
+ Multiple realcoef =   1.0000000000000000     
+ ========== Generated the following dets and coefs in Z  ============
        100011010              10
  -0.50000000000000011       -0.0000000000000000     
        100001110              10
@@ -75941,6 +75993,28 @@ sign_ordets =      1
    0.0000000000000000      -0.50000000000000011     
          1001110              10
   0.50000000000000011        0.0000000000000000     
+ ========================== Enter sortBasisCoefTable_removeDups =================
+ .......... Enter i =           2 ...........
+ .........j=           1
+ basis(i, 1) < basis(order(j), 1)
+ ------- one loop, i =            2 ---------
+           2
+           1
+ .......... Enter i =           3 ...........
+ .........j=           1
+ basis(i, 1) < basis(order(j), 1)
+ ------- one loop, i =            3 ---------
+           3
+           2
+           1
+ .......... Enter i =           4 ...........
+ .........j=           1
+ basis(i, 1) < basis(order(j), 1)
+ ------- one loop, i =            4 ---------
+           4
+           3
+           2
+           1
  ----------------------- Sorting csf table by dets----------------
            4
            3
@@ -75955,6 +76029,7 @@ sign_ordets =      1
    0.0000000000000000      -0.50000000000000011     
        100011010              10
  -0.50000000000000011       -0.0000000000000000     
+ In Y2Z_append1row>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
  Appending the following rows to the zbasislist and zcoeftable
  -------------------------------
          1001110              10
@@ -75973,28 +76048,158 @@ sign_ordets =      1
  --------------------------------
   0.28867513459481375        0.0000000000000000     
  Now nzbasis =           9
- Found duplicate
- Found duplicate
- Found duplicate
- Found duplicate
- Found duplicate
- ----------------------- Sorting csf table by dets----------------
+ Zcsfs before sorting>>>>>>>>>>>>>>>>>>>>>>>>>>>
+         1001110              10
+  0.28867513459481331       -0.0000000000000000     
+         1011010              10
+  -0.0000000000000000       0.28867513459481331     
+       100001110              10
+  -0.0000000000000000       0.28867513459481331     
+       100011010              10
+ -0.28867513459481331       -0.0000000000000000     
+        10010110              10
+   0.0000000000000000      -0.57735026918962351     
+         1001110              10
+ -0.28867513459481375       -0.0000000000000000     
+         1011010              10
+  -0.0000000000000000       0.28867513459481375     
+       100001110              10
+  -0.0000000000000000       0.28867513459481375     
+       100011010              10
+  0.28867513459481375        0.0000000000000000     
+ ========================== Enter sortBasisCoefTable_removeDups =================
+ .......... Enter i =           2 ...........
+ .........j=           1
+ basis(i, 1) > basis(order(j) , 1))
+ ------- one loop, i =            2 ---------
+           1
+           2
+ .......... Enter i =           3 ...........
+ .........j=           1
+ basis(i, 1) > basis(order(j) , 1))
+ .........j=           2
+ basis(i, 1) > basis(order(j) , 1))
+ ------- one loop, i =            3 ---------
+           1
+           2
+           3
+ .......... Enter i =           4 ...........
+ .........j=           1
+ basis(i, 1) > basis(order(j) , 1))
+ .........j=           2
+ basis(i, 1) > basis(order(j) , 1))
+ .........j=           3
+ basis(i, 1) > basis(order(j) , 1))
+ ------- one loop, i =            4 ---------
            1
            2
            3
            4
- Final number of dets =            4
+ .......... Enter i =           5 ...........
+ .........j=           1
+ basis(i, 1) > basis(order(j) , 1))
+ .........j=           2
+ basis(i, 1) > basis(order(j) , 1))
+ .........j=           3
+ basis(i, 1) < basis(order(j), 1)
+ ------- one loop, i =            5 ---------
+           1
+           2
+           5
+           3
+           4
+ .......... Enter i =           6 ...........
+ .........j=           1
+ basis(i, 1) = basis(order(j), 1)
+ Found duplicate>>>>>>>>>>>>>
+ This determinant is 
+         1001110              10
+         1001110              10
+ Current index is           6
+ Combine to index           1
+ ------- one loop, i =            6 ---------
+           1
+           2
+           5
+           3
+           4
+ .......... Enter i =           7 ...........
+ .........j=           1
+ basis(i, 1) > basis(order(j) , 1))
+ .........j=           2
+ basis(i, 1) = basis(order(j), 1)
+ Found duplicate>>>>>>>>>>>>>
+ This determinant is 
          1011010              10
-  0.28867513459481331       -0.0000000000000000     
-        10010110              10
-  -0.0000000000000000       0.28867513459481331     
+         1011010              10
+ Current index is           7
+ Combine to index           2
+ ------- one loop, i =            7 ---------
+           1
+           2
+           5
+           3
+           4
+ .......... Enter i =           8 ...........
+ .........j=           1
+ basis(i, 1) > basis(order(j) , 1))
+ .........j=           2
+ basis(i, 1) > basis(order(j) , 1))
+ .........j=           3
+ basis(i, 1) > basis(order(j) , 1))
+ .........j=           4
+ basis(i, 1) = basis(order(j), 1)
+ Found duplicate>>>>>>>>>>>>>
+ This determinant is 
        100001110              10
-  -0.0000000000000000       0.28867513459481331     
-****************               0
- -0.28867513459481331        3.9968028886505635E-015
+       100001110              10
+ Current index is           8
+ Combine to index           3
+ ------- one loop, i =            8 ---------
+           1
+           2
+           5
+           3
+           4
+ .......... Enter i =           9 ...........
+ .........j=           1
+ basis(i, 1) > basis(order(j) , 1))
+ .........j=           2
+ basis(i, 1) > basis(order(j) , 1))
+ .........j=           3
+ basis(i, 1) > basis(order(j) , 1))
+ .........j=           4
+ basis(i, 1) > basis(order(j) , 1))
+ .........j=           5
+ basis(i, 1) = basis(order(j), 1)
+ Found duplicate>>>>>>>>>>>>>
+ This determinant is 
+       100011010              10
+       100011010              10
+ Current index is           9
+ Combine to index           4
+ ------- one loop, i =            9 ---------
+           1
+           2
+           5
+           3
+           4
+ ----------------------- Sorting csf table by dets----------------
+           1
+           2
+           5
+           3
+           4
+ Final number of dets =            3
+         1011010              10
+  -0.0000000000000000       0.57735026918962706     
+        10010110              10
+   0.0000000000000000      -0.57735026918962351     
+       100001110              10
+  -0.0000000000000000       0.57735026918962706     
  ********************* Final number of rows in the table *********************
            1
  >>>>>>>>>>>>>>>>>>>> writing Zcsf into a seperate file >>>>>>>>>>>>>
-           4 nzbasis
+           3 nzbasis
            1 ncsf
  >>>>>>>>>>>>>>>>>>>> written Zcsf into a seperate file >>>>>>>>>>>>>

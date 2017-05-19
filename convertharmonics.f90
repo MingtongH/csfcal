@@ -92,8 +92,13 @@ module convertharmonics
               call Y2Zcsf_append1row(ybasislist(i, 1:2), ycsftable(i, 1:ncsf), &
                   &zbasislist, zcoeftable, nzbasis, ncsf)
           enddo
+          write(*, *) 'Zcsfs before sorting>>>>>>>>>>>>>>>>>>>>>>>>>>>'
+          do i = 1, nzbasis
+              write(*, '(2B16)') zbasislist(i, 1:2)
+              write(*, *) zcoeftable(i, 1:ncsf*2) 
+          enddo
 
-          call sortBasisCoefTable_removeDups(ybasislist, zcoeftable, nzbasis, 2*ncsf)
+          call sortBasisCoefTable_removeDups(zbasislist, zcoeftable, nzbasis, 2*ncsf)
 
           write(*, *) '********************* Final number of rows in the table *********************'
           write(*, *) ncsf
@@ -120,7 +125,7 @@ module convertharmonics
           tpnz = 0
           write(*, *) '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! creating tpzbasislist !!!!!!!!!!!!!!!!!!!'
           !call Y2Z_singledet(det, 1._rk, tpzbasislist, tpzcoefs, tpnz)
-          call Y2Z_singledet(det, tpzbasislist, tpzcoefs, tpnz)
+          call Y2Z_singledet(det, 1._rk, tpzbasislist, tpzcoefs, tpnz)
 
           call sortBasisCoefTable_removeDups(tpzbasislist, tpzcoefs, tpnz, 2)
 
@@ -130,6 +135,8 @@ module convertharmonics
           if(.not.allocated(zcoeftable)) then
               allocate(zcoeftable(2*ARRAY_SHORT_LENGTH, 2*ncsf))
           endif
+
+          write(*, *) 'In Y2Z_append1row>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>'
 
           write(*, *) 'Appending the following rows to the zbasislist and zcoeftable'
           do i = 1, tpnz
@@ -152,9 +159,9 @@ module convertharmonics
       end subroutine Y2Zcsf_append1row
 
 
-      subroutine Y2Z_singledet(det, zbasislist, zcoefs, nzbasis)
+      subroutine Y2Z_singledet(det, realcoef, zbasislist, zcoefs, nzbasis)
           integer(i16b), intent(in) :: det(:)
-          !real(rk), intent(in) :: realcoef
+          real(rk), intent(in) :: realcoef
           integer(i16b), allocatable:: zbasislist(:, :) ! Append to this list
           real(rk), allocatable:: zcoefs(:, :) !two columnsn real, imag
           integer :: nzbasis ! number of rows already in zbasislist
@@ -489,12 +496,12 @@ module convertharmonics
            !    zcoefs(i, 1) = zcoefs(i, 1) * realcoef / (2**(nelec/2)) / (sqrt(2.)**(mod(nelec, 2)))
            !    zcoefs(i, 2) = zcoefs(i, 2) * realcoef / (2**(nelec/2)) / (sqrt(2.)**(mod(nelec, 2)))
            !enddo
-           !write(*, *) 'Multiple realcoef =', realcoef
-           !do i = istart, iend
-           !    zcoefs(i, 1) = zcoefs(i, 1) * realcoef
-           !    zcoefs(i, 2) = zcoefs(i, 2) * realcoef
-           !enddo
-           write(*, *) '========== Appended the following dets and coefs into the zlist ============'
+           write(*, *) 'Multiple realcoef =', realcoef
+           do i = istart, iend
+               zcoefs(i, 1) = zcoefs(i, 1) * realcoef
+               zcoefs(i, 2) = zcoefs(i, 2) * realcoef
+           enddo
+           write(*, *) '========== Generated the following dets and coefs in Z  ============'
            do i = istart, iend
                write(*, '(2B16)') zbasislist(i, 1:2)
                write(*, *) zcoefs(i, 1:2)
