@@ -117,17 +117,21 @@ module convertharmonics
           write(*, '(2B16)') det(1:2)
           write(*, *) 'Number of ncsf = ', ncsf
           write(*, *) 'Number of rows in zbasislist before =', nzbasis
-          call Y2Z_singledet(det, 1._rk, tpzbasislist, tpzcoefs, tpnz)
+          tpnz = 0
+          write(*, *) '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! creating tpzbasislist !!!!!!!!!!!!!!!!!!!'
+          !call Y2Z_singledet(det, 1._rk, tpzbasislist, tpzcoefs, tpnz)
+          call Y2Z_singledet(det, tpzbasislist, tpzcoefs, tpnz)
+
           call sortBasisCoefTable_removeDups(tpzbasislist, tpzcoefs, tpnz, 2)
 
           if(.not.allocated(zbasislist)) then
-              allocate(zbasislist(ARRAY_SHORT_LENGTH, 2))
+              allocate(zbasislist(2*ARRAY_SHORT_LENGTH, 2))
           endif
           if(.not.allocated(zcoeftable)) then
-              allocate(zcoeftable(ARRAY_SHORT_LENGTH, 2*ncsf))
+              allocate(zcoeftable(2*ARRAY_SHORT_LENGTH, 2*ncsf))
           endif
 
-          write(*, *) 'Appending the following rows to the list and table'
+          write(*, *) 'Appending the following rows to the zbasislist and zcoeftable'
           do i = 1, tpnz
               zbasislist(nzbasis + i, 1:2) = tpzbasislist(i, 1:2)
               write(*, *) '-------------------------------'
@@ -148,9 +152,9 @@ module convertharmonics
       end subroutine Y2Zcsf_append1row
 
 
-      subroutine Y2Z_singledet(det, realcoef, zbasislist, zcoefs, nzbasis)
+      subroutine Y2Z_singledet(det, zbasislist, zcoefs, nzbasis)
           integer(i16b), intent(in) :: det(:)
-          real(rk), intent(in) :: realcoef
+          !real(rk), intent(in) :: realcoef
           integer(i16b), allocatable:: zbasislist(:, :) ! Append to this list
           real(rk), allocatable:: zcoefs(:, :) !two columnsn real, imag
           integer :: nzbasis ! number of rows already in zbasislist
@@ -168,6 +172,7 @@ module convertharmonics
            tpdn = det(2)
            nelec = popcnt(tpup) + popcnt(tpdn)
            write(*, *) 'total number of electrons = ', nelec
+           write(*, *) 'Already filled nzbasis = ', nzbasis
 
 
            allocate(singledets(nelec, 4))
@@ -185,16 +190,31 @@ module convertharmonics
                singledets(i, 2) = 0_i16b
                singledets(i, 3) = tpminus
                singledets(i, 4) = 0_i16b
+               !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                !singlecoefs(i, 1:3) = (/1._rk, 0._rk, 0._rk/)
                !singlecoefs(i, 4) = msign*1._rk
+               
                !Change of convention
-               singlecoefs(i, 1) = -msign*1._rk
-               singlecoefs(i, 2:4) = (/0._rk, 0._rk, -1._rk/)
+              ! singlecoefs(i, 1) = -msign*1._rk
+              ! singlecoefs(i, 2:4) = (/0._rk, 0._rk, -1._rk/)
+              ! if(msign.eq.0) then
+              !     singlecoefs(i, 1:4) = (/sqrt(2._rk), 0._rk, 0._rk, 0._rk/)
+              !    ! singlecoefs(i, 1) = sqrt(2._rk)
+              ! endif
+               !Change of convention
+
+               !Change back convention, also take care of sqrt2 here. 
+               !the other block for sqrt2 terms commented out
                if(msign.eq.0) then
-                   singlecoefs(i, 1:4) = (/sqrt(2._rk), 0._rk, 0._rk, 0._rk/)
-                  ! singlecoefs(i, 1) = sqrt(2._rk)
+                   singlecoefs(i, 1:4) = (/1._rk, 0._rk, 0._rk, 0._rk/)
+               
+               elseif(msign.gt.0) then
+                   !singlecoefs(i, 1:4) = (/-sqrt(0.5_rk), 0._rk, 0._rk, -sqrt(0.5_rk)/)
+                   singlecoefs(i, 1:4) = (/sqrt(0.5_rk), 0._rk, 0._rk, sqrt(0.5_rk)/)
+               else
+                   singlecoefs(i, 1:4) = (/sqrt(0.5_rk), 0._rk, 0._rk, -sqrt(0.5_rk)/)
                endif
-               !Change of convention
+               !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
                write(*, '(4B16)') singledets(i, 1:4)
                write(*, *) singlecoefs(i, 1:4)
@@ -212,15 +232,32 @@ module convertharmonics
                singledets(i, 2) = tpplus
                singledets(i, 3) = 0_i16b
                singledets(i, 4) = tpminus
+
+               !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                !singlecoefs(i, 1:3) = (/1._rk, 0._rk, 0._rk/)
                !singlecoefs(i, 4) = msign*1._rk
-               !Change of convention
-               singlecoefs(i, 1) = -msign*1._rk
-               singlecoefs(i, 2:4) = (/0._rk, 0._rk, -1._rk/)
+              !Change of convention
+               !singlecoefs(i, 1) = -msign*1._rk
+               !singlecoefs(i, 2:4) = (/0._rk, 0._rk, -1._rk/)
+               !if(msign.eq.0) then
+               !     singlecoefs(i, 1:4) = (/sqrt(2._rk), 0._rk, 0._rk, 0._rk/)
+               !   !singlecoefs(i, 1) = sqrt(2._rk)
+               !endif
+              !Change of convention
+
+               !Change back convention, also take care of sqrt2 here. 
+               !the other block for sqrt2 terms commented out
                if(msign.eq.0) then
-                    singlecoefs(i, 1:4) = (/sqrt(2._rk), 0._rk, 0._rk, 0._rk/)
-                  !singlecoefs(i, 1) = sqrt(2._rk)
+                   singlecoefs(i, 1:4) = (/1._rk, 0._rk, 0._rk, 0._rk/)
+               
+               elseif(msign.gt.0) then
+                   !singlecoefs(i, 1:4) = (/-sqrt(0.5_rk), 0._rk, 0._rk, -sqrt(0.5_rk)/)
+                   singlecoefs(i, 1:4) = (/sqrt(0.5_rk), 0._rk, 0._rk, sqrt(0.5_rk)/)
+               else
+                   singlecoefs(i, 1:4) = (/sqrt(0.5_rk), 0._rk, 0._rk, -sqrt(0.5_rk)/)
                endif
+               !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 
                write(*, '(4B16)') singledets(i, 1:4)
                write(*, *) singlecoefs(i, 1:4)
@@ -233,12 +270,13 @@ module convertharmonics
 
            !code above this line tested, all correct 
            if(.not.allocated(zbasislist)) then
-               allocate(zbasislist(ARRAY_SHORT_LENGTH, 2))
+               allocate(zbasislist(2*ARRAY_SHORT_LENGTH, 2))
+               nzbasis = 0
                write(*, *) 'allocate zbasislist'
            endif
 
            if(.not.allocated(zcoefs)) then
-               allocate(zcoefs(ARRAY_SHORT_LENGTH, 2))
+               allocate(zcoefs(2*ARRAY_SHORT_LENGTH, 2))
                nzbasis = 0
                write(*, *) 'allocate zcoefs'
            endif
@@ -309,7 +347,7 @@ module convertharmonics
 
                       enddo
                       !iend doesn't change, nzbasis doesn't change
-                      write(*, *) ' '
+                      !write(*, *) ' '
                       write(*, *) 'Processed dets number', istart, iend
                       do i = istart, iend
                             write(*, '(2B16)') zbasislist(i, 1:2)
@@ -426,7 +464,7 @@ module convertharmonics
                         enddo
                         iend = k - 1
                         nzbasis = iend
-                        write(*, *) ' '
+                        !write(*, *) ' '
                           write(*, *) 'Processed dets number', istart, iend
                           do i = istart, iend
                             write(*, '(2B16)') zbasislist(i, 1:2)
@@ -447,10 +485,15 @@ module convertharmonics
 
            write(*, *) 'nzbasis =', nzbasis, 'istart=', istart, 'iend=', iend
            !Divide all coefs by (sqrt(2))^nelec
-           do i = istart, iend
-               zcoefs(i, 1) = zcoefs(i, 1) * realcoef / (2**(nelec/2)) / (sqrt(2.)**(mod(nelec, 2)))
-               zcoefs(i, 2) = zcoefs(i, 2) * realcoef / (2**(nelec/2)) / (sqrt(2.)**(mod(nelec, 2)))
-           enddo
+           !do i = istart, iend
+           !    zcoefs(i, 1) = zcoefs(i, 1) * realcoef / (2**(nelec/2)) / (sqrt(2.)**(mod(nelec, 2)))
+           !    zcoefs(i, 2) = zcoefs(i, 2) * realcoef / (2**(nelec/2)) / (sqrt(2.)**(mod(nelec, 2)))
+           !enddo
+           !write(*, *) 'Multiple realcoef =', realcoef
+           !do i = istart, iend
+           !    zcoefs(i, 1) = zcoefs(i, 1) * realcoef
+           !    zcoefs(i, 2) = zcoefs(i, 2) * realcoef
+           !enddo
            write(*, *) '========== Appended the following dets and coefs into the zlist ============'
            do i = istart, iend
                write(*, '(2B16)') zbasislist(i, 1:2)
@@ -458,6 +501,7 @@ module convertharmonics
            enddo
            deallocate(singlecoefs)
            deallocate(singledets)
+           
 
        end subroutine Y2Z_singledet
 
