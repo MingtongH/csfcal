@@ -34,8 +34,8 @@ module checkcsfs
            logical, allocatable :: iszerolist(:), iszerolist1(:)
            integer :: num, num1
 
-           ! write(*, *) ' '
-           ! write(*, *) '>>>>>>>>>>>>>>>>>>>>>>> Lsq_multiple >>>>>>>>>>>>>>>>>>>>>>>>>>> '
+           write(*, *) ' '
+           write(*, *) '>>>>>>>>>>>>>>>>>>>>>>> Lsq_multiple >>>>>>>>>>>>>>>>>>>>>>>>>>> '
  
            !-------set intermediates (basislist1...) and output ( basislist ... ) empty
            num1 = 0
@@ -62,7 +62,7 @@ module checkcsfs
             logical, allocatable :: iszerolist(:), iszerolist1(:)
             integer :: num, num1
  
-            ! write(*, *) '>>>>>>>>>>>>>>>>>>>>>>> Lsq_multiple '
+            write(*, *) '>>>>>>>>>>>>>>>>>>>>>>> Lsq_multiple '
  
             !-------set intermediates (basislist1...) and output ( basislist ... ) empty
             num1 = 0
@@ -144,10 +144,10 @@ module checkcsfs
                 enddo !j
             enddo !i
 
-            ! write(*, *) '----------------------- Sorting csf table by dets----------------'
+            write(*, *) '----------------------- Sorting csf table by dets----------------'
 
             do i = 1, nbasis
-                ! write(*, *) order(i)
+                write(*, *) order(i)
             enddo
 
             do i = 1, nbasis
@@ -159,8 +159,8 @@ module checkcsfs
             deallocate(order)
 
             do i = 1, nbasis
-                ! write(*, '(2B16)') inbasislist(i, 1:2)
-                ! write(*, *) incoeftable(i, 1:ncsf)
+                write(*, '(2B16)') inbasislist(i, 1:2)
+                write(*, *) incoeftable(i, 1:ncsf)
             end do
        endsubroutine sortBasisCoefTable
 
@@ -184,7 +184,7 @@ module checkcsfs
            integer, intent(in) ::  ncsf
            integer :: i, j, nordered, k, nbasis, w
            integer, allocatable :: order(:) !indices of dets, from small to large
-           ! write(*, *) '========================== Enter sortBasisCoefTable_removeDups ================='
+           write(*, *) '========================== Enter sortBasisCoefTable_removeDups ================='
            allocate(tpbasis(nbasis, 2))
            allocate(tpcoefs(nbasis, ncsf))
            allocate(order(nbasis))
@@ -195,12 +195,12 @@ module checkcsfs
            order(1) = 1 !
            nordered = 1 ! number of ordered dets
            do i = 2, nbasis
-                ! write(*, *) '.......... Enter i =', i, '...........'
+                write(*, *) '.......... Enter i =', i, '...........'
                 do j = 1, nordered
-                    ! write(*, *) '.........j=', j
+                    write(*, *) '.........j=', j
 
                     if(tpbasis(i, 1).lt.tpbasis(order(j), 1)) then  !1<
-                        ! write(*, *) 'basis(i, 1) < basis(order(j), 1)'
+                        write(*, *) 'basis(i, 1) < basis(order(j), 1)'
                         do k = nordered, j, -1
                             order(k + 1) = order(k)
                         enddo
@@ -209,9 +209,9 @@ module checkcsfs
                         exit! exit do loop for j
 
                     else if(tpbasis(i, 1).eq.tpbasis(order(j), 1)) then !1=
-                        ! write(*, *) 'basis(i, 1) = basis(order(j), 1)'
+                        write(*, *) 'basis(i, 1) = basis(order(j), 1)'
                         if(tpbasis(i, 2).lt.tpbasis(order(j), 2)) then  !2<
-                            ! write(*, *) '         basis(i, 2) <  basis(order(j), 2)'
+                            write(*, *) '         basis(i, 2) <  basis(order(j), 2)'
                             do k = nordered, j, -1
                                 order(k + 1) = order(k)
                             enddo
@@ -219,7 +219,7 @@ module checkcsfs
                             nordered = nordered + 1
                             exit
                         elseif(tpbasis(i, 2).gt.tpbasis(order(j), 2)) then !2>
-                            ! write(*, *) '         basis(i, 2) > basis(order(j), 2)'
+                            write(*, *) '         basis(i, 2) > basis(order(j), 2)'
                             !i has same updet as order(j) but bigger dndet
                             !should be placed behind order(j)
                             if(nordered.eq.j) then   !3
@@ -237,12 +237,12 @@ module checkcsfs
                         else         !2=
                             !det_i det_order(j) have same detup and detdn
                             !Combine coefcients to the first occurance
-                            ! write(*, *) 'Found duplicate>>>>>>>>>>>>>'
-                            ! write(*, *) 'This determinant is '
-                            ! write(*, '(2B16)') tpbasis(i, 1:2)
-                            ! write(*, '(2B16)') tpbasis(order(j), 1:2)
-                            ! write(*, *) 'Current index is', i
-                            ! write(*, *) 'Combine to index', order(j)
+                            write(*, *) 'Found duplicate>>>>>>>>>>>>>'
+                            write(*, *) 'This determinant is '
+                            write(*, '(2B16)') tpbasis(i, 1:2)
+                            write(*, '(2B16)') tpbasis(order(j), 1:2)
+                            write(*, *) 'Current index is', i
+                            write(*, *) 'Combine to index', order(j)
 
                             do k = 1, ncsf
                                tpcoefs(order(j), k) = tpcoefs(order(j), k) + tpcoefs(i, k)
@@ -252,7 +252,7 @@ module checkcsfs
                         endif        !2
 
                     else!1 basis i, 1 > basis order(j)
-                        ! write(*, *) 'basis(i, 1) > basis(order(j) , 1))'
+                        write(*, *) 'basis(i, 1) > basis(order(j) , 1))'
                         if(nordered.eq.j) then
                             order(j+1) = i
                             nordered = nordered + 1
@@ -261,18 +261,18 @@ module checkcsfs
                     endif !1
                     
                 enddo !j
-                ! write(*, *) '------- one loop, i = ', i, '---------'
+                write(*, *) '------- one loop, i = ', i, '---------'
                 do w = 1, nordered
-                    ! write(*, *) order(w)
+                    write(*, *) order(w)
                 enddo
 
 
             enddo !i
 
-            ! write(*, *) '----------------------- Sorting csf table by dets----------------'
+            write(*, *) '----------------------- Sorting csf table by dets----------------'
 
             do i = 1, nordered
-                ! write(*, *) order(i)
+                write(*, *) order(i)
             enddo
 
             k = 0
@@ -284,14 +284,14 @@ module checkcsfs
                 endif
             enddo
             nbasis = k 
-            ! write(*, *) 'Final number of dets = ', nbasis
+            write(*, *) 'Final number of dets = ', nbasis
             deallocate(tpbasis)
             deallocate(tpcoefs)
             deallocate(order)
 
             do i = 1, nbasis
-                ! write(*, '(2B16)') inbasislist(i, 1:2)
-                ! write(*, *) incoeftable(i, 1:ncsf)
+                write(*, '(2B16)') inbasislist(i, 1:2)
+                write(*, *) incoeftable(i, 1:ncsf)
             end do
        endsubroutine sortBasisCoefTable_removeDups
 end module checkcsfs

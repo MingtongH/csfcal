@@ -37,7 +37,7 @@ program overalltest
            nbasis = 0
            ncsf = 0
            iend = 5
-           do iconf = 4, 4
+           do iconf = 3, 3
                istart = iend + 1
                iend = istart + nshell(iconf) - 1
                ! write(*, *) '%%%%%%%%%%%%%%%%%%%%%%  Assign_shell for Config', iconf, '  %%%%%%%%%%%%%%%%%%%'
@@ -104,7 +104,7 @@ program overalltest
             
 
                ! write(*, *) '>>>>>>>>>>>>>>>>>>>> writing Ycsf into a seperate file >>>>>>>>>>>>>'
-               open(UNIT = 1, FILE='Ycsfs_C_3P_conf4_4_0519')
+               open(UNIT = 1, FILE='Ycsfs_N_4S_conf3_3_0518')
                write(1, *) 'Config#', iconf
                ! write(*, *) 'Number of dets =', nbasis
                ! write(*, *) 'Number of csfs =', ncsf
@@ -118,7 +118,7 @@ program overalltest
                call Y2Z_appendtable(allbasis, coeftable, nbasis, ncsf, &
                    &zbasislist, zcoeftable, nzbasis)
                ! write(*, *) '>>>>>>>>>>>>>>>>>>>> writing Zcsf into a seperate file >>>>>>>>>>>>>'
-               open(UNIT=2, FILE='Zcsfs_C_3P_conf4_4_0519')
+               open(UNIT=2, FILE='Zcsfs_N_4S_conf3_3_0518')
                write(2, *) 'Config#', iconf
                ! write(*, *) nzbasis, 'nzbasis'
                ! write(*, *) ncsf, 'ncsf'

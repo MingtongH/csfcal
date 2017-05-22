@@ -25,10 +25,10 @@ module orthogonalization
           endif
 
 
-          ! write(*, *) '========================= Orthogonalization ================================'
-          ! write(*, *) 'Input matrix A'
+          write(*, *) '========================= Orthogonalization ================================'
+          write(*, *) 'Input matrix A'
           do i = 1, n
-              ! write(*, *) A(i, 1:p)
+              write(*, *) A(i, 1:p)
           enddo
 
           j = 1
@@ -53,21 +53,21 @@ module orthogonalization
               endif
           enddo
 
-          ! write(*, *) 'Matrix Q'
+          write(*, *) 'Matrix Q'
           do i = 1, n
-              ! write(*, *) Q(i, 1:p)
+              write(*, *) Q(i, 1:p)
           enddo
-          ! write(*, *) 'Matrix R'
+          write(*, *) 'Matrix R'
           do i = 1, p
-              ! write(*, *) R(i, 1:p)
+              write(*, *) R(i, 1:p)
           enddo
 
           p = j - 1
-          ! write(*, *) 'Output matrix A'
+          write(*, *) 'Output matrix A'
           do i = 1, n
-              ! write(*, *) A(i, 1:p)
+              write(*, *) A(i, 1:p)
           enddo
-          ! write(*, *) 'Output p =', p
+          write(*, *) 'Output p =', p
           
           deallocate(Q)
           deallocate(R)
@@ -99,7 +99,7 @@ module orthogonalization
               allocate(E(n, p))
           endif
 
-          ! write(*, *) '========================= Orthogonalization ================================'
+          write(*, *) '========================= Orthogonalization ================================'
           j = 1
           do k = 1, p
               Q(1:n, k) = A(1:n, k)
@@ -122,14 +122,14 @@ module orthogonalization
               endif
           enddo
           ncsf = j - 1
-          ! write(*, *) 'Input matrix A'
-          ! write(*, *) A
-          ! write(*, *) 'Matrix Q'
-          ! write(*, *) Q
-          ! write(*, *) 'Matrix R'
-          ! write(*, *) R
-          ! write(*, *) 'Matrix E'
-          ! write(*, *) E
+          write(*, *) 'Input matrix A'
+          write(*, *) A
+          write(*, *) 'Matrix Q'
+          write(*, *) Q
+          write(*, *) 'Matrix R'
+          write(*, *) R
+          write(*, *) 'Matrix E'
+          write(*, *) E
 
         
       end subroutine gs

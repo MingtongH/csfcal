@@ -40,15 +40,15 @@ program overalltest
            do iconf = 3, 3
                istart = iend + 1
                iend = istart + nshell(iconf) - 1
-               write(*, *) '%%%%%%%%%%%%%%%%%%%%%%  Assign_shell for Config', iconf, '  %%%%%%%%%%%%%%%%%%%'
+               ! write(*, *) '%%%%%%%%%%%%%%%%%%%%%%  Assign_shell for Config', iconf, '  %%%%%%%%%%%%%%%%%%%'
 
 
                totdets = 0
                call assign_shell(0_i16b, 0_i16b, 0, 0, 0, 0,&
                   & Lzdes, Sdes_t2, econfigs(istart:iend, 1:3), 0, totdets, detlist)
-               write(*, *) totdets
+               ! write(*, *) totdets
                do i = 1, totdets
-                   write(*, '(2B16)') detlist(i, 1:2)
+                   ! write(*, '(2B16)') detlist(i, 1:2)
                enddo
                minLp = Lmin(econfigs(istart:iend, 1:3))
                maxLp = Lmax(econfigs(istart:iend, 1:3))
@@ -58,7 +58,7 @@ program overalltest
                         !so set size to 0 before filling for current config
                do i = 1, totdets
 
-                   write(*, *) 'xxxxxxxxxxxxxxxxxxxxx  Projection of det #', i,'  xxxxxxxxxxxxxxxxxxxx' 
+                   ! write(*, *) 'xxxxxxxxxxxxxxxxxxxxx  Projection of det #', i,'  xxxxxxxxxxxxxxxxxxxx' 
                    call initlists(detlist(i, 1:2), inbasis, incoefs, ineposes, iniszeros, innum)
                    !inbasis... always initialized to arrays with only one det
                    call Proj_L(minLp, maxLp, Ldes, &
@@ -71,7 +71,7 @@ program overalltest
 
 
                    !PAUSE 4
-                   ! write(*,'(''paused, type [enter] to continue'')')
+                   ! ! write(*,'(''paused, type [enter] to continue'')')
                    !       read (*,*) line
 
 
@@ -85,12 +85,12 @@ program overalltest
 
                call normalizetable(coeftable, nbasis, ncsf)
                
-               write(*, *) nbasis, ncsf
+               ! write(*, *) nbasis, ncsf
                do i = 1, nbasis
-                 write(*, *) coeftable(i, 1:ncsf)
+                 ! write(*, *) coeftable(i, 1:ncsf)
                enddo
                if(nbasis.ne.ncsf) then
-                   write(*, *) 'coeftable not square'
+                   ! write(*, *) 'coeftable not square'
                endif
 
                !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -103,31 +103,31 @@ program overalltest
 
             
 
-               write(*, *) '>>>>>>>>>>>>>>>>>>>> writing Ycsf into a seperate file >>>>>>>>>>>>>'
+               ! write(*, *) '>>>>>>>>>>>>>>>>>>>> writing Ycsf into a seperate file >>>>>>>>>>>>>'
                open(UNIT = 1, FILE='Ycsfs_C_3P_conf3_3_0519')
                write(1, *) 'Config#', iconf
-               write(*, *) 'Number of dets =', nbasis
-               write(*, *) 'Number of csfs =', ncsf
+               ! write(*, *) 'Number of dets =', nbasis
+               ! write(*, *) 'Number of csfs =', ncsf
                write(1, *) nbasis, ncsf, 'Number of dets in basis', 'Number of csfs'
                do i = 1, nbasis
                    write(1, '(2B16)') allbasis(i, 1:2)
                    write(1, *) coeftable(i, 1:ncsf)
                enddo
-               write(*, *) '>>>>>>>>>>>>>>>>>>>> written Ycsf into a seperate file >>>>>>>>>>>>>'
+               ! write(*, *) '>>>>>>>>>>>>>>>>>>>> written Ycsf into a seperate file >>>>>>>>>>>>>'
                nzbasis = 0  
                call Y2Z_appendtable(allbasis, coeftable, nbasis, ncsf, &
                    &zbasislist, zcoeftable, nzbasis)
-               write(*, *) '>>>>>>>>>>>>>>>>>>>> writing Zcsf into a seperate file >>>>>>>>>>>>>'
+               ! write(*, *) '>>>>>>>>>>>>>>>>>>>> writing Zcsf into a seperate file >>>>>>>>>>>>>'
                open(UNIT=2, FILE='Zcsfs_C_3P_conf3_3_0519')
                write(2, *) 'Config#', iconf
-               write(*, *) nzbasis, 'nzbasis'
-               write(*, *) ncsf, 'ncsf'
+               ! write(*, *) nzbasis, 'nzbasis'
+               ! write(*, *) ncsf, 'ncsf'
                write(2, *) nzbasis, ncsf, 'Number of dets in zbasis', 'Number of csfs'
                do i = 1, nzbasis
                    write(2, '(2B16)') zbasislist(i, 1:2)
                    write(2, *) zcoeftable(i, 1:2*ncsf)
                enddo
-               write(*, *) '>>>>>>>>>>>>>>>>>>>> written Zcsf into a seperate file >>>>>>>>>>>>>'
+               ! write(*, *) '>>>>>>>>>>>>>>>>>>>> written Zcsf into a seperate file >>>>>>>>>>>>>'
                
 
  
