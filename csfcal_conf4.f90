@@ -2,12 +2,12 @@ program overalltest
        use prep, only : i16b, rk, Ldes, Lzdes, Sdes_t2, econfigs, nconfig, nshell, neact, &
             !parameters and variables 
            & read_input, checkSmin, checkSmax, checkILmax,checkLmin, Lmax, Lmin, &
-               & Smin_t2, Smax_t2, ARRAY_SHORT_LENGTH, COEFTOL
+               & Smin_t2, Smax_t2, ARRAY_SHORT_LENGTH
             !subroutines and functions
        use detgen, only : assign_shell
        use projection, only : initlists, Proj_L, Proj_S, getallsigns, collect_csf, normalizetable, initlists_fromlists
        use checkcsfs, only: sortBasisCoefTable, Lsq_multiple, Ssq_multiple,&
-           &sortBasisCoefTable_removeDups, all0
+           &sortBasisCoefTable_removeDups
        !use gramschmidt, only : orth
        use orthogonalization, only: gs_modify
        use convertharmonics, only: Y2Z_appendtable
@@ -20,13 +20,14 @@ program overalltest
  
        subroutine main
            integer :: totdets, minLp, maxLp, innum, num1, num, i, nbasis, ncsf, iconf,&
-               & iend, istart, min2Sp, max2Sp, nzbasis, j
+               & iend, istart, min2Sp, max2Sp, nzbasis
            integer(i16b), allocatable :: detlist(:, :), inbasis(:, :), &
                &basislist1(:, :),basislist(:, :), allbasis(:, :), allbasis1(:, :), zbasislist(:, :)
            real(rk), allocatable :: incoefs(:), coeflist1(:), coeflist(:),&
                &coeftable(:, :),zcoeftable(:, :)
            integer, allocatable :: ineposes(:, :, :), eposlist1(:, :, :), eposlist(:, :, :)
            logical, allocatable :: iniszeros(:), iszerolist1(:), iszerolist(:)
+           character(10) :: line 
 
            call read_input()
            call checkSmin()
@@ -36,8 +37,8 @@ program overalltest
            totdets = 0
            nbasis = 0
            ncsf = 0
-           iend = 0
-           do iconf = 1, nconfig
+           iend = 6
+           do iconf = 4, 4
                istart = iend + 1
                iend = istart + nshell(iconf) - 1
                write(*, *) '%%%%%%%%%%%%%%%%%%%%%%  Assign_shell for Config', iconf, '  %%%%%%%%%%%%%%%%%%%'
@@ -46,9 +47,9 @@ program overalltest
                totdets = 0
                call assign_shell(0_i16b, 0_i16b, 0, 0, 0, 0,&
                   & Lzdes, Sdes_t2, econfigs(istart:iend, 1:3), 0, totdets, detlist)
-               ! ! write(*, *) totdets
+               write(*, *) totdets
                do i = 1, totdets
-                   ! write(*, '(2B16)') detlist(i, 1:2)
+                   write(*, '(2B16)') detlist(i, 1:2)
                enddo
                minLp = Lmin(econfigs(istart:iend, 1:3))
                maxLp = Lmax(econfigs(istart:iend, 1:3))
@@ -58,7 +59,7 @@ program overalltest
                         !so set size to 0 before filling for current config
                do i = 1, totdets
 
-                    write(*, *) 'xxxxxxxxxxxxxxxxxxxxx  Projection of det #', i,'  xxxxxxxxxxxxxxxxxxxx' 
+                   write(*, *) 'xxxxxxxxxxxxxxxxxxxxx  Projection of det #', i,'  xxxxxxxxxxxxxxxxxxxx' 
                    call initlists(detlist(i, 1:2), inbasis, incoefs, ineposes, iniszeros, innum)
                    !inbasis... always initialized to arrays with only one det
                    call Proj_L(minLp, maxLp, Ldes, &
@@ -71,7 +72,7 @@ program overalltest
 
 
                    !PAUSE 4
-                   ! ! write(*,'(''paused, type [enter] to continue'')')
+                   ! write(*,'(''paused, type [enter] to continue'')')
                    !       read (*,*) line
 
 
@@ -85,12 +86,12 @@ program overalltest
 
                call normalizetable(coeftable, nbasis, ncsf)
                
-               ! ! write(*, *) nbasis, ncsf
+               write(*, *) nbasis, ncsf
                do i = 1, nbasis
-                 ! ! write(*, *) coeftable(i, 1:ncsf)
+                 write(*, *) coeftable(i, 1:ncsf)
                enddo
                if(nbasis.ne.ncsf) then
-                   ! ! write(*, *) 'coeftable not square'
+                   write(*, *) 'coeftable not square'
                endif
 
                !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -104,7 +105,7 @@ program overalltest
             
 
                write(*, *) '>>>>>>>>>>>>>>>>>>>> writing Ycsf into a seperate file >>>>>>>>>>>>>'
-               open(UNIT = 1, FILE='Ycsfs')
+               open(UNIT = 1, FILE='Ycsfs_conf4')
                write(1, *) 'Config#', iconf
                write(*, *) 'Number of dets =', nbasis
                write(*, *) 'Number of csfs =', ncsf
@@ -118,32 +119,17 @@ program overalltest
                call Y2Z_appendtable(allbasis, coeftable, nbasis, ncsf, &
                    &zbasislist, zcoeftable, nzbasis)
                write(*, *) '>>>>>>>>>>>>>>>>>>>> writing Zcsf into a seperate file >>>>>>>>>>>>>'
-               open(UNIT=2, FILE='Zcsfs')
+               open(UNIT=2, FILE='Zcsfs_conf4')
                write(2, *) 'Config#', iconf
                write(*, *) nzbasis, 'nzbasis'
                write(*, *) ncsf, 'ncsf'
                write(2, *) nzbasis, ncsf, 'Number of dets in zbasis', 'Number of csfs'
-               !do i = 1, nzbasis
-               !    write(2, '(2B16)') zbasislist(i, 1:2)
-               !    write(2, *) zcoeftable(i, 1:2*ncsf)
-               !enddo
-               do j = 1, ncsf
-                   write(*, *) 'Writing CSF #', j
-                   write(2, *) 'CSF #', j, ':'
-                   do i = 1, nzbasis
-                       if(all0(zcoeftable(i, (2*j - 1):2*j), 2, COEFTOL)) then
-                           cycle
-                       else
-                           !write(2, '(2B16)') zbasislist(i, 1:2)
-                           !write(2, *) zcoeftable(i, 2*j-1:2*j)
-                           write(2, '(2B16, 2F20.10)') zbasislist(i, 1:2), zcoeftable(i, 2*j-1:2*j)
-                       endif
-                   enddo
+               do i = 1, nzbasis
+                   write(2, '(2B16)') zbasislist(i, 1:2)
+                   write(2, *) zcoeftable(i, 1:2*ncsf)
                enddo
-
-
                write(*, *) '>>>>>>>>>>>>>>>>>>>> written Zcsf into a seperate file >>>>>>>>>>>>>'
-               deallocate(zcoeftable) 
+               
 
  
             enddo ! for each config

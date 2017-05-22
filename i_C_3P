@@ -9,15 +9,15 @@ C           atom
 #config2
 1           nshell
 2 p 4
-config3
+#config3
+2           nshell
+2 s 2
+3 d 2
+#config4
 3           nshell
 2 s 1
 2 p 2
 3 d 1
-#config4
-2           nshell
-2 s 2
-3 d 2
 #Other parameters
 2           2S
 1           L

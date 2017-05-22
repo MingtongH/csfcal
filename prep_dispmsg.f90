@@ -39,23 +39,23 @@ module prep
     character(1) :: tmporb
     character(STRING_MAX_LENGTH) :: line
 
-    ! write(*, '("==== Start Reading Input ====")')
+    write(*, '("==== Start Reading Input ====")')
     read(*, *) line
-    ! write(*, '("Atom: ", A)') line
+    write(*, '("Atom: ", A)') line
     read(*, *) nconfig
-    ! write(*, '("Number of configs: ", 1I5)') nconfig
+    write(*, '("Number of configs: ", 1I5)') nconfig
     read(*, *) neact
-    ! write(*, '("Number of active electrons: ", 1I5)') neact
+    write(*, '("Number of active electrons: ", 1I5)') neact
     read(*, *) neinact
-    ! write(*, '("Number of inactive electrons: ", 1I5)') neinact
+    write(*, '("Number of inactive electrons: ", 1I5)') neinact
     allocate(econfigs(nconfig * neact, 3 )) !not full
     allocate(nshell(nconfig))
     k = 1
     do i = 1, nconfig
          read(*, *)
-         ! write(*, '(">>> Reading Config ", 1I5)') i
+         write(*, '(">>> Reading Config ", 1I5)') i
          read(*, *) nshell(i)
-         ! write(*, '("Number of shells occupied: ", 1I5)') nshell(i)
+         write(*, '("Number of shells occupied: ", 1I5)') nshell(i)
     !     allocate(ne(nshell(i))
          do j = 1, nshell(i)
              read(*, *) tmpn, tmporb, tmpne !ne(j)
@@ -63,12 +63,12 @@ module prep
              econfigs(k, 1) = tmpn
              econfigs(k, 2) = tmpl
              econfigs(k, 3) = tmpne 
-             ! write(*, '("shell # : n, l, ne ", 4I5)') j, tmpn, tmpl, tmpne
+             write(*, '("shell # : n, l, ne ", 4I5)') j, tmpn, tmpl, tmpne
 
              k = k + 1
              !do k = 1, ne(j)
              !    tmpne = (i-1)*neact + sum(ne(1:j-1)) + k
-             !    ! write(*, '("Electron # : n, l ", 3I5)') tmpne, tmpn, tmpl
+             !    write(*, '("Electron # : n, l ", 3I5)') tmpne, tmpn, tmpl
              !    econfigs(tmpne, 1) = tmpn
             !    econfigs(tmpne, 2) = tmpl
             ! enddo !this shell
@@ -77,24 +77,24 @@ module prep
      enddo
 
      read(*, *) 
-     ! write(*, '(">>> Reading other parameters")')
+     write(*, '(">>> Reading other parameters")')
      read(*, *) Sdes_t2
      read(*, *) Ldes
      !read(*, *) Szdes_t2
      !read(*, *) Lzdes
      read(*, *) Ides
-     !! write(*, '("desired S*2 L Sz*2 Lz I :", 5I5)') Sdes_t2, Ldes, Szdes_t2,  Lzdes, Ides
-     ! write(*, '("desired S*2 L I:", 5I5)') Sdes_t2, Ldes, Ides
+     !write(*, '("desired S*2 L Sz*2 Lz I :", 5I5)') Sdes_t2, Ldes, Szdes_t2,  Lzdes, Ides
+     write(*, '("desired S*2 L I:", 5I5)') Sdes_t2, Ldes, Ides
      if(Ides.eq.1) then 
          Ides = 0
      elseif(Ides.eq.-1) then
          Ides = 1
      else
-         ! write(*, '("Error: Input for desired I not correct. 1 for even and -1 for odd ")') 
+         write(*, '("Error: Input for desired I not correct. 1 for even and -1 for odd ")') 
          stop 1
      endif
-     ! write(*, '("Ides converted")')
-     ! write(*, '("==== End Reading Input ====")')
+     write(*, '("Ides converted")')
+     write(*, '("==== End Reading Input ====")')
 
   end subroutine read_input
   
@@ -124,10 +124,10 @@ module prep
   
   subroutine checkSmin()
       if(Sdes_t2.lt.Smin_t2(neact)) then
-          ! write(*, '("Error: S_des < S_min, current Smin*2 = ", 1I5)') Smin_t2(neact)
+          write(*, '("Error: S_des < S_min, current Smin*2 = ", 1I5)') Smin_t2(neact)
           stop 2
       endif
-      ! write(*, '("Smin checked. ")')
+      write(*, '("Smin checked. ")')
   end subroutine checkSmin
   !function Smax_t2()
   
@@ -138,7 +138,7 @@ module prep
       if(N.le.num_orbs) then
           Szmax_t2_oneshell = N
       else if (N.gt.(2*num_orbs)) then
-          ! write(*, '("Error: number of electrons more than full on orbital of l = : ", 1I5)') l
+          write(*, '("Error: number of electrons more than full on orbital of l = : ", 1I5)') l
           stop 3
       else
           Szmax_t2_oneshell = num_orbs - (N - num_orbs)
@@ -164,14 +164,14 @@ module prep
         istart = iend + 1
         iend = istart + nshell(i) - 1
         tpSmax_t2 = Smax_t2(econfigs(istart:iend, 1:3))
-        ! write(*, '("checking Smax for config: , Smax *2 = ", 2I5)') i, tpSmax_t2
+        write(*, '("checking Smax for config: , Smax *2 = ", 2I5)') i, tpSmax_t2
         if(Sdes_t2.gt.tpSmax_t2) then
-            ! write(*, '("Error: S_des > S_max, in config #", 1I5)') i
-            ! write(*, '("Current Smax * 2 = ", 1I5)') tpSmax_t2
+            write(*, '("Error: S_des > S_max, in config #", 1I5)') i
+            write(*, '("Current Smax * 2 = ", 1I5)') tpSmax_t2
             stop 4
         endif
       enddo
-      ! write(*, '("Smax checked")')
+      write(*, '("Smax checked")')
   end subroutine checkSmax
 
 
@@ -210,21 +210,21 @@ module prep
         istart = iend + 1
         iend = istart + nshell(i) - 1
         tpLmax = Lmax(econfigs(istart:iend, 1:3))
-        ! write(*, '(" Checking Lmax for config: , Lmax = ", 2I5)') i, tpLmax
+        write(*, '(" Checking Lmax for config: , Lmax = ", 2I5)') i, tpLmax
         tpI = mod(tpLmax, 2) !0 for even, 1 for odd
 
         if(Ldes.gt.tpLmax) then 
-            ! write(*, '("Error: L_des > L_max, in config #", 1I5)') i
-            ! write(*, '("Current Lmax  = ", 1I5)') tpLmax
+            write(*, '("Error: L_des > L_max, in config #", 1I5)') i
+            write(*, '("Current Lmax  = ", 1I5)') tpLmax
             stop 5
         endif
         if(Ides.ne.tpI) then
-            ! write(*, '("Error: Wrong parity in config #", 1I5)') i
+            write(*, '("Error: Wrong parity in config #", 1I5)') i
             stop 6
         endif
       enddo
-      ! write(*, '("I checked. ")')
-      ! write(*, '("Lmax checked. ")')
+      write(*, '("I checked. ")')
+      write(*, '("Lmax checked. ")')
   end subroutine checkILmax
 
    function minsum(array)
@@ -261,7 +261,7 @@ module prep
       do i = 1, size(config, 1)
         do j = 1, config(i, 3) 
           larray(k) = config(i, 2)
-         ! ! write(*, '("electron #: , l=", 2I5)') k, econfigs(i, 2)
+         ! write(*, '("electron #: , l=", 2I5)') k, econfigs(i, 2)
           k = k + 1
         enddo
       enddo
@@ -277,16 +277,16 @@ module prep
       do i = 1, nconfig
         istart = iend + 1
         iend = istart + nshell(i) - 1
-        !! write(*, *) istart, iend, Lmin(istart, iend)
+        !write(*, *) istart, iend, Lmin(istart, iend)
         tpLmin = min(0, Lmin(econfigs(istart:iend, 1:3)))
-        ! write(*, '(" Checking Lmin for config: , Lmin = ", 2I5)') i, tpLmin
+        write(*, '(" Checking Lmin for config: , Lmin = ", 2I5)') i, tpLmin
         if(Ldes.lt.tpLmin) then 
-            ! write(*, '("Error: L_des < L_min, in config #", 1I5)') i
-            ! write(*, '("Current Lmin = ", 1I5)') tpLmin
+            write(*, '("Error: L_des < L_min, in config #", 1I5)') i
+            write(*, '("Current Lmin = ", 1I5)') tpLmin
             stop 7
         endif
       enddo
-      ! write(*, '("Lmin checked. ")')
+      write(*, '("Lmin checked. ")')
   end subroutine checkLmin
 
     logical function equals0(coef)

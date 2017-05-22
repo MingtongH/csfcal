@@ -2,27 +2,94 @@ module detgen
 !Generate all determinants of Lz = 0 and Sz = S(from readinput) given one configuration
 !such as 2s2, 2p5, 3d1
 !Mingtong Han, June 27 2016
-!TODO create a list for all the succesfully generated dets
-!     coeff will be Lz^2 - Lz, which should be 0
-use prep, only: i16b, Lzmax, Smax_t2, ARRAY_START_LENGTH, DET_MAX_LENGTH
+use prep, only: i16b, Lzmax, Smax_t2, ARRAY_SHORT_LENGTH, ARRAY_START_LENGTH, DET_MAX_LENGTH
 use, intrinsic :: iso_fortran_env, only: rk => real64
   implicit none
   contains
 !>>>>>>> functions and subroutines
 !isHalfFull(shellconfig), 
-!assign_shell(prdet_up,prdet_dn,prLz,pr2Sz,maxremLz,maxrem2Sz, desLz,des2Sz,configs,ncurr, tot)
+!assign_shell(prdet_up,prdet_dn,prLz,pr2Sz,maxremLz,maxrem2Sz, desLz,des2Sz,config,ncurr, tot)
 !detmod_shell(n, l, m_min, subdet, det), locate_det(n, l, m)
 !Szt2_oneshell(halflen, det), count_occ_orbs(det)
 !Lz_unit(m_min, det), Lz_oneshell(m_min, halflen, det)
 
 !operator subroutines
-!lpls, lms, eposinit
+!lpls, lms, eposinit, spls, sms
+      subroutine spls(pos, detup, detdn, eposup, eposdn, coef, iszero)
+          !s can only be 1/2, sz can only be 1/2 or -1/2
+          !pos refers to the position of the electron in operation in detdn 
+          !pos starts from 0
+          integer, intent(in) :: pos
+          integer(i16b) :: detup, detdn
+          integer, allocatable :: eposup(:), eposdn(:)
+          real(rk) :: coef, csq !Need initializion (1) at first run
+          logical :: iszero !Need initializion(.false.) at first run
+          if(.not.btest(detdn, pos)) then 
+              return
+          endif
+          if(iszero) then
+              return
+          endif
+          if(btest(detup, pos)) then
+              !pos up is occupied
+              coef = 0.0
+              iszero = .true.
+              return
+          else
+              ! write(*, '(15I4)') eposup(1:15)
+              ! write(*, '(15I4)') eposdn(1:15)
+              csq = 1 !1/2(1/2+1)-(-1/2)(-1/2 + 1)
+              coef = coef*sqrt(real(csq, rk))
+              detup = ibset(detup, pos)
+              detdn = ibclr(detdn, pos)
+              eposup(pos+1) = eposdn(pos+1)
+              eposdn(pos+1) = 0
+          endif
+      end subroutine spls
+
+      subroutine sms(pos, detup, detdn, eposup, eposdn, coef, iszero)
+          !s can only be 1/2, sz can only be 1/2 or -1/2
+          !pos refers to the position of the electron in operation in detdn 
+          !pos starts from 0
+          integer, intent(in) :: pos
+          integer(i16b) :: detup, detdn
+          integer, allocatable :: eposup(:), eposdn(:)
+          real(rk) :: coef, csq !Need initializion (1) at first run
+          logical :: iszero !Need initializion(.false.) at first run
+          if(.not.btest(detup, pos)) then 
+              return
+          endif
+          if(iszero) then
+              return
+          endif
+          if(btest(detdn, pos)) then
+              !pos up is occupied
+              coef = 0.0
+              iszero = .true.
+              return
+          else
+              ! write(*, '(15I4)') eposup(1:15)
+              ! write(*, '(15I4)') eposdn(1:15)
+              csq = 2 !1/2(1/2+1)-(1/2)(1/2 - 1)
+              coef = coef*sqrt(real(csq, rk))
+              detdn = ibset(detdn, pos)
+              detup = ibclr(detup, pos)
+              eposdn(pos+1) = eposup(pos+1)
+              eposup(pos+1) = 0
+          endif
+      end subroutine sms
+
+
+
+
+
+
       subroutine lpls(pos, det, epos, coef, iszero)
           !pos is the position of the electron that l+ is appled on, starting from 0
+          integer, intent(in) :: pos
           integer(i16b) :: det
           integer, allocatable :: epos(:)
           real(rk) :: coef ! Should be initialized as 1 if used for the first time
-          integer, intent(in) :: pos
           logical :: iszero ! Should be initialized as .false. if used for the first time
           integer :: n, l, lz, csq
 
@@ -43,14 +110,14 @@ use, intrinsic :: iso_fortran_env, only: rk => real64
               iszero = .true.
               return
           else
-              write(*, '(15I4)') epos(1:15)
-              coef = sqrt(real(csq))*coef
+              !! write(*, '(15I4)') epos(1:15)
+              coef = sqrt(real(csq, rk))*coef
               det = ibset(det, pos + 1)
               det = ibclr(det, pos)
               epos(pos+2) = epos(pos+1)
               epos(pos+1) = 0 !index of epos array starts from 1
-              write(*, '(15I3)') epos(1:15)
-              write(*, *) coef
+             ! ! write(*, '(15I3)') epos(1:15)
+             ! ! write(*, *) coef
           endif
 
 
@@ -58,7 +125,7 @@ use, intrinsic :: iso_fortran_env, only: rk => real64
 
       subroutine lms(pos, det, epos, coef, iszero)
           integer(i16b) :: det
-          integer, allocatable :: epos(:)
+          integer, allocatable :: epos(:) !should have been initialized
           real(rk) :: coef
           integer, intent(in) :: pos
           integer :: n, l, lz, csq
@@ -80,13 +147,13 @@ use, intrinsic :: iso_fortran_env, only: rk => real64
               iszero = .true.
               return
           else
-              write(*, '(15I4)') epos(1:15)
-              coef = sqrt(real(csq)) * coef
+              !! write(*, '(15I4)') epos(1:15)
+              coef = sqrt(real(csq, rk)) * coef
               det = ibset(det, pos - 1)
               det = ibclr(det, pos)
               epos(pos) = epos(pos+1)
               epos(pos+1) = 0 !index of epos array starts from 1
-              write(*, '(15I4)') epos(1:15)
+              !! write(*, '(15I4)') epos(1:15)
           endif
       end subroutine lms
 
@@ -94,12 +161,16 @@ use, intrinsic :: iso_fortran_env, only: rk => real64
           
 
       subroutine eposinit(eposup, eposdn, detup, detdn)
-          integer, allocatable :: eposup(:), eposdn(:)
+          integer :: eposup(:), eposdn(:)
           integer(i16b), intent(in) :: detup, detdn
           integer(i16b) :: tpdet
           integer :: i, l
-          allocate(eposup(DET_MAX_LENGTH))
-          allocate(eposdn(DET_MAX_LENGTH))
+          !if(.not.allocated(eposup)) then
+          !    allocate(eposup(DET_MAX_LENGTH))
+          !endif
+          !if(.not.allocated(eposdn)) then
+          !    allocate(eposdn(DET_MAX_LENGTH))
+          !endif
           do i = 1, DET_MAX_LENGTH
             eposup(i) = 0
             eposdn(i) = 0
@@ -139,7 +210,8 @@ use, intrinsic :: iso_fortran_env, only: rk => real64
       end function isHalfFull
 
       recursive subroutine assign_shell(prdet_up,prdet_dn,prLz,pr2Sz,maxremLz, &
-              & maxrem2Sz,desLz,des2Sz,configs,ncurr,tot, detlist)
+              & maxrem2Sz,desLz,des2Sz,config,ncurr,tot, detlist)
+          !Assign all subshells for one configuration
           !input maxrem includes all shells not assigned
           !including the one
           !to be assigned in this recursion
@@ -148,51 +220,51 @@ use, intrinsic :: iso_fortran_env, only: rk => real64
           integer, intent(in) :: prLz, pr2Sz, maxremLz, maxrem2Sz, ncurr
           ! ncurr = current shell number
           integer, intent(in) :: desLz, des2Sz
-          integer, intent(in) :: configs(:, :)
+          integer, intent(in) :: config(:, :)
           integer :: nshell_tot, tot
           integer(i16b), intent(in) :: prdet_up, prdet_dn
-          integer(i16b) :: curdet, tpdet, det_range!det_dn--det_up
+          integer(i16b) :: curdet, det_range!det_dn--det_up
           integer(i16b) :: detup, detdn
           integer :: curLz, cur2Sz, i, halflen
-          integer :: curLzmax, curLzmin, m_max, m_min, cur2Szmax, cur2Szmin
+          integer :: curLzmax, curLzmin, m_max, m_min
           integer :: tpLz, tp2Sz, tpmaxremLz, tpmaxrem2Sz
           integer :: necur ! number of electrons in current shell
           integer(i16b), allocatable :: detlist(:, :)
-          nshell_tot = size(configs, 1)
-          !write(*, '("nshell_tot = ", 1I5)') nshell_tot
-          write(*, '(">>>>>>>>>>> Now at shell :",1I5)') ncurr
-          write(*, '("prdet_up", B16)') prdet_up
-          write(*, '("prdet_dn", B16)') prdet_dn
-          write(*, '("prLz, pr2Sz, maxremLz, maxrem2Sz", 4I5)') prLz, pr2Sz, maxremLz, maxrem2Sz
+          nshell_tot = size(config, 1)
+          !! write(*, '("nshell_tot = ", 1I5)') nshell_tot
+          ! write(*, '("------------ Now at shell :",1I5)') ncurr
+          ! write(*, '("prdet_up", B16)') prdet_up
+          ! write(*, '("prdet_dn", B16)') prdet_dn
+          ! write(*, '("prLz, pr2Sz, maxremLz, maxrem2Sz", 4I5)') prLz, pr2Sz, maxremLz, maxrem2Sz
           !**************************first shell(only need inputs as 0)
           if(ncurr.eq.0) then !1
               detup = 0
               detdn = 0
               if(.not.allocated(detlist)) then
-                  allocate(detlist(ARRAY_START_LENGTH, 2))
+                  allocate(detlist(ARRAY_SHORT_LENGTH, 2))
               endif
-              call assign_shell(detup, detdn, 0, 0, Lzmax(configs), Smax_t2(configs),&
-                  & desLz, des2Sz, configs, ncurr+1, tot, detlist)
+              call assign_shell(detup, detdn, 0, 0, Lzmax(config), Smax_t2(config),&
+                  & desLz, des2Sz, config, ncurr+1, tot, detlist)
 
           !*************************last shell
           else if(ncurr.eq.nshell_tot) then !if1
-            necur = configs(ncurr, 3) 
+            necur = config(ncurr, 3) 
             tpLz = desLz - prLz
             tp2Sz = des2Sz - pr2Sz
-            tpmaxrem2Sz = Smax_t2(configs(ncurr:ncurr, 1:3)) 
+            tpmaxrem2Sz = Smax_t2(config(ncurr:ncurr, 1:3)) 
             !No need of this line if this is calculated for all previous levels
             if(tpLz.gt.maxremLz.OR.tpLz.lt.(-maxremLz)) then!if2
-                write(*, '("Cannot assign for des with Lz = ", 1I5)') tpLz
+                ! write(*, '("Cannot assign for des with Lz = ", 1I5)') tpLz
                 return
             else if (tp2Sz.gt.tpmaxrem2Sz.OR.tp2Sz.lt.(-tpmaxrem2Sz)) then
                 return
             else !if there is valid assignment
                 !!construct and store complete det_up, prdet_dn:
                 ! find all curdet that has curLz and cur2Sz
-              write(*, '(" At last shell ")')
-              necur = configs(ncurr, 3)
-              m_max = configs(ncurr, 2) !lz 
-              m_min = - configs(ncurr, 2) 
+              ! write(*, '(" At last shell ")')
+              necur = config(ncurr, 3)
+              m_max = config(ncurr, 2) !lz 
+              m_min = - config(ncurr, 2) 
               !!>>>>  May need to change m_max, m_min for pruning
               halflen = m_max - m_min + 1
               det_range = 0
@@ -203,8 +275,8 @@ use, intrinsic :: iso_fortran_env, only: rk => real64
               ! use just one combined det dn_det-up_det
               ! det_range is the last curdet with largest value
               !------------------------------------------------
-             ! write(*, '(" Halflen = ", 1I5)') halflen
-              write(*, '(" Searching det range 1 to ",B16)') det_range
+             ! ! write(*, '(" Halflen = ", 1I5)') halflen
+              ! write(*, '(" Searching det range 1 to ",B16)') det_range
               do curdet = 1, det_range !3
               !-------------------------------------------
               ! !det_dn(m_max...m_min)--det_up(m_max...m_min)
@@ -218,20 +290,19 @@ use, intrinsic :: iso_fortran_env, only: rk => real64
                          cur2Sz = Szt2_oneshell(halflen, curdet)
                          if(tp2Sz .eq. cur2Sz) then
 
-                             write(*, '("*** Branch last shell, curLz =, cur2Sz = ",&
-                                 & 3I5)') ncurr, curLz, cur2Sz
+                             ! write(*, '("---- Branch last shell, curLz =, cur2Sz = ", 3I5)') ncurr, curLz, cur2Sz
                              detup = prdet_up 
-                             call detmod_shell(configs(ncurr, 1), configs(ncurr, 2),&
+                             call detmod_shell(config(ncurr, 1), config(ncurr, 2),&
                                  & m_min, ibits(curdet, 0, halflen), detup)
                              detdn = prdet_dn
-                             write(*, '("curdet = ", B16)') curdet
-                             call  detmod_shell(configs(ncurr, 1), configs(ncurr, 2),&
+                             ! write(*, '("curdet = ", B16)') curdet
+                             call  detmod_shell(config(ncurr, 1), config(ncurr, 2),&
                                  & m_min, ibits(curdet, halflen, halflen), detdn)
-                             write(*, '("!!!Success!!! Generated detup:", B16)') detup 
-                             write(*, '("!!!Success!!! Generated detdn:", B16)') detdn
+                             ! write(*, '("!!!Success!!! Generated detup:", B16)') detup 
+                             ! write(*, '("!!!Success!!! Generated detdn:", B16)') detdn
                              tot = tot + 1
                              detlist(tot, 1:2) = (/detup, detdn/)
-                             write(*, *) tot
+                             ! write(*, *) tot
                          endif
                      endif
                  endif !4
@@ -242,19 +313,19 @@ use, intrinsic :: iso_fortran_env, only: rk => real64
             endif !2
           !*****************************recur
           else !1
-              necur = configs(ncurr, 3)
-              tpLz = Lzmax(configs(ncurr:ncurr, 1:3))
-             ! write(*, '("Lzmax of this shell = ", 1I5)') tpLz
+              necur = config(ncurr, 3)
+              tpLz = Lzmax(config(ncurr:ncurr, 1:3))
+             ! ! write(*, '("Lzmax of this shell = ", 1I5)') tpLz
               tpmaxremLz = maxremLz - tpLz ! tpmaxremLz no longer include current shell
-             ! write(*, '("maxremLz of next recur = ", 1I5)') tpmaxremLz
+             ! ! write(*, '("maxremLz of next recur = ", 1I5)') tpmaxremLz
               curLzmax = min(tpLz, desLz - prLz + tpmaxremLz)
               curLzmin = max(-tpLz, desLz - prLz - tpmaxremLz)
-              m_max = configs(ncurr, 2) !lz 
-              m_min = - configs(ncurr, 2) 
+              m_max = config(ncurr, 2) !lz 
+              m_min = - config(ncurr, 2) 
               
               !!>>>>  May need to change m_max, m_min for pruning
               !!>>>>  check Sz beforehand to save time
-              !cursmax_t2 = Smax_t2(configs(ncurr:ncurr, 1:3))
+              !cursmax_t2 = Smax_t2(config(ncurr:ncurr, 1:3))
               !tpmaxrem2Sz = 1
               
               halflen = m_max - m_min + 1
@@ -266,7 +337,7 @@ use, intrinsic :: iso_fortran_env, only: rk => real64
               ! use just one combined det dn_det-up_det
               ! det_range is the last curdet with largest value
               !------------------------------------------------
-              write(*, '(" Searching det range 1 to ", B16)') det_range
+              ! write(*, '(" Searching det range 1 to ", B16)') det_range
               do curdet = 1, det_range
               !-------------------------------------------
               ! !det_dn(m_max...m_min)--det_up(m_max...m_min)
@@ -282,14 +353,14 @@ use, intrinsic :: iso_fortran_env, only: rk => real64
                          tp2Sz = pr2Sz + cur2Sz
                          tpmaxrem2Sz = 0!Change later 
                          detup = prdet_up 
-                         call detmod_shell(configs(ncurr, 1), configs(ncurr, 2),&
+                         call detmod_shell(config(ncurr, 1), config(ncurr, 2),&
                              & m_min, ibits(curdet, 0, halflen), detup)
                          detdn = prdet_dn
-                         call  detmod_shell(configs(ncurr, 1), configs(ncurr, 2),&
+                         call  detmod_shell(config(ncurr, 1), config(ncurr, 2),&
                              & m_min, ibits(curdet, halflen, halflen), detdn)
-                         write(*, '("*** Branch shell#, curLz ", 2I5)') ncurr, curLz
+                         ! write(*, '("---- Branch shell#, curLz ", 2I5)') ncurr, curLz
                          call assign_shell(detup, detdn, tpLz, tp2Sz, tpmaxremLz,&
-                             & tpmaxrem2Sz, desLz, des2Sz, configs, ncurr+1, tot, detlist)
+                             & tpmaxrem2Sz, desLz, des2Sz, config, ncurr+1, tot, detlist)
                      endif
                  endif
               enddo
@@ -350,6 +421,7 @@ use, intrinsic :: iso_fortran_env, only: rk => real64
       enddo
       
   end subroutine
+
   subroutine pos2nlm(pos, n, l, m)
       integer, intent(in) :: pos
       integer :: n, l, m
@@ -367,6 +439,12 @@ use, intrinsic :: iso_fortran_env, only: rk => real64
       end select
   end subroutine pos2nlm
 
+  integer function Szt2_det(det)
+      integer(i16b), intent(in) :: det(:)
+      Szt2_det = count_occ_orbs(det(1)) - count_occ_orbs(det(2))
+  end function Szt2_det
+  
+  
   integer function Szt2_oneshell(halflen, det)
   !det_dn(m_max...m_min)--det_up(m_max...m_min)
 
@@ -464,7 +542,29 @@ use, intrinsic :: iso_fortran_env, only: rk => real64
       Lz_oneshell = Lz_unit(m_min, det_up) + Lz_unit(m_min, det_dn)
   end function Lz_oneshell
   
-  
+ integer function Lz_det(det)
+     integer(i16b), intent(in) :: det(:)
+     integer(i16b) :: tpdet 
+     integer :: i, n, l, lz
+     tpdet = det(1)
+     Lz_det = 0
+     do while (tpdet.ne.0)
+       i = trailz(tpdet)
+       call delocate(i, n, l, lz)
+       Lz_det = Lz_det + lz
+       tpdet = ibclr(tpdet, i)
+     end do
+     tpdet = det(2)
+     do while (tpdet.ne.0)
+       i = trailz(tpdet)
+       call delocate(i, n, l, lz)
+       Lz_det = Lz_det + lz
+       tpdet = ibclr(tpdet, i)
+     enddo
+ end function Lz_det
+
+
+
  ! character(LEN=16) function detdisplay(det)
  !     integer(i16b), intent(in) :: det
  !     integer(i16b) :: tmpdet

@@ -1,0 +1,9 @@
+for file in *f90
+do
+echo $file
+ex $file <<_end
+1,\$s/write(\*,/! write(\*,/
+wq
+_end
+done
+
