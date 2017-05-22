@@ -112,6 +112,7 @@ module convertharmonics
                 enddo
           enddo
 
+          !call sortBasisCoefTable_removeDups(zbasislist, zcoeftable, nzbasis, 2*ncsf)
           ! write(*, *) '********************* Final number of rows in the table *********************'
           ! write(*, *) ncsf
 

@@ -22,7 +22,8 @@ program overalltest
            integer :: totdets, minLp, maxLp, innum, num1, num, i, nbasis, ncsf, iconf,&
                & iend, istart, min2Sp, max2Sp, nzbasis, j
            integer(i16b), allocatable :: detlist(:, :), inbasis(:, :), &
-               &basislist1(:, :),basislist(:, :), allbasis(:, :), allbasis1(:, :), zbasislist(:, :)
+               &basislist1(:, :),basislist(:, :), allbasis(:, :), &!, allbasis1(:, :), 
+               &zbasislist(:, :)
            real(rk), allocatable :: incoefs(:), coeflist1(:), coeflist(:),&
                &coeftable(:, :),zcoeftable(:, :)
            integer, allocatable :: ineposes(:, :, :), eposlist1(:, :, :), eposlist(:, :, :)
@@ -58,7 +59,7 @@ program overalltest
                         !so set size to 0 before filling for current config
                do i = 1, totdets
 
-                    write(*, *) 'xxxxxxxxxxxxxxxxxxxxx  Projection of det #', i,'  xxxxxxxxxxxxxxxxxxxx' 
+                    write(*, *) '--------- Projection of det #', i,' -----------'
                    call initlists(detlist(i, 1:2), inbasis, incoefs, ineposes, iniszeros, innum)
                    !inbasis... always initialized to arrays with only one det
                    call Proj_L(minLp, maxLp, Ldes, &
@@ -109,9 +110,16 @@ program overalltest
                write(*, *) 'Number of dets =', nbasis
                write(*, *) 'Number of csfs =', ncsf
                write(1, *) nbasis, ncsf, 'Number of dets in basis', 'Number of csfs'
-               do i = 1, nbasis
-                   write(1, '(2B16)') allbasis(i, 1:2)
-                   write(1, *) coeftable(i, 1:ncsf)
+               !do i = 1, nbasis
+               !    write(1, '(2B16)') allbasis(i, 1:2)
+               !    write(1, *) coeftable(i, 1:ncsf)
+               !enddo
+               do j = 1, ncsf
+                   write(*, *) 'Writing CSF #', j
+                   write(1, *) 'CSF #', j, ':'
+                   do i = 1, nbasis
+                       write(1, '(2B16, 2F20.10)') allbasis(i, 1:2), coeftable(i, 2*j-1:2*j)
+                   enddo
                enddo
                write(*, *) '>>>>>>>>>>>>>>>>>>>> written Ycsf into a seperate file >>>>>>>>>>>>>'
                nzbasis = 0  
@@ -131,9 +139,7 @@ program overalltest
                    write(*, *) 'Writing CSF #', j
                    write(2, *) 'CSF #', j, ':'
                    do i = 1, nzbasis
-                       if(all0(zcoeftable(i, (2*j - 1):2*j), 2, COEFTOL)) then
-                           cycle
-                       else
+                       if(.not.all0(zcoeftable(i, (2*j - 1):2*j), 2, COEFTOL)) then
                            !write(2, '(2B16)') zbasislist(i, 1:2)
                            !write(2, *) zcoeftable(i, 2*j-1:2*j)
                            write(2, '(2B16, 2F20.10)') zbasislist(i, 1:2), zcoeftable(i, 2*j-1:2*j)
