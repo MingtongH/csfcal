@@ -6,7 +6,7 @@ program overalltest
             !subroutines and functions
        use detgen, only : assign_shell
        use projection, only : initlists, Proj_L, Proj_S, getallsigns, collect_csf, normalizetable, initlists_fromlists
-       use checkcsfs, only: sortBasisCoefTable, Lsq_multiple, Ssq_multiple,&
+       use checkcsfs, only: Lsq_multiple, Ssq_multiple,&
            &sortBasisCoefTable_removeDups, all0
        !use gramschmidt, only : orth
        use orthogonalization, only: gs_modify
