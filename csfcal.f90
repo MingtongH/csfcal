@@ -118,7 +118,7 @@ program overalltest
                    write(*, *) 'Writing CSF #', j
                    write(1, *) 'CSF #', j, ':'
                    do i = 1, nbasis
-                       write(1, '(2B16, 2F20.10)') allbasis(i, 1:2), coeftable(i, 2*j-1:2*j)
+                       write(1, '(2B16, 2F20.10)') allbasis(i, 1:2), coeftable(i, j)
                    enddo
                enddo
                write(*, *) '>>>>>>>>>>>>>>>>>>>> written Ycsf into a seperate file >>>>>>>>>>>>>'
